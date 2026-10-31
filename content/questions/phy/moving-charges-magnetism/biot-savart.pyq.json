@@ -1,0 +1,117 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs. Review before use: q.phy.moving-charges-magnetism.biot-savart.9001 (paper Q39) needs its figure img.moving-charges-magnetism.pyq-bent-wires, which is requested, not approved; it is mock-only so it never ships in a device bundle without the figure.",
+  "hi_source": "translation",
+  "topic": "phy.moving-charges-magnetism.biot-savart",
+  "questions": [
+    {
+      "id": "q.phy.moving-charges-magnetism.biot-savart.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.moving-charges-magnetism.biot-savart.core.biot-savart-loop",
+          "weight": 0.6
+        },
+        {
+          "id": "phy.moving-charges-magnetism.ampere-law.core.ampere-circuital-law",
+          "weight": 0.4
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Two identical long current carrying wires are bent into the shapes shown in the following figures. If the magnitude of magnetic fields at the centres $P$ and $Q$ of a semicircular arc are $B_1$ and $B_2$ respectively, then the ratio $\\frac{B_1}{B_2}$ is ______.",
+        "hi": "दो सर्वसम लंबे धारावाही तारों को निम्नलिखित चित्रों में दिखाई गई आकृतियों में मोड़ा गया है। यदि अर्धवृत्ताकार चाप के केंद्रों $P$ और $Q$ पर चुंबकीय क्षेत्रों के परिमाण क्रमशः $B_1$ और $B_2$ हैं, तो अनुपात $\\frac{B_1}{B_2}$ ______ है।"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\frac{2+\\pi}{1+\\pi}$",
+            "hi": "$\\frac{2+\\pi}{1+\\pi}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\frac{1+\\pi}{1-\\pi}$",
+            "hi": "$\\frac{1+\\pi}{1-\\pi}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\frac{2+\\pi}{1-\\pi}$",
+            "hi": "$\\frac{2+\\pi}{1-\\pi}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\frac{1+\\pi}{2-\\pi}$",
+            "hi": "$\\frac{1+\\pi}{2-\\pi}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Add the pieces at each centre: a semicircle gives $\\frac{\\mu_0I}{4r}$; a long straight wire that ends level with the centre gives $\\frac{\\mu_0I}{4\\pi r}$; a wire whose line passes through the centre gives nothing.",
+          "hi": "प्रत्येक केंद्र पर टुकड़ों का योग कीजिए: अर्धवृत्त $\\frac{\\mu_0I}{4r}$ देता है; केंद्र की सीध में समाप्त होने वाला लंबा सीधा तार $\\frac{\\mu_0I}{4\\pi r}$ देता है; जिस तार की रेखा केंद्र से होकर जाती है वह शून्य देता है।"
+        },
+        "steps": [
+          {
+            "en": "$B_1=\\frac{\\mu_0I}{4r}+2\\frac{\\mu_0I}{4\\pi r}=\\frac{\\mu_0I}{4\\pi r}(\\pi+2)$.",
+            "hi": "$B_1=\\frac{\\mu_0I}{4r}+2\\frac{\\mu_0I}{4\\pi r}=\\frac{\\mu_0I}{4\\pi r}(\\pi+2)$।"
+          },
+          {
+            "en": "$B_2=\\frac{\\mu_0I}{4r}+\\frac{\\mu_0I}{4\\pi r}+0=\\frac{\\mu_0I}{4\\pi r}(\\pi+1)$.",
+            "hi": "$B_2=\\frac{\\mu_0I}{4r}+\\frac{\\mu_0I}{4\\pi r}+0=\\frac{\\mu_0I}{4\\pi r}(\\pi+1)$।"
+          },
+          {
+            "en": "$\\frac{B_1}{B_2}=\\frac{2+\\pi}{1+\\pi}$.",
+            "hi": "$\\frac{B_1}{B_2}=\\frac{2+\\pi}{1+\\pi}$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 150,
+      "difficulty_estimate": "medium",
+      "media": "img.moving-charges-magnetism.pyq-bent-wires",
+      "use": [
+        "mock"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 39
+      }
+    }
+  ]
+}

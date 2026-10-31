@@ -1,0 +1,78 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "chem.chemical-kinetics.temperature-rate",
+  "questions": [
+    {
+      "id": "q.chem.chemical-kinetics.temperature-rate.9001",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "chem.chemical-kinetics.temperature-rate.core.arrhenius",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "For reaction $A \\to P$, rate constant $k=1.5\\times10^3\\ \\mathrm{s^{-1}}$ at $27\\ ^\\circ\\mathrm{C}$. If activation energy for the above reaction is $60\\ \\mathrm{kJ\\,mol^{-1}}$, then the temperature (in $^\\circ\\mathrm{C}$) at which rate constant, $k=4.5\\times10^3\\ \\mathrm{s^{-1}}$ is ______. (Nearest integer) Given : $\\log2=0.30$, $\\log3=0.48$, $R=8.3\\ \\mathrm{J\\,K^{-1}\\,mol^{-1}}$, $\\ln10=2.3$",
+        "hi": "अभिक्रिया $A \\to P$ के लिए दर स्थिरांक $k=1.5\\times10^3\\ \\mathrm{s^{-1}}$ है, ताप $27\\ ^\\circ\\mathrm{C}$ पर। यदि उपर्युक्त अभिक्रिया की सक्रियण ऊर्जा $60\\ \\mathrm{kJ\\,mol^{-1}}$ है, तो वह ताप ($^\\circ\\mathrm{C}$ में) जिस पर दर स्थिरांक $k=4.5\\times10^3\\ \\mathrm{s^{-1}}$ हो, ______ है। (निकटतम पूर्णांक) दिया है : $\\log2=0.30$, $\\log3=0.48$, $R=8.3\\ \\mathrm{J\\,K^{-1}\\,mol^{-1}}$, $\\ln10=2.3$"
+      },
+      "answer": {
+        "value": 41,
+        "unit": "°C"
+      },
+      "solution": {
+        "feynman": {
+          "en": "The rate constant triples, so use the two-temperature Arrhenius form: $\\log\\frac{k_2}{k_1}=\\frac{E_a}{2.3R}\\left(\\frac1{T_1}-\\frac1{T_2}\\right)$.",
+          "hi": "दर स्थिरांक तीन गुना होता है, अतः दो-ताप वाला आरेनियस रूप लीजिए: $\\log\\frac{k_2}{k_1}=\\frac{E_a}{2.3R}\\left(\\frac1{T_1}-\\frac1{T_2}\\right)$।"
+        },
+        "steps": [
+          {
+            "en": "$0.48=\\frac{60000}{2.3 \\times 8.3}\\left(\\frac{1}{300}-\\frac{1}{T_2}\\right)$, so $\\frac{1}{300}-\\frac{1}{T_2} \\approx 1.527\\times10^{-4}$.",
+            "hi": "$0.48=\\frac{60000}{2.3 \\times 8.3}\\left(\\frac{1}{300}-\\frac{1}{T_2}\\right)$, अतः $\\frac{1}{300}-\\frac{1}{T_2} \\approx 1.527\\times10^{-4}$।"
+          },
+          {
+            "en": "$T_2 \\approx 314.4\\ \\mathrm{K}$, which is about $41\\ ^\\circ\\mathrm{C}$.",
+            "hi": "$T_2 \\approx 314.4\\ \\mathrm{K}$, जो लगभग $41\\ ^\\circ\\mathrm{C}$ है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 150,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 74
+      }
+    }
+  ]
+}

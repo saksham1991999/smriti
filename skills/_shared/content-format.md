@@ -19,7 +19,7 @@ content/
 ├─ questions/{subject_id}/{chapter_slug}/{topic_slug}.json
 ├─ pyq/{exam_id}/{paper_id}.json                one previous-year paper
 ├─ mnemonics/{subject_id}/{chapter_slug}.json
-├─ extras/{subject_id}/{chapter_slug}/…         cheat sheets, revision sheets, storybooks, experiments, role plays, mind maps
+├─ extras/{subject_id}/{chapter_slug}/…         cheat sheets, revision sheets, storybooks, songs, play activities, experiments, role plays, mind maps
 ├─ media/requests/{subject_id}/{chapter_slug}.json   media needed by the files above
 ├─ seed-packs/{variant_id}.json                 what the app ships offline for a store variant
 ├─ coverage/syllabus/{exam_profile_id}.json     official syllabus lines (syllabus-mapper)
@@ -39,7 +39,7 @@ Large binaries never go in git. Media goes to R2 staging, and `content/` only ho
 - Cards: `{topic_id}:{dd|qr}:{nn}` (`dd` in a Deep Dive, `qr` in a Quick Revision), for example `…relative-motion:dd:07`.
 - Questions: `q.{topic_id}.{nnnn}`. Mnemonics: `m.{concept_id}.{n}`.
 - Media requests: `img.{chapter}.{slug}`, `anim.{…}`, `sim.{…}`, `m3d.{…}`, `pano.{…}`, `audio.{…}`. App art that is not tied to a chapter (pets, plants, empty states) uses `img.ui.{slug}`.
-- Extras: `cs.` cheat sheet, `rs.` revision sheet, `sb.` storybook, `ex.` experiment, `rp.` role play, `mm.` mind-map template, followed by the topic or chapter ID.
+- Extras: `cs.` cheat sheet, `rs.` revision sheet, `sb.` storybook, `sg.` song, `pl.` play activity, `ex.` experiment, `rp.` role play, `mm.` mind-map template, followed by the topic or chapter ID.
 - Syllabus lines: `{exam_profile}:{subject}:{unit}:{item}`.
 - Subject IDs map to a colour family through `subjectMap` in `packages/tokens/tokens.json`. A new subject needs an entry there.
 
@@ -102,6 +102,7 @@ Large binaries never go in git. Media goes to R2 staging, and `content/` only ho
 
 - `category`: `engineering`, `medical`, `civil_services`, `ssc`, `banking`, `railways`, `defence`, `state`, `school`.
 - Profile IDs start with the exam ID.
+- `audience` (optional): `standard` (the default) or `little_learner` for class 1–5 profiles. A little learner profile's coverage needs a teaching item (Deep Dive teaching card, storybook or song) and a play activity per concept, instead of revision cards, practice questions, spaced-repetition cards and formula worked examples.
 - `schedule` stays `null` until dates are announced. Then it is a list of `{ "kind", "date", "source_url" }`, where `kind` is `application_open`, `application_close`, `exam_window_start`, `exam_window_end`, `exam_day` or `result`, and `source_url` is the official notification.
 
 ## 5. Subjects and graph
@@ -412,6 +413,8 @@ Every extra has `id` (§2), `scope` (`topic` or `chapter`, with `topic` or `chap
 | `cheat_sheet@1` | `key_ideas[]`, `formulas[]` (`name`, `latex`, optional `vault_id`, `concept`), `diagram` (optional), `mnemonics[]` (one ID per locale each), `traps[]` (`mistake`, `correct`) |
 | `revision_sheet@1` | `points[]`, `formulas[]` (optional), `diagram` (optional) |
 | `storybook@1` | `pages[]` (6–12: `text`, `media`, optional `narration`) |
+| `song@1` | `style` (`song`, `rhyme`, `chant`), `versions[]` (one per locale: `locale`, `audio` (an `audio_song` request with a transcript), `lines[]` (`text`, optional `start_ms`/`end_ms`, optional `action`)), optional `minutes`, `cover`, `actions[]` (`id`, `cue`, `icon`) |
+| `play@1` | `minutes`, `feedback` (`success`, `try_again`), `rounds[]` (1–6; `kind` `tap`, `match`, `sort`, `drag` or `trace`, each with `prompt` and optional `hint`, `audio`), optional `cover`. See `skills/lesson-author` "Little learners" |
 | `experiment@1` | `materials[]`, `steps[]`, `safety[]`, `adult_supervision`, `why_it_works`, `media` (optional) |
 | `roleplay@1` | `character`, `documented_views[]` (`view`, `source`), `persona_prompt`, `goals[]`, `guardrails[]`, `opening_line`, `suggested_replies[]` (optional) |
 | `mind_map_template@1` | `nodes[]` (`id`, `label`, optional `concept`), `edges[]` (`from`, `to`) |

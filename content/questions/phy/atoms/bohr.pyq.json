@@ -1,0 +1,109 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "phy.atoms.bohr",
+  "questions": [
+    {
+      "id": "q.phy.atoms.bohr.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.atoms.bohr.core.bohr-model-hydrogen",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Angular momentum of an electron in a hydrogen atom is $\\frac{3h}{\\pi}$, then the energy of the electron is ______ $\\mathrm{eV}$.",
+        "hi": "हाइड्रोजन परमाणु में एक इलेक्ट्रॉन का कोणीय संवेग $\\frac{3h}{\\pi}$ है, तब इलेक्ट्रॉन की ऊर्जा ______ $\\mathrm{eV}$ है।"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$-1.51$",
+            "hi": "$-1.51$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$-0.85$",
+            "hi": "$-0.85$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$-0.38$",
+            "hi": "$-0.38$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$-0.28$",
+            "hi": "$-0.28$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Bohr's rule $L=\\frac{nh}{2\\pi}$ gives the orbit number; then $E_n=-\\frac{13.6}{n^2}\\ \\mathrm{eV}$.",
+          "hi": "बोर का नियम $L=\\frac{nh}{2\\pi}$ कक्षा संख्या देता है; फिर $E_n=-\\frac{13.6}{n^2}\\ \\mathrm{eV}$।"
+        },
+        "steps": [
+          {
+            "en": "$\\frac{nh}{2\\pi}=\\frac{3h}{\\pi}$ gives $n=6$.",
+            "hi": "$\\frac{nh}{2\\pi}=\\frac{3h}{\\pi}$ से $n=6$।"
+          },
+          {
+            "en": "$E_6=-\\frac{13.6}{36} \\approx -0.38\\ \\mathrm{eV}$.",
+            "hi": "$E_6=-\\frac{13.6}{36} \\approx -0.38\\ \\mathrm{eV}$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 44
+      }
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "schema": "revision_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax Chemistry 2e, §10.5 The Solid State of Matter (metallic solids)",
+      "url": "https://openstax.org/books/chemistry-2e/pages/10-5-the-solid-state-of-matter",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Revision sheet for the chapter, gathered from the topic cheat sheets. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khch104) could not be retrieved, so a reviewer should check the terms.",
+  "id": "rs.chem.chemical-bonding",
+  "scope": "chapter",
+  "chapter": "chem.chemical-bonding",
+  "title": {
+    "en": "Chemical Bonding and Molecular Structure",
+    "hi": "रासायनिक आबंधन तथा आण्विक संरचना"
+  },
+  "concepts": [
+    "chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds",
+    "chem.chemical-bonding.ionic-bond.core.ionic-bond-lattice",
+    "chem.chemical-bonding.bond-parameters.core.bond-polarity-fajans",
+    "chem.chemical-bonding.bond-parameters.core.resonance-structures",
+    "chem.chemical-bonding.vsepr.core.vsepr-shapes",
+    "chem.chemical-bonding.vbt.core.valence-bond-theory",
+    "chem.chemical-bonding.hybridisation.core.hybridisation-spd",
+    "chem.chemical-bonding.mot.core.mo-theory",
+    "chem.chemical-bonding.mot.core.mo-configuration-bond-order",
+    "chem.chemical-bonding.metallic-bonding.core.metallic-bond",
+    "chem.chemical-bonding.hydrogen-bonding.core.hydrogen-bond"
+  ],
+  "points": [
+    {
+      "en": "Atoms bond by transfer or sharing of valence electrons to reach an octet.",
+      "hi": "परमाणु अष्टक पाने के लिए संयोजकता इलेक्ट्रॉनों के स्थानांतरण या साझे से आबंध बनाते हैं।"
+    },
+    {
+      "en": "One shared pair: single bond; two pairs: double; three pairs: triple.",
+      "hi": "एक साझा युग्म: एकल आबंध; दो युग्म: द्वि-आबंध; तीन युग्म: त्रि-आबंध।"
+    },
+    {
+      "en": "Exceptions: incomplete octet ($\\ce{BCl3}$), odd-electron ($\\ce{NO}$), expanded octet ($\\ce{SF6}$).",
+      "hi": "अपवाद: अपूर्ण अष्टक ($\\ce{BCl3}$), विषम इलेक्ट्रॉन ($\\ce{NO}$), प्रसारित अष्टक ($\\ce{SF6}$)।"
+    },
+    {
+      "en": "Ionic bond: low ionisation enthalpy element plus highly negative electron gain enthalpy element.",
+      "hi": "आयनिक आबंध: कम आयनन एन्थैल्पी वाला तत्व और अधिक ऋणात्मक इलेक्ट्रॉन लब्धि एन्थैल्पी वाला तत्व।"
+    },
+    {
+      "en": "Lattice enthalpy of NaCl: $788\\ \\mathrm{kJ\\,mol^{-1}}$; it outweighs the $147.1\\ \\mathrm{kJ\\,mol^{-1}}$ needed to make the ions.",
+      "hi": "NaCl की जालक एन्थैल्पी: $788\\ \\mathrm{kJ\\,mol^{-1}}$; यह आयन बनाने में लगी $147.1\\ \\mathrm{kJ\\,mol^{-1}}$ से अधिक है।"
+    },
+    {
+      "en": "$\\ce{NH4+}$ is a cation made of non-metals.",
+      "hi": "$\\ce{NH4+}$ अधातुओं से बना धनायन है।"
+    },
+    {
+      "en": "Bond order up: bond enthalpy up, bond length down. $\\ce{N2}$, CO, $\\ce{NO+}$: 3; $\\ce{F2}$, $\\ce{O2^2-}$: 1.",
+      "hi": "आबंध कोटि बढ़े: आबंध एन्थैल्पी बढ़े, लंबाई घटे। $\\ce{N2}$, CO, $\\ce{NO+}$: 3; $\\ce{F2}$, $\\ce{O2^2-}$: 1।"
+    },
+    {
+      "en": "Zero dipole: $\\ce{CO2}$, $\\ce{BF3}$, $\\ce{CH4}$, $\\ce{CCl4}$; $\\ce{H2O}$ $1.85\\ \\mathrm{D}$.",
+      "hi": "शून्य द्विध्रुव: $\\ce{CO2}$, $\\ce{BF3}$, $\\ce{CH4}$, $\\ce{CCl4}$; $\\ce{H2O}$ $1.85\\ \\mathrm{D}$।"
+    },
+    {
+      "en": "Fajans: smaller cation, larger anion, higher cation charge mean more covalent character.",
+      "hi": "फ़ाजान: छोटा धनायन, बड़ा ऋणायन, धनायन पर अधिक आवेश, यानी अधिक सहसंयोजी गुण।"
+    },
+    {
+      "en": "Resonance: $\\ce{O3}$, $\\ce{CO3^2-}$, $\\ce{CO2}$; the hybrid is lower in energy than any canonical form.",
+      "hi": "अनुनाद: $\\ce{O3}$, $\\ce{CO3^2-}$, $\\ce{CO2}$; संकर की ऊर्जा किसी भी विहित रूप से कम।"
+    },
+    {
+      "en": "Repulsion: lone pair-lone pair > lone pair-bond pair > bond pair-bond pair.",
+      "hi": "प्रतिकर्षण: एकाकी-एकाकी > एकाकी-आबंधी > आबंधी-आबंधी।"
+    },
+    {
+      "en": "No lone pairs: $\\ce{BeCl2}$ linear, $\\ce{BF3}$ trigonal planar, $\\ce{CH4}$ tetrahedral, $\\ce{PCl5}$ trigonal bipyramidal, $\\ce{SF6}$ octahedral.",
+      "hi": "एकाकी युग्म नहीं: $\\ce{BeCl2}$ रैखिक, $\\ce{BF3}$ त्रिकोणीय समतलीय, $\\ce{CH4}$ चतुष्फलकीय, $\\ce{PCl5}$ त्रिकोणीय द्विपिरामिडी, $\\ce{SF6}$ अष्टफलकीय।"
+    },
+    {
+      "en": "With lone pairs: $\\ce{NH3}$ pyramidal, $\\ce{H2O}$ and $\\ce{SO2}$ bent, $\\ce{SF4}$ see-saw, $\\ce{ClF3}$ T, $\\ce{BrF5}$ square pyramidal, $\\ce{XeF4}$ square planar.",
+      "hi": "एकाकी युग्मों सहित: $\\ce{NH3}$ पिरामिडी, $\\ce{H2O}$ और $\\ce{SO2}$ मुड़े, $\\ce{SF4}$ ढेंकुली, $\\ce{ClF3}$ T, $\\ce{BrF5}$ वर्ग पिरामिडी, $\\ce{XeF4}$ वर्ग समतलीय।"
+    },
+    {
+      "en": "$\\ce{H2}$: energy minimum at $74\\ \\mathrm{pm}$; $435.8\\ \\mathrm{kJ\\,mol^{-1}}$ released.",
+      "hi": "$\\ce{H2}$: $74\\ \\mathrm{pm}$ पर ऊर्जा न्यूनतम; $435.8\\ \\mathrm{kJ\\,mol^{-1}}$ मुक्त।"
+    },
+    {
+      "en": "Greater overlap, stronger bond; electrons pair with opposite spins.",
+      "hi": "अधिक अतिव्यापन, मज़बूत आबंध; इलेक्ट्रॉन विपरीत चक्रण से युग्मित।"
+    },
+    {
+      "en": "Sigma: head-on; pi: sideways; sigma is stronger.",
+      "hi": "सिग्मा: आमने-सामने; पाई: अगल-बगल; सिग्मा मज़बूत।"
+    },
+    {
+      "en": "Hybrid orbitals: as many as the orbitals mixed, equivalent, directed, better at bonding.",
+      "hi": "संकर कक्षक: मिलने वाले कक्षकों जितने, तुल्य, दिशात्मक, आबंधन में बेहतर।"
+    },
+    {
+      "en": "$sp$ $\\ce{BeCl2}$ $180^\\circ$; $sp^2$ $\\ce{BCl3}$ $120^\\circ$; $sp^3$ $\\ce{CH4}$ $109.5^\\circ$.",
+      "hi": "$sp$ $\\ce{BeCl2}$ $180^\\circ$; $sp^2$ $\\ce{BCl3}$ $120^\\circ$; $sp^3$ $\\ce{CH4}$ $109.5^\\circ$।"
+    },
+    {
+      "en": "$sp^3d$ $\\ce{PCl5}$ (axial bonds longer); $sp^3d^2$ $\\ce{SF6}$; $dsp^2$ $\\ce{[Ni(CN)4]^2-}$.",
+      "hi": "$sp^3d$ $\\ce{PCl5}$ (अक्षीय आबंध लंबे); $sp^3d^2$ $\\ce{SF6}$; $dsp^2$ $\\ce{[Ni(CN)4]^2-}$।"
+    },
+    {
+      "en": "LCAO: $\\sigma = \\psi_A + \\psi_B$ (bonding, lower), $\\sigma^* = \\psi_A - \\psi_B$ (antibonding, higher).",
+      "hi": "LCAO: $\\sigma = \\psi_A + \\psi_B$ (आबंधी, नीचे), $\\sigma^* = \\psi_A - \\psi_B$ (प्रतिआबंधी, ऊपर)।"
+    },
+    {
+      "en": "Up to $\\ce{N2}$: $\\pi 2p$ below $\\sigma 2p_z$; for $\\ce{O2}$ and $\\ce{F2}$: $\\sigma 2p_z$ below $\\pi 2p$.",
+      "hi": "$\\ce{N2}$ तक: $\\pi 2p$, $\\sigma 2p_z$ से नीचे; $\\ce{O2}$ और $\\ce{F2}$ के लिए: $\\sigma 2p_z$, $\\pi 2p$ से नीचे।"
+    },
+    {
+      "en": "Bond orders: $\\ce{B2}$ 1, $\\ce{C2}$ 2, $\\ce{N2}$ 3, $\\ce{O2}$ 2, $\\ce{F2}$ 1, $\\ce{Ne2}$ 0; $\\ce{B2}$ and $\\ce{O2}$ paramagnetic.",
+      "hi": "आबंध कोटि: $\\ce{B2}$ 1, $\\ce{C2}$ 2, $\\ce{N2}$ 3, $\\ce{O2}$ 2, $\\ce{F2}$ 1, $\\ce{Ne2}$ 0; $\\ce{B2}$ और $\\ce{O2}$ अनुचुंबकीय।"
+    },
+    {
+      "en": "Metal atoms in a sea of delocalised electrons: metallic bonding.",
+      "hi": "विस्थानीकृत इलेक्ट्रॉनों के सागर में धातु परमाणु: धात्विक आबंधन।"
+    },
+    {
+      "en": "Good conductors of heat and electricity; lustrous, malleable, ductile.",
+      "hi": "ऊष्मा और विद्युत के अच्छे चालक; चमकदार, आघातवर्धनीय, तन्य।"
+    },
+    {
+      "en": "Melting points vary widely: mercury is liquid at room temperature.",
+      "hi": "गलनांक बहुत भिन्न: मरकरी कमरे के ताप पर द्रव है।"
+    },
+    {
+      "en": "Hydrogen bond: H on F, O or N attracted to F, O or N of another molecule; weaker than covalent.",
+      "hi": "हाइड्रोजन आबंध: F, O या N से जुड़ा H दूसरे अणु के F, O या N से आकर्षित; सहसंयोजी से कमज़ोर।"
+    },
+    {
+      "en": "Maximum in solids, minimum in gases.",
+      "hi": "ठोस में अधिकतम, गैस में न्यूनतम।"
+    },
+    {
+      "en": "Intermolecular (HF, water, alcohols) and intramolecular (o-nitrophenol).",
+      "hi": "अंतराआण्विक (HF, जल, ऐल्कोहॉल) और अंतःआण्विक (o-नाइट्रोफ़ीनॉल)।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Formal charge",
+        "hi": "औपचारिक आवेश"
+      },
+      "latex": "\\text{F.C.} = V - L - \\tfrac{1}{2}S"
+    },
+    {
+      "name": {
+        "en": "Energy to make gaseous ions",
+        "hi": "गैसीय आयन बनाने की ऊर्जा"
+      },
+      "latex": "\\Delta H_{\\text{ions}} = \\Delta_i H + \\Delta_{eg} H"
+    },
+    {
+      "name": {
+        "en": "Dipole moment",
+        "hi": "द्विध्रुव आघूर्ण"
+      },
+      "latex": "\\mu = Q \\times r"
+    },
+    {
+      "name": {
+        "en": "Debye",
+        "hi": "डिबाई"
+      },
+      "latex": "1\\ \\mathrm{D} = 3.33564 \\times 10^{-30}\\ \\mathrm{C\\,m}"
+    },
+    {
+      "name": {
+        "en": "Bond order",
+        "hi": "आबंध कोटि"
+      },
+      "latex": "\\text{b.o.} = \\tfrac{1}{2}(N_b - N_a)"
+    }
+  ],
+  "hi_source": "translation"
+}

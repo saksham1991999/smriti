@@ -69,6 +69,12 @@
         "name": {
           "$ref": "common.schema.json#/$defs/I18nText"
         },
+        "audience": {
+          "description": "little_learner: a class 1–5 profile (learn §5.6). Its coverage needs a story, song or little lesson and a play activity per concept instead of the exam-prep set (PRD §14).",
+          "type": "string",
+          "enum": ["standard", "little_learner"],
+          "default": "standard"
+        },
         "locales": {
           "description": "Locales every content field used by this profile must have.",
           "type": "array",

@@ -1,0 +1,109 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs. Review before use: q.chem.hydrocarbons.aromatic.9001 (paper Q66) needs its figure img.hydrocarbons.pyq-benzanilide-sites, which is requested, not approved; it is mock-only so it never ships in a device bundle without the figure.",
+  "hi_source": "translation",
+  "topic": "chem.hydrocarbons.aromatic",
+  "questions": [
+    {
+      "id": "q.chem.hydrocarbons.aromatic.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.hydrocarbons.aromatic.core.directive-influence",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "For the given molecule, “$x$”, the preferred site for the attack of the electrophile is :",
+        "hi": "दिए गए अणु “$x$” के लिए इलेक्ट्रॉनस्नेही के आक्रमण का वरीय स्थान है :"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Predominantly at “r”",
+            "hi": "मुख्यतः “r” पर"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "“r” and “u”",
+            "hi": "“r” और “u”"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "“p” and “s”",
+            "hi": "“p” और “s”"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Predominantly at “u”",
+            "hi": "मुख्यतः “u” पर"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "d"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "The $-\\mathrm{NHCO}-$ group activates the ring attached to nitrogen (its lone pair donates into that ring), while the carbonyl deactivates the other ring. On the activated ring, the bulky group makes para attack the main product.",
+          "hi": "$-\\mathrm{NHCO}-$ समूह नाइट्रोजन से जुड़े वलय को सक्रिय करता है (इसका एकाकी युग्म उस वलय में दान होता है), जबकि कार्बोनिल दूसरे वलय को निष्क्रिय करता है। सक्रिय वलय पर भारी समूह के कारण पैरा आक्रमण मुख्य उत्पाद देता है।"
+        },
+        "steps": [
+          {
+            "en": "Ring on N: ortho and para directing and activated; ring on C=O: deactivated, meta directing.",
+            "hi": "N वाला वलय: ऑर्थो और पैरा निर्देशी तथा सक्रिय; C=O वाला वलय: निष्क्रिय, मेटा निर्देशी।"
+          },
+          {
+            "en": "Steric crowding near N disfavours ortho (s), so attack is predominantly at the para position u.",
+            "hi": "N के पास त्रिविम भीड़ ऑर्थो (s) को कम करती है, अतः आक्रमण मुख्यतः पैरा स्थान u पर होता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 90,
+      "difficulty_estimate": "medium",
+      "media": "img.hydrocarbons.pyq-benzanilide-sites",
+      "use": [
+        "mock"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 66
+      }
+    }
+  ]
+}

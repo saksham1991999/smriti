@@ -1,15 +1,17 @@
 import type {
+  ActivityKind,
   Bundle,
   BundleCard,
   BundleMnemonic,
   BundleMode,
   BundleQuestion,
   Card,
+  ExtrasFile,
   LessonFile,
   Question,
   ResolvedMedia,
 } from "@smriti/content-schema";
-import { SERVER_ONLY_USES, localize, validateWith } from "@smriti/content-schema";
+import { ACTIVITY_KINDS, ACTIVITY_SCHEMAS, SERVER_ONLY_USES, localize, validateWith } from "@smriti/content-schema";
 import type { ContentSet } from "@smriti/content-schema/check";
 import { mediaRefs } from "@smriti/content-schema/check";
 
@@ -19,7 +21,32 @@ import { buildMathMap } from "./math.js";
 import { type AssetFile, type MediaContext, resolveMedia } from "./media.js";
 
 export const DEFAULT_MIN_APP_VERSION = "1.0.0";
-export const BUNDLE_MODES: readonly BundleMode[] = ["deep_dive", "quick_revision", "practice"];
+export const BUNDLE_MODES: readonly BundleMode[] = ["deep_dive", "quick_revision", "practice", ...ACTIVITY_KINDS];
+
+const isActivityMode = (mode: BundleMode): mode is ActivityKind => (ACTIVITY_KINDS as readonly string[]).includes(mode);
+
+type ActivityDoc = Extract<ExtrasFile, { schema?: (typeof ACTIVITY_SCHEMAS)[ActivityKind] }> & {
+  id: string;
+  scope: "topic" | "chapter";
+  topic?: string;
+  chapter?: string;
+  concepts: string[];
+};
+
+/**
+ * The storybooks, songs or play activities on a topic's path (HOME-06), sorted by id. A
+ * chapter-scoped item sits on the chapter's first topic, so it ships once.
+ */
+export function activitiesFor(set: ContentSet, topicId: string, kind: ActivityKind): ActivityDoc[] {
+  const entry = set.topics.get(topicId);
+  if (!entry) return [];
+  const firstTopic = entry.chapter.topics[0]?.id;
+  return set.extras
+    .map((e) => e.doc as ActivityDoc)
+    .filter((d) => d.schema === ACTIVITY_SCHEMAS[kind])
+    .filter((d) => (d.scope === "topic" ? d.topic === topicId : d.chapter === entry.chapter.id && firstTopic === topicId))
+    .sort((a, b) => a.id.localeCompare(b.id));
+}
 
 /** Question uses that ship in a topic's practice bundle. */
 const PRACTICE_USES = new Set(["practice", "lesson", "placement"]);
@@ -53,6 +80,7 @@ export function findLesson(set: ContentSet, topic: string, mode: BundleMode): Le
 /** True when there is something to publish for this topic and mode. */
 export function hasBundle(set: ContentSet, topic: string, mode: BundleMode): boolean {
   if (mode === "practice") return practiceQuestions(set, topic).length > 0;
+  if (isActivityMode(mode)) return activitiesFor(set, topic, mode).length > 0;
   return findLesson(set, topic, mode) !== undefined;
 }
 
@@ -90,6 +118,8 @@ export function buildBundle(
       throw new PublishError("missing_locale", `${where}: ${(e as Error).message}`);
     }
   };
+
+  if (isActivityMode(mode)) return buildActivityBundle(set, topicId, mode, locale, ctx);
 
   const lesson = mode === "practice" ? undefined : findLesson(set, topicId, mode);
   if (mode !== "practice" && !lesson) throw new PublishError("lesson_missing", `${topicId} has no ${mode} lesson`);
@@ -238,6 +268,88 @@ export function buildBundle(
     path: bundlePath(topicId, mode, locale, hash),
     assets: [...assets.values()].sort((a, b) => a.key.localeCompare(b.key)),
     cardCount: mode === "practice" ? Object.keys(questions).length : cards.length,
+  };
+}
+
+/**
+ * A little learner activity bundle (story, song or play): every such item on the topic's path,
+ * localised, with a song reduced to this locale's version.
+ */
+function buildActivityBundle(set: ContentSet, topicId: string, kind: ActivityKind, locale: string, ctx: MediaContext): BuiltBundle {
+  const { topic, chapter } = set.topics.get(topicId)!;
+  const L = <T>(v: T, where: string) => {
+    try {
+      return localize(v, locale);
+    } catch (e) {
+      throw new PublishError("missing_locale", `${where}: ${(e as Error).message}`);
+    }
+  };
+  const docs = activitiesFor(set, topicId, kind);
+  if (docs.length === 0) throw new PublishError("activity_missing", `${topicId} has no ${kind} activity`);
+  const activities: Record<string, Record<string, unknown>> = {};
+  for (const doc of docs) {
+    const item = stripAuthoring(doc) as unknown as Record<string, unknown>;
+    if (doc.schema === "song@1") {
+      const version = doc.versions.find((v) => v.locale === locale);
+      if (!version) throw new PublishError("missing_locale", `${doc.id} has no ${locale} version`);
+      delete item.versions;
+      item.version = version;
+    }
+    activities[doc.id] = L(item, doc.id) as Record<string, unknown>;
+  }
+  const conceptIds = [...new Set(docs.flatMap((d) => d.concepts))];
+  const concepts = conceptIds.map((id) => {
+    const e = set.concepts.get(set.aliases.get(id) ?? id);
+    if (!e) throw new PublishError("concept_unknown", `${id} is not in the graph`);
+    const c = e.concept;
+    return { id: c.id, name: L(c.name, c.id), kind: c.kind, intrinsic_depth: c.intrinsic_depth, summary: L(c.summary, c.id), key_points: L(c.key_points, c.id) };
+  });
+  const media: Record<string, ResolvedMedia> = {};
+  const assets = new Map<string, AssetFile>();
+  for (const { ref } of mediaRefs(activities)) {
+    if (media[ref]) continue;
+    const r = resolveMedia(ref, locale, ctx);
+    media[ref] = r.media;
+    if (r.asset) assets.set(r.asset.key, r.asset);
+  }
+  const minutes = docs.map((d) => (d as { minutes?: number }).minutes).filter((m): m is number => m !== undefined);
+  const bundle: Bundle = {
+    schema: "bundle@1",
+    id: bundleId(topicId, kind, locale),
+    ...(ctx.fixture ? { fixture: true } : {}),
+    topic: {
+      id: topic.id,
+      chapter: chapter.id,
+      subject: chapter.subject,
+      name: L(topic.name, topic.id),
+      ...(topic.summary ? { summary: L(topic.summary, topic.id) } : {}),
+    },
+    mode: kind,
+    locale: locale as Bundle["locale"],
+    min_app_version: DEFAULT_MIN_APP_VERSION,
+    ...(minutes.length ? { estimated_minutes: minutes.reduce((a, b) => a + b, 0) } : {}),
+    concepts,
+    bites: [],
+    cards: [],
+    questions: {},
+    mnemonics: {},
+    sheets: {},
+    activities,
+    media,
+    math: buildMathMap({ activities, concepts, topic: L(topic.name, topic.id) }),
+  };
+  const check = validateWith("bundle.schema.json", bundle);
+  if (!check.ok) {
+    throw new PublishError("bundle_invalid", `${bundle.id}: ${check.errors.map((e) => `${e.path} ${e.message}`).join("; ")}`);
+  }
+  const { bytes, hash } = hashed(bundle);
+  return {
+    bundle,
+    bytes,
+    hash,
+    path: bundlePath(topicId, kind, locale, hash),
+    assets: [...assets.values()].sort((a, b) => a.key.localeCompare(b.key)),
+    cardCount: docs.length,
   };
 }
 

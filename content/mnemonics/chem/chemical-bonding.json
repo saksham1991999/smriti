@@ -1,0 +1,203 @@
+{
+  "schema": "mnemonics@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax Chemistry 2e, §10.5 The Solid State of Matter (metallic solids)",
+      "url": "https://openstax.org/books/chemistry-2e/pages/10-5-the-solid-state-of-matter",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:mnemonic-maker",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "System mnemonics; each locale written separately. decodes_to checked against the cited section.",
+  "chapter": "chem.chemical-bonding",
+  "items": [
+    {
+      "id": "m.chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds.1",
+      "concept": "chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds",
+      "technique": "acronym",
+      "origin": "system",
+      "taught_in": null,
+      "locale": "en",
+      "text": "I Owe Extra: the three ways the octet rule breaks are Incomplete, Odd and Expanded.",
+      "decodes_to": [
+        "Incomplete octet: LiCl, BeH2, BCl3",
+        "Odd-electron molecules: NO, NO2",
+        "Expanded octet: PF5, SF6, H2SO4"
+      ],
+      "exam_style": "jee-main",
+      "media": null,
+      "audio": null,
+      "notes": "NCERT Class 11 Chemistry §4.1.5 (limitations of the octet rule)."
+    },
+    {
+      "id": "m.chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds.2",
+      "concept": "chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds",
+      "technique": "chunking",
+      "origin": "system",
+      "taught_in": null,
+      "locale": "hi",
+      "text": "कम, विषम, ज़्यादा: B के पास कम, NO में विषम, S के पास ज़्यादा।",
+      "decodes_to": [
+        "अपूर्ण अष्टक: LiCl, BeH2, BCl3",
+        "विषम इलेक्ट्रॉन अणु: NO, NO2",
+        "प्रसारित अष्टक: PF5, SF6, H2SO4"
+      ],
+      "exam_style": "jee-main",
+      "media": null,
+      "audio": null,
+      "notes": "NCERT कक्षा 11 रसायन §4.1.5 (अष्टक नियम की सीमाएँ)।"
+    },
+    {
+      "id": "m.chem.chemical-bonding.bond-parameters.core.bond-polarity-fajans.1",
+      "concept": "chem.chemical-bonding.bond-parameters.core.bond-polarity-fajans",
+      "technique": "chunking",
+      "origin": "system",
+      "taught_in": null,
+      "locale": "en",
+      "text": "Tiny, charged, big: a tiny, highly charged cation beside a big anion makes the bond more covalent.",
+      "decodes_to": [
+        "smaller cation: more covalent character",
+        "larger anion: more covalent character",
+        "greater charge on the cation: more covalent character"
+      ],
+      "exam_style": "jee-main",
+      "media": null,
+      "audio": null,
+      "notes": "NCERT Class 11 Chemistry §4.3.6 (Fajans' rules on the polarisation of an anion by a cation)."
+    },
+    {
+      "id": "m.chem.chemical-bonding.bond-parameters.core.bond-polarity-fajans.2",
+      "concept": "chem.chemical-bonding.bond-parameters.core.bond-polarity-fajans",
+      "technique": "chunking",
+      "origin": "system",
+      "taught_in": null,
+      "locale": "hi",
+      "text": "छोटा, भारी, बड़ा: छोटा और अधिक आवेश वाला धनायन, बड़ा ऋणायन, तो आबंध अधिक सहसंयोजी।",
+      "decodes_to": [
+        "धनायन जितना छोटा, सहसंयोजी गुण उतना अधिक",
+        "ऋणायन जितना बड़ा, सहसंयोजी गुण उतना अधिक",
+        "धनायन पर आवेश जितना अधिक, सहसंयोजी गुण उतना अधिक"
+      ],
+      "exam_style": "jee-main",
+      "media": null,
+      "audio": null,
+      "notes": "NCERT कक्षा 11 रसायन §4.3.6 (फ़ाजान नियम)।"
+    },
+    {
+      "id": "m.chem.chemical-bonding.vsepr.core.vsepr-shapes.1",
+      "concept": "chem.chemical-bonding.vsepr.core.vsepr-shapes",
+      "technique": "story",
+      "origin": "system",
+      "taught_in": null,
+      "locale": "en",
+      "text": "Lone pairs are loners who need the most elbow room: two lone pairs push hardest, a lone pair and a bond pair less, two bond pairs least.",
+      "decodes_to": [
+        "lone pair - lone pair repulsion is the largest",
+        "lone pair - bond pair repulsion is next",
+        "bond pair - bond pair repulsion is the smallest"
+      ],
+      "exam_style": "jee-main",
+      "media": null,
+      "audio": null,
+      "notes": "NCERT Class 11 Chemistry §4.4 (VSEPR: lp-lp > lp-bp > bp-bp)."
+    },
+    {
+      "id": "m.chem.chemical-bonding.vsepr.core.vsepr-shapes.2",
+      "concept": "chem.chemical-bonding.vsepr.core.vsepr-shapes",
+      "technique": "chunking",
+      "origin": "system",
+      "taught_in": null,
+      "locale": "hi",
+      "text": "अकेले को सबसे ज़्यादा जगह चाहिए: एकाकी-एकाकी, फिर एकाकी-आबंधी, फिर आबंधी-आबंधी।",
+      "decodes_to": [
+        "एकाकी युग्म-एकाकी युग्म प्रतिकर्षण सबसे अधिक",
+        "एकाकी युग्म-आबंधी युग्म प्रतिकर्षण उससे कम",
+        "आबंधी युग्म-आबंधी युग्म प्रतिकर्षण सबसे कम"
+      ],
+      "exam_style": "jee-main",
+      "media": null,
+      "audio": null,
+      "notes": "NCERT कक्षा 11 रसायन §4.4 (VSEPR सिद्धांत)।"
+    },
+    {
+      "id": "m.chem.chemical-bonding.mot.core.mo-configuration-bond-order.1",
+      "concept": "chem.chemical-bonding.mot.core.mo-configuration-bond-order",
+      "technique": "chunking",
+      "origin": "system",
+      "taught_in": null,
+      "locale": "en",
+      "text": "Up to nitrogen, pi comes first; from oxygen on, sigma takes the lead.",
+      "decodes_to": [
+        "Li2, Be2, B2, C2, N2: the pi 2p pair lies below sigma 2pz",
+        "O2, F2: sigma 2pz lies below the pi 2p pair"
+      ],
+      "exam_style": "jee-main",
+      "media": null,
+      "audio": null,
+      "notes": "NCERT Class 11 Chemistry §4.7.4 (energy level diagram of molecular orbitals)."
+    },
+    {
+      "id": "m.chem.chemical-bonding.mot.core.mo-configuration-bond-order.2",
+      "concept": "chem.chemical-bonding.mot.core.mo-configuration-bond-order",
+      "technique": "chunking",
+      "origin": "system",
+      "taught_in": null,
+      "locale": "hi",
+      "text": "नाइट्रोजन तक पाई पहले, ऑक्सीजन से सिग्मा आगे।",
+      "decodes_to": [
+        "Li2, Be2, B2, C2, N2: pi 2p युग्म sigma 2pz से नीचे",
+        "O2, F2: sigma 2pz, pi 2p युग्म से नीचे"
+      ],
+      "exam_style": "jee-main",
+      "media": null,
+      "audio": null,
+      "notes": "NCERT कक्षा 11 रसायन §4.7.4 (आण्विक कक्षकों का ऊर्जा स्तर आरेख)।"
+    },
+    {
+      "id": "m.chem.chemical-bonding.hydrogen-bonding.core.hydrogen-bond.1",
+      "concept": "chem.chemical-bonding.hydrogen-bonding.core.hydrogen-bond",
+      "technique": "acronym",
+      "origin": "system",
+      "taught_in": null,
+      "locale": "en",
+      "text": "Pick up the FON: a hydrogen joined to F, O or N can form a hydrogen bond.",
+      "decodes_to": [
+        "fluorine",
+        "oxygen",
+        "nitrogen"
+      ],
+      "exam_style": "jee-main",
+      "media": null,
+      "audio": null,
+      "notes": "NCERT Class 11 Chemistry §4.9 (hydrogen bonding with the highly electronegative atoms N, O and F)."
+    },
+    {
+      "id": "m.chem.chemical-bonding.hydrogen-bonding.core.hydrogen-bond.2",
+      "concept": "chem.chemical-bonding.hydrogen-bonding.core.hydrogen-bond",
+      "technique": "acronym",
+      "origin": "system",
+      "taught_in": null,
+      "locale": "hi",
+      "text": "फ़ोन (FON) उठाओ: F, O या N से जुड़ा हाइड्रोजन, हाइड्रोजन आबंध बना सकता है।",
+      "decodes_to": [
+        "फ़्लुओरीन",
+        "ऑक्सीजन",
+        "नाइट्रोजन"
+      ],
+      "exam_style": "jee-main",
+      "media": null,
+      "audio": null,
+      "notes": "NCERT कक्षा 11 रसायन §4.9 (हाइड्रोजन आबंधन)।"
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "math.integrals.definite-properties",
+  "questions": [
+    {
+      "id": "q.math.integrals.definite-properties.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.integrals.definite-properties.core.definite-properties",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Let $[\\cdot]$ denote the greatest integer function. Then the value of $\\int_0^3\\left(\\frac{e^x+e^{-x}}{[x]!}\\right)dx$ is :",
+        "hi": "माना $[\\cdot]$ महत्तम पूर्णांक फलन को दर्शाता है। तब $\\int_0^3\\left(\\frac{e^x+e^{-x}}{[x]!}\\right)dx$ का मान है :"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$e^2+e^3-\\frac{1}{e^2}-\\frac{1}{e^3}$",
+            "hi": "$e^2+e^3-\\frac{1}{e^2}-\\frac{1}{e^3}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\frac12\\left(e^2+e^3-\\frac{1}{e^2}-\\frac{1}{e^3}\\right)$",
+            "hi": "$\\frac12\\left(e^2+e^3-\\frac{1}{e^2}-\\frac{1}{e^3}\\right)$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$e^2+e^3-\\frac{1}{2e^2}-\\frac{1}{2e^3}$",
+            "hi": "$e^2+e^3-\\frac{1}{2e^2}-\\frac{1}{2e^3}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\frac12\\left(e^2+e^3\\right)-\\frac{1}{e^2}-\\frac{1}{e^3}$",
+            "hi": "$\\frac12\\left(e^2+e^3\\right)-\\frac{1}{e^2}-\\frac{1}{e^3}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Split the interval where $[x]$ jumps: on $[0,1)$, $[1,2)$ and $[2,3)$ the factorial is $1$, $1$ and $2$.",
+          "hi": "अंतराल को वहाँ बाँटिए जहाँ $[x]$ उछलता है: $[0,1)$, $[1,2)$ और $[2,3)$ पर क्रमगुणित $1$, $1$ और $2$ है।"
+        },
+        "steps": [
+          {
+            "en": "$\\int_0^2\\left(e^x+e^{-x}\\right)dx=e^2-e^{-2}$.",
+            "hi": "$\\int_0^2\\left(e^x+e^{-x}\\right)dx=e^2-e^{-2}$।"
+          },
+          {
+            "en": "$\\frac12\\int_2^3\\left(e^x+e^{-x}\\right)dx=\\frac12\\left(e^3-e^2+e^{-2}-e^{-3}\\right)$.",
+            "hi": "$\\frac12\\int_2^3\\left(e^x+e^{-x}\\right)dx=\\frac12\\left(e^3-e^2+e^{-2}-e^{-3}\\right)$।"
+          },
+          {
+            "en": "Sum $=\\frac12\\left(e^2+e^3-\\frac{1}{e^2}-\\frac{1}{e^3}\\right)$.",
+            "hi": "योग $=\\frac12\\left(e^2+e^3-\\frac{1}{e^2}-\\frac{1}{e^3}\\right)$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 150,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 19
+      }
+    }
+  ]
+}

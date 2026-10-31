@@ -85,3 +85,36 @@ export const SINGLE_ANSWER_TYPES: readonly QuestionType[] = [
   "assertion_reason",
   "statement_based",
 ];
+
+/** Little learner activities (PRD §6 "Class 1–5: story, song and play"), as bundle modes. */
+export const ACTIVITY_KINDS = ["story", "song", "play"] as const;
+export type ActivityKind = (typeof ACTIVITY_KINDS)[number];
+
+/** The extras schema behind each activity kind. */
+export const ACTIVITY_SCHEMAS = { story: "storybook@1", song: "song@1", play: "play@1" } as const;
+
+/** Play round kinds (play@1). */
+export const PLAY_ROUND_KINDS = ["tap", "match", "sort", "drag", "trace"] as const;
+
+/**
+ * Words little learners never hear as feedback (LES-02 little learner: never "Not quite"; the
+ * wrong-answer band says "Let's try again together!"). English matches whole words, Hindi any
+ * occurrence. The content check refuses them in play@1 feedback, prompts and hints, and
+ * lesson-core's gentle mode uses the same list.
+ */
+export const NEGATIVE_FEEDBACK_WORDS = {
+  en: ["wrong", "incorrect", "fail", "failed", "fails", "failure", "mistake", "mistakes", "not quite", "bad", "oops", "try harder"],
+  hi: ["गलत", "ग़लत", "असफल", "फेल", "फ़ेल", "नाकाम", "ठीक नहीं"],
+} as const satisfies Record<string, readonly string[]>;
+
+/** The negative feedback words in a text (empty when the text is gentle). */
+export function negativeFeedbackWords(text: string): string[] {
+  const lower = text.toLowerCase();
+  const hits: string[] = [];
+  for (const w of NEGATIVE_FEEDBACK_WORDS.en) {
+    const re = new RegExp(`(^|[^\\p{L}])${w.replace(/ /g, "\\s+")}($|[^\\p{L}])`, "u");
+    if (re.test(lower)) hits.push(w);
+  }
+  for (const w of NEGATIVE_FEEDBACK_WORDS.hi) if (text.includes(w)) hits.push(w);
+  return hits;
+}

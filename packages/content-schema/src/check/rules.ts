@@ -2,14 +2,16 @@ import { createHash } from "node:crypto";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
-import { CARD_MODE_CODE, MEDIA_PREFIX_KINDS, SERVER_ONLY_USES } from "../constants.js";
+import { CARD_MODE_CODE, MEDIA_PREFIX_KINDS, negativeFeedbackWords, SERVER_ONLY_USES } from "../constants.js";
 import type {
   BlueprintFile,
   Card,
   ChildQuestion,
   LessonFile,
   MarkingRule,
+  Play,
   Question,
+  Song,
 } from "../generated/types.js";
 import { blankIds, splitMath } from "../localize.js";
 import { isKnownUnit } from "../units.js";
@@ -958,7 +960,131 @@ function checkExtras(set: ContentSet, findings: Findings): void {
         if (!nodes.has(e.from) || !nodes.has(e.to)) findings.error("mind_map_edge", file, `edge ${e.from} -> ${e.to} names an unknown node`);
       }
     }
+    if (doc.schema === "song@1") checkSong(set, findings, file, doc);
+    if (doc.schema === "play@1") checkPlay(findings, file, doc);
   }
+}
+
+/**
+ * song@1: one version per locale the profiles need, each with its own sung audio (an audio_song
+ * request in that locale, with a transcript), timings that run forward and fit the audio, and
+ * line actions that exist.
+ */
+function checkSong(set: ContentSet, findings: Findings, file: string, doc: Song): void {
+  const actions = new Set<string>();
+  (doc.actions ?? []).forEach((a, i) => {
+    if (actions.has(a.id)) findings.error("duplicate_id", file, `action ${a.id} is listed twice`, { path: `/actions/${i}` });
+    actions.add(a.id);
+  });
+  const locales = new Set<string>();
+  doc.versions.forEach((v, vi) => {
+    const at = `/versions/${vi}`;
+    if (locales.has(v.locale)) findings.error("song_locale_duplicate", file, `two versions for ${v.locale}`, { path: at });
+    locales.add(v.locale);
+    const audio = set.media.get(v.audio);
+    if (audio) {
+      const r = audio.request;
+      if (r.kind !== "audio_song") {
+        findings.error("song_audio_kind", file, `${v.audio} is a ${r.kind} request; a song's audio is audio_song`, { path: `${at}/audio` });
+      }
+      if (r.locale && r.locale !== v.locale) {
+        findings.error("song_audio_locale", file, `${v.audio} is sung in ${r.locale}, not ${v.locale}`, { path: `${at}/audio` });
+      }
+      if (!r.transcript) {
+        findings.error("song_transcript_missing", file, `${v.audio} needs a transcript (the lyrics, for captions and screen readers)`, {
+          path: `${at}/audio`,
+        });
+      }
+    }
+    const timed = v.lines.filter((l) => l.start_ms !== undefined || l.end_ms !== undefined);
+    if (timed.length > 0 && timed.length < v.lines.length) {
+      findings.error("song_timing", file, `${v.locale}: time every line or none`, { path: `${at}/lines` });
+    }
+    let last = -1;
+    const duration = audio?.request.result?.duration_ms;
+    v.lines.forEach((l, li) => {
+      const lp = `${at}/lines/${li}`;
+      if (l.action && !actions.has(l.action)) findings.error("song_action_unknown", file, `unknown action ${l.action}`, { path: lp });
+      if ((l.start_ms === undefined) !== (l.end_ms === undefined)) {
+        findings.error("song_timing", file, "start_ms and end_ms go together", { path: lp });
+        return;
+      }
+      if (l.start_ms === undefined || l.end_ms === undefined) return;
+      if (l.end_ms <= l.start_ms) findings.error("song_timing", file, "end_ms must be after start_ms", { path: lp });
+      if (l.start_ms < last) findings.error("song_timing", file, "lines must run forward in time", { path: lp });
+      if (duration !== undefined && l.end_ms > duration) {
+        findings.error("song_timing", file, `end_ms ${l.end_ms} is past the audio's ${duration} ms`, { path: lp });
+      }
+      last = l.start_ms;
+    });
+    if (audio?.request.status === "approved" && timed.length === 0) {
+      findings.warn("song_untimed", file, `${v.locale}: the audio is approved but the lines have no timings`, { path: `${at}/lines` });
+    }
+  });
+  for (const l of requiredLocales(set)) {
+    if (!locales.has(l)) findings.error("missing_locale", file, `no ${l} version of the song`, { path: "/versions" });
+  }
+}
+
+/** play@1: every id a round names exists, each move has one right place, and the words are gentle. */
+function checkPlay(findings: Findings, file: string, doc: Play): void {
+  const gentle = (text: Partial<Record<string, string>> | undefined, path: string): void => {
+    for (const [locale, t] of Object.entries(text ?? {})) {
+      const hits = negativeFeedbackWords(t ?? "");
+      if (hits.length) {
+        findings.error("little_negative_word", file, `${path}/${locale}: little learners never hear "${hits.join('", "')}"`, { path });
+      }
+    }
+  };
+  gentle(doc.feedback.success, "/feedback/success");
+  gentle(doc.feedback.try_again, "/feedback/try_again");
+  doc.rounds.forEach((round, ri) => {
+    const at = `/rounds/${ri}`;
+    gentle(round.prompt, `${at}/prompt`);
+    gentle(round.hint, `${at}/hint`);
+    const unique = (ids: string[], what: string): Set<string> => {
+      const seen = new Set<string>();
+      for (const id of ids) {
+        if (seen.has(id)) findings.error("duplicate_id", file, `${what} ${id} appears twice`, { path: at });
+        seen.add(id);
+      }
+      return seen;
+    };
+    switch (round.kind) {
+      case "tap": {
+        const items = unique(round.items.map((i) => i.id), "item");
+        for (const a of round.answer) if (!items.has(a)) findings.error("play_ref", file, `answer ${a} is not an item`, { path: `${at}/answer` });
+        if (round.answer.length === round.items.length) {
+          findings.warn("play_trivial", file, "every item is an answer, so there is nothing to choose", { path: at });
+        }
+        break;
+      }
+      case "match":
+        unique([...round.pairs.map((p) => p.left.id), ...round.pairs.map((p) => p.right.id)], "tile");
+        break;
+      case "sort": {
+        const buckets = unique(round.buckets.map((b) => b.id), "bucket");
+        unique(round.items.map((i) => i.id), "item");
+        const used = new Set(round.items.map((i) => i.bucket));
+        round.items.forEach((i, ii) => {
+          if (!buckets.has(i.bucket)) findings.error("play_ref", file, `item ${i.id} goes in unknown bucket ${i.bucket}`, { path: `${at}/items/${ii}` });
+        });
+        for (const b of buckets) if (!used.has(b)) findings.warn("play_empty_bucket", file, `bucket ${b} gets no item`, { path: at });
+        break;
+      }
+      case "drag": {
+        const items = unique(round.items.map((i) => i.id), "item");
+        unique(round.targets.map((t) => t.id), "target");
+        unique(round.targets.map((t) => t.accepts), "accepted item");
+        round.targets.forEach((t, ti) => {
+          if (!items.has(t.accepts)) findings.error("play_ref", file, `target ${t.id} accepts unknown item ${t.accepts}`, { path: `${at}/targets/${ti}` });
+        });
+        break;
+      }
+      case "trace":
+        break;
+    }
+  });
 }
 
 function checkMedia(set: ContentSet, findings: Findings): void {
@@ -1149,7 +1275,7 @@ const INVENTED = [
 
 function checkInventedStats(set: ContentSet, findings: Findings): void {
   for (const { file, doc } of set.files) {
-    if (!["lesson@1", "questions@1", "cheat_sheet@1", "revision_sheet@1", "storybook@1"].includes(doc.schema as string)) {
+    if (!["lesson@1", "questions@1", "cheat_sheet@1", "revision_sheet@1", "storybook@1", "song@1", "play@1"].includes(doc.schema as string)) {
       continue;
     }
     walkContent(doc, (kind, value, path) => {

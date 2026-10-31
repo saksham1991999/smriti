@@ -1,0 +1,48 @@
+{
+  "schema": "media-requests@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Figures of ingested previous-year questions, to be recreated as diagrams through visual-director (never scanned). Each brief describes the official figure; labels are placed at anchors once an image exists.",
+  "requests": [
+    {
+      "id": "img.moving-charges-magnetism.pyq-bent-wires",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "physics",
+      "brief": "two wire shapes side by side on white, thin dark lines. Left shape: a hairpin made of two long parallel horizontal straight wires extending far to the left (dashed at their far ends) joined on the right by a semicircular arc; a small dot at the centre of the arc with a short radius line to the arc. Right shape: one long horizontal straight wire coming in from the far left (dotted at its far end) to the top of a semicircular arc that bulges to the right; from the bottom of the arc a long straight wire goes vertically downward (dotted at its far end); a small dot at the arc centre with a short radius line; small arrowheads along the wires show the current direction. Recreate the figure of NTA's JEE (Main) 2026 paper, 2 April Shift 1, question 39 faithfully (same parts, positions and directions); every letter, number, sign and arrow label is added by the app at label anchors.",
+      "must_show": [
+        "hairpin of two parallel straight wires joined by a semicircle",
+        "a straight wire into a semicircle that then continues vertically downward",
+        "dots at both arc centres with radius lines",
+        "current direction arrowheads"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "plus or minus signs",
+        "a scan or copy of the original paper"
+      ],
+      "alt": {
+        "en": "Shape I: two long parallel wires joined by a semicircle of radius r, carrying current I out and back, with centre P. Shape II: a long horizontal wire, a semicircle of radius r with centre Q, then a long wire going straight down from the end of the arc in line with Q.",
+        "hi": "आकृति I: त्रिज्या r के अर्धवृत्त से जुड़े दो लंबे समांतर तार, जिनमें धारा I जाती और लौटती है, केंद्र P। आकृति II: एक लंबा क्षैतिज तार, केंद्र Q वाला त्रिज्या r का अर्धवृत्त, फिर चाप के सिरे से Q की सीध में सीधा नीचे जाता लंबा तार।"
+      },
+      "used_by": [
+        "q.phy.moving-charges-magnetism.biot-savart.9001"
+      ],
+      "status": "requested",
+      "rejected_reason": null,
+      "result": null
+    }
+  ]
+}

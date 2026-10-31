@@ -1,0 +1,462 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khch104) could not be retrieved, so a reviewer should check the terms.",
+  "id": "chem.chemical-bonding.bond-parameters:deep_dive",
+  "topic": "chem.chemical-bonding.bond-parameters",
+  "mode": "deep_dive",
+  "estimated_minutes": 7,
+  "min_depth": 2,
+  "max_depth": 3,
+  "concepts": [
+    "chem.chemical-bonding.bond-parameters.core.bond-polarity-fajans",
+    "chem.chemical-bonding.bond-parameters.core.resonance-structures"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Length, angle, enthalpy, order",
+        "hi": "लंबाई, कोण, एन्थैल्पी, कोटि"
+      },
+      "subtopic": "chem.chemical-bonding.bond-parameters.core",
+      "card_ids": [
+        "chem.chemical-bonding.bond-parameters:dd:01",
+        "chem.chemical-bonding.bond-parameters:dd:02",
+        "chem.chemical-bonding.bond-parameters:dd:03"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Polar bonds and Fajans' rules",
+        "hi": "ध्रुवीय आबंध और फ़ाजान नियम"
+      },
+      "subtopic": "chem.chemical-bonding.bond-parameters.core",
+      "card_ids": [
+        "chem.chemical-bonding.bond-parameters:dd:04",
+        "chem.chemical-bonding.bond-parameters:dd:05",
+        "chem.chemical-bonding.bond-parameters:dd:06",
+        "chem.chemical-bonding.bond-parameters:dd:07"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-3",
+      "title": {
+        "en": "Resonance",
+        "hi": "अनुनाद"
+      },
+      "subtopic": "chem.chemical-bonding.bond-parameters.core",
+      "card_ids": [
+        "chem.chemical-bonding.bond-parameters:dd:08",
+        "chem.chemical-bonding.bond-parameters:dd:09",
+        "chem.chemical-bonding.bond-parameters:dd:10",
+        "chem.chemical-bonding.bond-parameters:dd:11"
+      ],
+      "estimated_minutes": 3
+    }
+  ],
+  "cards": [
+    {
+      "id": "chem.chemical-bonding.bond-parameters:dd:01",
+      "type": "explainer",
+      "concepts": [
+        "chem.chemical-bonding.bond-parameters.core.bond-polarity-fajans"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Measuring a bond",
+        "hi": "आबंध को मापना"
+      },
+      "body": {
+        "en": "Bond length is the equilibrium distance between the nuclei of two bonded atoms. Bond angle is the angle between the orbitals holding bonding pairs around a central atom; in water the H-O-H angle is $104.5^\\circ$.\n\nBond enthalpy is the energy needed to break one mole of a bond between two atoms in the gaseous state: $435.8$ for H-H, $498$ for O=O and, for the triple bond in $\\ce{N2}$, $946.0\\ \\mathrm{kJ\\,mol^{-1}}$.\n\nIn the Lewis picture, bond order is the number of bonds between two atoms: 1 in $\\ce{H2}$, 2 in $\\ce{O2}$, 3 in $\\ce{N2}$ and CO. Isoelectronic species have the same bond order. As bond order increases, bond enthalpy increases and bond length decreases.",
+        "hi": "आबंध लंबाई दो आबंधित परमाणुओं के नाभिकों के बीच साम्य दूरी है। आबंध कोण केंद्रीय परमाणु के चारों ओर आबंधी युग्म रखने वाले कक्षकों के बीच का कोण है; जल में H-O-H कोण $104.5^\\circ$ है।\n\nआबंध एन्थैल्पी गैसीय अवस्था में दो परमाणुओं के बीच एक मोल आबंध तोड़ने के लिए आवश्यक ऊर्जा है: H-H के लिए $435.8$, O=O के लिए $498$ और, $\\ce{N2}$ के त्रि-आबंध के लिए, $946.0\\ \\mathrm{kJ\\,mol^{-1}}$।\n\nलूइस चित्र में आबंध कोटि दो परमाणुओं के बीच आबंधों की संख्या है: $\\ce{H2}$ में 1, $\\ce{O2}$ में 2, $\\ce{N2}$ और CO में 3। समइलेक्ट्रॉनी स्पीशीज़ की आबंध कोटि समान होती है। आबंध कोटि बढ़ने पर आबंध एन्थैल्पी बढ़ती है और आबंध लंबाई घटती है।"
+      },
+      "media": "img.chemical-bonding.water-molecule",
+      "highlights": [
+        {
+          "term": {
+            "en": "isoelectronic, same bond order",
+            "hi": "समइलेक्ट्रॉनी, समान आबंध कोटि"
+          },
+          "definition": {
+            "en": "$\\ce{F2}$ and $\\ce{O2^2-}$ have bond order 1; $\\ce{N2}$, CO and $\\ce{NO+}$ have bond order 3.",
+            "hi": "$\\ce{F2}$ और $\\ce{O2^2-}$ की आबंध कोटि 1 है; $\\ce{N2}$, CO और $\\ce{NO+}$ की आबंध कोटि 3 है।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.3.1 to §4.3.4"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.bond-parameters:dd:02",
+      "type": "worked_example",
+      "concepts": [
+        "chem.chemical-bonding.bond-parameters.core.bond-polarity-fajans"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "In water, breaking the first O-H bond needs $502\\ \\mathrm{kJ\\,mol^{-1}}$ and the second needs $427\\ \\mathrm{kJ\\,mol^{-1}}$. What is the mean O-H bond enthalpy?",
+        "hi": "जल में पहला O-H आबंध तोड़ने में $502\\ \\mathrm{kJ\\,mol^{-1}}$ और दूसरा तोड़ने में $427\\ \\mathrm{kJ\\,mol^{-1}}$ लगती है। माध्य O-H आबंध एन्थैल्पी क्या है?"
+      },
+      "solution_steps": [
+        {
+          "en": "The two O-H bonds need different energies because the second breaks in a changed environment (OH, not water).",
+          "hi": "दोनों O-H आबंधों को भिन्न ऊर्जा चाहिए क्योंकि दूसरा बदले हुए परिवेश (OH, जल नहीं) में टूटता है।"
+        },
+        {
+          "en": "Mean bond enthalpy $= \\frac{502 + 427}{2} = 464.5\\ \\mathrm{kJ\\,mol^{-1}}$.",
+          "hi": "माध्य आबंध एन्थैल्पी $= \\frac{502 + 427}{2} = 464.5\\ \\mathrm{kJ\\,mol^{-1}}$।"
+        }
+      ],
+      "answer": {
+        "en": "$464.5\\ \\mathrm{kJ\\,mol^{-1}}$",
+        "hi": "$464.5\\ \\mathrm{kJ\\,mol^{-1}}$"
+      },
+      "answer_value": {
+        "value": 464.5,
+        "unit": "kJ/mol",
+        "tolerance": {
+          "abs": 0.5
+        }
+      },
+      "common_trap": {
+        "en": "Taking either single value as the O-H bond enthalpy.",
+        "hi": "किसी एक मान को ही O-H आबंध एन्थैल्पी मान लेना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.3.3"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.bond-parameters:dd:03",
+      "type": "question",
+      "concepts": [
+        "chem.chemical-bonding.bond-parameters.core.bond-polarity-fajans"
+      ],
+      "depth": 2,
+      "question": "q.chem.chemical-bonding.bond-parameters.0001"
+    },
+    {
+      "id": "chem.chemical-bonding.bond-parameters:dd:04",
+      "type": "formula",
+      "concepts": [
+        "chem.chemical-bonding.bond-parameters.core.bond-polarity-fajans"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Dipole moment",
+        "hi": "द्विध्रुव आघूर्ण"
+      },
+      "latex": "\\mu = Q \\times r",
+      "symbols": [
+        {
+          "symbol": "\\mu",
+          "meaning": {
+            "en": "dipole moment",
+            "hi": "द्विध्रुव आघूर्ण"
+          },
+          "unit": "C m"
+        },
+        {
+          "symbol": "Q",
+          "meaning": {
+            "en": "magnitude of the charge",
+            "hi": "आवेश का परिमाण"
+          },
+          "unit": "C"
+        },
+        {
+          "symbol": "r",
+          "meaning": {
+            "en": "distance between the centres of positive and negative charge",
+            "hi": "धन और ऋण आवेश के केंद्रों के बीच दूरी"
+          },
+          "unit": "m"
+        }
+      ],
+      "conditions": {
+        "en": "Usually given in debye: $1\\ \\mathrm{D} = 3.33564 \\times 10^{-30}\\ \\mathrm{C\\,m}$. Dipole moment is a vector.",
+        "hi": "प्रायः डिबाई में दिया जाता है: $1\\ \\mathrm{D} = 3.33564 \\times 10^{-30}\\ \\mathrm{C\\,m}$। द्विध्रुव आघूर्ण एक सदिश है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.3.6"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.bond-parameters:dd:05",
+      "type": "explainer",
+      "concepts": [
+        "chem.chemical-bonding.bond-parameters.core.bond-polarity-fajans"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "When the shared pair is pulled to one side",
+        "hi": "जब साझा युग्म एक ओर खिंच जाए"
+      },
+      "body": {
+        "en": "Between identical atoms ($\\ce{H2}$, $\\ce{Cl2}$) the pair sits midway: a non-polar bond. In HF the pair shifts towards the more electronegative fluorine: a polar bond.\n\nIn a polyatomic molecule the dipole moment is the vector sum of the bond dipoles. $\\ce{BeF2}$, $\\ce{BF3}$ and $\\ce{CO2}$ have zero dipole moment because their bond dipoles cancel. Bent water has $1.85\\ \\mathrm{D}$. Pyramidal $\\ce{NH3}$ ($4.90 \\times 10^{-30}\\ \\mathrm{C\\,m}$) beats $\\ce{NF3}$ ($0.80 \\times 10^{-30}\\ \\mathrm{C\\,m}$): in $\\ce{NH3}$ the lone-pair dipole adds to the N-H bond dipoles, in $\\ce{NF3}$ it opposes the N-F bond dipoles.\n\nIonic bonds have partial covalent character too (Fajans' rules): the smaller the cation and the larger the anion, the greater the covalent character; the greater the charge on the cation, the greater the covalent character; and an $(n-1)d^n ns^0$ cation is more polarising than an $ns^2 np^6$ cation of the same size and charge.",
+        "hi": "समान परमाणुओं ($\\ce{H2}$, $\\ce{Cl2}$) के बीच युग्म बीच में रहता है: अध्रुवीय आबंध। HF में युग्म अधिक विद्युत् ऋणात्मक फ़्लुओरीन की ओर खिसकता है: ध्रुवीय आबंध।\n\nबहुपरमाणुक अणु में द्विध्रुव आघूर्ण आबंध द्विध्रुवों का सदिश योग होता है। $\\ce{BeF2}$, $\\ce{BF3}$ और $\\ce{CO2}$ का द्विध्रुव आघूर्ण शून्य है क्योंकि इनके आबंध द्विध्रुव निरस्त हो जाते हैं। मुड़े हुए जल का $1.85\\ \\mathrm{D}$ है। पिरामिडी $\\ce{NH3}$ ($4.90 \\times 10^{-30}\\ \\mathrm{C\\,m}$) $\\ce{NF3}$ ($0.80 \\times 10^{-30}\\ \\mathrm{C\\,m}$) से अधिक है: $\\ce{NH3}$ में एकाकी युग्म का द्विध्रुव N-H आबंध द्विध्रुवों से जुड़ता है, $\\ce{NF3}$ में N-F आबंध द्विध्रुवों के विपरीत होता है।\n\nआयनिक आबंधों में भी आंशिक सहसंयोजी गुण होता है (फ़ाजान नियम): धनायन जितना छोटा और ऋणायन जितना बड़ा, सहसंयोजी गुण उतना अधिक; धनायन पर आवेश जितना अधिक, सहसंयोजी गुण उतना अधिक; और समान आकार व आवेश पर $(n-1)d^n ns^0$ धनायन, $ns^2 np^6$ धनायन की तुलना में अधिक ध्रुवणकारी होता है।"
+      },
+      "media": "img.chemical-bonding.water-molecule",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.3.6"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.bond-parameters:dd:06",
+      "type": "interactive",
+      "concepts": [
+        "chem.chemical-bonding.bond-parameters.core.bond-polarity-fajans"
+      ],
+      "depth": 3,
+      "prompt": {
+        "en": "Sort by dipole moment (NCERT Table 4.5).",
+        "hi": "द्विध्रुव आघूर्ण के अनुसार छाँटिए (NCERT सारणी 4.5)।"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "h2o",
+            "text": {
+              "en": "$\\ce{H2O}$",
+              "hi": "$\\ce{H2O}$"
+            }
+          },
+          {
+            "id": "nh3",
+            "text": {
+              "en": "$\\ce{NH3}$",
+              "hi": "$\\ce{NH3}$"
+            }
+          },
+          {
+            "id": "chcl3",
+            "text": {
+              "en": "$\\ce{CHCl3}$",
+              "hi": "$\\ce{CHCl3}$"
+            }
+          },
+          {
+            "id": "co2",
+            "text": {
+              "en": "$\\ce{CO2}$",
+              "hi": "$\\ce{CO2}$"
+            }
+          },
+          {
+            "id": "bf3",
+            "text": {
+              "en": "$\\ce{BF3}$",
+              "hi": "$\\ce{BF3}$"
+            }
+          },
+          {
+            "id": "ccl4",
+            "text": {
+              "en": "$\\ce{CCl4}$",
+              "hi": "$\\ce{CCl4}$"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "polar",
+            "label": {
+              "en": "Non-zero dipole moment",
+              "hi": "शून्येतर द्विध्रुव आघूर्ण"
+            }
+          },
+          {
+            "id": "zero",
+            "label": {
+              "en": "Zero dipole moment",
+              "hi": "शून्य द्विध्रुव आघूर्ण"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "h2o",
+            "bin": "polar"
+          },
+          {
+            "item": "nh3",
+            "bin": "polar"
+          },
+          {
+            "item": "chcl3",
+            "bin": "polar"
+          },
+          {
+            "item": "co2",
+            "bin": "zero"
+          },
+          {
+            "item": "bf3",
+            "bin": "zero"
+          },
+          {
+            "item": "ccl4",
+            "bin": "zero"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: symmetric shapes with identical bonds cancel their bond dipoles.",
+          "hi": "सही: समान आबंधों वाली सममित आकृतियाँ अपने आबंध द्विध्रुव निरस्त कर देती हैं।"
+        },
+        "wrong": {
+          "en": "Picture the shape, then add the bond arrows.",
+          "hi": "आकृति की कल्पना कीजिए, फिर आबंध तीर जोड़िए।"
+        }
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.bond-parameters:dd:07",
+      "type": "question",
+      "concepts": [
+        "chem.chemical-bonding.bond-parameters.core.bond-polarity-fajans"
+      ],
+      "depth": 3,
+      "question": "q.chem.chemical-bonding.bond-parameters.0002"
+    },
+    {
+      "id": "chem.chemical-bonding.bond-parameters:dd:08",
+      "type": "worked_example",
+      "concepts": [
+        "chem.chemical-bonding.bond-parameters.core.resonance-structures"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "Both O-O bonds in ozone are $128\\ \\mathrm{pm}$ long, between the normal O-O single bond ($148\\ \\mathrm{pm}$) and O=O double bond ($121\\ \\mathrm{pm}$). How can one structure describe it?",
+        "hi": "ओज़ोन के दोनों O-O आबंध $128\\ \\mathrm{pm}$ लंबे हैं, जो सामान्य O-O एकल आबंध ($148\\ \\mathrm{pm}$) और O=O द्वि-आबंध ($121\\ \\mathrm{pm}$) के बीच है। एक संरचना इसे कैसे दर्शाए?"
+      },
+      "solution_steps": [
+        {
+          "en": "Each Lewis structure of $\\ce{O3}$ has one single and one double bond, so neither matches two equal bonds.",
+          "hi": "$\\ce{O3}$ की हर लूइस संरचना में एक एकल और एक द्वि-आबंध है, इसलिए कोई भी दो बराबर आबंधों से मेल नहीं खाती।"
+        },
+        {
+          "en": "Write both structures, with the double bond on either side, as canonical (resonance) forms.",
+          "hi": "दोनों संरचनाएँ, द्वि-आबंध एक-एक ओर रखकर, विहित (अनुनादी) रूपों के रूप में लिखिए।"
+        },
+        {
+          "en": "The real molecule is the resonance hybrid of the two; its bonds are intermediate and its energy is lower than that of either canonical form.",
+          "hi": "वास्तविक अणु इन दोनों का अनुनाद संकर है; इसके आबंध बीच के हैं और इसकी ऊर्जा किसी भी विहित रूप से कम है।"
+        }
+      ],
+      "answer": {
+        "en": "Ozone is a resonance hybrid of two canonical forms; both bonds are equal at $128\\ \\mathrm{pm}$.",
+        "hi": "ओज़ोन दो विहित रूपों का अनुनाद संकर है; दोनों आबंध $128\\ \\mathrm{pm}$ पर बराबर हैं।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.3.5"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.bond-parameters:dd:09",
+      "type": "explainer",
+      "concepts": [
+        "chem.chemical-bonding.bond-parameters.core.resonance-structures"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "More examples and what resonance is not",
+        "hi": "और उदाहरण, और अनुनाद क्या नहीं है"
+      },
+      "body": {
+        "en": "In the carbonate ion, $\\ce{CO3^2-}$, all carbon to oxygen bonds are equivalent, so the ion is a hybrid of three canonical forms. In $\\ce{CO2}$ the C-O bond length is $115\\ \\mathrm{pm}$, between C=O ($121\\ \\mathrm{pm}$) and a C-O triple bond ($110\\ \\mathrm{pm}$), so $\\ce{CO2}$ too is a hybrid of three forms.\n\nResonance stabilises the molecule and averages the bond characteristics. But the canonical forms have no real existence; the molecule does not switch between them, and there is no equilibrium between them as there is between keto and enol forms in tautomerism.",
+        "hi": "कार्बोनेट आयन, $\\ce{CO3^2-}$, में कार्बन से ऑक्सीजन के सभी आबंध तुल्य हैं, इसलिए आयन तीन विहित रूपों का संकर है। $\\ce{CO2}$ में C-O आबंध लंबाई $115\\ \\mathrm{pm}$ है, जो C=O ($121\\ \\mathrm{pm}$) और C-O त्रि-आबंध ($110\\ \\mathrm{pm}$) के बीच है, इसलिए $\\ce{CO2}$ भी तीन रूपों का संकर है।\n\nअनुनाद अणु को स्थायी बनाता है और आबंध गुणों का औसत कर देता है। पर विहित रूपों का कोई वास्तविक अस्तित्व नहीं है; अणु उनके बीच बदलता नहीं रहता, और उनके बीच कोई साम्य नहीं होता, जैसा चलावयवता में कीटो और ईनॉल रूपों के बीच होता है।"
+      },
+      "media": "img.chemical-bonding.water-molecule",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.3.5"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.bond-parameters:dd:10",
+      "type": "question",
+      "concepts": [
+        "chem.chemical-bonding.bond-parameters.core.resonance-structures"
+      ],
+      "depth": 3,
+      "question": "q.chem.chemical-bonding.bond-parameters.0005"
+    },
+    {
+      "id": "chem.chemical-bonding.bond-parameters:dd:11",
+      "type": "summary",
+      "concepts": [
+        "chem.chemical-bonding.bond-parameters.core.bond-polarity-fajans",
+        "chem.chemical-bonding.bond-parameters.core.resonance-structures"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Bond order up: bond enthalpy up, bond length down; isoelectronic species share a bond order.",
+          "hi": "आबंध कोटि बढ़े तो आबंध एन्थैल्पी बढ़ती है, आबंध लंबाई घटती है; समइलेक्ट्रॉनी स्पीशीज़ की आबंध कोटि एक-सी होती है।"
+        },
+        {
+          "en": "Dipole moment $\\mu = Q \\times r$ is a vector; $\\ce{BF3}$ and $\\ce{CO2}$ have zero, $\\ce{NH3}$ beats $\\ce{NF3}$.",
+          "hi": "द्विध्रुव आघूर्ण $\\mu = Q \\times r$ सदिश है; $\\ce{BF3}$ और $\\ce{CO2}$ का शून्य, $\\ce{NH3}$ का $\\ce{NF3}$ से अधिक।"
+        },
+        {
+          "en": "Fajans: small cation, large anion, high cation charge mean more covalent character.",
+          "hi": "फ़ाजान: छोटा धनायन, बड़ा ऋणायन, धनायन पर अधिक आवेश, यानी अधिक सहसंयोजी गुण।"
+        },
+        {
+          "en": "Resonance hybrid: lower energy than any canonical form; canonical forms are not real.",
+          "hi": "अनुनाद संकर: किसी भी विहित रूप से कम ऊर्जा; विहित रूप वास्तविक नहीं हैं।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.3"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

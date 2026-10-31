@@ -1,0 +1,135 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "phy.laws-of-motion.second-law",
+  "questions": [
+    {
+      "id": "q.phy.laws-of-motion.second-law.9001",
+      "type": "statement_based",
+      "concepts": [
+        {
+          "id": "phy.laws-of-motion.second-law.core.momentum-second-law",
+          "weight": 0.4
+        },
+        {
+          "id": "phy.rotational-motion.torque-angular-momentum.core.angular-momentum-conservation",
+          "weight": 0.3
+        },
+        {
+          "id": "phy.rotational-motion.torque-angular-momentum.core.torque",
+          "weight": 0.3
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "The position of an object having mass $0.1\\ \\mathrm{kg}$ as a function of time $t$ is given as $\\vec r=\\left(10t^2\\hat i+5t^3\\hat j\\right)\\mathrm{m}$. At $t=1\\ \\mathrm{s}$, which of the following statements are correct ? Choose the correct answer from the options given below :",
+        "hi": "द्रव्यमान $0.1\\ \\mathrm{kg}$ वाली एक वस्तु की स्थिति, समय $t$ के फलन के रूप में $\\vec r=\\left(10t^2\\hat i+5t^3\\hat j\\right)\\mathrm{m}$ दी गई है। $t=1\\ \\mathrm{s}$ पर, निम्नलिखित में से कौन-से कथन सही हैं ? नीचे दिए गए विकल्पों में से सही उत्तर चुनिए :"
+      },
+      "statements": [
+        {
+          "en": "A. The linear momentum $\\vec p=\\left(2\\hat i+1.5\\hat j\\right)\\mathrm{kg\\,m/s}$.",
+          "hi": "A. रैखिक संवेग $\\vec p=\\left(2\\hat i+1.5\\hat j\\right)\\mathrm{kg\\,m/s}$।"
+        },
+        {
+          "en": "B. The force acting on the object $\\vec F=\\left(2\\hat i+3\\hat j\\right)\\mathrm{N}$.",
+          "hi": "B. वस्तु पर लगने वाला बल $\\vec F=\\left(2\\hat i+3\\hat j\\right)\\mathrm{N}$।"
+        },
+        {
+          "en": "C. The angular momentum of the object about its origin $\\vec L=15\\hat k\\ \\mathrm{J\\,s}$.",
+          "hi": "C. मूलबिंदु के परितः वस्तु का कोणीय संवेग $\\vec L=15\\hat k\\ \\mathrm{J\\,s}$।"
+        },
+        {
+          "en": "D. The torque acting on the object about its origin $\\vec\\tau=20\\hat k\\ \\mathrm{N\\,m}$.",
+          "hi": "D. मूलबिंदु के परितः वस्तु पर लगने वाला बल-आघूर्ण $\\vec\\tau=20\\hat k\\ \\mathrm{N\\,m}$।"
+        }
+      ],
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "A, B and C only",
+            "hi": "केवल A, B और C"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "B, C and D only",
+            "hi": "केवल B, C और D"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "A, C and D only",
+            "hi": "केवल A, C और D"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "A, B and D only",
+            "hi": "केवल A, B और D"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "d"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Differentiate the position once for velocity (then momentum) and twice for acceleration (then force). Angular momentum and torque are cross products of $\\vec r$ with $\\vec p$ and with $\\vec F$.",
+          "hi": "स्थिति का एक बार अवकलन वेग (फिर संवेग) और दो बार अवकलन त्वरण (फिर बल) देता है। कोणीय संवेग और बल-आघूर्ण, $\\vec r$ का $\\vec p$ और $\\vec F$ के साथ सदिश गुणनफल हैं।"
+        },
+        "steps": [
+          {
+            "en": "At $t=1$: $\\vec r=(10,5)$, $\\vec v=(20,15)$, $\\vec a=(20,30)$; so $\\vec p=(2,1.5)$ and $\\vec F=(2,3)$. A and B are true.",
+            "hi": "$t=1$ पर: $\\vec r=(10,5)$, $\\vec v=(20,15)$, $\\vec a=(20,30)$; अतः $\\vec p=(2,1.5)$ और $\\vec F=(2,3)$। A और B सही हैं।"
+          },
+          {
+            "en": "$L_z=10(1.5)-5(2)=5$, so C is false. $\\tau_z=10(3)-5(2)=20$, so D is true.",
+            "hi": "$L_z=10(1.5)-5(2)=5$, अतः C गलत है। $\\tau_z=10(3)-5(2)=20$, अतः D सही है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 150,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 29
+      }
+    }
+  ]
+}

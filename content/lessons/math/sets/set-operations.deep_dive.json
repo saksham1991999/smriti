@@ -1,0 +1,684 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 1 Sets (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh101.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax Contemporary Mathematics, §1.4 Set Operations with Two Sets",
+      "url": "https://openstax.org/books/contemporary-mathematics/pages/1-4-set-operations-with-two-sets",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khmh101) could not be retrieved, so a reviewer should check the terms.",
+  "id": "math.sets.set-operations:deep_dive",
+  "topic": "math.sets.set-operations",
+  "mode": "deep_dive",
+  "estimated_minutes": 10,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "math.sets.set-operations.core.venn-diagrams",
+    "math.sets.set-operations.core.union-intersection-complement",
+    "math.sets.set-operations.core.set-algebra-laws"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Venn diagrams",
+        "hi": "वेन आरेख"
+      },
+      "subtopic": "math.sets.set-operations.core",
+      "card_ids": [
+        "math.sets.set-operations:dd:01",
+        "math.sets.set-operations:dd:02",
+        "math.sets.set-operations:dd:03",
+        "math.sets.set-operations:dd:04"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Union, intersection, difference, complement",
+        "hi": "सम्मिलन, सर्वनिष्ठ, अंतर, पूरक"
+      },
+      "subtopic": "math.sets.set-operations.core",
+      "card_ids": [
+        "math.sets.set-operations:dd:05",
+        "math.sets.set-operations:dd:06",
+        "math.sets.set-operations:dd:07",
+        "math.sets.set-operations:dd:08"
+      ],
+      "estimated_minutes": 3
+    },
+    {
+      "id": "bite-3",
+      "title": {
+        "en": "Laws and counting",
+        "hi": "नियम और गणना"
+      },
+      "subtopic": "math.sets.set-operations.core",
+      "card_ids": [
+        "math.sets.set-operations:dd:09",
+        "math.sets.set-operations:dd:10",
+        "math.sets.set-operations:dd:11",
+        "math.sets.set-operations:dd:12",
+        "math.sets.set-operations:dd:13",
+        "math.sets.set-operations:dd:14",
+        "math.sets.set-operations:dd:15"
+      ],
+      "estimated_minutes": 4
+    }
+  ],
+  "cards": [
+    {
+      "id": "math.sets.set-operations:dd:01",
+      "type": "story",
+      "concepts": [
+        "math.sets.set-operations.core.venn-diagrams"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Two hoops on the floor",
+        "hi": "फ़र्श पर दो घेरे"
+      },
+      "body": {
+        "en": "Riya sorts fruit with two hoops on the classroom floor: one hoop for round fruit, the other for red fruit. Where the hoops overlap she puts the fruit that is both round and red, an apple and a tomato. The banana is neither, so it stays outside both hoops. Without knowing it, she has drawn a Venn diagram.",
+        "hi": "रिया कक्षा के फ़र्श पर दो घेरों से फल छाँटती है: एक घेरा गोल फलों के लिए, दूसरा लाल फलों के लिए। जहाँ घेरे एक-दूसरे पर चढ़ते हैं, वहाँ वह वे फल रखती है जो गोल भी हैं और लाल भी, एक सेब और एक टमाटर। केला दोनों में से कुछ नहीं, इसलिए वह दोनों घेरों के बाहर रहता है। अनजाने में उसने वेन आरेख बना लिया है।"
+      },
+      "media": "img.sets.sorting-hoops"
+    },
+    {
+      "id": "math.sets.set-operations:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "math.sets.set-operations.core.venn-diagrams"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Rectangles and circles",
+        "hi": "आयत और वृत्त"
+      },
+      "body": {
+        "en": "Most relationships between sets can be shown with Venn diagrams, named after the English logician John Venn (1834–1883). The universal set U is drawn as a rectangle, and its subsets as circles inside it.\n\nIn the picture, the shaded lens is the part common to both circles: it holds the elements that are in A and in B at the same time. If $A \\subset B$, the circle for A is drawn wholly inside the circle for B.",
+        "hi": "समुच्चयों के बीच अधिकांश संबंध वेन आरेखों से दिखाए जा सकते हैं, जिनका नाम अंग्रेज़ तर्कशास्त्री जॉन वेन (1834–1883) के नाम पर है। सार्वत्रिक समुच्चय U को आयत से और उसके उपसमुच्चयों को उसके भीतर वृत्तों से दिखाया जाता है।\n\nचित्र में छायांकित लेंस दोनों वृत्तों का साझा भाग है: इसमें वे अवयव हैं जो एक साथ A में भी हैं और B में भी। यदि $A \\subset B$, तो A का वृत्त पूरी तरह B के वृत्त के भीतर बनाया जाता है।"
+      },
+      "media": "img.sets.venn-two-circles",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 1 Sets (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh101.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§1.8"
+      }
+    },
+    {
+      "id": "math.sets.set-operations:dd:03",
+      "type": "interactive",
+      "concepts": [
+        "math.sets.set-operations.core.venn-diagrams"
+      ],
+      "depth": 1,
+      "prompt": {
+        "en": "Label the Venn diagram.",
+        "hi": "वेन आरेख को नामांकित कीजिए।"
+      },
+      "widget": "label_diagram",
+      "config": {
+        "media": "img.sets.venn-two-circles",
+        "spots": [
+          {
+            "id": "u",
+            "anchor": "universal"
+          },
+          {
+            "id": "a",
+            "anchor": "set-a"
+          },
+          {
+            "id": "b",
+            "anchor": "set-b"
+          },
+          {
+            "id": "ab",
+            "anchor": "overlap"
+          }
+        ],
+        "labels": [
+          {
+            "id": "l-u",
+            "text": {
+              "en": "Universal set $U$",
+              "hi": "सार्वत्रिक समुच्चय $U$"
+            }
+          },
+          {
+            "id": "l-a",
+            "text": {
+              "en": "Set $A$",
+              "hi": "समुच्चय $A$"
+            }
+          },
+          {
+            "id": "l-b",
+            "text": {
+              "en": "Set $B$",
+              "hi": "समुच्चय $B$"
+            }
+          },
+          {
+            "id": "l-ab",
+            "text": {
+              "en": "Common part $A \\cap B$",
+              "hi": "साझा भाग $A \\cap B$"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "spot": "u",
+            "label": "l-u"
+          },
+          {
+            "spot": "a",
+            "label": "l-a"
+          },
+          {
+            "spot": "b",
+            "label": "l-b"
+          },
+          {
+            "spot": "ab",
+            "label": "l-ab"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: the rectangle is U, each circle is a set, and the shaded lens is what they share.",
+          "hi": "सही: आयत U है, हर वृत्त एक समुच्चय है, और छायांकित लेंस उनका साझा भाग है।"
+        },
+        "wrong": {
+          "en": "The rectangle holds everything under discussion.",
+          "hi": "आयत में चर्चा की हर वस्तु है।"
+        }
+      }
+    },
+    {
+      "id": "math.sets.set-operations:dd:04",
+      "type": "question",
+      "concepts": [
+        "math.sets.set-operations.core.venn-diagrams"
+      ],
+      "depth": 1,
+      "question": "q.math.sets.set-operations.0001"
+    },
+    {
+      "id": "math.sets.set-operations:dd:05",
+      "type": "explainer",
+      "concepts": [
+        "math.sets.set-operations.core.union-intersection-complement"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Four operations",
+        "hi": "चार संक्रियाएँ"
+      },
+      "body": {
+        "en": "Union: $A \\cup B$ is the set of elements in A, in B, or in both. For $A = \\{2, 4, 6, 8\\}$ and $B = \\{6, 8, 10, 12\\}$, $A \\cup B = \\{2, 4, 6, 8, 10, 12\\}$.\n\nIntersection: $A \\cap B$ is the set of elements in both A and B; here $A \\cap B = \\{6, 8\\}$, the shaded lens. If $A \\cap B = \\phi$, A and B are disjoint sets.\n\nDifference: $A - B$ is the set of elements in A but not in B; here $A - B = \\{2, 4\\}$ while $B - A = \\{10, 12\\}$, so in general $A - B \\ne B - A$. The sets $A - B$, $A \\cap B$ and $B - A$ are mutually disjoint.\n\nComplement: if U is the universal set, the complement $A'$ is the set of elements of U that are not in A, so $A' = U - A$.",
+        "hi": "सम्मिलन: $A \\cup B$ उन अवयवों का समुच्चय है जो A में, B में, या दोनों में हों। $A = \\{2, 4, 6, 8\\}$ और $B = \\{6, 8, 10, 12\\}$ के लिए $A \\cup B = \\{2, 4, 6, 8, 10, 12\\}$।\n\nसर्वनिष्ठ: $A \\cap B$ उन अवयवों का समुच्चय है जो A और B दोनों में हों; यहाँ $A \\cap B = \\{6, 8\\}$, जो छायांकित लेंस है। यदि $A \\cap B = \\phi$, तो A और B असंयुक्त समुच्चय हैं।\n\nअंतर: $A - B$ उन अवयवों का समुच्चय है जो A में हों पर B में नहीं; यहाँ $A - B = \\{2, 4\\}$ जबकि $B - A = \\{10, 12\\}$, अतः व्यापक रूप से $A - B \\ne B - A$। समुच्चय $A - B$, $A \\cap B$ और $B - A$ परस्पर असंयुक्त हैं।\n\nपूरक: यदि U सार्वत्रिक समुच्चय है, तो पूरक $A'$, U के उन अवयवों का समुच्चय है जो A में नहीं हैं, अतः $A' = U - A$।"
+      },
+      "media": "img.sets.venn-two-circles",
+      "highlights": [
+        {
+          "term": {
+            "en": "disjoint sets",
+            "hi": "असंयुक्त समुच्चय"
+          },
+          "definition": {
+            "en": "Sets with no common element: $A \\cap B = \\phi$.",
+            "hi": "बिना साझा अवयव वाले समुच्चय: $A \\cap B = \\phi$।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 1 Sets (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh101.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§1.9, §1.10"
+      }
+    },
+    {
+      "id": "math.sets.set-operations:dd:06",
+      "type": "interactive",
+      "concepts": [
+        "math.sets.set-operations.core.union-intersection-complement"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "$U = \\{1, 2, 3, 4, 5, 6, 7, 8\\}$, $A = \\{1, 2, 3, 4\\}$, $B = \\{3, 4, 5, 6\\}$. Put each element in its region.",
+        "hi": "$U = \\{1, 2, 3, 4, 5, 6, 7, 8\\}$, $A = \\{1, 2, 3, 4\\}$, $B = \\{3, 4, 5, 6\\}$। हर अवयव को उसके क्षेत्र में रखिए।"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "e1",
+            "text": {
+              "en": "$1$",
+              "hi": "$1$"
+            }
+          },
+          {
+            "id": "e2",
+            "text": {
+              "en": "$2$",
+              "hi": "$2$"
+            }
+          },
+          {
+            "id": "e3",
+            "text": {
+              "en": "$3$",
+              "hi": "$3$"
+            }
+          },
+          {
+            "id": "e4",
+            "text": {
+              "en": "$4$",
+              "hi": "$4$"
+            }
+          },
+          {
+            "id": "e5",
+            "text": {
+              "en": "$5$",
+              "hi": "$5$"
+            }
+          },
+          {
+            "id": "e6",
+            "text": {
+              "en": "$6$",
+              "hi": "$6$"
+            }
+          },
+          {
+            "id": "e7",
+            "text": {
+              "en": "$7$",
+              "hi": "$7$"
+            }
+          },
+          {
+            "id": "e8",
+            "text": {
+              "en": "$8$",
+              "hi": "$8$"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "amb",
+            "label": {
+              "en": "$A - B$",
+              "hi": "$A - B$"
+            }
+          },
+          {
+            "id": "ab",
+            "label": {
+              "en": "$A \\cap B$",
+              "hi": "$A \\cap B$"
+            }
+          },
+          {
+            "id": "bma",
+            "label": {
+              "en": "$B - A$",
+              "hi": "$B - A$"
+            }
+          },
+          {
+            "id": "out",
+            "label": {
+              "en": "$(A \\cup B)'$",
+              "hi": "$(A \\cup B)'$"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "e1",
+            "bin": "amb"
+          },
+          {
+            "item": "e2",
+            "bin": "amb"
+          },
+          {
+            "item": "e3",
+            "bin": "ab"
+          },
+          {
+            "item": "e4",
+            "bin": "ab"
+          },
+          {
+            "item": "e5",
+            "bin": "bma"
+          },
+          {
+            "item": "e6",
+            "bin": "bma"
+          },
+          {
+            "item": "e7",
+            "bin": "out"
+          },
+          {
+            "item": "e8",
+            "bin": "out"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: the four regions are disjoint and together they make up U.",
+          "hi": "सही: चारों क्षेत्र असंयुक्त हैं और मिलकर U बनाते हैं।"
+        },
+        "wrong": {
+          "en": "Check each element against A and against B.",
+          "hi": "हर अवयव को A और B दोनों से जाँचिए।"
+        }
+      }
+    },
+    {
+      "id": "math.sets.set-operations:dd:07",
+      "type": "worked_example",
+      "concepts": [
+        "math.sets.set-operations.core.union-intersection-complement"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "Let $U = \\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\\}$ and $A = \\{1, 3, 5, 7, 9\\}$. Find $A'$.",
+        "hi": "मान लीजिए $U = \\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\\}$ और $A = \\{1, 3, 5, 7, 9\\}$। $A'$ ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$A'$ holds the elements of U that are not in A.",
+          "hi": "$A'$ में U के वे अवयव हैं जो A में नहीं।"
+        },
+        {
+          "en": "Remove $1, 3, 5, 7, 9$ from U.",
+          "hi": "U में से $1, 3, 5, 7, 9$ हटाइए।"
+        }
+      ],
+      "answer": {
+        "en": "$A' = \\{2, 4, 6, 8, 10\\}$",
+        "hi": "$A' = \\{2, 4, 6, 8, 10\\}$"
+      },
+      "common_trap": {
+        "en": "Writing the elements of A again instead of those left over.",
+        "hi": "बचे हुए अवयवों के बजाय A के अवयव फिर से लिख देना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 1 Sets (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh101.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§1.10"
+      }
+    },
+    {
+      "id": "math.sets.set-operations:dd:08",
+      "type": "question",
+      "concepts": [
+        "math.sets.set-operations.core.union-intersection-complement"
+      ],
+      "depth": 2,
+      "question": "q.math.sets.set-operations.0004"
+    },
+    {
+      "id": "math.sets.set-operations:dd:09",
+      "type": "formula",
+      "concepts": [
+        "math.sets.set-operations.core.set-algebra-laws"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "De Morgan's laws",
+        "hi": "डी मॉर्गन के नियम"
+      },
+      "latex": "(A \\cup B)' = A' \\cap B', \\qquad (A \\cap B)' = A' \\cup B'",
+      "symbols": [
+        {
+          "symbol": "A, B",
+          "meaning": {
+            "en": "subsets of the universal set U",
+            "hi": "सार्वत्रिक समुच्चय U के उपसमुच्चय"
+          },
+          "unit": null
+        },
+        {
+          "symbol": "A'",
+          "meaning": {
+            "en": "complement of A in U",
+            "hi": "U में A का पूरक"
+          },
+          "unit": null
+        }
+      ],
+      "conditions": {
+        "en": "Other laws: union and intersection are commutative and associative; $A \\cup \\phi = A$, $U \\cup A = U$, $\\phi \\cap A = \\phi$, $U \\cap A = A$, $A \\cup A = A$, $A \\cap A = A$; and $A \\cap (B \\cup C) = (A \\cap B) \\cup (A \\cap C)$. For complements: $A \\cup A' = U$, $A \\cap A' = \\phi$, $(A')' = A$, $\\phi' = U$ and $U' = \\phi$.",
+        "hi": "अन्य नियम: सम्मिलन और सर्वनिष्ठ क्रमविनिमेय और साहचर्य हैं; $A \\cup \\phi = A$, $U \\cup A = U$, $\\phi \\cap A = \\phi$, $U \\cap A = A$, $A \\cup A = A$, $A \\cap A = A$; तथा $A \\cap (B \\cup C) = (A \\cap B) \\cup (A \\cap C)$। पूरक के लिए: $A \\cup A' = U$, $A \\cap A' = \\phi$, $(A')' = A$, $\\phi' = U$ और $U' = \\phi$।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 1 Sets (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh101.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§1.9, §1.10"
+      }
+    },
+    {
+      "id": "math.sets.set-operations:dd:10",
+      "type": "worked_example",
+      "concepts": [
+        "math.sets.set-operations.core.set-algebra-laws"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "Verify $(A \\cup B)' = A' \\cap B'$ for $U = \\{1, 2, 3, 4, 5, 6\\}$, $A = \\{1, 2, 3\\}$ and $B = \\{2, 4\\}$.",
+        "hi": "$(A \\cup B)' = A' \\cap B'$ को सत्यापित कीजिए, जहाँ $U = \\{1, 2, 3, 4, 5, 6\\}$, $A = \\{1, 2, 3\\}$ और $B = \\{2, 4\\}$।"
+      },
+      "solution_steps": [
+        {
+          "en": "$A \\cup B = \\{1, 2, 3, 4\\}$, so $(A \\cup B)' = \\{5, 6\\}$.",
+          "hi": "$A \\cup B = \\{1, 2, 3, 4\\}$, अतः $(A \\cup B)' = \\{5, 6\\}$।"
+        },
+        {
+          "en": "$A' = \\{4, 5, 6\\}$ and $B' = \\{1, 3, 5, 6\\}$, so $A' \\cap B' = \\{5, 6\\}$.",
+          "hi": "$A' = \\{4, 5, 6\\}$ और $B' = \\{1, 3, 5, 6\\}$, अतः $A' \\cap B' = \\{5, 6\\}$।"
+        },
+        {
+          "en": "Both sides equal $\\{5, 6\\}$.",
+          "hi": "दोनों पक्ष $\\{5, 6\\}$ के बराबर हैं।"
+        }
+      ],
+      "answer": {
+        "en": "Both sides are $\\{5, 6\\}$, so the law holds here.",
+        "hi": "दोनों पक्ष $\\{5, 6\\}$ हैं, अतः यहाँ नियम सत्य है।"
+      },
+      "common_trap": {
+        "en": "Writing $A' \\cup B'$ on the right, which gives $\\{1, 3, 4, 5, 6\\}$.",
+        "hi": "दाईं ओर $A' \\cup B'$ लिख देना, जिससे $\\{1, 3, 4, 5, 6\\}$ मिलता है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 1 Sets (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh101.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§1.10"
+      }
+    },
+    {
+      "id": "math.sets.set-operations:dd:11",
+      "type": "formula",
+      "concepts": [
+        "math.sets.set-operations.core.set-algebra-laws"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Counting the elements of a union",
+        "hi": "सम्मिलन के अवयवों की गणना"
+      },
+      "latex": "n(A \\cup B) = n(A) + n(B) - n(A \\cap B)",
+      "symbols": [
+        {
+          "symbol": "n(A)",
+          "meaning": {
+            "en": "number of elements of the finite set A",
+            "hi": "परिमित समुच्चय A के अवयवों की संख्या"
+          },
+          "unit": null
+        },
+        {
+          "symbol": "n(A \\cap B)",
+          "meaning": {
+            "en": "number of elements common to A and B",
+            "hi": "A और B में साझा अवयवों की संख्या"
+          },
+          "unit": null
+        }
+      ],
+      "conditions": {
+        "en": "A and B are finite. Elements in both sets are counted twice in $n(A) + n(B)$, so they are subtracted once. If A and B are disjoint, $n(A \\cup B) = n(A) + n(B)$.",
+        "hi": "A और B परिमित हैं। दोनों में आने वाले अवयव $n(A) + n(B)$ में दो बार गिने जाते हैं, इसलिए उन्हें एक बार घटाया जाता है। यदि A और B असंयुक्त हों, तो $n(A \\cup B) = n(A) + n(B)$।"
+      },
+      "source": {
+        "kind": "openstax",
+        "ref": "OpenStax Contemporary Mathematics, §1.4 Set Operations with Two Sets",
+        "url": "https://openstax.org/books/contemporary-mathematics/pages/1-4-set-operations-with-two-sets",
+        "retrieved": "2026-10-30"
+      }
+    },
+    {
+      "id": "math.sets.set-operations:dd:12",
+      "type": "worked_example",
+      "concepts": [
+        "math.sets.set-operations.core.set-algebra-laws"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "In a class of $40$ students, $25$ play cricket, $18$ play football and $8$ play both. How many play at least one of the two games, and how many play neither?",
+        "hi": "$40$ विद्यार्थियों की एक कक्षा में $25$ क्रिकेट, $18$ फ़ुटबॉल और $8$ दोनों खेलते हैं। कितने कम से कम एक खेल खेलते हैं, और कितने कोई नहीं?"
+      },
+      "solution_steps": [
+        {
+          "en": "Let C and F be the sets of cricket and football players: $n(C) = 25$, $n(F) = 18$, $n(C \\cap F) = 8$.",
+          "hi": "मान लीजिए C और F क्रिकेट और फ़ुटबॉल खिलाड़ियों के समुच्चय हैं: $n(C) = 25$, $n(F) = 18$, $n(C \\cap F) = 8$।"
+        },
+        {
+          "en": "$n(C \\cup F) = 25 + 18 - 8 = 35$.",
+          "hi": "$n(C \\cup F) = 25 + 18 - 8 = 35$।"
+        },
+        {
+          "en": "Neither: $40 - 35 = 5$.",
+          "hi": "कोई नहीं: $40 - 35 = 5$।"
+        }
+      ],
+      "answer": {
+        "en": "$35$ play at least one game; $5$ play neither.",
+        "hi": "$35$ कम से कम एक खेल खेलते हैं; $5$ कोई नहीं।"
+      },
+      "answer_value": {
+        "value": 35,
+        "unit": null,
+        "tolerance": {
+          "abs": 0
+        }
+      },
+      "common_trap": {
+        "en": "Adding $25 + 18 = 43$, which counts the $8$ students who play both twice.",
+        "hi": "$25 + 18 = 43$ जोड़ देना, जिसमें दोनों खेलने वाले $8$ विद्यार्थी दो बार गिने जाते हैं।"
+      },
+      "source": {
+        "kind": "openstax",
+        "ref": "OpenStax Contemporary Mathematics, §1.4 Set Operations with Two Sets",
+        "url": "https://openstax.org/books/contemporary-mathematics/pages/1-4-set-operations-with-two-sets",
+        "retrieved": "2026-10-30"
+      }
+    },
+    {
+      "id": "math.sets.set-operations:dd:13",
+      "type": "memory_hook",
+      "concepts": [
+        "math.sets.set-operations.core.set-algebra-laws"
+      ],
+      "depth": 3,
+      "mnemonic": {
+        "en": "m.math.sets.set-operations.core.set-algebra-laws.1",
+        "hi": "m.math.sets.set-operations.core.set-algebra-laws.2"
+      }
+    },
+    {
+      "id": "math.sets.set-operations:dd:14",
+      "type": "question",
+      "concepts": [
+        "math.sets.set-operations.core.set-algebra-laws"
+      ],
+      "depth": 3,
+      "question": "q.math.sets.set-operations.0009"
+    },
+    {
+      "id": "math.sets.set-operations:dd:15",
+      "type": "summary",
+      "concepts": [
+        "math.sets.set-operations.core.venn-diagrams",
+        "math.sets.set-operations.core.union-intersection-complement",
+        "math.sets.set-operations.core.set-algebra-laws"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Venn diagram: U as a rectangle, subsets as circles.",
+          "hi": "वेन आरेख: U आयत, उपसमुच्चय वृत्त।"
+        },
+        {
+          "en": "$A \\cup B$: in either; $A \\cap B$: in both; $A - B$: in A only; $A' = U - A$.",
+          "hi": "$A \\cup B$: किसी में भी; $A \\cap B$: दोनों में; $A - B$: केवल A में; $A' = U - A$।"
+        },
+        {
+          "en": "De Morgan: $(A \\cup B)' = A' \\cap B'$ and $(A \\cap B)' = A' \\cup B'$.",
+          "hi": "डी मॉर्गन: $(A \\cup B)' = A' \\cap B'$ और $(A \\cap B)' = A' \\cup B'$।"
+        },
+        {
+          "en": "$n(A \\cup B) = n(A) + n(B) - n(A \\cap B)$.",
+          "hi": "$n(A \\cup B) = n(A) + n(B) - n(A \\cap B)$।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 1 Sets (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh101.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§1.8, §1.9, §1.10"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

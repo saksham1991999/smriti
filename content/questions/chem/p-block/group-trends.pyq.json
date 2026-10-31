@@ -1,0 +1,123 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "chem.p-block.group-trends",
+  "questions": [
+    {
+      "id": "q.chem.p-block.group-trends.9001",
+      "type": "statement_based",
+      "concepts": [
+        {
+          "id": "chem.p-block.group-trends.core.group-17-18",
+          "weight": 0.5
+        },
+        {
+          "id": "chem.practical-chemistry.salt-analysis.core.anion-analysis",
+          "weight": 0.5
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Given below are two statements : In the light of the above statements, choose the correct answer from the options given below :",
+        "hi": "नीचे दो कथन दिए गए हैं : उपर्युक्त कथनों के आलोक में, नीचे दिए गए विकल्पों में से सही उत्तर चुनिए :"
+      },
+      "statements": [
+        {
+          "en": "Statement (I) : Oxidising power of halogens decreases in the order $\\ce{F2 > Cl2 > Br2 > I2}$, which is the basis of “Layer test”.",
+          "hi": "कथन (I) : हैलोजनों की ऑक्सीकारक क्षमता $\\ce{F2 > Cl2 > Br2 > I2}$ क्रम में घटती है, जो “परत परीक्षण” का आधार है।"
+        },
+        {
+          "en": "Statement (II) : “Layer test” to identify $\\ce{Br2}$ and $\\ce{I2}$ in aqueous solution involves the oxidation of bromide or iodide into $\\ce{Br2}$ or $\\ce{I2}$ respectively with $\\ce{Cl2}$, which is a type of displacement redox reaction.",
+          "hi": "कथन (II) : जलीय विलयन में $\\ce{Br2}$ और $\\ce{I2}$ की पहचान के लिए “परत परीक्षण” में ब्रोमाइड या आयोडाइड का $\\ce{Br2}$ या $\\ce{I2}$ में क्रमशः ऑक्सीकरण $\\ce{Cl2}$ द्वारा होता है, जो एक प्रकार की विस्थापन रेडॉक्स अभिक्रिया है।"
+        }
+      ],
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Both Statement I and Statement II are true",
+            "hi": "कथन I और कथन II दोनों सही हैं"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Both Statement I and Statement II are false",
+            "hi": "कथन I और कथन II दोनों गलत हैं"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Statement I is true but Statement II is false",
+            "hi": "कथन I सही है परंतु कथन II गलत है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Statement I is false but Statement II is true",
+            "hi": "कथन I गलत है परंतु कथन II सही है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Chlorine water can free bromine and iodine from their salts only because chlorine is the stronger oxidant; the freed halogen then colours the organic layer.",
+          "hi": "क्लोरीन जल ब्रोमीन और आयोडीन को उनके लवणों से इसलिए मुक्त कर पाता है क्योंकि क्लोरीन अधिक प्रबल ऑक्सीकारक है; मुक्त हैलोजन फिर कार्बनिक परत को रंगता है।"
+        },
+        "steps": [
+          {
+            "en": "The order $\\ce{F2 > Cl2 > Br2 > I2}$ is correct and explains why $\\ce{Cl2}$ displaces $\\ce{Br-}$ and $\\ce{I-}$: Statement I is true.",
+            "hi": "क्रम $\\ce{F2 > Cl2 > Br2 > I2}$ सही है और बताता है कि $\\ce{Cl2}$, $\\ce{Br-}$ और $\\ce{I-}$ को क्यों विस्थापित करता है: कथन I सही है।"
+          },
+          {
+            "en": "$\\ce{Cl2 + 2Br- -> 2Cl- + Br2}$ is a displacement redox reaction: Statement II is true.",
+            "hi": "$\\ce{Cl2 + 2Br- -> 2Cl- + Br2}$ एक विस्थापन रेडॉक्स अभिक्रिया है: कथन II सही है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 90,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 60
+      }
+    }
+  ]
+}

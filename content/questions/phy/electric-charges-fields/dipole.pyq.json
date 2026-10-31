@@ -1,0 +1,109 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs. Review before use: q.phy.electric-charges-fields.dipole.9001 (paper Q36) needs its figure img.electric-charges-fields.pyq-crossed-dipoles, which is requested, not approved; it is mock-only so it never ships in a device bundle without the figure.",
+  "hi_source": "translation",
+  "topic": "phy.electric-charges-fields.dipole",
+  "questions": [
+    {
+      "id": "q.phy.electric-charges-fields.dipole.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.electric-charges-fields.dipole.core.electric-dipole-field",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Two short electric dipoles $A$ and $B$ having dipole moment $p_1$ and $p_2$ respectively are placed with their axis mutually perpendicular as shown in the figure. The resultant electric field at a point $x$ is making an angle of $60^\\circ$ with the line joining points $O$ and $x$. The ratio of the dipole moments $\\frac{p_2}{p_1}$ is ______.",
+        "hi": "दो लघु विद्युत द्विध्रुव $A$ और $B$, जिनके द्विध्रुव आघूर्ण क्रमशः $p_1$ और $p_2$ हैं, चित्र में दिखाए अनुसार अपनी अक्षों को परस्पर लंबवत रखकर रखे गए हैं। बिंदु $x$ पर परिणामी विद्युत क्षेत्र $60^\\circ$ का कोण बनाता है, बिंदुओं $O$ और $x$ को मिलाने वाली रेखा से। द्विध्रुव आघूर्णों का अनुपात $\\frac{p_2}{p_1}$ ______ है।"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\frac{\\sqrt3}{2}$",
+            "hi": "$\\frac{\\sqrt3}{2}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$2\\sqrt3$",
+            "hi": "$2\\sqrt3$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\frac{1}{\\sqrt3}$",
+            "hi": "$\\frac{1}{\\sqrt3}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\sqrt3$",
+            "hi": "$\\sqrt3$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Point $x$ is on the axis of $A$ but on the perpendicular bisector (equatorial line) of $B$. The axial field is twice as strong per unit moment, and the two fields are at right angles.",
+          "hi": "बिंदु $x$, $A$ की अक्ष पर है परंतु $B$ की निरक्षीय रेखा पर। अक्षीय क्षेत्र प्रति एकांक आघूर्ण दोगुना होता है, और दोनों क्षेत्र परस्पर लंबवत हैं।"
+        },
+        "steps": [
+          {
+            "en": "$E_A=\\frac{2kp_1}{r^3}$ along the line $Ox$; $E_B=\\frac{kp_2}{r^3}$ perpendicular to it.",
+            "hi": "$E_A=\\frac{2kp_1}{r^3}$ रेखा $Ox$ के अनुदिश; $E_B=\\frac{kp_2}{r^3}$ उसके लंबवत।"
+          },
+          {
+            "en": "$\\tan60^\\circ=\\frac{E_B}{E_A}=\\frac{p_2}{2p_1}$, so $\\frac{p_2}{p_1}=2\\sqrt3$.",
+            "hi": "$\\tan60^\\circ=\\frac{E_B}{E_A}=\\frac{p_2}{2p_1}$, अतः $\\frac{p_2}{p_1}=2\\sqrt3$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 150,
+      "difficulty_estimate": "medium",
+      "media": "img.electric-charges-fields.pyq-crossed-dipoles",
+      "use": [
+        "mock"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 36
+      }
+    }
+  ]
+}

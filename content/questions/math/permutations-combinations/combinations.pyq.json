@@ -1,0 +1,204 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "math.permutations-combinations.combinations",
+  "questions": [
+    {
+      "id": "q.math.permutations-combinations.combinations.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.permutations-combinations.combinations.core.combinations-ncr",
+          "weight": 0.6
+        },
+        {
+          "id": "math.permutations-combinations.counting-principle.core.fundamental-counting",
+          "weight": 0.4
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "The number of seven-digit numbers, that can be formed by using the digits $1, 2, 3, 5$ and $7$ such that each digit is used at least once, is :",
+        "hi": "अंकों $1, 2, 3, 5$ और $7$ का उपयोग करके बनने वाली ऐसी सात-अंकीय संख्याओं की संख्या, जिनमें प्रत्येक अंक कम से कम एक बार प्रयुक्त हो, है :"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$15400$",
+            "hi": "$15400$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$17800$",
+            "hi": "$17800$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$16800$",
+            "hi": "$16800$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$29400$",
+            "hi": "$29400$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Seven places, five digits, each digit at least once: so the extra two places either repeat one digit three times, or two different digits twice each. Count both patterns.",
+          "hi": "सात स्थान, पाँच अंक, प्रत्येक अंक कम से कम एक बार: अतः शेष दो स्थानों में या तो एक अंक तीन बार आता है, या दो अलग अंक दो-दो बार। दोनों प्रतिरूप गिनिए।"
+        },
+        "steps": [
+          {
+            "en": "Pattern $3,1,1,1,1$: choose the tripled digit in $5$ ways, arrange in $\\frac{7!}{3!}=840$ ways: $4200$.",
+            "hi": "प्रतिरूप $3,1,1,1,1$: तीन बार आने वाला अंक $5$ प्रकार से, व्यवस्था $\\frac{7!}{3!}=840$ प्रकार से: $4200$।"
+          },
+          {
+            "en": "Pattern $2,2,1,1,1$: choose the two doubled digits in $\\binom{5}{2}=10$ ways, arrange in $\\frac{7!}{2!\\,2!}=1260$ ways: $12600$.",
+            "hi": "प्रतिरूप $2,2,1,1,1$: दो बार आने वाले दो अंक $\\binom{5}{2}=10$ प्रकार से, व्यवस्था $\\frac{7!}{2!\\,2!}=1260$ प्रकार से: $12600$।"
+          },
+          {
+            "en": "Total $4200+12600=16800$.",
+            "hi": "कुल $4200+12600=16800$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 150,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 6
+      }
+    },
+    {
+      "id": "q.math.permutations-combinations.combinations.9002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.permutations-combinations.combinations.core.combinations-ncr",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "The number of elements in the set $S=\\left\\{(r,k) : k \\in \\mathbf{Z} \\text{ and } {}^{36}C_{r+1}=\\frac{6\\left({}^{35}C_r\\right)}{\\left(k^2-3\\right)}\\right\\}$, is :",
+        "hi": "समुच्चय $S=\\left\\{(r,k) : k \\in \\mathbf{Z} \\text{ and } {}^{36}C_{r+1}=\\frac{6\\left({}^{35}C_r\\right)}{\\left(k^2-3\\right)}\\right\\}$ में अवयवों की संख्या है :"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$2$",
+            "hi": "$2$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$4$",
+            "hi": "$4$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$8$",
+            "hi": "$8$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$16$",
+            "hi": "$16$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Rewrite ${}^{36}C_{r+1}$ in terms of ${}^{35}C_r$; the equation then ties $r+1$ to $k^2$. Only a few integer $k$ keep $r$ inside $0$ to $35$.",
+          "hi": "${}^{36}C_{r+1}$ को ${}^{35}C_r$ के रूप में लिखिए; तब समीकरण $r+1$ को $k^2$ से जोड़ता है। केवल कुछ पूर्णांक $k$ ही $r$ को $0$ से $35$ के भीतर रखते हैं।"
+        },
+        "steps": [
+          {
+            "en": "${}^{36}C_{r+1}=\\frac{36}{r+1}\\,{}^{35}C_r$, so $\\frac{36}{r+1}=\\frac{6}{k^2-3}$, that is $r+1=6(k^2-3)$.",
+            "hi": "${}^{36}C_{r+1}=\\frac{36}{r+1}\\,{}^{35}C_r$, अतः $\\frac{36}{r+1}=\\frac{6}{k^2-3}$, अर्थात् $r+1=6(k^2-3)$।"
+          },
+          {
+            "en": "Since $1 \\le r+1 \\le 36$, $k^2-3 \\in \\{1,\\dots,6\\}$, so $k^2=4$ or $k^2=9$.",
+            "hi": "क्योंकि $1 \\le r+1 \\le 36$, $k^2-3 \\in \\{1,\\dots,6\\}$, अतः $k^2=4$ या $k^2=9$।"
+          },
+          {
+            "en": "$k=\\pm2$ gives $r=5$; $k=\\pm3$ gives $r=35$. So $S$ has $4$ elements.",
+            "hi": "$k=\\pm2$ से $r=5$; $k=\\pm3$ से $r=35$। अतः $S$ में $4$ अवयव हैं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 150,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 7
+      }
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 1 Sets (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh101.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax Contemporary Mathematics, §1.2 Subsets",
+      "url": "https://openstax.org/books/contemporary-mathematics/pages/1-2-subsets",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "other",
+      "ref": "Wikipedia, Power set (definition and number of subsets)",
+      "url": "https://en.wikipedia.org/wiki/Power_set",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Quick Revision for this topic. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khmh101) could not be retrieved, so a reviewer should check the terms.",
+  "id": "math.sets.subsets:quick_revision",
+  "topic": "math.sets.subsets",
+  "mode": "quick_revision",
+  "estimated_minutes": 3,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "math.sets.subsets.core.subsets-intervals",
+    "math.sets.subsets.core.power-set"
+  ],
+  "cards": [
+    {
+      "id": "math.sets.subsets:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "math.sets.subsets.core.subsets-intervals",
+        "math.sets.subsets.core.power-set"
+      ],
+      "depth": 1,
+      "sheet": "cs.math.sets.subsets"
+    },
+    {
+      "id": "math.sets.subsets:qr:02",
+      "type": "question",
+      "concepts": [
+        "math.sets.subsets.core.subsets-intervals"
+      ],
+      "depth": 2,
+      "question": "q.math.sets.subsets.0002"
+    },
+    {
+      "id": "math.sets.subsets:qr:03",
+      "type": "question",
+      "concepts": [
+        "math.sets.subsets.core.power-set"
+      ],
+      "depth": 3,
+      "question": "q.math.sets.subsets.0006"
+    },
+    {
+      "id": "math.sets.subsets:qr:04",
+      "type": "summary",
+      "concepts": [
+        "math.sets.subsets.core.subsets-intervals",
+        "math.sets.subsets.core.power-set"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "$\\phi \\subset A \\subset A$; $(a, b]$ keeps b, not a; $n\\big(P(A)\\big) = 2^{n}$.",
+          "hi": "$\\phi \\subset A \\subset A$; $(a, b]$ में b है, a नहीं; $n\\big(P(A)\\big) = 2^{n}$।"
+        }
+      ]
+    },
+    {
+      "id": "math.sets.subsets:qr:05",
+      "type": "common_traps",
+      "concepts": [
+        "math.sets.subsets.core.subsets-intervals",
+        "math.sets.subsets.core.power-set"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "An element and the set containing it are the same.",
+            "hi": "अवयव और उसे रखने वाला समुच्चय एक ही हैं।"
+          },
+          "correct": {
+            "en": "$1 \\in \\{1, 2\\}$ but $\\{1\\} \\subset \\{1, 2\\}$: use $\\in$ for elements and $\\subset$ for sets.",
+            "hi": "$1 \\in \\{1, 2\\}$ पर $\\{1\\} \\subset \\{1, 2\\}$: अवयवों के लिए $\\in$ और समुच्चयों के लिए $\\subset$।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "The empty set is a subset only of itself.",
+            "hi": "रिक्त समुच्चय केवल स्वयं का उपसमुच्चय है।"
+          },
+          "correct": {
+            "en": "$\\phi$ is a subset of every set.",
+            "hi": "$\\phi$ हर समुच्चय का उपसमुच्चय है।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "A set with $n$ elements has $2^{n}$ proper subsets.",
+            "hi": "$n$ अवयवों वाले समुच्चय के $2^{n}$ उचित उपसमुच्चय हैं।"
+          },
+          "correct": {
+            "en": "It has $2^{n}$ subsets but $2^{n} - 1$ proper subsets: A itself is not proper.",
+            "hi": "इसके $2^{n}$ उपसमुच्चय हैं पर $2^{n} - 1$ उचित उपसमुच्चय: स्वयं A उचित नहीं है।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

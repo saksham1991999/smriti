@@ -1,0 +1,117 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Quick Revision for this topic. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khch104) could not be retrieved, so a reviewer should check the terms.",
+  "id": "chem.chemical-bonding.vsepr:quick_revision",
+  "topic": "chem.chemical-bonding.vsepr",
+  "mode": "quick_revision",
+  "estimated_minutes": 3,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "chem.chemical-bonding.vsepr.core.vsepr-shapes"
+  ],
+  "cards": [
+    {
+      "id": "chem.chemical-bonding.vsepr:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "chem.chemical-bonding.vsepr.core.vsepr-shapes"
+      ],
+      "depth": 1,
+      "sheet": "cs.chem.chemical-bonding.vsepr"
+    },
+    {
+      "id": "chem.chemical-bonding.vsepr:qr:02",
+      "type": "question",
+      "concepts": [
+        "chem.chemical-bonding.vsepr.core.vsepr-shapes"
+      ],
+      "depth": 3,
+      "question": "q.chem.chemical-bonding.vsepr.0003"
+    },
+    {
+      "id": "chem.chemical-bonding.vsepr:qr:03",
+      "type": "question",
+      "concepts": [
+        "chem.chemical-bonding.vsepr.core.vsepr-shapes"
+      ],
+      "depth": 3,
+      "question": "q.chem.chemical-bonding.vsepr.0004"
+    },
+    {
+      "id": "chem.chemical-bonding.vsepr:qr:04",
+      "type": "summary",
+      "concepts": [
+        "chem.chemical-bonding.vsepr.core.vsepr-shapes"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Count pairs, place lone pairs to minimise repulsion, then name the shape from the atoms.",
+          "hi": "युग्म गिनिए, एकाकी युग्मों को न्यूनतम प्रतिकर्षण के लिए रखिए, फिर परमाणुओं से आकृति बताइए।"
+        },
+        {
+          "en": "$\\ce{SF4}$ see-saw, $\\ce{ClF3}$ T-shape, $\\ce{BrF5}$ square pyramidal, $\\ce{XeF4}$ square planar.",
+          "hi": "$\\ce{SF4}$ ढेंकुली, $\\ce{ClF3}$ T-आकार, $\\ce{BrF5}$ वर्ग पिरामिडी, $\\ce{XeF4}$ वर्ग समतलीय।"
+        }
+      ]
+    },
+    {
+      "id": "chem.chemical-bonding.vsepr:qr:05",
+      "type": "common_traps",
+      "concepts": [
+        "chem.chemical-bonding.vsepr.core.vsepr-shapes"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "Shape and electron-pair arrangement are the same thing.",
+            "hi": "आकृति और इलेक्ट्रॉन युग्म व्यवस्था एक ही बात है।"
+          },
+          "correct": {
+            "en": "$\\ce{NH3}$ has a tetrahedral arrangement of pairs but a trigonal pyramidal shape; the shape counts atoms only.",
+            "hi": "$\\ce{NH3}$ में युग्मों की व्यवस्था चतुष्फलकीय है पर आकृति त्रिकोणीय पिरामिडी; आकृति में केवल परमाणु गिने जाते हैं।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "A double bond counts as two electron pairs for the shape.",
+            "hi": "आकृति के लिए द्वि-आबंध दो इलेक्ट्रॉन युग्म गिना जाता है।"
+          },
+          "correct": {
+            "en": "A multiple bond is treated as one super pair.",
+            "hi": "बहु-आबंध को एक महायुग्म माना जाता है।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "Lone pairs in a trigonal bipyramid sit at the axial positions.",
+            "hi": "त्रिकोणीय द्विपिरामिड में एकाकी युग्म अक्षीय स्थितियों पर होते हैं।"
+          },
+          "correct": {
+            "en": "They take equatorial positions, as in $\\ce{SF4}$ and $\\ce{ClF3}$.",
+            "hi": "वे विषुवतीय स्थितियाँ लेते हैं, जैसे $\\ce{SF4}$ और $\\ce{ClF3}$ में।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

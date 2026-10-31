@@ -1,0 +1,109 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "phy.rotational-motion.angular-velocity",
+  "questions": [
+    {
+      "id": "q.phy.rotational-motion.angular-velocity.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.angular-velocity.core.rotation-basics",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A particle is rotating in a circular path and at any instant its motion can be described as $\\theta=\\frac{5t^4}{40}-\\frac{t^3}{3}$. The angular acceleration of the particle after $10$ seconds is ______ $\\mathrm{rad/s^2}$.",
+        "hi": "एक कण वृत्तीय पथ पर घूम रहा है और किसी भी क्षण इसकी गति को $\\theta=\\frac{5t^4}{40}-\\frac{t^3}{3}$ से व्यक्त किया जा सकता है। $10$ सेकंड के बाद कण का कोणीय त्वरण ______ $\\mathrm{rad/s^2}$ है।"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$150$",
+            "hi": "$150$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$120$",
+            "hi": "$120$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$130$",
+            "hi": "$130$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$170$",
+            "hi": "$170$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Angular acceleration is the second derivative of the angle with time.",
+          "hi": "कोणीय त्वरण, कोण का समय के सापेक्ष द्वितीय अवकलज है।"
+        },
+        "steps": [
+          {
+            "en": "$\\omega=\\frac{t^3}{2}-t^2$, $\\alpha=\\frac{3t^2}{2}-2t$.",
+            "hi": "$\\omega=\\frac{t^3}{2}-t^2$, $\\alpha=\\frac{3t^2}{2}-2t$।"
+          },
+          {
+            "en": "At $t=10$: $\\alpha=150-20=130\\ \\mathrm{rad/s^2}$.",
+            "hi": "$t=10$ पर: $\\alpha=150-20=130\\ \\mathrm{rad/s^2}$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 31
+      }
+    }
+  ]
+}

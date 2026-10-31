@@ -1,0 +1,117 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "phy.motion-plane.motion-2d",
+  "questions": [
+    {
+      "id": "q.phy.motion-plane.motion-2d.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.motion-2d.core.motion-plane-vectors",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "The velocity of a particle is given as $\\vec v=-x\\hat i+2y\\hat j-z\\hat k\\ \\mathrm{m/s}$. The magnitude of acceleration at point $(1,2,4)$ is ______ $\\mathrm{m/s^2}$.",
+        "hi": "एक कण का वेग $\\vec v=-x\\hat i+2y\\hat j-z\\hat k\\ \\mathrm{m/s}$ दिया गया है। बिंदु $(1,2,4)$ पर त्वरण का परिमाण ______ $\\mathrm{m/s^2}$ है।"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\sqrt6$",
+            "hi": "$\\sqrt6$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$9$",
+            "hi": "$9$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\sqrt{33}$",
+            "hi": "$\\sqrt{33}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$0$",
+            "hi": "$0$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Velocity depends on position, so each component changes as the particle moves: $a_x=\\frac{dv_x}{dt}=\\frac{dv_x}{dx}v_x$, and the same for $y$ and $z$.",
+          "hi": "वेग स्थिति पर निर्भर है, अतः कण के चलने पर प्रत्येक घटक बदलता है: $a_x=\\frac{dv_x}{dt}=\\frac{dv_x}{dx}v_x$, और इसी प्रकार $y$ व $z$ के लिए।"
+        },
+        "steps": [
+          {
+            "en": "$a_x=(-1)(-x)=x$, $a_y=(2)(2y)=4y$, $a_z=(-1)(-z)=z$.",
+            "hi": "$a_x=(-1)(-x)=x$, $a_y=(2)(2y)=4y$, $a_z=(-1)(-z)=z$।"
+          },
+          {
+            "en": "At $(1,2,4)$: $\\vec a=(1,8,4)$, $|\\vec a|=\\sqrt{1+64+16}=9$.",
+            "hi": "$(1,2,4)$ पर: $\\vec a=(1,8,4)$, $|\\vec a|=\\sqrt{1+64+16}=9$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The velocity field has no explicit time, but the particle moves to places where the velocity is different, so it does accelerate.",
+              "hi": "वेग क्षेत्र में समय स्पष्ट रूप से नहीं है, पर कण ऐसे स्थानों पर जाता है जहाँ वेग भिन्न है, इसलिए त्वरण होता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 120,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 28
+      }
+    }
+  ]
+}

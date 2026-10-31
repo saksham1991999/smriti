@@ -1,0 +1,607 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax Chemistry 2e, §10.5 The Solid State of Matter (metallic solids)",
+      "url": "https://openstax.org/books/chemistry-2e/pages/10-5-the-solid-state-of-matter",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the exam's own format. Each solution cites its NCERT section (OpenStax for metallic bonding). Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khch104) could not be retrieved, so a reviewer should check the terms.",
+  "topic": "chem.chemical-bonding.vsepr",
+  "questions": [
+    {
+      "id": "q.chem.chemical-bonding.vsepr.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.vsepr.core.vsepr-shapes",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A molecule $\\ce{AB3}$ has no lone pair on the central atom A. Its shape is",
+        "hi": "अणु $\\ce{AB3}$ के केंद्रीय परमाणु A पर कोई एकाकी युग्म नहीं है। इसकी आकृति है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "trigonal pyramidal",
+            "hi": "त्रिकोणीय पिरामिडी"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "trigonal planar",
+            "hi": "त्रिकोणीय समतलीय"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "T-shaped",
+            "hi": "T-आकार"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "tetrahedral",
+            "hi": "चतुष्फलकीय"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Three pairs only.",
+          "hi": "केवल तीन युग्म।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Three pairs and nothing else push each other into a flat triangle, $120^\\circ$ apart, like $\\ce{BF3}$.",
+          "hi": "केवल तीन युग्म एक-दूसरे को समतल त्रिभुज में, $120^\\circ$ पर, धकेल देते हैं, जैसे $\\ce{BF3}$।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.4, Table 4.6: 3 electron pairs, no lone pair: trigonal planar ($\\ce{BF3}$).",
+            "hi": "NCERT §4.4, सारणी 4.6: 3 इलेक्ट्रॉन युग्म, कोई एकाकी युग्म नहीं: त्रिकोणीय समतलीय ($\\ce{BF3}$)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Trigonal pyramidal needs one lone pair as well, as in $\\ce{NH3}$.",
+              "hi": "त्रिकोणीय पिरामिडी के लिए एक एकाकी युग्म भी चाहिए, जैसे $\\ce{NH3}$ में।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "T-shape needs two lone pairs, as in $\\ce{ClF3}$.",
+              "hi": "T-आकार के लिए दो एकाकी युग्म चाहिए, जैसे $\\ce{ClF3}$ में।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Tetrahedral needs four pairs.",
+              "hi": "चतुष्फलकीय के लिए चार युग्म चाहिए।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.vsepr.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.vsepr.core.vsepr-shapes",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The shape of $\\ce{XeF4}$ is",
+        "hi": "$\\ce{XeF4}$ की आकृति है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "tetrahedral",
+            "hi": "चतुष्फलकीय"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "see-saw",
+            "hi": "ढेंकुली"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "square planar",
+            "hi": "वर्ग समतलीय"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "square pyramidal",
+            "hi": "वर्ग पिरामिडी"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Xe has 8 valence electrons; 4 go into bonds.",
+          "hi": "Xe के 8 संयोजकता इलेक्ट्रॉन हैं; 4 आबंधों में जाते हैं।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Xe has 4 bond pairs and 2 lone pairs: six pairs in an octahedron. The two lone pairs sit opposite each other, leaving the four F atoms in a square.",
+          "hi": "Xe में 4 आबंधी युग्म और 2 एकाकी युग्म हैं: अष्टफलक में छह युग्म। दोनों एकाकी युग्म आमने-सामने होते हैं, और चारों F परमाणु एक वर्ग में रह जाते हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT Table 4.7: $\\ce{AB4E2}$, $\\ce{XeF4}$, square planar.",
+            "hi": "NCERT सारणी 4.7: $\\ce{AB4E2}$, $\\ce{XeF4}$, वर्ग समतलीय।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Tetrahedral is four bond pairs with no lone pair.",
+              "hi": "चतुष्फलकीय में चार आबंधी युग्म होते हैं, एकाकी युग्म नहीं।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "See-saw is $\\ce{AB4E}$, like $\\ce{SF4}$, with one lone pair.",
+              "hi": "ढेंकुली $\\ce{AB4E}$ है, जैसे $\\ce{SF4}$, एक एकाकी युग्म के साथ।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Square pyramidal is $\\ce{AB5E}$, like $\\ce{BrF5}$.",
+              "hi": "वर्ग पिरामिडी $\\ce{AB5E}$ है, जैसे $\\ce{BrF5}$।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.vsepr.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.vsepr.core.vsepr-shapes",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The correct order of bond angles is",
+        "hi": "आबंध कोणों का सही क्रम है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\ce{H2O} > \\ce{NH3} > \\ce{CH4}$",
+            "hi": "$\\ce{H2O} > \\ce{NH3} > \\ce{CH4}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\ce{CH4} > \\ce{NH3} > \\ce{H2O}$",
+            "hi": "$\\ce{CH4} > \\ce{NH3} > \\ce{H2O}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\ce{NH3} > \\ce{CH4} > \\ce{H2O}$",
+            "hi": "$\\ce{NH3} > \\ce{CH4} > \\ce{H2O}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\ce{CH4} = \\ce{NH3} = \\ce{H2O}$",
+            "hi": "$\\ce{CH4} = \\ce{NH3} = \\ce{H2O}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Count lone pairs: 0, 1, 2.",
+          "hi": "एकाकी युग्म गिनिए: 0, 1, 2।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "All three have four electron pairs. Every lone pair squeezes the bond pairs a little more.",
+          "hi": "तीनों में चार इलेक्ट्रॉन युग्म हैं। हर एकाकी युग्म आबंधी युग्मों को थोड़ा और दबाता है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.4: $109.5^\\circ$ ($\\ce{CH4}$), $107^\\circ$ ($\\ce{NH3}$), $104.5^\\circ$ ($\\ce{H2O}$).",
+            "hi": "NCERT §4.4: $109.5^\\circ$ ($\\ce{CH4}$), $107^\\circ$ ($\\ce{NH3}$), $104.5^\\circ$ ($\\ce{H2O}$)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "This is reversed: more lone pairs means a smaller angle.",
+              "hi": "यह उल्टा है: अधिक एकाकी युग्म का अर्थ छोटा कोण।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$\\ce{CH4}$ has no lone pair, so it has the largest angle.",
+              "hi": "$\\ce{CH4}$ में कोई एकाकी युग्म नहीं है, इसलिए उसका कोण सबसे बड़ा है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Lone pairs change the angles.",
+              "hi": "एकाकी युग्म कोण बदलते हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.vsepr.0004",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.vsepr.core.vsepr-shapes",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "How many lone pairs are there on the central atom of $\\ce{ClF3}$?",
+        "hi": "$\\ce{ClF3}$ के केंद्रीय परमाणु पर कितने एकाकी युग्म हैं?"
+      },
+      "answer": {
+        "value": 2,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "Pairs, not electrons.",
+          "hi": "युग्म, इलेक्ट्रॉन नहीं।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Chlorine has seven valence electrons; three are used in the Cl-F bonds and the remaining four pair up.",
+          "hi": "क्लोरीन के सात संयोजकता इलेक्ट्रॉन हैं; तीन Cl-F आबंधों में लगते हैं और बचे चार युग्म बनाते हैं।"
+        },
+        "steps": [
+          {
+            "en": "$7 - 3 = 4$ non-bonding electrons, which form $4 / 2 = 2$ lone pairs ($\\ce{AB3E2}$, NCERT Table 4.7).",
+            "hi": "$7 - 3 = 4$ अनाबंधी इलेक्ट्रॉन, जो $4 / 2 = 2$ एकाकी युग्म बनाते हैं ($\\ce{AB3E2}$, NCERT सारणी 4.7)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Answering 4 counts electrons, not pairs.",
+              "hi": "4 उत्तर देना इलेक्ट्रॉन गिनता है, युग्म नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.vsepr.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.vsepr.core.vsepr-shapes",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which molecule is see-saw shaped?",
+        "hi": "कौन-सा अणु ढेंकुली आकार का है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\ce{SF4}$",
+            "hi": "$\\ce{SF4}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\ce{CH4}$",
+            "hi": "$\\ce{CH4}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\ce{XeF4}$",
+            "hi": "$\\ce{XeF4}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\ce{BF3}$",
+            "hi": "$\\ce{BF3}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Look for 4 bond pairs plus 1 lone pair.",
+          "hi": "4 आबंधी युग्म और 1 एकाकी युग्म खोजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "S has 4 bond pairs and 1 lone pair. The lone pair takes an equatorial position of the trigonal bipyramid, and the four F atoms make a see-saw.",
+          "hi": "S में 4 आबंधी युग्म और 1 एकाकी युग्म हैं। एकाकी युग्म त्रिकोणीय द्विपिरामिड की विषुवतीय स्थिति लेता है, और चारों F परमाणु ढेंकुली बनाते हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT Tables 4.7 and 4.8: $\\ce{SF4}$, $\\ce{AB4E}$, see-saw.",
+            "hi": "NCERT सारणी 4.7 और 4.8: $\\ce{SF4}$, $\\ce{AB4E}$, ढेंकुली।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$\\ce{CH4}$ is tetrahedral.",
+              "hi": "$\\ce{CH4}$ चतुष्फलकीय है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$\\ce{XeF4}$ is square planar.",
+              "hi": "$\\ce{XeF4}$ वर्ग समतलीय है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$\\ce{BF3}$ is trigonal planar.",
+              "hi": "$\\ce{BF3}$ त्रिकोणीय समतलीय है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.vsepr.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.vsepr.core.vsepr-shapes",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The shape of $\\ce{BrF5}$ is",
+        "hi": "$\\ce{BrF5}$ की आकृति है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "trigonal bipyramidal",
+            "hi": "त्रिकोणीय द्विपिरामिडी"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "octahedral",
+            "hi": "अष्टफलकीय"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "square pyramidal",
+            "hi": "वर्ग पिरामिडी"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "pentagonal planar",
+            "hi": "पंचभुजीय समतलीय"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Br has 7 valence electrons; 5 are used in bonds.",
+          "hi": "Br के 7 संयोजकता इलेक्ट्रॉन हैं; 5 आबंधों में लगते हैं।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Br has 5 bond pairs and 1 lone pair: six pairs in an octahedron with one corner taken by the lone pair.",
+          "hi": "Br में 5 आबंधी युग्म और 1 एकाकी युग्म हैं: अष्टफलक में छह युग्म, जिसका एक कोना एकाकी युग्म ने लिया है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT Table 4.7: $\\ce{AB5E}$, $\\ce{BrF5}$, square pyramid.",
+            "hi": "NCERT सारणी 4.7: $\\ce{AB5E}$, $\\ce{BrF5}$, वर्ग पिरामिड।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "That would need five pairs and no lone pair, like $\\ce{PCl5}$.",
+              "hi": "इसके लिए पाँच युग्म और कोई एकाकी युग्म नहीं चाहिए, जैसे $\\ce{PCl5}$।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Octahedral is the arrangement of the six pairs, not the shape of the atoms.",
+              "hi": "अष्टफलकीय छह युग्मों की व्यवस्था है, परमाणुओं की आकृति नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "VSEPR gives no such shape for $\\ce{AB5E}$.",
+              "hi": "VSEPR $\\ce{AB5E}$ के लिए ऐसी कोई आकृति नहीं देता।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 50,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

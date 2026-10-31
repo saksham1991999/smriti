@@ -1,0 +1,90 @@
+{
+  "schema": "cheat_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Cheat sheet for this topic. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khch104) could not be retrieved, so a reviewer should check the terms.",
+  "id": "cs.chem.chemical-bonding.mot",
+  "scope": "topic",
+  "topic": "chem.chemical-bonding.mot",
+  "title": {
+    "en": "Molecular orbital theory",
+    "hi": "आण्विक कक्षक सिद्धांत"
+  },
+  "concepts": [
+    "chem.chemical-bonding.mot.core.mo-theory",
+    "chem.chemical-bonding.mot.core.mo-configuration-bond-order"
+  ],
+  "key_ideas": [
+    {
+      "en": "LCAO: $\\sigma = \\psi_A + \\psi_B$ (bonding, lower), $\\sigma^* = \\psi_A - \\psi_B$ (antibonding, higher).",
+      "hi": "LCAO: $\\sigma = \\psi_A + \\psi_B$ (आबंधी, नीचे), $\\sigma^* = \\psi_A - \\psi_B$ (प्रतिआबंधी, ऊपर)।"
+    },
+    {
+      "en": "Up to $\\ce{N2}$: $\\pi 2p$ below $\\sigma 2p_z$; for $\\ce{O2}$ and $\\ce{F2}$: $\\sigma 2p_z$ below $\\pi 2p$.",
+      "hi": "$\\ce{N2}$ तक: $\\pi 2p$, $\\sigma 2p_z$ से नीचे; $\\ce{O2}$ और $\\ce{F2}$ के लिए: $\\sigma 2p_z$, $\\pi 2p$ से नीचे।"
+    },
+    {
+      "en": "Bond orders: $\\ce{B2}$ 1, $\\ce{C2}$ 2, $\\ce{N2}$ 3, $\\ce{O2}$ 2, $\\ce{F2}$ 1, $\\ce{Ne2}$ 0; $\\ce{B2}$ and $\\ce{O2}$ paramagnetic.",
+      "hi": "आबंध कोटि: $\\ce{B2}$ 1, $\\ce{C2}$ 2, $\\ce{N2}$ 3, $\\ce{O2}$ 2, $\\ce{F2}$ 1, $\\ce{Ne2}$ 0; $\\ce{B2}$ और $\\ce{O2}$ अनुचुंबकीय।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Bond order",
+        "hi": "आबंध कोटि"
+      },
+      "latex": "\\text{b.o.} = \\tfrac{1}{2}(N_b - N_a)"
+    }
+  ],
+  "mnemonics": [
+    {
+      "en": "m.chem.chemical-bonding.mot.core.mo-configuration-bond-order.1",
+      "hi": "m.chem.chemical-bonding.mot.core.mo-configuration-bond-order.2"
+    }
+  ],
+  "traps": [
+    {
+      "mistake": {
+        "en": "$\\sigma 2p_z$ is always below $\\pi 2p$.",
+        "hi": "$\\sigma 2p_z$ सदा $\\pi 2p$ से नीचे होता है।"
+      },
+      "correct": {
+        "en": "Only for $\\ce{O2}$ and $\\ce{F2}$; for $\\ce{N2}$ and lighter molecules it lies above the $\\pi 2p$ pair.",
+        "hi": "केवल $\\ce{O2}$ और $\\ce{F2}$ के लिए; $\\ce{N2}$ और हल्के अणुओं के लिए यह $\\pi 2p$ युग्म से ऊपर है।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "A double bond always has one sigma and one pi bond.",
+        "hi": "द्वि-आबंध में सदा एक सिग्मा और एक पाई आबंध होता है।"
+      },
+      "correct": {
+        "en": "In $\\ce{C2}$ the double bond is made of two pi bonds.",
+        "hi": "$\\ce{C2}$ में द्वि-आबंध दो पाई आबंधों से बना है।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "Bond order zero still means a weak bond.",
+        "hi": "शून्य आबंध कोटि का अर्थ फिर भी एक कमज़ोर आबंध है।"
+      },
+      "correct": {
+        "en": "Zero means the molecule is unstable; $\\ce{He2}$ and $\\ce{Be2}$ do not exist.",
+        "hi": "शून्य का अर्थ अस्थायी अणु; $\\ce{He2}$ और $\\ce{Be2}$ का अस्तित्व नहीं है।"
+      }
+    }
+  ],
+  "diagram": "img.chemical-bonding.pond-ripples",
+  "hi_source": "translation"
+}

@@ -1,0 +1,196 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "math.differential-equations.de-methods",
+  "questions": [
+    {
+      "id": "q.math.differential-equations.de-methods.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.differential-equations.de-methods.core.de-variables-separable",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "If the curve $y=f(x)$ passes through the point $(1,e)$ and satisfies the differential equation $dy=y\\left(2+\\log_e x\\right)dx$, $x>0$, then $f(e)$ is equal to :",
+        "hi": "यदि वक्र $y=f(x)$ बिंदु $(1,e)$ से होकर जाता है और अवकल समीकरण $dy=y\\left(2+\\log_e x\\right)dx$, $x>0$ को संतुष्ट करता है, तो $f(e)$ बराबर है :"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$e^{e}$",
+            "hi": "$e^{e}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$e^{e^2}$",
+            "hi": "$e^{e^2}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$e^{2e}$",
+            "hi": "$e^{2e}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$e^{2^e}$",
+            "hi": "$e^{2^e}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Separate the variables: $\\frac{dy}{y}=(2+\\log_e x)\\,dx$, integrate, and use the point $(1,e)$ for the constant.",
+          "hi": "चरों को अलग कीजिए: $\\frac{dy}{y}=(2+\\log_e x)\\,dx$, समाकलन कीजिए, और अचर के लिए बिंदु $(1,e)$ का उपयोग कीजिए।"
+        },
+        "steps": [
+          {
+            "en": "$\\log_e y=2x+x\\log_e x-x+C=x+x\\log_e x+C$.",
+            "hi": "$\\log_e y=2x+x\\log_e x-x+C=x+x\\log_e x+C$।"
+          },
+          {
+            "en": "At $(1,e)$: $1=1+0+C$, so $C=0$.",
+            "hi": "$(1,e)$ पर: $1=1+0+C$, अतः $C=0$।"
+          },
+          {
+            "en": "At $x=e$: $\\log_e y=e+e=2e$, so $f(e)=e^{2e}$.",
+            "hi": "$x=e$ पर: $\\log_e y=e+e=2e$, अतः $f(e)=e^{2e}$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 120,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 17
+      }
+    },
+    {
+      "id": "q.math.differential-equations.de-methods.9002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.differential-equations.de-methods.core.de-variables-separable",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Let $y=y(x)$ be the solution curve of the differential equation $(1+\\sin x)\\frac{dy}{dx}+(y+1)\\cos x=0$, $y(0)=0$. If the curve $y=y(x)$ passes through the point $\\left(\\alpha,\\frac{-1}{2}\\right)$, then a value of $\\alpha$ is :",
+        "hi": "माना $y=y(x)$ अवकल समीकरण $(1+\\sin x)\\frac{dy}{dx}+(y+1)\\cos x=0$, $y(0)=0$ का हल वक्र है। यदि वक्र $y=y(x)$ बिंदु $\\left(\\alpha,\\frac{-1}{2}\\right)$ से होकर जाता है, तो $\\alpha$ का एक मान है :"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\frac{\\pi}{6}$",
+            "hi": "$\\frac{\\pi}{6}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\frac{\\pi}{4}$",
+            "hi": "$\\frac{\\pi}{4}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\frac{\\pi}{3}$",
+            "hi": "$\\frac{\\pi}{3}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\frac{\\pi}{2}$",
+            "hi": "$\\frac{\\pi}{2}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "d"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "The equation says the derivative of $(y+1)(1+\\sin x)$ is zero, so that product is a constant.",
+          "hi": "समीकरण कहता है कि $(y+1)(1+\\sin x)$ का अवकलज शून्य है, अतः यह गुणनफल अचर है।"
+        },
+        "steps": [
+          {
+            "en": "$(y+1)(1+\\sin x)=C$; $y(0)=0$ gives $C=1$.",
+            "hi": "$(y+1)(1+\\sin x)=C$; $y(0)=0$ से $C=1$।"
+          },
+          {
+            "en": "At $y=-\\frac12$: $\\frac12(1+\\sin\\alpha)=1$, so $\\sin\\alpha=1$ and $\\alpha=\\frac{\\pi}{2}$.",
+            "hi": "$y=-\\frac12$ पर: $\\frac12(1+\\sin\\alpha)=1$, अतः $\\sin\\alpha=1$ और $\\alpha=\\frac{\\pi}{2}$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 120,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 20
+      }
+    }
+  ]
+}

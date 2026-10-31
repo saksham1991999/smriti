@@ -1,0 +1,109 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "chem.electrochemistry.cells",
+  "questions": [
+    {
+      "id": "q.chem.electrochemistry.cells.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.electrochemistry.cells.core.electrode-potential-emf",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "An electrochemical cell is constructed using half cells in the direction of spontaneous change $\\ce{Fe(OH)2(s) + 2e- -> Fe(s) + 2OH^-(aq)}$ $E^\\theta=-0.88\\ \\mathrm{V}$ and $\\ce{AgBr(s) + e- -> Ag(s) + Br^-(aq)}$ $E^\\theta=+0.07\\ \\mathrm{V}$ Which of the following option is correct ?",
+        "hi": "स्वतः परिवर्तन की दिशा में अर्ध-सेलों $\\ce{Fe(OH)2(s) + 2e- -> Fe(s) + 2OH^-(aq)}$ $E^\\theta=-0.88\\ \\mathrm{V}$ और $\\ce{AgBr(s) + e- -> Ag(s) + Br^-(aq)}$ $E^\\theta=+0.07\\ \\mathrm{V}$ का उपयोग करके एक विद्युत-रासायनिक सेल बनाया गया है। निम्नलिखित में से कौन-सा विकल्प सही है ?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Overall reaction $\\ce{Fe(s) + 2OH^-(aq) + 2AgBr(s) <=> Fe(OH)2(s) + 2Ag(s) + 2Br^-(aq)}$",
+            "hi": "समग्र अभिक्रिया $\\ce{Fe(s) + 2OH^-(aq) + 2AgBr(s) <=> Fe(OH)2(s) + 2Ag(s) + 2Br^-(aq)}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$E^\\theta_{cell}=-0.95\\ \\mathrm{V}$",
+            "hi": "$E^\\theta_{cell}=-0.95\\ \\mathrm{V}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Fe is reduced in the electrochemical cell",
+            "hi": "विद्युत-रासायनिक सेल में Fe का अपचयन होता है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$E^\\theta_{cell}$ is an extensive property",
+            "hi": "$E^\\theta_{cell}$ एक विस्तीर्ण गुण है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "The half cell with the higher reduction potential is reduced; here that is $\\ce{AgBr}$, so iron is oxidised and the cell potential is positive.",
+          "hi": "अधिक अपचयन विभव वाला अर्ध-सेल अपचयित होता है; यहाँ वह $\\ce{AgBr}$ है, अतः लोहे का ऑक्सीकरण होता है और सेल विभव धनात्मक है।"
+        },
+        "steps": [
+          {
+            "en": "Cathode: $\\ce{AgBr}$ ($+0.07\\ \\mathrm{V}$); anode: $\\ce{Fe}$. Adding twice the silver half reaction to the reversed iron one gives the overall reaction in option (a).",
+            "hi": "कैथोड: $\\ce{AgBr}$ ($+0.07\\ \\mathrm{V}$); ऐनोड: $\\ce{Fe}$। सिल्वर अर्ध-अभिक्रिया के दोगुने में उलटी आयरन अर्ध-अभिक्रिया जोड़ने पर विकल्प (a) की समग्र अभिक्रिया मिलती है।"
+          },
+          {
+            "en": "$E^\\theta_{cell}=0.07-(-0.88)=+0.95\\ \\mathrm{V}$, Fe is oxidised, and $E^\\theta$ is intensive, so the other options are wrong.",
+            "hi": "$E^\\theta_{cell}=0.07-(-0.88)=+0.95\\ \\mathrm{V}$, Fe का ऑक्सीकरण होता है, और $E^\\theta$ गहन गुण है, अतः अन्य विकल्प गलत हैं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 90,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 57
+      }
+    }
+  ]
+}

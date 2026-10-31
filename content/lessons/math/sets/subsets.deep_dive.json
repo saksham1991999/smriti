@@ -1,0 +1,530 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 1 Sets (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh101.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax Contemporary Mathematics, §1.2 Subsets",
+      "url": "https://openstax.org/books/contemporary-mathematics/pages/1-2-subsets",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "other",
+      "ref": "Wikipedia, Power set (definition and number of subsets)",
+      "url": "https://en.wikipedia.org/wiki/Power_set",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khmh101) could not be retrieved, so a reviewer should check the terms.",
+  "id": "math.sets.subsets:deep_dive",
+  "topic": "math.sets.subsets",
+  "mode": "deep_dive",
+  "estimated_minutes": 8,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "math.sets.subsets.core.subsets-intervals",
+    "math.sets.subsets.core.power-set"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Subsets",
+        "hi": "उपसमुच्चय"
+      },
+      "subtopic": "math.sets.subsets.core",
+      "card_ids": [
+        "math.sets.subsets:dd:01",
+        "math.sets.subsets:dd:02",
+        "math.sets.subsets:dd:03"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Intervals on the real line",
+        "hi": "वास्तविक रेखा पर अंतराल"
+      },
+      "subtopic": "math.sets.subsets.core",
+      "card_ids": [
+        "math.sets.subsets:dd:04",
+        "math.sets.subsets:dd:05",
+        "math.sets.subsets:dd:06"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-3",
+      "title": {
+        "en": "The power set",
+        "hi": "घात समुच्चय"
+      },
+      "subtopic": "math.sets.subsets.core",
+      "card_ids": [
+        "math.sets.subsets:dd:07",
+        "math.sets.subsets:dd:08",
+        "math.sets.subsets:dd:09",
+        "math.sets.subsets:dd:10",
+        "math.sets.subsets:dd:11",
+        "math.sets.subsets:dd:12"
+      ],
+      "estimated_minutes": 4
+    }
+  ],
+  "cards": [
+    {
+      "id": "math.sets.subsets:dd:01",
+      "type": "explainer",
+      "concepts": [
+        "math.sets.subsets.core.subsets-intervals"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "One set inside another",
+        "hi": "एक समुच्चय दूसरे के भीतर"
+      },
+      "body": {
+        "en": "A set A is a subset of a set B if every element of A is also an element of B; we write $A \\subset B$. Like a smaller steel bowl resting inside a bigger one, all of A lies inside B. If even one element of A is not in B, then $A \\not\\subset B$.\n\nFrom the definition: every set is a subset of itself; the empty set $\\phi$ is a subset of every set; and if $A \\subset B$ and $B \\subset A$, then $A = B$.\n\nIf $A \\subset B$ and $A \\ne B$, A is a proper subset of B, and B is a superset of A. A set with only one element, such as $\\{a\\}$, is a singleton set.\n\nNumber sets nest like the bowls: $\\mathbf{N} \\subset \\mathbf{Z} \\subset \\mathbf{Q}$ and $\\mathbf{Q} \\subset \\mathbf{R}$. The set $\\mathbf{T}$ of irrational numbers is also a subset of $\\mathbf{R}$, but $\\mathbf{N} \\not\\subset \\mathbf{T}$.\n\nA universal set U is a basic set that contains every set in a discussion: for the set of integers, the set of rational numbers or the set of real numbers can serve as U.",
+        "hi": "समुच्चय A, समुच्चय B का उपसमुच्चय है यदि A का हर अवयव B का भी अवयव हो; हम $A \\subset B$ लिखते हैं। जैसे स्टील की छोटी कटोरी बड़ी कटोरी के भीतर रखी हो, वैसे ही पूरा A, B के भीतर है। यदि A का एक भी अवयव B में न हो, तो $A \\not\\subset B$।\n\nपरिभाषा से: हर समुच्चय स्वयं का उपसमुच्चय है; रिक्त समुच्चय $\\phi$ हर समुच्चय का उपसमुच्चय है; और यदि $A \\subset B$ तथा $B \\subset A$, तो $A = B$।\n\nयदि $A \\subset B$ और $A \\ne B$, तो A, B का उचित उपसमुच्चय है और B, A का अधिसमुच्चय। केवल एक अवयव वाला समुच्चय, जैसे $\\{a\\}$, एकल समुच्चय कहलाता है।\n\nसंख्या समुच्चय कटोरियों की तरह एक-दूसरे में समाए हैं: $\\mathbf{N} \\subset \\mathbf{Z} \\subset \\mathbf{Q}$ और $\\mathbf{Q} \\subset \\mathbf{R}$। अपरिमेय संख्याओं का समुच्चय $\\mathbf{T}$ भी $\\mathbf{R}$ का उपसमुच्चय है, पर $\\mathbf{N} \\not\\subset \\mathbf{T}$।\n\nसार्वत्रिक समुच्चय U वह आधारभूत समुच्चय है जिसमें चर्चा के सभी समुच्चय हों: पूर्णांकों के समुच्चय के लिए परिमेय संख्याओं या वास्तविक संख्याओं का समुच्चय U हो सकता है।"
+      },
+      "media": "img.sets.nested-bowls",
+      "highlights": [
+        {
+          "term": {
+            "en": "subset",
+            "hi": "उपसमुच्चय"
+          },
+          "definition": {
+            "en": "$A \\subset B$ when every element of A is in B.",
+            "hi": "$A \\subset B$ जब A का हर अवयव B में हो।"
+          }
+        },
+        {
+          "term": {
+            "en": "proper subset",
+            "hi": "उचित उपसमुच्चय"
+          },
+          "definition": {
+            "en": "$A \\subset B$ and $A \\ne B$.",
+            "hi": "$A \\subset B$ और $A \\ne B$।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 1 Sets (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh101.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§1.6, §1.6.1, §1.7"
+      }
+    },
+    {
+      "id": "math.sets.subsets:dd:02",
+      "type": "interactive",
+      "concepts": [
+        "math.sets.subsets.core.subsets-intervals"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Is the first set a subset of the second?",
+        "hi": "क्या पहला समुच्चय दूसरे का उपसमुच्चय है?"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "i1",
+            "text": {
+              "en": "$\\{1, 2\\}$ and $\\{1, 2, 3\\}$",
+              "hi": "$\\{1, 2\\}$ और $\\{1, 2, 3\\}$"
+            }
+          },
+          {
+            "id": "i2",
+            "text": {
+              "en": "$\\phi$ and $\\{5\\}$",
+              "hi": "$\\phi$ और $\\{5\\}$"
+            }
+          },
+          {
+            "id": "i3",
+            "text": {
+              "en": "$\\mathbf{N}$ and $\\mathbf{Z}$",
+              "hi": "$\\mathbf{N}$ और $\\mathbf{Z}$"
+            }
+          },
+          {
+            "id": "i4",
+            "text": {
+              "en": "$\\{0\\}$ and $\\mathbf{N}$",
+              "hi": "$\\{0\\}$ और $\\mathbf{N}$"
+            }
+          },
+          {
+            "id": "i5",
+            "text": {
+              "en": "$\\{1\\}$ and $\\{\\{1\\}, 2\\}$",
+              "hi": "$\\{1\\}$ और $\\{\\{1\\}, 2\\}$"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "yes",
+            "label": {
+              "en": "Subset",
+              "hi": "उपसमुच्चय"
+            }
+          },
+          {
+            "id": "no",
+            "label": {
+              "en": "Not a subset",
+              "hi": "उपसमुच्चय नहीं"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "i1",
+            "bin": "yes"
+          },
+          {
+            "item": "i2",
+            "bin": "yes"
+          },
+          {
+            "item": "i3",
+            "bin": "yes"
+          },
+          {
+            "item": "i4",
+            "bin": "no"
+          },
+          {
+            "item": "i5",
+            "bin": "no"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: $0 \\notin \\mathbf{N}$, and the elements of $\\{\\{1\\}, 2\\}$ are $\\{1\\}$ and $2$, not $1$.",
+          "hi": "सही: $0 \\notin \\mathbf{N}$, और $\\{\\{1\\}, 2\\}$ के अवयव $\\{1\\}$ और $2$ हैं, $1$ नहीं।"
+        },
+        "wrong": {
+          "en": "Check every element of the first set against the second.",
+          "hi": "पहले समुच्चय का हर अवयव दूसरे में जाँचिए।"
+        }
+      }
+    },
+    {
+      "id": "math.sets.subsets:dd:03",
+      "type": "question",
+      "concepts": [
+        "math.sets.subsets.core.subsets-intervals"
+      ],
+      "depth": 1,
+      "question": "q.math.sets.subsets.0001"
+    },
+    {
+      "id": "math.sets.subsets:dd:04",
+      "type": "formula",
+      "concepts": [
+        "math.sets.subsets.core.subsets-intervals"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Intervals and their length",
+        "hi": "अंतराल और उनकी लंबाई"
+      },
+      "latex": "\\ell = b - a",
+      "symbols": [
+        {
+          "symbol": "a",
+          "meaning": {
+            "en": "left end point of the interval",
+            "hi": "अंतराल का बायाँ अंत्य बिंदु"
+          },
+          "unit": null
+        },
+        {
+          "symbol": "b",
+          "meaning": {
+            "en": "right end point of the interval",
+            "hi": "अंतराल का दायाँ अंत्य बिंदु"
+          },
+          "unit": null
+        },
+        {
+          "symbol": "\\ell",
+          "meaning": {
+            "en": "length of the interval",
+            "hi": "अंतराल की लंबाई"
+          },
+          "unit": null
+        }
+      ],
+      "conditions": {
+        "en": "Here $a < b$. The open interval $(a, b) = \\{y : a < y < b\\}$ leaves out both end points; the closed interval $[a, b] = \\{y : a \\le y \\le b\\}$ keeps both; $[a, b)$ and $(a, b]$ keep one each. All four have length $b - a$. Also $[0, \\infty)$ is the set of non-negative real numbers and $(-\\infty, 0)$ is the set of negative real numbers.",
+        "hi": "यहाँ $a < b$। विवृत अंतराल $(a, b) = \\{y : a < y < b\\}$ दोनों अंत्य बिंदु छोड़ देता है; संवृत अंतराल $[a, b] = \\{y : a \\le y \\le b\\}$ दोनों रखता है; $[a, b)$ और $(a, b]$ एक-एक रखते हैं। चारों की लंबाई $b - a$ है। साथ ही $[0, \\infty)$ ऋणेतर वास्तविक संख्याओं का और $(-\\infty, 0)$ ऋण वास्तविक संख्याओं का समुच्चय है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 1 Sets (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh101.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§1.6.2"
+      }
+    },
+    {
+      "id": "math.sets.subsets:dd:05",
+      "type": "worked_example",
+      "concepts": [
+        "math.sets.subsets.core.subsets-intervals"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "Write $\\{x : x \\in \\mathbf{R},\\ -5 < x \\le 7\\}$ as an interval, and write $[-3, 5)$ in set-builder form.",
+        "hi": "$\\{x : x \\in \\mathbf{R},\\ -5 < x \\le 7\\}$ को अंतराल के रूप में और $[-3, 5)$ को समुच्चय-निर्माण रूप में लिखिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$-5$ is excluded (round bracket) and $7$ is included (square bracket): $(-5, 7]$.",
+          "hi": "$-5$ शामिल नहीं (गोल कोष्ठक) और $7$ शामिल है (वर्ग कोष्ठक): $(-5, 7]$।"
+        },
+        {
+          "en": "$[-3, 5)$ includes $-3$ and excludes $5$: $\\{x : -3 \\le x < 5\\}$.",
+          "hi": "$[-3, 5)$ में $-3$ शामिल है और $5$ नहीं: $\\{x : -3 \\le x < 5\\}$।"
+        },
+        {
+          "en": "Their lengths are $7 - (-5) = 12$ and $5 - (-3) = 8$.",
+          "hi": "इनकी लंबाइयाँ $7 - (-5) = 12$ और $5 - (-3) = 8$ हैं।"
+        }
+      ],
+      "answer": {
+        "en": "$(-5, 7]$ and $\\{x : -3 \\le x < 5\\}$",
+        "hi": "$(-5, 7]$ और $\\{x : -3 \\le x < 5\\}$"
+      },
+      "common_trap": {
+        "en": "Swapping the brackets: a square bracket means the end point is included.",
+        "hi": "कोष्ठकों की अदला-बदली: वर्ग कोष्ठक का अर्थ है अंत्य बिंदु शामिल है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 1 Sets (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh101.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§1.6.2"
+      }
+    },
+    {
+      "id": "math.sets.subsets:dd:06",
+      "type": "question",
+      "concepts": [
+        "math.sets.subsets.core.subsets-intervals"
+      ],
+      "depth": 2,
+      "question": "q.math.sets.subsets.0003"
+    },
+    {
+      "id": "math.sets.subsets:dd:07",
+      "type": "formula",
+      "concepts": [
+        "math.sets.subsets.core.power-set"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Number of subsets",
+        "hi": "उपसमुच्चयों की संख्या"
+      },
+      "latex": "n\\big(P(A)\\big) = 2^{n}",
+      "symbols": [
+        {
+          "symbol": "P(A)",
+          "meaning": {
+            "en": "the power set of A: the set of all subsets of A",
+            "hi": "A का घात समुच्चय: A के सभी उपसमुच्चयों का समुच्चय"
+          },
+          "unit": null
+        },
+        {
+          "symbol": "n",
+          "meaning": {
+            "en": "the number of elements of A",
+            "hi": "A के अवयवों की संख्या"
+          },
+          "unit": null
+        }
+      ],
+      "conditions": {
+        "en": "A is a finite set with $n$ elements. The count includes $\\phi$ and A itself, so A has $2^{n} - 1$ proper subsets.",
+        "hi": "A, $n$ अवयवों वाला परिमित समुच्चय है। गिनती में $\\phi$ और स्वयं A शामिल हैं, इसलिए A के $2^{n} - 1$ उचित उपसमुच्चय हैं।"
+      },
+      "source": {
+        "kind": "openstax",
+        "ref": "OpenStax Contemporary Mathematics, §1.2 Subsets",
+        "url": "https://openstax.org/books/contemporary-mathematics/pages/1-2-subsets",
+        "retrieved": "2026-10-30"
+      }
+    },
+    {
+      "id": "math.sets.subsets:dd:08",
+      "type": "worked_example",
+      "concepts": [
+        "math.sets.subsets.core.power-set"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "List the power set of $A = \\{1, 2\\}$ and check the count.",
+        "hi": "$A = \\{1, 2\\}$ का घात समुच्चय लिखिए और गिनती जाँचिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "Subsets with no element: $\\phi$.",
+          "hi": "बिना अवयव वाला उपसमुच्चय: $\\phi$।"
+        },
+        {
+          "en": "Subsets with one element: $\\{1\\}$ and $\\{2\\}$.",
+          "hi": "एक अवयव वाले उपसमुच्चय: $\\{1\\}$ और $\\{2\\}$।"
+        },
+        {
+          "en": "Subset with both elements: $\\{1, 2\\}$.",
+          "hi": "दोनों अवयवों वाला उपसमुच्चय: $\\{1, 2\\}$।"
+        },
+        {
+          "en": "So $P(A) = \\{\\phi, \\{1\\}, \\{2\\}, \\{1, 2\\}\\}$, which has $4 = 2^2$ elements.",
+          "hi": "अतः $P(A) = \\{\\phi, \\{1\\}, \\{2\\}, \\{1, 2\\}\\}$, जिसमें $4 = 2^2$ अवयव हैं।"
+        }
+      ],
+      "answer": {
+        "en": "$P(A) = \\{\\phi, \\{1\\}, \\{2\\}, \\{1, 2\\}\\}$",
+        "hi": "$P(A) = \\{\\phi, \\{1\\}, \\{2\\}, \\{1, 2\\}\\}$"
+      },
+      "answer_value": {
+        "value": 4,
+        "unit": null,
+        "tolerance": {
+          "abs": 0
+        }
+      },
+      "common_trap": {
+        "en": "Leaving out $\\phi$ or A itself, which are always subsets.",
+        "hi": "$\\phi$ या स्वयं A को छोड़ देना, जो सदा उपसमुच्चय होते हैं।"
+      },
+      "source": {
+        "kind": "other",
+        "ref": "Wikipedia, Power set (definition and number of subsets)",
+        "url": "https://en.wikipedia.org/wiki/Power_set",
+        "retrieved": "2026-10-30"
+      }
+    },
+    {
+      "id": "math.sets.subsets:dd:09",
+      "type": "derivation",
+      "concepts": [
+        "math.sets.subsets.core.power-set"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Why $2^{n}$?",
+        "hi": "$2^{n}$ क्यों?"
+      },
+      "steps": [
+        {
+          "latex": "2",
+          "say": {
+            "en": "Building a subset, decide for the first element: in or out. Two choices.",
+            "hi": "उपसमुच्चय बनाते समय पहले अवयव के लिए तय कीजिए: अंदर या बाहर। दो विकल्प।"
+          },
+          "why": null
+        },
+        {
+          "latex": "\\underbrace{2 \\times 2 \\times \\cdots \\times 2}_{n}",
+          "say": {
+            "en": "Each of the $n$ elements has the same two choices, made independently.",
+            "hi": "$n$ अवयवों में से हर एक के पास वही दो विकल्प हैं, जो स्वतंत्र रूप से चुने जाते हैं।"
+          },
+          "why": null
+        },
+        {
+          "latex": "2^{n}",
+          "say": {
+            "en": "Multiplying the choices gives $2^{n}$ different subsets; all out gives $\\phi$, all in gives A.",
+            "hi": "विकल्पों का गुणा $2^{n}$ भिन्न उपसमुच्चय देता है; सब बाहर से $\\phi$, सब अंदर से A।"
+          },
+          "why": null
+        }
+      ],
+      "source": {
+        "kind": "other",
+        "ref": "Wikipedia, Power set (definition and number of subsets)",
+        "url": "https://en.wikipedia.org/wiki/Power_set",
+        "retrieved": "2026-10-30"
+      }
+    },
+    {
+      "id": "math.sets.subsets:dd:10",
+      "type": "memory_hook",
+      "concepts": [
+        "math.sets.subsets.core.power-set"
+      ],
+      "depth": 2,
+      "mnemonic": {
+        "en": "m.math.sets.subsets.core.power-set.1",
+        "hi": "m.math.sets.subsets.core.power-set.2"
+      }
+    },
+    {
+      "id": "math.sets.subsets:dd:11",
+      "type": "question",
+      "concepts": [
+        "math.sets.subsets.core.power-set"
+      ],
+      "depth": 2,
+      "question": "q.math.sets.subsets.0005"
+    },
+    {
+      "id": "math.sets.subsets:dd:12",
+      "type": "summary",
+      "concepts": [
+        "math.sets.subsets.core.subsets-intervals",
+        "math.sets.subsets.core.power-set"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "$A \\subset B$: every element of A is in B; $\\phi \\subset A$ and $A \\subset A$ for every A.",
+          "hi": "$A \\subset B$: A का हर अवयव B में है; हर A के लिए $\\phi \\subset A$ और $A \\subset A$।"
+        },
+        {
+          "en": "Intervals $(a, b)$, $[a, b]$, $[a, b)$, $(a, b]$ all have length $b - a$.",
+          "hi": "अंतराल $(a, b)$, $[a, b]$, $[a, b)$, $(a, b]$ सबकी लंबाई $b - a$ है।"
+        },
+        {
+          "en": "A set with $n$ elements has $2^{n}$ subsets and $2^{n} - 1$ proper subsets.",
+          "hi": "$n$ अवयवों वाले समुच्चय के $2^{n}$ उपसमुच्चय और $2^{n} - 1$ उचित उपसमुच्चय हैं।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 1 Sets (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh101.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§1.6"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

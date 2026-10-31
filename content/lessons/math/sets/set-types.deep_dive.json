@@ -1,0 +1,337 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 1 Sets (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh101.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khmh101) could not be retrieved, so a reviewer should check the terms.",
+  "id": "math.sets.set-types:deep_dive",
+  "topic": "math.sets.set-types",
+  "mode": "deep_dive",
+  "estimated_minutes": 4,
+  "min_depth": 1,
+  "max_depth": 2,
+  "concepts": [
+    "math.sets.set-types.core.empty-finite-equal-sets"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Empty, finite and infinite",
+        "hi": "रिक्त, परिमित और अपरिमित"
+      },
+      "subtopic": "math.sets.set-types.core",
+      "card_ids": [
+        "math.sets.set-types:dd:01",
+        "math.sets.set-types:dd:02",
+        "math.sets.set-types:dd:03"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Sorting sets",
+        "hi": "समुच्चयों को छाँटना"
+      },
+      "subtopic": "math.sets.set-types.core",
+      "card_ids": [
+        "math.sets.set-types:dd:04",
+        "math.sets.set-types:dd:05",
+        "math.sets.set-types:dd:06",
+        "math.sets.set-types:dd:07"
+      ],
+      "estimated_minutes": 3
+    }
+  ],
+  "cards": [
+    {
+      "id": "math.sets.set-types:dd:01",
+      "type": "explainer",
+      "concepts": [
+        "math.sets.set-types.core.empty-finite-equal-sets"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "The empty set",
+        "hi": "रिक्त समुच्चय"
+      },
+      "body": {
+        "en": "A set with no element at all is the empty set, also called the null set or the void set, written $\\phi$ or $\\{\\ \\}$. Like a clean tiffin box with nothing inside, it is still a set.\n\nExamples: $\\{x : 1 < x < 2,\\ x \\in \\mathbf{N}\\}$ is empty, because no natural number lies between $1$ and $2$. $\\{x : x^2 - 2 = 0,\\ x \\in \\mathbf{Q}\\}$ is empty, because no rational number has square $2$. The set of even prime numbers greater than $2$ is empty.\n\nCareful: $\\{0\\}$ is not empty. It has one element, $0$.",
+        "hi": "जिस समुच्चय में कोई भी अवयव न हो वह रिक्त समुच्चय है, जिसे शून्य समुच्चय या अभावी समुच्चय भी कहते हैं और $\\phi$ या $\\{\\ \\}$ से लिखते हैं। भीतर से खाली साफ़ टिफ़िन डिब्बे की तरह, यह भी एक समुच्चय है।\n\nउदाहरण: $\\{x : 1 < x < 2,\\ x \\in \\mathbf{N}\\}$ रिक्त है, क्योंकि $1$ और $2$ के बीच कोई प्राकृत संख्या नहीं है। $\\{x : x^2 - 2 = 0,\\ x \\in \\mathbf{Q}\\}$ रिक्त है, क्योंकि किसी परिमेय संख्या का वर्ग $2$ नहीं होता। $2$ से बड़ी सम अभाज्य संख्याओं का समुच्चय रिक्त है।\n\nध्यान दीजिए: $\\{0\\}$ रिक्त नहीं है। इसमें एक अवयव है, $0$।"
+      },
+      "media": "img.sets.empty-tiffin",
+      "highlights": [
+        {
+          "term": {
+            "en": "empty set",
+            "hi": "रिक्त समुच्चय"
+          },
+          "definition": {
+            "en": "The set with no element, written $\\phi$.",
+            "hi": "बिना किसी अवयव वाला समुच्चय, जिसे $\\phi$ लिखते हैं।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 1 Sets (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh101.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§1.3"
+      }
+    },
+    {
+      "id": "math.sets.set-types:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "math.sets.set-types.core.empty-finite-equal-sets"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Finite, infinite and equal sets",
+        "hi": "परिमित, अपरिमित और समान समुच्चय"
+      },
+      "body": {
+        "en": "A set that is empty or has a definite number of elements is finite; otherwise it is infinite. For a finite set S, $n(S)$ is the number of distinct elements. The days of the week form a finite set with $n = 7$; the natural numbers form an infinite set.\n\nSome infinite sets can be written in roster form with dots, such as $\\mathbf{N} = \\{1, 2, 3, \\ldots\\}$. The set of real numbers cannot, because its elements do not follow any pattern that can be listed.\n\nTwo sets A and B are equal, $A = B$, when they have exactly the same elements. Order and repetition do not matter: $\\{1, 2, 2, 3\\} = \\{3, 2, 1\\}$. An empty tiffin is empty whatever its shape: there is only one empty set.",
+        "hi": "जो समुच्चय रिक्त हो या जिसमें अवयवों की निश्चित संख्या हो, वह परिमित है; अन्यथा अपरिमित। परिमित समुच्चय S के लिए $n(S)$ उसके भिन्न अवयवों की संख्या है। सप्ताह के दिन $n = 7$ वाला परिमित समुच्चय बनाते हैं; प्राकृत संख्याएँ अपरिमित समुच्चय बनाती हैं।\n\nकुछ अपरिमित समुच्चय बिंदुओं के साथ सूचीरूप में लिखे जा सकते हैं, जैसे $\\mathbf{N} = \\{1, 2, 3, \\ldots\\}$। वास्तविक संख्याओं का समुच्चय नहीं लिखा जा सकता, क्योंकि उसके अवयव किसी सूचीबद्ध करने योग्य पैटर्न का पालन नहीं करते।\n\nदो समुच्चय A और B समान, $A = B$, होते हैं जब उनमें ठीक-ठीक एक जैसे अवयव हों। क्रम और दोहराव महत्त्वहीन हैं: $\\{1, 2, 2, 3\\} = \\{3, 2, 1\\}$। खाली टिफ़िन किसी भी आकार का हो, खाली ही है: रिक्त समुच्चय केवल एक है।"
+      },
+      "media": "img.sets.empty-tiffin",
+      "highlights": [
+        {
+          "term": {
+            "en": "equal sets",
+            "hi": "समान समुच्चय"
+          },
+          "definition": {
+            "en": "Sets with exactly the same elements.",
+            "hi": "ठीक-ठीक एक जैसे अवयवों वाले समुच्चय।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 1 Sets (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh101.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§1.4, §1.5"
+      }
+    },
+    {
+      "id": "math.sets.set-types:dd:03",
+      "type": "question",
+      "concepts": [
+        "math.sets.set-types.core.empty-finite-equal-sets"
+      ],
+      "depth": 1,
+      "question": "q.math.sets.set-types.0001"
+    },
+    {
+      "id": "math.sets.set-types:dd:04",
+      "type": "interactive",
+      "concepts": [
+        "math.sets.set-types.core.empty-finite-equal-sets"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Empty, finite or infinite?",
+        "hi": "रिक्त, परिमित या अपरिमित?"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "e1",
+            "text": {
+              "en": "$\\{x : x \\in \\mathbf{N},\\ 1 < x < 2\\}$",
+              "hi": "$\\{x : x \\in \\mathbf{N},\\ 1 < x < 2\\}$"
+            }
+          },
+          {
+            "id": "e2",
+            "text": {
+              "en": "Odd integers x with $x^2 = 4$",
+              "hi": "$x^2 = 4$ वाले विषम पूर्णांक x"
+            }
+          },
+          {
+            "id": "f1",
+            "text": {
+              "en": "Even prime numbers",
+              "hi": "सम अभाज्य संख्याएँ"
+            }
+          },
+          {
+            "id": "f2",
+            "text": {
+              "en": "Letters of the word INDIA",
+              "hi": "शब्द INDIA के अक्षर"
+            }
+          },
+          {
+            "id": "i1",
+            "text": {
+              "en": "Natural numbers",
+              "hi": "प्राकृत संख्याएँ"
+            }
+          },
+          {
+            "id": "i2",
+            "text": {
+              "en": "Points on a line",
+              "hi": "किसी रेखा पर बिंदु"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "empty",
+            "label": {
+              "en": "Empty",
+              "hi": "रिक्त"
+            }
+          },
+          {
+            "id": "finite",
+            "label": {
+              "en": "Finite, not empty",
+              "hi": "परिमित, रिक्त नहीं"
+            }
+          },
+          {
+            "id": "infinite",
+            "label": {
+              "en": "Infinite",
+              "hi": "अपरिमित"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "e1",
+            "bin": "empty"
+          },
+          {
+            "item": "e2",
+            "bin": "empty"
+          },
+          {
+            "item": "f1",
+            "bin": "finite"
+          },
+          {
+            "item": "f2",
+            "bin": "finite"
+          },
+          {
+            "item": "i1",
+            "bin": "infinite"
+          },
+          {
+            "item": "i2",
+            "bin": "infinite"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: the even primes are just $\\{2\\}$, and INDIA gives $\\{I, N, D, A\\}$.",
+          "hi": "सही: सम अभाज्य केवल $\\{2\\}$ हैं, और INDIA से $\\{I, N, D, A\\}$ मिलता है।"
+        },
+        "wrong": {
+          "en": "Try to list the elements; if none exist, the set is empty.",
+          "hi": "अवयवों की सूची बनाने का प्रयास कीजिए; यदि कोई न हो तो समुच्चय रिक्त है।"
+        }
+      }
+    },
+    {
+      "id": "math.sets.set-types:dd:05",
+      "type": "worked_example",
+      "concepts": [
+        "math.sets.set-types.core.empty-finite-equal-sets"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "P is the set of letters of the word ALLOY and Q is the set of letters of the word LOYAL. Are P and Q equal?",
+        "hi": "P शब्द ALLOY के अक्षरों का समुच्चय है और Q शब्द LOYAL के अक्षरों का। क्या P और Q समान हैं?"
+      },
+      "solution_steps": [
+        {
+          "en": "$P = \\{A, L, O, Y\\}$: the second L is not listed again.",
+          "hi": "$P = \\{A, L, O, Y\\}$: दूसरा L फिर से नहीं लिखा जाता।"
+        },
+        {
+          "en": "$Q = \\{L, O, Y, A\\}$.",
+          "hi": "$Q = \\{L, O, Y, A\\}$।"
+        },
+        {
+          "en": "Both have exactly the elements A, L, O and Y; the order is different, which does not matter.",
+          "hi": "दोनों में ठीक-ठीक A, L, O और Y हैं; क्रम अलग है, जो महत्त्वहीन है।"
+        }
+      ],
+      "answer": {
+        "en": "Yes, $P = Q$.",
+        "hi": "हाँ, $P = Q$।"
+      },
+      "common_trap": {
+        "en": "Thinking the sets differ because the words are spelt differently.",
+        "hi": "यह सोचना कि शब्दों की वर्तनी अलग है तो समुच्चय भी अलग हैं।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 1 Sets (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh101.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§1.5"
+      }
+    },
+    {
+      "id": "math.sets.set-types:dd:06",
+      "type": "question",
+      "concepts": [
+        "math.sets.set-types.core.empty-finite-equal-sets"
+      ],
+      "depth": 2,
+      "question": "q.math.sets.set-types.0002"
+    },
+    {
+      "id": "math.sets.set-types:dd:07",
+      "type": "summary",
+      "concepts": [
+        "math.sets.set-types.core.empty-finite-equal-sets"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Empty set $\\phi$: no element; $\\{0\\}$ is not empty.",
+          "hi": "रिक्त समुच्चय $\\phi$: कोई अवयव नहीं; $\\{0\\}$ रिक्त नहीं है।"
+        },
+        {
+          "en": "Finite: empty or a definite number $n(S)$ of elements; otherwise infinite.",
+          "hi": "परिमित: रिक्त या अवयवों की निश्चित संख्या $n(S)$; अन्यथा अपरिमित।"
+        },
+        {
+          "en": "Equal sets have exactly the same elements; order and repetition do not matter.",
+          "hi": "समान समुच्चयों में ठीक-ठीक एक जैसे अवयव होते हैं; क्रम और दोहराव महत्त्वहीन।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 1 Sets (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh101.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§1.3, §1.4, §1.5"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

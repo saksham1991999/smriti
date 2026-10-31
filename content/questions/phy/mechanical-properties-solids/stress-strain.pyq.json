@@ -1,0 +1,78 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "phy.mechanical-properties-solids.stress-strain",
+  "questions": [
+    {
+      "id": "q.phy.mechanical-properties-solids.stress-strain.9001",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.mechanical-properties-solids.stress-strain.core.elastic-behaviour",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A uniform wire of length $l$ of weight $w$ is suspended from the roof with a weight of $W$ at the other end. The stress in the wire at $\\frac l3$ distance from the top is $\\left(\\frac WA+\\frac2\\gamma\\frac wA\\right)$, where, $A$ is the cross sectional area of the wire. The value of $\\gamma$ is ______.",
+        "hi": "लंबाई $l$ और भार $w$ वाला एक एकसमान तार छत से लटकाया गया है और इसके दूसरे सिरे पर भार $W$ लगा है। ऊपर से $\\frac l3$ दूरी पर तार में प्रतिबल $\\left(\\frac WA+\\frac2\\gamma\\frac wA\\right)$ है, जहाँ $A$ तार के अनुप्रस्थ काट का क्षेत्रफल है। $\\gamma$ का मान ______ है।"
+      },
+      "answer": {
+        "value": 3,
+        "unit": null
+      },
+      "solution": {
+        "feynman": {
+          "en": "At any cross-section, the wire holds up everything below it: the load $W$ plus the part of the wire hanging below that point.",
+          "hi": "किसी भी अनुप्रस्थ काट पर तार अपने नीचे की हर चीज़ को सँभालता है: भार $W$ और उस बिंदु के नीचे लटका तार का भाग।"
+        },
+        "steps": [
+          {
+            "en": "Below $\\frac l3$ from the top hangs $\\frac23$ of the wire, weighing $\\frac{2w}{3}$.",
+            "hi": "ऊपर से $\\frac l3$ के नीचे तार का $\\frac23$ भाग लटका है, जिसका भार $\\frac{2w}{3}$ है।"
+          },
+          {
+            "en": "Stress $=\\frac WA+\\frac{2w}{3A}$, so $\\gamma=3$.",
+            "hi": "प्रतिबल $=\\frac WA+\\frac{2w}{3A}$, अतः $\\gamma=3$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 90,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 49
+      }
+    }
+  ]
+}

@@ -79,6 +79,10 @@ export const FLAG_REGISTRY = {
   'auth.consent_decline_limit': def(posInt, 3, 'proposed', 'auth §10.1'),
   'auth.consent_decline_pause_days': def(posInt, 30, 'proposed', 'auth §10.1'),
   'auth.consent_emails_per_day': def(posInt, 3, 'proposed', 'auth §6.10 (per guardian address)'),
+  // AUTH-27 (auth §6.11 "Linking an existing teen to a parent"): how long a guardian's link
+  // request stays open, and how many a guardian may start per day.
+  'auth.link_request_ttl_h': def(posInt, 72, 'proposed', 'auth §6.11 AUTH-27 (as consent_link_ttl_h)'),
+  'auth.link_requests_per_day': def(posInt, 5, 'proposed', 'auth §6.11 AUTH-27 (per guardian)'),
   'auth.deletion_grace_days': def(posInt, 7, 'proposed', 'auth §6.8, PRD §16.4'),
   'auth.merge_wait_s': def(posInt, 30, 'proposed', 'auth §6.4'),
   'auth.merge_retries': def(nonNegInt, 3, 'proposed', 'auth §6.4'),
@@ -311,6 +315,8 @@ export const FLAG_REGISTRY = {
   'xp.lesson_attempt': def(nonNegInt, 1, 'proposed', 'learn §7, R51'),
   'xp.lesson_complete': def(nonNegInt, 20, 'proposed', 'learn §7, R51'),
   'xp.combo_bonus': def(nonNegInt, 10, 'proposed', 'learn §7.3 A19, R51'),
+  // Little learners' story, song and play completions (sync v1.4 activity_completed): XP per star.
+  'xp.little_activity_star': def(nonNegInt, 1, 'proposed', 'sync v1.4 activity_completed, R51 (owner to confirm)'),
   'learn.find_level_questions': def(posInt, 5, 'ruling', 'R27, learn §6.5'),
   'learn.combo_streak_len': def(posInt, 5, 'doc', 'learn §7.3 (A19)'),
   'learn.exit_nudge_cards_left': owner(nonNegInt, 'ux/learn LES-05'),

@@ -29,6 +29,7 @@ from smriti_api.services import (
     billing,
     card_index,
     data_jobs,
+    doubt_photo,
     duels,
     exports,
     guardian,
@@ -155,6 +156,8 @@ async def tutor_retention(ctx: Ctx) -> int:
     count = await tutor.purge_old_messages_job(_deps(ctx))
     # Voice sessions and their stored transcripts share the tutor's retention.
     count += await voice.purge_job(_deps(ctx))
+    # Photo doubt: the photos and their recognised text, too (tutor-social §A10 step 8).
+    count += await doubt_photo.purge_job(_deps(ctx))
     if count:
         log.info("tutor_messages_purged", count=count)
     return count
@@ -304,11 +307,11 @@ def report_dir() -> Path:
     return Path(os.environ.get("CONTENT_PUBLISH_REPORT_DIR") or CONTENT_PUBLISH_DIR / "out")
 
 
-async def apply_metadata_sql(deps: JobDeps, path: Path) -> int:
+async def apply_metadata_sql(db: Database, path: Path) -> int:
     """Runs the publish's ``metadata.sql`` (content.* rows) in one transaction. asyncpg runs a
     multi-statement script only through its own ``execute`` without arguments."""
     sql = await asyncio.to_thread(path.read_text, encoding="utf-8")
-    async with deps.db.engine.begin() as conn:
+    async with db.engine.begin() as conn:
         raw = await conn.get_raw_connection()
         driver: Any = raw.driver_connection
         await driver.execute(sql)
@@ -397,7 +400,7 @@ async def content_publish(ctx: Ctx, ref: str | None = None) -> dict[str, Any]:
         return out
     deps = _deps(ctx)
     try:
-        await apply_metadata_sql(deps, metadata)
+        await apply_metadata_sql(deps.db, metadata)
     except Exception:
         log.exception("content_metadata_failed")
         out.update(status="failed", metadata="failed")

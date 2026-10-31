@@ -1,0 +1,32 @@
+// The CDN Worker (cdn.<domain>, TRD §8): read-only R2 with CORS, Cross-Origin-Resource-Policy and
+// cache headers (logic and tests: tools/deploy/src/cdn.ts).
+//   /c/*  -> the content bucket (bundles, patches, manifests)
+//   /*    -> the assets bucket (assets/{sha256}.*, sims/{id}/...)
+// Deploy: wrangler deploy -c infra/cloudflare/cdn/wrangler.jsonc --env staging|production
+// The buckets are created once (docs/DEPLOY.md); the uploads and private staging buckets are not
+// bound here, so the CDN can never serve them.
+{
+  "name": "smriti-cdn",
+  "main": "worker.ts",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": false,
+  "preview_urls": false,
+  "observability": { "enabled": true },
+  "env": {
+    "staging": {
+      "name": "smriti-cdn-staging",
+      "workers_dev": true,
+      "r2_buckets": [
+        { "binding": "ASSETS_BUCKET", "bucket_name": "smriti-assets-staging" },
+        { "binding": "CONTENT_BUCKET", "bucket_name": "smriti-content-staging" }
+      ]
+    },
+    "production": {
+      "name": "smriti-cdn",
+      "r2_buckets": [
+        { "binding": "ASSETS_BUCKET", "bucket_name": "smriti-assets" },
+        { "binding": "CONTENT_BUCKET", "bucket_name": "smriti-content" }
+      ]
+    }
+  }
+}

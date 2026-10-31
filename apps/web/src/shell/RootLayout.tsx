@@ -7,6 +7,9 @@ import { useOnline } from "../lib/network";
 import { toast, useToast } from "../lib/toast";
 import { useConfig } from "../lib/queries";
 import { ErrorBoundary } from "./States";
+import { DeviceRegistration } from "./DeviceRegistration";
+import { MergeHost } from "./MergeHost";
+import { TutorHost } from "./TutorHost";
 
 /** Skip link, offline banner, the one toast, and an error boundary around every screen. */
 export function RootLayout() {
@@ -28,7 +31,10 @@ export function RootLayout() {
 
   return (
     <>
-      <a href="#main" className="skip-link rounded-md bg-primary px-4 py-3 text-label font-bold text-on-primary">
+      <a
+        href="#main"
+        className="skip-link rounded-md bg-primary px-4 py-3 text-label font-bold text-on-primary"
+      >
         {t("learn:WEB-01.skip_link")}
       </a>
       {!online && (
@@ -39,9 +45,20 @@ export function RootLayout() {
       <ErrorBoundary onError={(code) => s.logger.error("ui.render_error", { code })}>
         <Outlet />
       </ErrorBoundary>
+      <TutorHost />
+      <MergeHost />
+      <DeviceRegistration />
       <div className="pointer-events-none fixed inset-x-0 bottom-[96px] z-50 flex justify-center px-4 md:bottom-6">
         <div className="pointer-events-auto w-full max-w-[420px]">
-          <Toast key={current?.id} open={!!current} message={current?.message ?? ""} tone={current?.tone} icon={current?.icon} onDismiss={dismiss} testID="toast" />
+          <Toast
+            key={current?.id}
+            open={!!current}
+            message={current?.message ?? ""}
+            tone={current?.tone}
+            icon={current?.icon}
+            onDismiss={dismiss}
+            testID="toast"
+          />
         </div>
       </div>
     </>

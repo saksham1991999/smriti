@@ -8,7 +8,7 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Any, Literal, Protocol
 
-Tier = Literal["tutor", "cheap", "author"]
+Tier = Literal["tutor", "cheap", "author", "vision"]
 Role = Literal["system", "user", "assistant", "tool"]
 
 

@@ -203,6 +203,30 @@ async def resolve_context(
         )
     if kind == "lab":
         return Context(kind, ref)
+    if kind == "doubt":
+        # Photo doubt (§A10): the question the student confirmed on AI-18. Hints first until
+        # they ask for the full solution.
+        try:
+            photo_id = uuid.UUID(ident)
+        except ValueError as exc:
+            raise ApiError(404, "unknown_context", "This photo isn't available") from exc
+        photo = (
+            await session.execute(
+                text(
+                    "select question_text, subject, revealed_at from ai.doubt_photos"
+                    " where id = :id and user_id = :u"
+                ),
+                {"id": photo_id, "u": user_id},
+            )
+        ).one_or_none()
+        if photo is None or not photo.question_text:
+            raise ApiError(404, "unknown_context", "This photo isn't available")
+        return Context(
+            kind,
+            ref,
+            question={"text": photo.question_text, "subject": photo.subject},
+            answered=photo.revealed_at is not None,
+        )
     raise ApiError(422, "unknown_context", "This context isn't supported")
 
 
@@ -369,6 +393,21 @@ async def _open(
         )
     ).one()
     return row, False
+
+
+async def open_doubt_session(
+    session: AsyncSession,
+    learner: Learner,
+    flags: Flags,
+    *,
+    context_ref: str,
+    exam: str | None,
+    now: datetime,
+) -> tuple[Any, bool]:
+    """Photo doubt's chat (mode ``doubt_photo``), opened by ``doubt_photo.open_solve``."""
+    return await _open(
+        session, learner, flags, mode="doubt_photo", context_ref=context_ref, exam=exam, now=now
+    )
 
 
 async def open_session(db: Database, auth: AuthContext, body: t.SessionCreate) -> t.TutorSession:

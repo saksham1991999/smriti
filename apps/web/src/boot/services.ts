@@ -24,11 +24,34 @@ import {
   type SyncEventPayloads,
   type SyncEventType,
 } from "@smriti/app-core";
-import { AnalyticsClient, MemoryTransport, audienceFromAgeBand, type Transport } from "@smriti/analytics";
-import { createFlags, getVariant, parseClientEnv, type ClientEnv, type Flags, type Variant } from "@smriti/config";
+import {
+  AnalyticsClient,
+  MemoryTransport,
+  audienceFromAgeBand,
+  httpTransport,
+  type Transport,
+} from "@smriti/analytics";
+import {
+  createFlags,
+  getVariant,
+  parseClientEnv,
+  type ClientEnv,
+  type Flags,
+  type Variant,
+} from "@smriti/config";
 import { DexieStorage } from "../platform/dexieStorage";
 import { LazySupabaseAuthClient } from "../platform/lazyAuth";
-import { BrowserNetwork, LocalStorageKeyValueStore, createFetch, deviceId, prefs, timeZone, requestFetch, withDevLinkFlag, type RequestInterceptor } from "../platform/web";
+import {
+  BrowserNetwork,
+  LocalStorageKeyValueStore,
+  createFetch,
+  deviceId,
+  prefs,
+  timeZone,
+  requestFetch,
+  withDevLinkFlag,
+  type RequestInterceptor,
+} from "../platform/web";
 import { createApi, type Api } from "../lib/api";
 import { createApiClient, type ApiClient } from "@smriti/api-client";
 import { createBillingProvider, type BillingProvider } from "../lib/billing";
@@ -63,9 +86,16 @@ export interface Services {
   /** Replaces the flags with the server's map from `GET /v1/config`. */
   applyServerFlags(map: Record<string, unknown> | undefined): void;
   /** Appends ready-made envelopes (lesson-core sessions) plus optional local rows in one transaction. */
-  recordEnvelopes(events: readonly NewOutboxRow[], local?: (tx: StorageTables) => Promise<void>): Promise<void>;
+  recordEnvelopes(
+    events: readonly NewOutboxRow[],
+    local?: (tx: StorageTables) => Promise<void>,
+  ): Promise<void>;
   /** Writes an event (and optional local rows) in one transaction, then schedules a flush. */
-  record<T extends SyncEventType>(type: T, payload: SyncEventPayloads[T], local?: (tx: StorageTables) => Promise<void>): Promise<void>;
+  record<T extends SyncEventType>(
+    type: T,
+    payload: SyncEventPayloads[T],
+    local?: (tx: StorageTables) => Promise<void>,
+  ): Promise<void>;
   /** Makes sure there is a guest or signed-in session; never blocks the UI on failure. */
   ensureSession(): Promise<void>;
   /** Pull the full server state into storage and the store. */
@@ -87,7 +117,9 @@ export interface CreateServicesOptions {
 }
 
 export async function createServices(opts: CreateServicesOptions = {}): Promise<Services> {
-  const env = parseClientEnv(opts.rawEnv ?? (import.meta.env as unknown as Record<string, string | undefined>));
+  const env = parseClientEnv(
+    opts.rawEnv ?? (import.meta.env as unknown as Record<string, string | undefined>),
+  );
   const variant = getVariant(env.APP_VARIANT);
   let flags = createFlags();
   const kv = new LocalStorageKeyValueStore();
@@ -101,11 +133,20 @@ export async function createServices(opts: CreateServicesOptions = {}): Promise<
 
   let auth: AuthClient;
   if (env.AUTH_MODE === "supabase" && env.SUPABASE_URL && env.SUPABASE_ANON_KEY) {
-    auth = new LazySupabaseAuthClient(
-      { url: env.SUPABASE_URL, anonKey: env.SUPABASE_ANON_KEY, storage: kv, storageKey: "smriti-web-auth", detectSessionInUrl: true },
-    );
+    auth = new LazySupabaseAuthClient({
+      url: env.SUPABASE_URL,
+      anonKey: env.SUPABASE_ANON_KEY,
+      storage: kv,
+      storageKey: "smriti-web-auth",
+      detectSessionInUrl: true,
+    });
   } else {
-    auth = new DevAuthClient({ baseUrl: env.API_BASE_URL, fetch: withDevLinkFlag(fetchImpl), store: kv, clock });
+    auth = new DevAuthClient({
+      baseUrl: env.API_BASE_URL,
+      fetch: withDevLinkFlag(fetchImpl),
+      store: kv,
+      clock,
+    });
   }
 
   const sync = new SyncClient({
@@ -113,7 +154,10 @@ export async function createServices(opts: CreateServicesOptions = {}): Promise<
     fetch: fetchImpl,
     baseUrl: env.API_BASE_URL,
     network,
-    tokens: { getAccessToken: () => auth.getAccessToken(), refresh: async () => (await auth.refreshSession())?.accessToken ?? null },
+    tokens: {
+      getAccessToken: () => auth.getAccessToken(),
+      refresh: async () => (await auth.refreshSession())?.accessToken ?? null,
+    },
     deviceId: deviceId(),
     variant: variant.id,
     scheduler: realScheduler,
@@ -124,7 +168,12 @@ export async function createServices(opts: CreateServicesOptions = {}): Promise<
   });
   sync.onStatus((s) => store.getState().setSyncStatus(s));
 
-  const api = createApi({ baseUrl: env.API_BASE_URL, fetch: fetchImpl, token: () => auth.getAccessToken(), variant: variant.id });
+  const api = createApi({
+    baseUrl: env.API_BASE_URL,
+    fetch: fetchImpl,
+    token: () => auth.getAccessToken(),
+    variant: variant.id,
+  });
   const client = createApiClient({
     baseUrl: env.API_BASE_URL,
     getAccessToken: () => auth.getAccessToken(),
@@ -134,7 +183,17 @@ export async function createServices(opts: CreateServicesOptions = {}): Promise<
     fetch: requestFetch(opts.interceptor),
   });
 
-  const analyticsTransport: Transport = new MemoryTransport();
+  // Events go to the ingest endpoint when one is configured (VITE_ANALYTICS_URL), else stay in memory.
+  const analyticsTransport: Transport = env.ANALYTICS_URL
+    ? httpTransport({
+        url: env.ANALYTICS_URL,
+        fetch: async (url, init) => {
+          const r = await fetchImpl(url, init);
+          return { ok: r.ok, status: r.status };
+        },
+        headers: () => ({ "X-App-Variant": variant.id, "X-Platform": "web" }),
+      })
+    : new MemoryTransport();
   const newId = createIdGenerator(globalThis.crypto, clock);
   const analytics = new AnalyticsClient({
     transport: analyticsTransport,
@@ -211,7 +270,13 @@ export async function createServices(opts: CreateServicesOptions = {}): Promise<
     async ensureSession() {
       const existing = await auth.getSession().catch(() => null);
       if (existing) {
-        store.getState().setSession({ status: existing.user.isAnonymous ? "guest" : "signed_in", userId: existing.user.id, isGuest: existing.user.isAnonymous });
+        store
+          .getState()
+          .setSession({
+            status: existing.user.isAnonymous ? "guest" : "signed_in",
+            userId: existing.user.id,
+            isGuest: existing.user.isAnonymous,
+          });
         return;
       }
       try {
@@ -220,7 +285,9 @@ export async function createServices(opts: CreateServicesOptions = {}): Promise<
         void sync.resume();
       } catch (err) {
         // Local-only guest: keep writing to the outbox and retry on the next network change.
-        logger.warn("auth.anonymous_failed", { code: err instanceof AuthError ? err.code : "unknown" });
+        logger.warn("auth.anonymous_failed", {
+          code: err instanceof AuthError ? err.code : "unknown",
+        });
         store.getState().setSession({ status: "local_guest", isGuest: true });
       }
     },

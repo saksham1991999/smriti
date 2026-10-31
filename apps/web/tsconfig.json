@@ -2,8 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "noEmit": true,
-    "paths": { "@fake-api": ["./src/dev/fake-api/index.ts"],
-      "@mock-blueprint": ["./src/dev/fixtureBlueprint.ts"] },
+    "paths": { "@fake-api": ["./src/dev/fake-api/index.ts"] },
     "jsx": "react-jsx",
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "types": ["vite/client", "vite-plugin-pwa/client", "@testing-library/jest-dom/vitest", "node"]

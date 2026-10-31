@@ -33,6 +33,7 @@ EVENT_TYPES = (
     "rescue_completed",
     "cards_queued",
     "comeback_plan_started",
+    "activity_completed",
 )
 
 SETTINGS_KEYS = (
@@ -287,6 +288,21 @@ class ComebackPlanStarted(_Payload):
     relearn_topics: Annotated[list[Id], Field(max_length=100)] = Field(default_factory=list)
 
 
+class ActivityCompleted(_Payload):
+    """(v1.4) A little learner finished a story, song or play activity (lesson-core
+    ``ActivityCompletion``). Counted as a completed lesson; ids and counts only."""
+
+    kind: Literal["story", "song", "play"]
+    activity_id: Id
+    topic_id: Id
+    concept_ids: Annotated[list[Id], Field(max_length=50)] = Field(default_factory=list)
+    bundle_version: Id
+    locale: Locale
+    stars: Annotated[int, Field(ge=0, le=100)]
+    ms_total: Ms
+    completed_at: AwareDatetime
+
+
 PAYLOAD_MODELS: dict[str, type[_Payload]] = {
     "lesson_started": LessonStarted,
     "lesson_card_viewed": LessonCardViewed,
@@ -309,6 +325,7 @@ PAYLOAD_MODELS: dict[str, type[_Payload]] = {
     "rescue_completed": RescueCompleted,
     "cards_queued": CardsQueued,
     "comeback_plan_started": ComebackPlanStarted,
+    "activity_completed": ActivityCompleted,
 }
 
 
@@ -431,6 +448,10 @@ class EntitlementState(BaseModel):
     cancel_at_period_end: bool = False
     is_intro: bool = False
     source: Literal["razorpay", "play", "app_store", "promo", "family"] | None = None
+    # (sync v1.4) Who can manage the plan, so the app sends Manage plan to the right place:
+    # "web" (Razorpay in this app), "play", "app_store", "parent" (PAY-17: a guardian pays and
+    # only they manage it), "family" (a seat on someone else's family plan), "none" (free or promo).
+    managed_in: Literal["web", "play", "app_store", "parent", "family", "none"] = "none"
 
 
 class SyncStateResponse(BaseModel):

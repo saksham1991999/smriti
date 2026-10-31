@@ -1568,6 +1568,33 @@ Icons (Phosphor): `CloudSlash` (`guest`), `CloudArrowUp` (`saving`), `CloudCheck
 
 ---
 
+### WEB-07 · Web guardian and sign-in messages
+**Purpose:** The short lines the web app shows on the guardian consent screens (AUTH-18 to AUTH-22), AUTH-08 and Parent mode (AUTH-24, SET-14) for the server's answers that the blocks above describe only in words, and for a learner whose first name isn't known yet.
+
+**Copy:**
+| Key | EN | HI |
+|---|---|---|
+| Merge done toast | Your progress has been added | आपकी प्रोग्रेस जोड़ दी गई है |
+| Guardian title no name | Hello! Your child wants to use {feature} on {app_name} | नमस्ते! आपका बच्चा {app_name} पर {feature} इस्तेमाल करना चाहता है |
+| Your child | your child | आपका बच्चा |
+| Is learner | This is {first_name}'s account. Please use your own. | यह {first_name} का अकाउंट है। कृपया अपना अकाउंट इस्तेमाल करें। |
+| Is learner no name | This is the student's account. Please use your own. | यह छात्र का अकाउंट है। कृपया अपना अकाउंट इस्तेमाल करें। |
+| Is minor | This account belongs to someone under 18. A parent or guardian needs to use their own account. | यह अकाउंट 18 साल से कम उम्र के किसी व्यक्ति का है। माता-पिता या अभिभावक को अपना अकाउंट इस्तेमाल करना होगा। |
+| Identity required | Please sign in with Google to give your OK. | सहमति देने के लिए कृपया Google से साइन इन करें। |
+| Handoff expired | This took too long. Hand the phone back to start again. | इसमें बहुत समय लग गया। फिर से शुरू करने के लिए फ़ोन वापस दें। |
+| Review answered | You've already answered this request. | आप इस अनुरोध का जवाब पहले ही दे चुके हैं। |
+| Review expired | This request has expired. Ask {first_name} to send a new one. | इस अनुरोध की समय-सीमा खत्म हो गई। {first_name} से नया भेजने को कहें। |
+| Declined retry date | You can ask again on {date}. | आप {date} को फिर से पूछ सकते हैं। |
+| Blocked | Your guardian said no for now. You can ask again on {date}. | आपके अभिभावक ने अभी के लिए मना किया है। आप {date} को फिर से पूछ सकते हैं। |
+| Offline ask | Connect to the internet to ask. | पूछने के लिए इंटरनेट से जुड़ें। |
+| Ask failed | We couldn't send the request. Try again in a moment. | अनुरोध नहीं भेजा जा सका। थोड़ी देर में फिर से कोशिश करें। |
+| Link offline | Offline. We'll check when you're back online. | आप ऑफ़लाइन हैं। ऑनलाइन होते ही हम देखेंगे। |
+| Parent sign out | Sign out of Parent mode | पेरेंट मोड से साइन आउट करें |
+
+**Mock priority:** P1.
+
+---
+
 ## Appendix: P0 screens for the visual mocks
 
 AUTH-01 (`lesson_3`, `streak_day_2`, with [Later] as a full-size button), AUTH-02 (`social`, `start_trial` eligible and not eligible, `restore`), AUTH-04 (Credential Manager over AUTH-01, then signing in; iOS prep line), AUTH-06 (link toast and restore card), AUTH-08, AUTH-12 (default and unsynced), AUTH-13, AUTH-18, AUTH-19 (student and guardian views), AUTH-20, AUTH-24, AUTH-25, AUTH-29 (desktop and phone), AUTH-30 (offline, no Play services, our side), AUTH-33 (all four states). P1 additions this revision: AUTH-32.

@@ -43,7 +43,7 @@ from smriti_api.core.telemetry import tracer
 
 log = structlog.get_logger("ai")
 
-UsageTier = Literal["tutor", "cheap", "author", "image", "tts", "stt", "voice"]
+UsageTier = Literal["tutor", "cheap", "author", "vision", "image", "tts", "stt", "voice"]
 
 
 @dataclass(frozen=True)

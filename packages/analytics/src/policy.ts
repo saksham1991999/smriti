@@ -8,7 +8,7 @@ import type { EventDef } from './types';
  * | adult, opted in     | yes      | yes             | yes           |
  * | adult, opted out    | yes      | yes             | no            |
  * | teen, child, unknown| yes      | yes             | no            |
- * | little (u10)        | yes      | only `home_viewed`, `lesson_completed`, `storybook_completed`, `song_completed`, `play_round_completed`, `play_completed` |
+ * | little (u10)        | yes      | only `home_viewed`, `lesson_completed`, `activity_completed`, `storybook_completed`, `song_completed`, `play_round_completed`, `play_completed` |
  *
  * - With `minor.defer_sync_until_consent` on and no guardian consent yet, nothing is sent for a
  *   minor (or an unknown age).
@@ -33,6 +33,7 @@ export type DropReason = 'unknown_event' | 'server_only' | 'minor_not_allowed' |
 export const LITTLE_LEARNER_PRODUCT_ALLOWLIST: readonly string[] = [
   'home_viewed',
   'lesson_completed',
+  'activity_completed',
   'storybook_completed',
   'song_completed',
   'play_round_completed',

@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import type { TaskProgress, TaskSpec, ParamValues } from "@smriti/sim-bridge";
 import { Card, Chip, ChoiceChips, Icon, Illustration, PetLine, Text, TopBar } from "@smriti/ui-web";
 import { useAppStore } from "@smriti/app-core/react";
+import { TutorButton } from "../tutor/TutorButton";
 import { useServices } from "../../boot/context";
 import { SimFrame } from "../../components/SimFrame";
 import { useI18n } from "../../lib/i18n";
@@ -106,6 +107,7 @@ export function LabScreen() {
   return (
     <div className="flex flex-col gap-3 pb-6" data-subject={sim.subject} data-testid="lab-04">
       <TopBar title={sim.title[locale]} onBack={() => void navigate({ to: "/labs" })} />
+      <TutorButton context={{ ref: `lab:${sim.id}`, kind: "lab", title: sim.title[locale] }} />
       <div className="flex flex-col gap-3 px-4 md:px-8">
         <SimFrame
           simId={sim.id}

@@ -60,5 +60,5 @@ export function toWireEvent(row: OutboxRow): WireEvent {
 export async function unsyncedSummary(tx: Pick<StorageTables, 'outbox'>): Promise<{ total: number; lessons: number; reviews: number }> {
   const byType = await tx.outbox.countByType();
   const total = Object.values(byType).reduce((a, b) => a + (b ?? 0), 0);
-  return { total, lessons: byType.lesson_completed ?? 0, reviews: byType.review_rated ?? 0 };
+  return { total, lessons: (byType.lesson_completed ?? 0) + (byType.activity_completed ?? 0), reviews: byType.review_rated ?? 0 };
 }

@@ -388,6 +388,16 @@ async def my_consent(db: Database, auth: AuthContext) -> g.MyConsentOut:
         retry = await _retry_at(
             session, auth.user_id, await flag_service.server_flags(session), now
         )
+        # AUTH-27: open link requests from guardians (the teen's in-app badge).
+        links = (
+            await session.execute(
+                text(
+                    "select count(*) from app.guardian_link_requests where learner_user_id = :u"
+                    " and status = 'pending' and expires_at > :now"
+                ),
+                {"u": auth.user_id, "now": now},
+            )
+        ).scalar_one()
     return g.MyConsentOut(
         state=p.guardian_consent_state,
         age_band=p.age_band,
@@ -397,6 +407,7 @@ async def my_consent(db: Database, auth: AuthContext) -> g.MyConsentOut:
         consented_at=c.consented_at if c else None,
         pending_request_id=pending,
         retry_at=retry,
+        pending_link_requests=int(links),
     )
 
 
@@ -445,17 +456,23 @@ async def _explain_missing(db: Database, code: str) -> None:
     raise ApiError(404, "not_found", "No such request")
 
 
-async def _pending_by_code(session: AsyncSession, code: str, now: datetime) -> Any:
+async def _pending_by_code(
+    session: AsyncSession, code: str, now: datetime, guardian: uuid.UUID
+) -> Any:
     r = (
         await session.execute(
             text(
-                "select id, learner_user_id, status, scopes, expires_at, channel, app_variant"
+                "select id, learner_user_id, status, scopes, expires_at, channel, app_variant,"
+                " initiated_by, guardian_user_id"
                 " from app.guardian_consent_requests where code_hash = :h for update"
             ),
             {"h": code_hash(code)},
         )
     ).one_or_none()
     if r is None:
+        raise ApiError(404, "not_found", "No such request")
+    if r.initiated_by == "guardian" and r.guardian_user_id != guardian:
+        # AUTH-27: a request the teen accepted from one guardian is that guardian's to answer.
         raise ApiError(404, "not_found", "No such request")
     if r.status in ("granted", "declined"):
         raise ApiError(409, "consent_request_answered", "This request has already been answered")
@@ -577,7 +594,7 @@ async def confirm(
 ) -> g.ConsentDecision:
     now = datetime.now(UTC)
     async with db.system_tx() as session:
-        r = await _pending_by_code(session, code, now)
+        r = await _pending_by_code(session, code, now, auth.user_id)
         learner: uuid.UUID = r.learner_user_id
         await lock_state(session, learner)
         sub_hash = await _check_guardian(session, ints, auth, learner)
@@ -637,7 +654,7 @@ async def confirm(
 async def decline(db: Database, auth: AuthContext, code: str) -> g.ConsentDecision:
     now = datetime.now(UTC)
     async with db.system_tx() as session:
-        r = await _pending_by_code(session, code, now)
+        r = await _pending_by_code(session, code, now, auth.user_id)
         if auth.user_id == r.learner_user_id:
             raise ApiError(403, "guardian_is_learner", "A guardian must use their own account")
         await lock_state(session, r.learner_user_id)
@@ -800,7 +817,17 @@ async def expire_requests(db: Database, *, now: datetime | None = None) -> int:
                     payload={"outcome": "expired", "request_id": str(r.id)},
                     dedupe_key=f"consent_decided:{r.id}",
                 )
-    return len(rows)
+        # AUTH-27 link requests lapse quietly: the guardian sees "expired" in their list.
+        links = (
+            await session.execute(
+                text(
+                    "update app.guardian_link_requests set status = 'expired', resolved_at = :now"
+                    " where status = 'pending' and expires_at <= :now returning id"
+                ),
+                {"now": now},
+            )
+        ).all()
+    return len(rows) + len(links)
 
 
 async def age_up(db: Database, *, now: datetime | None = None) -> int:

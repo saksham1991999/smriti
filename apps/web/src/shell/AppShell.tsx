@@ -1,5 +1,13 @@
 import { Outlet, useNavigate, useRouterState } from "@tanstack/react-router";
-import { IconButton, Illustration, SidebarNav, StreakPill, TabBar, Text, type NavItem } from "@smriti/ui-web";
+import {
+  IconButton,
+  Illustration,
+  SidebarNav,
+  StreakPill,
+  TabBar,
+  Text,
+  type NavItem,
+} from "@smriti/ui-web";
 import { useStreak } from "@smriti/app-core/react";
 import { useServices } from "../boot/context";
 import { useI18n } from "../lib/i18n";
@@ -82,7 +90,13 @@ export function AppShell() {
           <Outlet />
         </main>
       </div>
-      <TabBar className="fixed inset-x-0 bottom-0 z-30 md:hidden" items={items} activeKey={active} onSelect={go} testID="tabbar" />
+      <TabBar
+        className="fixed inset-x-0 bottom-0 z-30 md:hidden"
+        items={items}
+        activeKey={active}
+        onSelect={go}
+        testID="tabbar"
+      />
     </div>
   );
 }

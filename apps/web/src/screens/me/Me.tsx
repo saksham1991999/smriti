@@ -5,7 +5,20 @@
 import { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { useAppStore } from "@smriti/app-core/react";
-import { Button, Card, Icon, IconButton, PetAvatar, PetLine, PlantView, SettingsGroup, SettingsRow, StatTile, Text, TrustLine } from "@smriti/ui-web";
+import {
+  Button,
+  Card,
+  Icon,
+  IconButton,
+  PetAvatar,
+  PetLine,
+  PlantView,
+  SettingsGroup,
+  SettingsRow,
+  StatTile,
+  Text,
+  TrustLine,
+} from "@smriti/ui-web";
 import { SoftPromptSheet } from "../../components/SignIn";
 import { LocaleThemeToggles } from "../../shell/AppShell";
 import { savedEmail } from "../../lib/auth";
@@ -51,20 +64,42 @@ export function Me() {
         <span className="md:hidden">
           <LocaleThemeToggles />
         </span>
-        <IconButton icon="Gear" label={t("me_money:SET-01.title")} onPress={() => void navigate({ to: "/me/settings" })} testID="open-settings" />
+        <IconButton
+          icon="Gear"
+          label={t("me_money:SET-01.title")}
+          onPress={() => void navigate({ to: "/me/settings" })}
+          testID="open-settings"
+        />
       </header>
 
       <Card testID="me-profile">
         <span className="flex items-center gap-4">
-          {pet ? <PetAvatar species={pet.species as "cat" | "dog"} size={72} alt={pet.name} /> : <Icon name="UserCircle" size={32} color="inkMuted" />}
+          {pet ? (
+            <PetAvatar species={pet.species as "cat" | "dog"} size={72} alt={pet.name} />
+          ) : (
+            <Icon name="UserCircle" size={32} color="inkMuted" />
+          )}
           <span className="flex min-w-0 flex-1 flex-col items-start gap-2">
             <Text variant="heading" testID="me-name" className="max-w-full truncate">
               {name}
             </Text>
             {/* AUTH-33 save state: where this progress lives. */}
-            <span className="inline-flex max-w-full items-center gap-1.5 rounded-full bg-success-tint px-2.5 py-1 text-caption font-bold text-ink" data-testid="save-state">
-              <Icon name={guest ? "CloudSlash" : "CloudCheck"} size={16} color={guest ? "inkMuted" : "success"} />
-              <span className="truncate">{guest ? t("auth:AUTH-33.guest") : email ? t("auth:AUTH-33.saved", { email }) : t("auth:AUTH-33.saving")}</span>
+            <span
+              className="inline-flex max-w-full items-center gap-1.5 rounded-full bg-success-tint px-2.5 py-1 text-caption font-bold text-ink"
+              data-testid="save-state"
+            >
+              <Icon
+                name={guest ? "CloudSlash" : "CloudCheck"}
+                size={16}
+                color={guest ? "inkMuted" : "success"}
+              />
+              <span className="truncate">
+                {guest
+                  ? t("auth:AUTH-33.guest")
+                  : email
+                    ? t("auth:AUTH-33.saved", { email })
+                    : t("auth:AUTH-33.saving")}
+              </span>
             </span>
           </span>
         </span>
@@ -74,20 +109,49 @@ export function Me() {
         <Card tone="tint" testID="me-guest-card">
           <span className="flex flex-col gap-2">
             <Text variant="heading">{t("me_money:ME-01.guest_card_title")}</Text>
-            <Text tone="muted">{t("me_money:ME-01.guest_card_body", { pet: pet?.name ?? "" })}</Text>
-            <Button label={t("me_money:ME-01.guest_card_button")} onPress={() => setPrompt(true)} testID="me-sign-in" />
+            <Text tone="muted">
+              {t("me_money:ME-01.guest_card_body", { pet: pet?.name ?? "" })}
+            </Text>
+            <Button
+              label={t("me_money:ME-01.guest_card_button")}
+              onPress={() => setPrompt(true)}
+              testID="me-sign-in"
+            />
             <TrustLine />
           </span>
         </Card>
       )}
 
       <div className="grid grid-cols-3 gap-2">
-        <StatTile value={String(streak?.current ?? 0)} label={t("me_money:ME-01.stat_streak")} icon="Plant" testID="me-streak" />
-        <StatTile value={String(wallet?.xp_total ?? 0)} label={t("me_money:ME-01.stat_xp")} icon="Lightning" />
-        <StatTile value={String(lessons)} label={t("me_money:ME-01.stat_lessons")} icon="BookBookmark" />
+        <StatTile
+          value={String(streak?.current ?? 0)}
+          label={t("me_money:ME-01.stat_streak")}
+          icon="Plant"
+          testID="me-streak"
+        />
+        <StatTile
+          value={String(wallet?.xp_total ?? 0)}
+          label={t("me_money:ME-01.stat_xp")}
+          icon="Lightning"
+        />
+        <StatTile
+          value={String(lessons)}
+          label={t("me_money:ME-01.stat_lessons")}
+          icon="BookBookmark"
+        />
       </div>
 
-      {pet && <PetLine pet={{ species: pet.species as "cat" | "dog" }} petName={pet.name} text={guest ? t("me_money:ME-01.pet_line_guest") : t("me_money:ME-01.pet_line_default", { name: profile?.display_name ?? "" })} />}
+      {pet && (
+        <PetLine
+          pet={{ species: pet.species as "cat" | "dog" }}
+          petName={pet.name}
+          text={
+            guest
+              ? t("me_money:ME-01.pet_line_guest")
+              : t("me_money:ME-01.pet_line_default", { name: profile?.display_name ?? "" })
+          }
+        />
+      )}
 
       {(pet || plant) && (
         <div className="grid grid-cols-2 gap-3">
@@ -113,7 +177,13 @@ export function Me() {
         </div>
       )}
 
-      <Card tone={pro ? "tint" : "surface"} onPress={() => void navigate(pro ? { to: "/me/plan" } : { to: "/pro", search: { source: "me_card" } })} testID="me-pro-card">
+      <Card
+        tone={pro ? "tint" : "surface"}
+        onPress={() =>
+          void navigate(pro ? { to: "/me/plan" } : { to: "/pro", search: { source: "me_card" } })
+        }
+        testID="me-pro-card"
+      >
         <span className="flex items-center gap-3">
           <Icon name="Diamond" color="primary" weight="fill" />
           <Text variant="heading" className="flex-1">
@@ -130,9 +200,36 @@ export function Me() {
       </Card>
 
       <SettingsGroup title={t("me_money:ME-01.learning_group")}>
-        <SettingsRow title={t("me_money:ME-01.my_memory")} icon="Brain" value={t("me_money:ME-01.my_memory_caption", { n: queue?.cards.length ?? 0 })} onPress={() => void navigate({ to: "/review" })} testID="me-memory" />
-        <SettingsRow title={t("me_money:SET-01.notifications")} icon="Bell" onPress={() => void navigate({ to: "/me/notifications" })} />
-        <SettingsRow title={t("me_money:SET-01.title")} icon="Gear" onPress={() => void navigate({ to: "/me/settings" })} testID="me-settings" />
+        <SettingsRow
+          title={t("me_money:ME-01.my_memory")}
+          icon="Brain"
+          value={t("me_money:ME-01.my_memory_caption", { n: queue?.cards.length ?? 0 })}
+          onPress={() => void navigate({ to: "/review" })}
+          testID="me-memory"
+        />
+        <SettingsRow
+          title={t("memory_labs:MEM-07.title")}
+          icon="Cards"
+          onPress={() => void navigate({ to: "/memory/decks" })}
+          testID="me-decks"
+        />
+        <SettingsRow
+          title={t("memory_labs:MEM-28.title")}
+          icon="Timer"
+          onPress={() => void navigate({ to: "/focus" })}
+          testID="me-focus"
+        />
+        <SettingsRow
+          title={t("me_money:SET-01.notifications")}
+          icon="Bell"
+          onPress={() => void navigate({ to: "/me/notifications" })}
+        />
+        <SettingsRow
+          title={t("me_money:SET-01.title")}
+          icon="Gear"
+          onPress={() => void navigate({ to: "/me/settings" })}
+          testID="me-settings"
+        />
       </SettingsGroup>
 
       <SoftPromptSheet open={prompt} reason="save_progress" onClose={() => setPrompt(false)} />

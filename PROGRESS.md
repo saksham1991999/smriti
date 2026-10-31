@@ -61,7 +61,7 @@ Last updated 2026-10-31. Branch `claude/project-thread-vnixsy`. Screen-by-screen
   - Class 1 maths: "Mango Treat" (numbers 1 to 9) with a storybook, a chant and play activities.
 - One official PYQ paper: JEE Main 2026, 2 April Shift 1, checked against NTA's final key.
 - Agnes images for every slice, with provenance logged.
-- Four sims: Ohm's law circuit, simple pendulum, convex lens bench, acid-base titration.
+- Six sims: Ohm's law circuit, simple pendulum, convex lens bench, acid-base titration, motion graphs, projectile launcher (the last two await review).
 
 ### Deploy and operations
 - Dockerfiles for API and worker, Railway config with a release migrator, Cloudflare Workers config for web, site and CDN, R2 layout, security headers, app links (AASA and assetlinks).

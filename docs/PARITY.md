@@ -73,6 +73,9 @@ Last updated 30 Oct 2026. The mobile columns come from the mobile build branch (
 | Safety helplines | AI-08 | Built | Built | Not built | Helplines come from the server's safety event, never from the app. |
 | Tutor history | AI-09 | Built | Built | Not built | |
 | Photo doubt | AI-12, AI-16 | Partial | Partial | Not built | The screens exist; there is no photo-doubt API route yet. |
+| Feynman explain-back | AI-10, AI-11 | Built | Built | Not built | Typed or dictated explanation, graded by `/v1/feynman/attempts`. When grading is unavailable the explanation is kept and the screen says so. Gaps go to review as tutor cards. Answering a follow-up isn't built yet. Opened from LRN-07 when `feature.feynman` is on. |
+| Voice tutor | AI-13 to AI-15 | Partial | Partial | Not built | `VoiceSession` checks `/v1/voice/quota`, then mints a session. There is no realtime audio transport yet (it needs a native audio module), so AI-13 shows "Voice isn't ready yet" with the reason (Pro, no allowance set, offline, needs an update) and a way into text chat. The live and summary screens are built and tested with a scripted transport. |
+| Read-aloud and dictation | `/v1/speech/*` | Partial | Partial | Not built | `ReadAloudButton` on AI-11 and the little-learner home; the mic works on web. Native playback and recording need expo-audio. When the API has no speech provider, a toast says listening isn't available. |
 
 ## Me and money
 

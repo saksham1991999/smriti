@@ -6,6 +6,7 @@
  */
 import { router, type Href } from 'expo-router';
 
+import { conceptFor } from '../features/feynman/services';
 import { startDuel } from '../features/social/services';
 import { deviceLimits } from '../features/parent/limits';
 import { parentSession } from '../features/parent/session';
@@ -84,6 +85,38 @@ const demos: Record<string, Demo> = {
   },
   social: async (app, fake) => {
     await socialWorld(app, fake);
+  },
+  // AI-10 and AI-11 with a stand-in grader (the local API has none). The key points are
+  // labelled placeholders, not study content: the real ones come from the concept's rubric.
+  teach: async (app, fake) => {
+    fake.flags = PHASE2;
+    await onboard(app, 'adult');
+    fake.features.ai.grader = () => ({
+      clarity: 72,
+      completeness: 50,
+      accuracy: 90,
+      key_points: [
+        { index: 0, text: { en: 'Key point 1 (demo placeholder)', hi: 'मुख्य बिंदु 1 (डेमो)' }, status: 'covered', note: null },
+        { index: 1, text: { en: 'Key point 2 (demo placeholder)', hi: 'मुख्य बिंदु 2 (डेमो)' }, status: 'missing', note: null },
+      ],
+      follow_ups: [],
+    });
+    const topics = app.deps.content.topics(app.ui.getState().locale, app.examProfileId());
+    const topic = topics.find((t) => conceptFor(app, t.id));
+    return topic ? `/teach/${topic.id}` : undefined;
+  },
+  // AI-13 for a free student (voice is a Pro feature) and for Pro with no allowance set.
+  voice: async (app, fake) => {
+    fake.flags = PHASE2;
+    await onboard(app, 'adult');
+    return '/voice';
+  },
+  voicepro: async (app, fake) => {
+    fake.flags = PHASE2;
+    await onboard(app, 'adult');
+    const me = [...fake.users.values()].find((u) => u.id === app.store.getState().session.userId);
+    if (me) me.entitlement = { plan: 'pro', pro_until: null, status: 'active' };
+    return '/voice';
   },
   duel: async (app, fake) => {
     const { ravi } = await socialWorld(app, fake);

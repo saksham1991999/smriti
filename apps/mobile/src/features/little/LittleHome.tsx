@@ -9,6 +9,7 @@ import { Pressable, StyleSheet, View } from 'react-native';
 import { bundledIllustrations } from '../../seed/illustrations';
 import { useApp, useT, useUiState } from '../../services/context';
 import { Screen } from '../../ui/Screen';
+import { ReadAloudButton } from '../speech/ReadAloudButton';
 import { readAloud, speechFor } from '../speech/speech';
 import { useExperience } from './experience';
 import { GrownUpsHold } from './GrownUpsHold';
@@ -104,7 +105,7 @@ export function LittleHome() {
         <Text variant="heading" style={styles.grow} testID="little-line">
           {t(line)}
         </Text>
-        {canSpeak ? <IconButton icon="SpeakerHigh" label={t('learn:LRN-11.read_to_me_little_learner')} onPress={() => void readAloud(app, t(line))} size={48} testID="little-speak" /> : null}
+        {canSpeak ? <ReadAloudButton text={t(line)} label={t('learn:LRN-11.read_to_me_little_learner')} size={48} source="story" testID="little-speak" /> : null}
       </View>
 
       <View style={styles.path} testID="little-path">

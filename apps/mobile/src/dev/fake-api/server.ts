@@ -112,7 +112,7 @@ export class FakeApiServer {
     this.ttl = opts.tokenTtlS ?? 3600;
     this.revenuecatAuth = opts.revenuecatWebhookAuth ?? '';
     this.failSyncWith = opts.failSyncWith ?? null;
-    this.features = new FeatureFakes({ clock: this.clock, user: (id) => this.users.get(id) ?? null, users: () => this.users.values(), state: (u) => this.state(u) });
+    this.features = new FeatureFakes({ clock: this.clock, user: (id) => this.users.get(id) ?? null, users: () => this.users.values(), flags: () => this.flags, state: (u) => this.state(u) });
   }
 
   /** A `fetch` the app's platform layer can use in place of the network. */

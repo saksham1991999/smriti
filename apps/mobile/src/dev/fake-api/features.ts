@@ -8,6 +8,7 @@
  */
 import type { HttpResponse, SyncStateResponse } from '@smriti/app-core';
 
+import { AiFakes } from './ai';
 import { ParentFakes } from './parent';
 import { SocialFakes } from './social';
 import type { FakeUser } from './server';
@@ -24,6 +25,8 @@ export interface FeatureContext {
   clock: () => number;
   user: (id: string) => FakeUser | null;
   users: () => Iterable<FakeUser>;
+  /** The flags `/v1/config` serves (the API reads the same ones). */
+  flags: () => Record<string, unknown>;
   state: (user: FakeUser) => SyncStateResponse;
 }
 
@@ -34,12 +37,14 @@ export interface FeatureModule {
 export class FeatureFakes {
   readonly parent: ParentFakes;
   readonly social: SocialFakes;
+  readonly ai: AiFakes;
   private readonly modules: FeatureModule[];
 
   constructor(readonly ctx: FeatureContext) {
     this.parent = new ParentFakes(ctx);
     this.social = new SocialFakes(ctx);
-    this.modules = [this.parent, this.social];
+    this.ai = new AiFakes(ctx);
+    this.modules = [this.parent, this.social, this.ai];
   }
 
   /** Adds a module (later features register theirs here). */

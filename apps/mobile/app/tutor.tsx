@@ -176,7 +176,14 @@ export default function Tutor() {
         title={t('tutor_social:AI-01.accessibility_label', { pet_name: petName })}
         backLabel={t('ui:common.back')}
         onBack={back}
-        trailing={app.isLittleLearner() ? undefined : <IconButton icon="Clock" label={t('tutor_social:AI-09.title')} onPress={() => router.push('/tutor-history' as Href)} testID="tutor-history" />}
+        trailing={
+          app.isLittleLearner() ? undefined : (
+            <View style={{ flexDirection: 'row' }}>
+              {app.flags.get('feature.voice_tutor') === true ? <IconButton icon="SpeakerHigh" label={t('tutor_social:AI-10.speak')} onPress={() => router.push('/voice' as Href)} testID="tutor-voice" /> : null}
+              <IconButton icon="Clock" label={t('tutor_social:AI-09.title')} onPress={() => router.push('/tutor-history' as Href)} testID="tutor-history" />
+            </View>
+          )
+        }
       />
       {!online ? <Banner tone="offline" icon="WifiSlash" text={t('tutor_social:AI-02.offline_pet_line')} testID="tutor-offline" /> : null}
       {session.isPending ? <Spinner label={t('tutor_social:AI-02.thinking', { pet_name: petName })} /> : null}

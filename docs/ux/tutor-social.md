@@ -625,6 +625,14 @@ Crisis variant (a full-width card that replaces the tutor answer and stays pinne
 | Try again | Try again | फिर से कोशिश करें |
 | Done | Done | हो गया |
 | Grading | Checking your explanation… | आपकी समझ जाँच रहे हैं… |
+| Score | {score}/100 | {score}/100 |
+| Meter label | {meter}, {band}, {score} out of 100 | {meter}, {band}, 100 में से {score} |
+| No gaps | Nothing missed. Well explained! | कुछ नहीं छूटा। बहुत अच्छा समझाया! |
+| Grading error | We couldn't check it right now. Your explanation is kept. | अभी जाँच नहीं हो पाई। आपकी लिखी बात सहेजी हुई है। |
+| Listen | Listen | सुनें |
+| Listen unavailable | Audio isn't available right now. | अभी आवाज़ उपलब्ध नहीं है। |
+| Listen limit | That's enough listening for today. | आज के लिए सुनना पूरा हुआ। |
+| Listen offline | Listening needs internet. | सुनने के लिए इंटरनेट चाहिए। |
 
 **Illustration slots:** Top pet reaction: `pet-cat` / `pet-dog`, 1:1, "proud" (all clear), "thinking" (mixed) or "curious" (needs work), 96 px. Alt: decorative (the pet line is read).
 
@@ -716,6 +724,12 @@ Denied variant: same layout, title and body change, primary becomes [Open settin
 | Try again | Try again | फिर से कोशिश करें |
 | Switch to text | Switch to text | टाइप करके बात करें |
 | No time left | You've used today's voice time. It comes back at {reset_time}. | आज का आवाज़ वाला समय पूरा हुआ। {reset_time} बजे फिर मिलेगा। |
+| Not ready title | Voice isn't ready yet | आवाज़ वाली बातचीत अभी तैयार नहीं है |
+| Not ready body | You can still ask {pet_name} anything in text. | आप अब भी {pet_name} से टाइप करके कुछ भी पूछ सकते हैं। |
+| Pro required | Talking out loud with {pet_name} comes with Pro. | {pet_name} से बोलकर बात करना Pro के साथ मिलता है। |
+| Needs update | Voice needs a newer version of the app. | आवाज़ वाली बातचीत के लिए ऐप का नया वर्शन चाहिए। |
+| Needs internet | Voice needs internet. | आवाज़ वाली बातचीत के लिए इंटरनेट चाहिए। |
+| See Pro | See Pro | Pro देखें |
 
 **Illustration slots:** The pet's Rive file in the `wake` → listening state (DESIGN §7.2); Agnes art from `pet-cat` / `pet-dog` reference sheets. Alt: "{pet_name} getting ready to listen".
 

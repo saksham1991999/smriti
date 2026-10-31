@@ -19,8 +19,7 @@ export function speechFor(app: SmritiApp): Speech {
   let s = perApp.get(app);
   if (!s) {
     const web = Platform.OS === 'web';
-    // Dictation posts raw audio, which the in-app fake API cannot take: the mic stays hidden there.
-    s = { out: web ? new WebAudioOut() : noAudioOut, in: web && !app.deps.switches.fakeApi ? new WebAudioIn() : noAudioIn };
+    s = { out: web ? new WebAudioOut() : noAudioOut, in: web ? new WebAudioIn() : noAudioIn };
     perApp.set(app, s);
   }
   return s;
@@ -39,7 +38,8 @@ export async function readAloud(app: SmritiApp, text: string): Promise<SpeakResu
   if (!out.available || !text.trim()) return 'unavailable';
   if (!app.deps.network.isOnline()) return 'offline';
   const res = await app.api.POST('/v1/speech/read-aloud', { body: { text, locale: app.ui.getState().locale } }).catch(() => null);
-  if (!res || res.error || !res.data) return res?.response.status === 429 ? 'limit' : 'offline';
+  if (!res) return 'offline';
+  if (res.error || !res.data) return res.response.status === 429 ? 'limit' : 'unavailable';
   if (res.data.quota.remaining === 0 && !res.data.quota.unlimited && !res.data.url) return 'limit';
   await out.play(res.data.url);
   return 'played';
@@ -51,9 +51,16 @@ export type DictationResult = { kind: 'text'; text: string } | { kind: 'empty' }
 export async function transcribe(app: SmritiApp, audio: { data: Blob; mime: string }): Promise<DictationResult> {
   const token = await app.auth.getAccessToken().catch(() => null);
   const f = (globalThis as { fetch?: typeof fetch }).fetch;
+  const url = `${app.deps.env.API_BASE_URL}/v1/speech/dictation?locale=${app.ui.getState().locale}`;
+  if (token && app.deps.switches.fakeApi) {
+    // DEV and TEST: the in-app fake API takes text bodies only, so the audio stays on the device.
+    const res = await app.deps.fetch(url, { method: 'POST', headers: { Authorization: `Bearer ${token}` } }).catch(() => null);
+    if (!res?.ok) return { kind: 'failed' };
+    const body = (await res.json()) as { text: string };
+    return body.text.trim() ? { kind: 'text', text: body.text.trim() } : { kind: 'empty' };
+  }
   if (!token || !f) return { kind: 'failed' };
   try {
-    const url = `${app.deps.env.API_BASE_URL}/v1/speech/dictation?locale=${app.ui.getState().locale}`;
     const res = await f(url, { method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': audio.mime, 'X-Device-Id': app.deps.deviceId }, body: audio.data });
     if (!res.ok) return { kind: 'failed' };
     const body = (await res.json()) as { text: string };

@@ -43,6 +43,8 @@ Last updated 30 Oct 2026. The mobile columns come from the mobile build branch (
 |---|---|---|---|---|---|
 | Memory hub | MEM-01 | Built | Built | Not built | |
 | Comeback after a break | MEM-02 | Built | Built | Not built | |
+| Memory palaces | MEM-12 to MEM-15, MEM-17, MEM-18 | Partial | Partial | Not built | Mobile: palaces in the profile database (offline), RoomCard list, template and name, items from list mnemonics in learned topics, builder with tap-then-tap placing, swap and Auto-place, walk and the "What's here?" quiz, behind Pro. Not built: room and template art (needs Agnes images), the drag canvas, MEM-16 spot notes and pictures, "Put them back", items from decks and saved hooks, room rename and split, FSRS ratings for palace items, "From your lessons" system walks. |
+| Insights | MEM-25 | Partial | Partial | Not built | Mobile: calibration (Sure, 50:50, Guess bars and the two headline counts) from `/v1/insights/calibration`, with the "answers still needed" state; fading topics from `/v1/insights/weak-areas` (opens a topic review); tonight's sleep review status from `/v1/insights/sleep-review`. Not built: the range and subject filters, the topic heat map, per-subject scores, the target mark and MEM-26. |
 | Review session (FSRS) | MEM-03, MEM-04 | Built | Built | Built | Mobile can scope a session to one topic (from LRN-02). No undo yet. |
 | Labs hub | LAB-01 | Built | Built | Built | Mobile shows per-lab progress and "Works offline" once a lab is downloaded. |
 | Lab detail and info | LAB-03, LAB-18 | Partial | Partial | Built | No mobile-data confirmation before a download yet: the network service does not report cellular. |

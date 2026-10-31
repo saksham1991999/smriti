@@ -7,6 +7,7 @@
 import { router, type Href } from 'expo-router';
 
 import { conceptFor } from '../features/feynman/services';
+import { autoPlace, createPalace, loadPalace, palaceSources } from '../features/palace/palaces';
 import { startDuel } from '../features/social/services';
 import { deviceLimits } from '../features/parent/limits';
 import { parentSession } from '../features/parent/session';
@@ -111,6 +112,38 @@ const demos: Record<string, Demo> = {
     await onboard(app, 'adult');
     return '/voice';
   },
+  // MEM-12 with one palace built from a learned topic's list mnemonic (fixture content).
+  palace: async (app, fake) => {
+    await proAdult(app, fake);
+    await learnListTopic(app);
+    const [source] = await palaceSources(app);
+    if (source) {
+      const id = await createPalace(app, { name: 'Home', template: 'home', items: source.items.map((i) => i.ref) });
+      const model = await loadPalace(app, id);
+      if (model) await autoPlace(app, model);
+    }
+    return '/palace';
+  },
+  palacenew: async (app, fake) => {
+    await proAdult(app, fake);
+    await learnListTopic(app);
+    return '/palace/new';
+  },
+  // MEM-25 from tagged answers, a fading topic and tonight's sleep review (the API's shapes).
+  insights: async (app, fake) => {
+    await proAdult(app, fake, { 'analytics.min_tagged_answers': 6 });
+    const me = app.store.getState().session.userId!;
+    const ins = fake.features.insights;
+    for (const [c, ok] of [['sure', true], ['sure', true], ['sure', false], ['fifty', true], ['fifty', false], ['guess', true], ['guess', false]] as const) ins.tag(me, c, ok);
+    const topic = app.deps.content.topics(app.ui.getState().locale, app.examProfileId())[1];
+    if (topic) ins.weak.set(me, [{ topic_id: topic.id, cards: 4, min_retrievability: 0.82 }]);
+    ins.sleep.set(me, { eligible: true, bedtime: '22:30:00', source: 'estimate', confidence: 0.8, cards: [] });
+    return '/insights';
+  },
+  insightsempty: async (app, fake) => {
+    await proAdult(app, fake, { 'analytics.min_tagged_answers': 20 });
+    return '/insights';
+  },
   voicepro: async (app, fake) => {
     fake.flags = PHASE2;
     await onboard(app, 'adult');
@@ -128,6 +161,22 @@ const demos: Record<string, Demo> = {
     return `/social/duel/${d.id}`;
   },
 };
+
+async function proAdult(app: SmritiApp, fake: FakeApiServer, flags: Record<string, unknown> = {}) {
+  fake.flags = { ...PHASE2, ...flags };
+  await onboard(app, 'adult');
+  const me = [...fake.users.values()].find((u) => u.id === app.store.getState().session.userId);
+  if (me) me.entitlement = { plan: 'pro', pro_until: null, status: 'active' };
+  await app.syncNow();
+}
+
+/** Marks the first topic whose lesson has a list mnemonic as learned (fixture content). */
+async function learnListTopic(app: SmritiApp) {
+  const exam = app.examProfileId();
+  const locale = app.ui.getState().locale;
+  const t = app.deps.content.topics(locale, exam).find((x) => Object.values(app.deps.content.load(locale, x.id, 'deep_dive', exam)?.bundle.mnemonics ?? {}).some((m) => m.decodes_to.length >= 2));
+  if (t) await app.deps.stores.storage.topic_status.put({ topic_id: t.id, status: 'learned', learned_via: 'lesson', percent: 100, updated_at: new Date(app.deps.clock()).toISOString() });
+}
 
 /**
  * A signed-in adult with three friends: Ravi (an adult, more XP this week), Asha (an adult who

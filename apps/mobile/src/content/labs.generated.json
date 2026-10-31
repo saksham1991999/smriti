@@ -709,6 +709,269 @@
     "aspect": "4:3"
   },
   {
+    "id": "projectile-launcher",
+    "version": "1.0.0",
+    "title": {
+      "en": "Projectile launcher",
+      "hi": "प्रक्षेप्य प्रक्षेपक"
+    },
+    "subject": "phy",
+    "concepts": [
+      "phy.motion-plane.projectile.core.projectile-motion"
+    ],
+    "tasks": 4,
+    "taskSpecs": [
+      {
+        "id": "range-45",
+        "prompt": {
+          "en": "Launch at 20 m/s and 45°. Read the range.",
+          "hi": "20 m/s और 45° पर प्रक्षेपित कीजिए। परास पढ़िए।"
+        },
+        "hint": {
+          "en": "Set the angle to 45°, then press Launch and wait for the ball to land.",
+          "hi": "कोण 45° रखिए, फिर प्रक्षेपित करें दबाइए और गेंद के गिरने तक रुकिए।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "target",
+              "quantity": "launch_speed",
+              "value": 20,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "gravity",
+              "value": 9.8,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "angle",
+              "value": 45,
+              "tolerance": 0.5
+            },
+            {
+              "kind": "target",
+              "quantity": "range",
+              "value": 40.8,
+              "tolerance": 0.5
+            }
+          ]
+        }
+      },
+      {
+        "id": "height-45",
+        "prompt": {
+          "en": "Read the maximum height for the same launch.",
+          "hi": "उसी प्रक्षेपण की अधिकतम ऊँचाई पढ़िए।"
+        },
+        "hint": {
+          "en": "The highest point is where vy reads zero.",
+          "hi": "सबसे ऊँचा बिंदु वहाँ है जहाँ vy शून्य होता है।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "target",
+              "quantity": "launch_speed",
+              "value": 20,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "gravity",
+              "value": 9.8,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "angle",
+              "value": 45,
+              "tolerance": 0.5
+            },
+            {
+              "kind": "target",
+              "quantity": "max_height",
+              "value": 10.2,
+              "tolerance": 0.2
+            }
+          ]
+        }
+      },
+      {
+        "id": "range-30",
+        "prompt": {
+          "en": "Keep the speed and launch at 30°. Read the range.",
+          "hi": "चाल वही रखकर 30° पर प्रक्षेपित कीजिए। परास पढ़िए।"
+        },
+        "hint": {
+          "en": "Change only the angle, then launch again.",
+          "hi": "केवल कोण बदलिए, फिर दोबारा प्रक्षेपित कीजिए।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "target",
+              "quantity": "launch_speed",
+              "value": 20,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "gravity",
+              "value": 9.8,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "angle",
+              "value": 30,
+              "tolerance": 0.5
+            },
+            {
+              "kind": "target",
+              "quantity": "range",
+              "value": 35.3,
+              "tolerance": 0.5
+            }
+          ]
+        }
+      },
+      {
+        "id": "range-60",
+        "prompt": {
+          "en": "Now launch at 60°. Read the range.",
+          "hi": "अब 60° पर प्रक्षेपित कीजिए। परास पढ़िए।"
+        },
+        "hint": {
+          "en": "Compare this path with the 30° path you kept.",
+          "hi": "इस पथ की तुलना रखे हुए 30° वाले पथ से कीजिए।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "target",
+              "quantity": "launch_speed",
+              "value": 20,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "gravity",
+              "value": 9.8,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "angle",
+              "value": 60,
+              "tolerance": 0.5
+            },
+            {
+              "kind": "target",
+              "quantity": "range",
+              "value": 35.3,
+              "tolerance": 0.5
+            }
+          ]
+        }
+      }
+    ],
+    "readings": [
+      {
+        "name": "time",
+        "unit": "s",
+        "label": {
+          "en": "Time t",
+          "hi": "समय t"
+        }
+      },
+      {
+        "name": "vx",
+        "unit": "m/s",
+        "label": {
+          "en": "Horizontal velocity vx",
+          "hi": "क्षैतिज वेग vx"
+        }
+      },
+      {
+        "name": "vy",
+        "unit": "m/s",
+        "label": {
+          "en": "Vertical velocity vy",
+          "hi": "ऊर्ध्वाधर वेग vy"
+        }
+      },
+      {
+        "name": "range",
+        "unit": "m",
+        "label": {
+          "en": "Range R",
+          "hi": "परास R"
+        }
+      },
+      {
+        "name": "max_height",
+        "unit": "m",
+        "label": {
+          "en": "Maximum height H",
+          "hi": "अधिकतम ऊँचाई H"
+        }
+      },
+      {
+        "name": "time_of_flight",
+        "unit": "s",
+        "label": {
+          "en": "Time of flight T",
+          "hi": "उड़ान का समय T"
+        }
+      },
+      {
+        "name": "launch_speed",
+        "unit": "m/s",
+        "label": {
+          "en": "Launch speed v0",
+          "hi": "प्रक्षेपण चाल v0"
+        }
+      },
+      {
+        "name": "angle",
+        "unit": "°",
+        "label": {
+          "en": "Launch angle θ",
+          "hi": "प्रक्षेपण कोण θ"
+        }
+      },
+      {
+        "name": "gravity",
+        "unit": "m/s²",
+        "label": {
+          "en": "Gravity g",
+          "hi": "गुरुत्वीय त्वरण g"
+        }
+      }
+    ],
+    "capabilities": [
+      "tasks",
+      "record",
+      "pause",
+      "set_params",
+      "snapshot",
+      "resize"
+    ],
+    "preferredOrientation": "any",
+    "entry": "index.html",
+    "sizeBytes": 369622,
+    "licence": "owned",
+    "attribution": null,
+    "aspect": "4:3"
+  },
+  {
     "id": "simple-pendulum",
     "version": "1.0.0",
     "title": {

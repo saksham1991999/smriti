@@ -4,16 +4,16 @@
   "sources": [
     {
       "kind": "other",
-      "ref": "sims/ohms-law-circuit/manifest.json (the bundle's own manifest, version 1.0.0)",
+      "ref": "sims/ohms-law-circuit/manifest.json (the bundle's own manifest, version 1.0.1)",
       "url": null
     }
   ],
   "authored_by": "skill:sim-builder",
   "reviewed_by": null,
   "updated": "2026-10-30",
-  "notes": "Content-side manifest for the existing bundle. Concepts point at the current-electricity graph; the bundle's own manifest.json still lists older concept ids and should be updated by sim-builder.",
+  "notes": "Content-side manifest for the existing bundle; concepts match the bundle's manifest.json and the current-electricity graph.",
   "id": "ohms-law-circuit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "title": {
     "en": "Ohm's law: simple circuit",
     "hi": "ओम का नियम: सरल परिपथ"
@@ -105,7 +105,7 @@
     }
   ],
   "aspect": "4:3",
-  "size_bytes": 363537,
+  "size_bytes": 367952,
   "supports_low_power": true,
   "concepts": [
     "phy.current-electricity.ohms-law.core.ohms-law-def",

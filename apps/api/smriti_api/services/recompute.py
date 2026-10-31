@@ -108,7 +108,8 @@ async def load_user_facts(session: AsyncSession, user_id: uuid.UUID) -> UserFact
 _AGG_SQL = text(
     """
     select
-      count(*) filter (where type = 'lesson_completed')          as lessons,
+      -- A little learner's story, song or play counts as a lesson (sync v1.4).
+      count(*) filter (where type in ('lesson_completed', 'activity_completed')) as lessons,
       count(*) filter (where type = 'review_rated')              as reviews,
       count(*) filter (where type = 'mock_section_submitted')    as mocks,
       bool_or(type = 'daily_challenge_completed')                as challenge,
@@ -116,6 +117,7 @@ _AGG_SQL = text(
       bool_or(type = 'rescue_completed')                         as rescue,
       coalesce(sum(case type
         when 'lesson_completed' then (payload ->> 'ms_total')::bigint
+        when 'activity_completed' then (payload ->> 'ms_total')::bigint
         when 'practice_session_completed' then (payload ->> 'ms_total')::bigint
         when 'daily_challenge_completed' then (payload ->> 'ms_total')::bigint
         when 'review_rated' then (payload ->> 'ms_to_answer')::bigint

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Writes src/content/labs.generated.json from sims/*/manifest.json (the Labs tab list, LAB-01):
-// id, title (EN/HI), subject, task count, size and licence. Run after a sim is added or changed.
+// id, title (EN/HI), subject, tasks (LAB-03/04 run them through sim-bridge), readings, size and
+// licence. Run after a sim is added or changed.
 import { readdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -22,6 +23,11 @@ for (const dir of readdirSync(sims).sort()) {
     subject: m.subject,
     concepts: m.concepts,
     tasks: Array.isArray(m.tasks) ? m.tasks.length : 0,
+    taskSpecs: Array.isArray(m.tasks) ? m.tasks : [],
+    readings: Array.isArray(m.readings) ? m.readings : [],
+    capabilities: Array.isArray(m.capabilities) ? m.capabilities : [],
+    preferredOrientation: m.preferredOrientation ?? 'any',
+    entry: m.entry ?? 'index.html',
     sizeBytes: m.size_bytes ?? null,
     licence: m.licence,
     attribution: m.attribution ?? null,

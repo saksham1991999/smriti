@@ -3,14 +3,14 @@
  * the first launch (TRD §7). One pack per variant and locale, at most `max_bytes` (8 MB).
  */
 import type { SeedPack, SeedPackSpecFile } from "@smriti/content-schema";
-import { validateWith } from "@smriti/content-schema";
+import { ACTIVITY_KINDS, validateWith } from "@smriti/content-schema";
 import type { ContentSet } from "@smriti/content-schema/check";
 
 import type { BuiltBundle } from "./bundle.js";
 import { hashed } from "./canonical.js";
 import { PublishError } from "./errors.js";
 import { bundleKey } from "./manifest.js";
-import { type AssetFile, type MediaContext, resolveMedia } from "./media.js";
+import { type AssetFile, lenientMedia, type MediaContext, resolveMedia } from "./media.js";
 import type { ProfilePlan } from "./plan.js";
 
 export const DEFAULT_SEED_MAX_BYTES = 8 * 1024 * 1024;
@@ -78,6 +78,8 @@ export async function buildSeedPack(inp: SeedInputs): Promise<BuiltSeedPack> {
             addBundle(inp.bundles.get(bundleKey(t, "deep_dive")));
             addBundle(inp.bundles.get(bundleKey(t, "quick_revision")));
             addBundle(inp.bundles.get(bundleKey(t, "practice")));
+            // Little learner stories, songs and play work offline from the first run.
+            for (const kind of ACTIVITY_KINDS) addBundle(inp.bundles.get(bundleKey(t, kind)));
           } else if (spec.include_placement) {
             // Find my level draws one placement question per early chapter (learn §6.5).
             const practice = inp.bundles.get(bundleKey(t, "practice"));
@@ -96,7 +98,7 @@ export async function buildSeedPack(inp: SeedInputs): Promise<BuiltSeedPack> {
   for (const ref of spec.art) {
     const r = resolveMedia(ref, locale, inp.media);
     if (r.asset) assets.set(r.asset.key, r.asset);
-    else if (!inp.media.fixture) throw new PublishError("seed_art", `${ref} is not ready`);
+    else if (!lenientMedia(inp.media)) throw new PublishError("seed_art", `${ref} is not ready`);
   }
   for (const a of [...assets.values()].sort((x, y) => x.key.localeCompare(y.key))) {
     const data = await inp.readAsset(a);

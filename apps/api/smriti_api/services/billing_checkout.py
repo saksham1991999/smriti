@@ -93,36 +93,78 @@ async def start_razorpay(
     body: b.RazorpaySubscriptionRequest,
     variant: str | None,
 ) -> b.RazorpaySubscriptionOut:
-    now = datetime.now(UTC)
+    return await _start(db, integrations, auth.user_id, body.plan, body.payer, variant)
+
+
+async def _guardian_of(db: Database, guardian: AuthContext, learner_id: uuid.UUID) -> str:
+    """PAY-17: an adult with a live link and consent for the child; returns the child's name."""
+    from smriti_api.services import parent_mode  # parent_mode reads entitlements from here
+
     async with db.system_tx() as session:
-        buyer = await _buyer(session, auth.user_id)
-        if buyer is not None and (
-            buyer.account_kind == "managed" or buyer.age_band in ("u10", "10_12")
-        ):
-            # Under 13: never reaches checkout; a parent buys in Parent mode (me-money §5.4).
-            raise ApiError(403, "guardian_required", "A grown-up buys Pro from Parent mode")
-        payer = body.payer if buyer is not None and buyer.age_band == "13_17" else "self"
-        if buyer is not None and buyer.age_band == "13_17":
-            flags = await flag_service.server_flags(session)
-            if flags.get("auth.guardian_consent_gate", "features") == "signin":
-                # With the strict gate, Pro waits for the guardian's consent (auth flow §6.10).
-                await privacy.require_scope(session, auth.user_id, "account")
-        ent = await billing.compute_entitlement(session, auth.user_id, now)
+        me = await _buyer(session, guardian.user_id)
+        if me is None or me.age_band != "18p":
+            raise ApiError(403, "guardian_required", "A grown-up buys Pro for a child")
+        child = await parent_mode.child_for(session, guardian.user_id, learner_id)
+    return child.first_name or ""
+
+
+async def start_for_child(
+    db: Database,
+    integrations: Integrations,
+    guardian: AuthContext,
+    learner_id: uuid.UUID,
+    body: b.ChildProRequest,
+    variant: str | None,
+) -> b.RazorpaySubscriptionOut:
+    """PAY-17 "Get Pro for {child}": the subscription belongs to the child's account with
+    ``payer = guardian``, the ₹1 intro follows the child's own eligibility, and only the
+    guardian manages or cancels it (me-money §5.4 "Parent mode")."""
+    await _guardian_of(db, guardian, learner_id)
+    return await _start(db, integrations, learner_id, body.plan, "guardian", variant)
+
+
+async def _start(
+    db: Database,
+    integrations: Integrations,
+    user_id: uuid.UUID,
+    plan: str,
+    payer_choice: str,
+    variant: str | None,
+) -> b.RazorpaySubscriptionOut:
+    now = datetime.now(UTC)
+    by_guardian = payer_choice == "guardian"
+    async with db.system_tx() as session:
+        buyer = await _buyer(session, user_id)
+        if by_guardian:
+            payer = "guardian"
+        else:
+            if buyer is not None and (
+                buyer.account_kind == "managed" or buyer.age_band in ("u10", "10_12")
+            ):
+                # Under 13: never reaches checkout; a parent buys in Parent mode (me-money §5.4).
+                raise ApiError(403, "guardian_required", "A grown-up buys Pro from Parent mode")
+            payer = payer_choice if buyer is not None and buyer.age_band == "13_17" else "self"
+            if buyer is not None and buyer.age_band == "13_17":
+                flags = await flag_service.server_flags(session)
+                if flags.get("auth.guardian_consent_gate", "features") == "signin":
+                    # With the strict gate, Pro waits for the guardian's consent (auth §6.10).
+                    await privacy.require_scope(session, user_id, "account")
+        ent = await billing.compute_entitlement(session, user_id, now)
         if ent.active and ent.source != "promo":
             raise ApiError(
                 409, "already_pro", "Pro is already on for this account", source=ent.source
             )
         elig = await billing.intro_eligibility(
-            session, auth.user_id, is_anonymous=False, pepper=integrations.identity_pepper
+            session, user_id, is_anonymous=False, pepper=integrations.identity_pepper
         )
         # The ₹1 intro is for the monthly plan only (PRD §11.2).
-        intro = bool(elig.eligible) and body.plan == "monthly"
-        if body.plan == "monthly":
+        intro = bool(elig.eligible) and plan == "monthly"
+        if plan == "monthly":
             product_id = "pro_monthly_intro_web" if intro else "pro_monthly_web"
-        elif body.plan == "yearly":
+        elif plan == "yearly":
             product_id = "pro_yearly_web"
         else:
-            product_id = f"{body.plan}_web"
+            product_id = f"{plan}_web"
         product = (
             await session.execute(
                 text(
@@ -144,9 +186,9 @@ async def start_razorpay(
                 raise ApiError(404, "plan_unavailable", "This plan isn't offered")
     try:
         sub = await integrations.razorpay.create_subscription(
-            user_id=auth.user_id,
+            user_id=user_id,
             intro=intro,
-            notes={"variant": variant or "web", "product": product_id},
+            notes={"variant": variant or "web", "product": product_id, "payer": payer},
             product_id=product_id,
             period=str(product.period),
         )
@@ -163,7 +205,7 @@ async def start_razorpay(
                 """
             ),
             {
-                "u": auth.user_id,
+                "u": user_id,
                 "e": sub["id"],
                 "payer": payer,
                 "p": product_id,
@@ -171,7 +213,7 @@ async def start_razorpay(
                 "v": variant,
             },
         )
-    log.info("razorpay_subscription_created", intro=intro, plan=body.plan)
+    log.info("razorpay_subscription_created", intro=intro, plan=plan)
     return b.RazorpaySubscriptionOut(
         subscription_id=str(sub["id"]),
         key_id=integrations.razorpay.key_id,
@@ -219,22 +261,31 @@ async def verify_razorpay(
 
 
 async def cancel_razorpay(
-    db: Database, integrations: Integrations, user_id: uuid.UUID, reason: str | None
+    db: Database,
+    integrations: Integrations,
+    user_id: uuid.UUID,
+    reason: str | None,
+    *,
+    as_guardian: bool = False,
 ) -> b.EntitlementOut:
-    """PAY-13: cancel at the end of the paid period (two taps, R33)."""
+    """PAY-13: cancel at the end of the paid period (two taps, R33). A plan a parent pays for is
+    managed in Parent mode only (``as_guardian``); the child's own cancel refuses it."""
     async with db.system_tx() as session:
         row = (
             await session.execute(
                 text(
-                    "select id, external_id from billing.subscriptions where user_id = :u and source = 'razorpay'"
+                    "select id, external_id, payer from billing.subscriptions where user_id = :u"
+                    " and source = 'razorpay'"
                     " and status in ('trialing','active','grace','authenticated','pending')"
                     " order by updated_at desc limit 1"
                 ),
                 {"u": user_id},
             )
         ).first()
-    if row is None:
+    if row is None or (as_guardian and row.payer != "guardian"):
         raise ApiError(404, "no_web_subscription", "There is no web subscription to cancel")
+    if row.payer == "guardian" and not as_guardian:
+        raise ApiError(403, "managed_by_parent", "Your parent manages this plan")
     try:
         await integrations.razorpay.cancel_subscription(str(row.external_id), at_cycle_end=True)
     except BillingError as exc:
@@ -249,6 +300,35 @@ async def cancel_razorpay(
         )
         ent, _ = await billing.recompute_entitlement(session, user_id)
     return entitlement_out(ent)
+
+
+async def verify_for_child(
+    db: Database,
+    integrations: Integrations,
+    guardian: AuthContext,
+    learner_id: uuid.UUID,
+    body: b.RazorpayVerifyRequest,
+) -> b.EntitlementOut:
+    await _guardian_of(db, guardian, learner_id)
+    return await verify_razorpay(db, integrations, learner_id, body)
+
+
+async def cancel_for_child(
+    db: Database,
+    integrations: Integrations,
+    guardian: AuthContext,
+    learner_id: uuid.UUID,
+    reason: str | None,
+) -> b.EntitlementOut:
+    await _guardian_of(db, guardian, learner_id)
+    return await cancel_razorpay(db, integrations, learner_id, reason, as_guardian=True)
+
+
+async def details_for_child(
+    db: Database, guardian: AuthContext, learner_id: uuid.UUID
+) -> b.SubscriptionDetailsOut:
+    await _guardian_of(db, guardian, learner_id)
+    return await details(db, learner_id)
 
 
 async def details(db: Database, user_id: uuid.UUID) -> b.SubscriptionDetailsOut:

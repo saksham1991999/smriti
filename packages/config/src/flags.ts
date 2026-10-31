@@ -79,6 +79,10 @@ export const FLAG_REGISTRY = {
   'auth.consent_decline_limit': def(posInt, 3, 'proposed', 'auth §10.1'),
   'auth.consent_decline_pause_days': def(posInt, 30, 'proposed', 'auth §10.1'),
   'auth.consent_emails_per_day': def(posInt, 3, 'proposed', 'auth §6.10 (per guardian address)'),
+  // AUTH-27 (auth §6.11 "Linking an existing teen to a parent"): how long a guardian's link
+  // request stays open, and how many a guardian may start per day.
+  'auth.link_request_ttl_h': def(posInt, 72, 'proposed', 'auth §6.11 AUTH-27 (as consent_link_ttl_h)'),
+  'auth.link_requests_per_day': def(posInt, 5, 'proposed', 'auth §6.11 AUTH-27 (per guardian)'),
   'auth.deletion_grace_days': def(posInt, 7, 'proposed', 'auth §6.8, PRD §16.4'),
   'auth.merge_wait_s': def(posInt, 30, 'proposed', 'auth §6.4'),
   'auth.merge_retries': def(nonNegInt, 3, 'proposed', 'auth §6.4'),
@@ -90,6 +94,10 @@ export const FLAG_REGISTRY = {
   'merge.keep_guest_pet': def(bool, true, 'doc', 'auth §6.4 step 7'),
   'minor.defer_sync_until_consent': def(bool, false, 'doc', 'onboarding §6.2.1'),
   'parent.ask_before_switching': def(bool, false, 'doc', 'auth §6.11'),
+  'parent.time_limit_options': def(z.array(nonNegInt).check(z.minLength(1)), [0, 15, 30, 45, 60, 90, 120], 'doc', 'me-money §4.7 SET-16 (0 = Off)'),
+  'parent.time_request_minutes': def(posInt, 15, 'doc', 'me-money §4.7 SET-19'),
+  'parent.time_requests_per_day': def(posInt, 3, 'doc', 'me-money §6 parent_time_request'),
+  'parent.gate_hold_ms': def(posInt, 2000, 'doc', 'learn HOME-06 accessibility (hold 2 s)'),
   'onb.returning_account_check': def(bool, false, 'doc', 'onboarding §6.9.1 (A/B test)'),
   'onb.outcome_line': def(bool, false, 'doc', 'onboarding §6.8 (test)'),
   'goal.minutes_options': def(z.array(posInt).check(z.minLength(1)), [5, 10, 20, 30], 'ruling', 'R6'),
@@ -258,6 +266,7 @@ export const FLAG_REGISTRY = {
 
   // ── Features by phase (me-money §5.3, R8) ────────────────────────────────
   'feature.live_mocks': def(bool, false, 'doc', 'Phase 3'),
+  'feature.little_learner': def(bool, false, 'doc', 'Phase 3 (onboarding §6.3, learn §5.6)'),
   'feature.voice_tutor': def(bool, false, 'doc', 'Phase 2'),
   'feature.feynman': def(bool, false, 'doc', 'Phase 2'),
   'feature.photo_doubt': def(bool, false, 'doc', 'Phase 1 or 2'),
@@ -306,6 +315,8 @@ export const FLAG_REGISTRY = {
   'xp.lesson_attempt': def(nonNegInt, 1, 'proposed', 'learn §7, R51'),
   'xp.lesson_complete': def(nonNegInt, 20, 'proposed', 'learn §7, R51'),
   'xp.combo_bonus': def(nonNegInt, 10, 'proposed', 'learn §7.3 A19, R51'),
+  // Little learners' story, song and play completions (sync v1.4 activity_completed): XP per star.
+  'xp.little_activity_star': def(nonNegInt, 1, 'proposed', 'sync v1.4 activity_completed, R51 (owner to confirm)'),
   'learn.find_level_questions': def(posInt, 5, 'ruling', 'R27, learn §6.5'),
   'learn.combo_streak_len': def(posInt, 5, 'doc', 'learn §7.3 (A19)'),
   'learn.exit_nudge_cards_left': owner(nonNegInt, 'ux/learn LES-05'),

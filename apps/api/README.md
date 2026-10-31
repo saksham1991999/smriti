@@ -106,7 +106,7 @@ uv run python -m smriti_worker content-publish  # also: ai, media, notifications
 |---|---|
 | default | `merge_guest`, `mocks_auto_submit` (strict and live attempts past their deadline; cron every minute at :30s), `tutor_retention` (deletes tutor messages older than `ai.tutor_retention_days`; cron 02:15 UTC), `purge_deleted_accounts` (cron :20), `nightly_rollup` (cron :05, the timezones whose local midnight just passed), `db_upkeep` (03:00 UTC, only without pg_cron), `league_assign` (hourly), `league_rollover` (Sunday after `league.close_time` IST; safe to re-run), `duo_rollup` (nightly), `duel_sweep` (every minute), `squad_quests` (hourly) |
 | ai | `deck_moderation` (retries minors' shared decks still `checking`; cron every 10 minutes on the default worker) |
-| notifications | `parent_digest` (the SET-15 weekly push to guardians; cron Sunday 13:00 UTC on the default worker, held until 19:00 in the guardian's zone) |
+| notifications | `parent_digest` (the SET-15 weekly push and email to guardians; cron Sunday 13:00 UTC on the default worker, held until 19:00 in the guardian's zone; the email goes through the Mailer at dispatch, to the sign-in address read then) |
 | content-publish | `content_publish`: runs `CONTENT_PUBLISH_CMD`, or `tools/content-publish` (package.json `publish` script, `publish.sh` or `run.sh`) when it exists, with `CONTENT_PUBLISH_REF` set |
 | ai, media, notifications, pdf | `ping` until their jobs land |
 
@@ -119,6 +119,7 @@ tier from `AI_TIER_<TIER>_MODEL`, enforces per-user daily budgets, records usage
 | Capability | Real provider | Turned on by | Otherwise |
 |---|---|---|---|
 | Chat, tutor, authoring | Agnes (OpenAI-compatible `/chat/completions`) | `AI_PROVIDER=agnes` (default), `AGNES_BASE_URL`, `AGNES_AI_API_KEY`, `AI_TIER_TUTOR_MODEL`, `AI_TIER_CHEAP_MODEL`, `AI_TIER_AUTHOR_MODEL` | `AI_PROVIDER=fake` |
+| Photo doubt reading (AI-18) | Agnes `/chat/completions` with an image part | `AI_TIER_VISION_MODEL` (a vision-capable model; empty means photo doubt answers `ai_unavailable`) | `AI_PROVIDER=fake` |
 | Images | Agnes `/images/generations` | `AI_TIER_IMAGE_MODEL` | fake image |
 | Text to speech, speech to text | Deepgram | `DEEPGRAM_API_KEY`, `DEEPGRAM_TTS_MODEL`, `DEEPGRAM_STT_MODEL` | fake in local/test; an `AIConfigError` elsewhere |
 | Realtime voice tutor | Gemini Live (ephemeral session for the client) | `GEMINI_API_KEY`, `GEMINI_LIVE_MODEL` | same |
@@ -266,7 +267,16 @@ Every guardian call needs a live `app.guardian_links` row and an active consent 
 | GET | `/v1/guardian/dashboard` | SET-14 child cards: pet, minutes this week, streak, practice questions, last mock, "Needs you" |
 | GET | `/v1/guardian/learners/{id}/report?week=` | SET-15 weekly report (counts and topic names only) |
 | GET, PUT | `/v1/guardian/learners/{id}/controls` | time limit, allowed hours, break reminders, ask-before-switching, tutor button, Picture rhymes, tutor on/off, social on/off, weekly report |
-| POST | `/v1/guardian/time-requests/{id}/decision` | allow or decline a SET-19 ask |
+| POST | `/v1/guardian/time-requests/{id}/decision` | allow or decline a SET-19 ask (the child gets the SET-19 line by push) |
+| POST | `/v1/guardian/children` | AUTH-24/26: create a managed child, adopting this device's guest (`adopt_guest`) or a new account; consent `parent_created` |
+| POST | `/v1/guardian/children/{id}/session` | one-time token hash for a child session (`verifyOtp` type `email`; locally `/v1/dev/auth/verify-otp`); needs a sign-in in the last 10 minutes |
+| DELETE | `/v1/guardian/children/{id}` | schedule the child's erasure after the grace period |
+| POST | `/v1/guardian/link-requests` | AUTH-27 (SET-18 path 2): ask to link an existing teen by their sign-in email or invite code, or as a QR code the teen claims; `Idempotency-Key` required; `auth.link_requests_per_day` per guardian (429 `rate_limited`), open for `auth.link_request_ttl_h`; the answer never says whether an account matched |
+| GET, DELETE | `/v1/guardian/link-requests`, `.../link-requests/{id}` | the guardian's requests (the teen's name only once accepted), or withdraw an open one |
+| GET | `/v1/me/link-requests` | the teen's open requests ("Link {parent_first_name} as your guardian?"); also counted as `pending_link_requests` on `GET /v1/guardian/consent`, and pushed as `guardian_link_request` |
+| POST | `/v1/me/link-requests/claim` | the teen scanned or typed the guardian's code |
+| POST | `/v1/me/link-requests/{id}/accept`, `.../decline` | accept records the teen's evidence and opens the §6.10 consent request (`initiated_by = 'guardian'`, same code) that only that guardian can confirm on AUTH-20; decline links nothing |
+| GET, POST | `/v1/guardian/learners/{id}/pro`, `.../pro/verify`, `.../pro/cancel` | PAY-17: a plan on the child's account with `payer = guardian`; only the guardian manages it |
 | GET, DELETE | `/v1/guardian/learners/{id}/friends`, `.../friends/{friend_id}` | the parent friends list (B13) |
 | GET | `/v1/me/limits` | the child's limits for today, cached by the device |
 | POST | `/v1/me/time-requests` | "Ask for 15 more minutes": pushes every linked guardian |

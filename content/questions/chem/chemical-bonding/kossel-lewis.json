@@ -1,0 +1,608 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax Chemistry 2e, §10.5 The Solid State of Matter (metallic solids)",
+      "url": "https://openstax.org/books/chemistry-2e/pages/10-5-the-solid-state-of-matter",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the exam's own format. Each solution cites its NCERT section (OpenStax for metallic bonding). Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khch104) could not be retrieved, so a reviewer should check the terms.",
+  "topic": "chem.chemical-bonding.kossel-lewis",
+  "questions": [
+    {
+      "id": "q.chem.chemical-bonding.kossel-lewis.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds",
+          "weight": 1
+        }
+      ],
+      "depth": 1,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The bond in a $\\ce{Cl2}$ molecule is formed by",
+        "hi": "$\\ce{Cl2}$ अणु में आबंध किससे बनता है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "transfer of one electron from one Cl atom to the other",
+            "hi": "एक Cl परमाणु से दूसरे में एक इलेक्ट्रॉन के स्थानांतरण से"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "sharing of one pair of electrons, each atom giving one electron",
+            "hi": "एक इलेक्ट्रॉन युग्म के साझे से, जिसमें हर परमाणु एक इलेक्ट्रॉन देता है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "sharing of two pairs of electrons",
+            "hi": "दो इलेक्ट्रॉन युग्मों के साझे से"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "attraction between two chloride ions",
+            "hi": "दो क्लोराइड आयनों के बीच आकर्षण से"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Each Cl has seven valence electrons.",
+          "hi": "हर Cl में सात संयोजकता इलेक्ट्रॉन हैं।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Two identical atoms cannot sensibly hand an electron to each other. Each Cl is one electron short of argon, so each puts one electron into a shared pair.",
+          "hi": "दो एक जैसे परमाणु एक-दूसरे को इलेक्ट्रॉन नहीं देते। हर Cl आर्गन से एक इलेक्ट्रॉन कम है, इसलिए हर एक साझे युग्म में एक इलेक्ट्रॉन देता है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.1.2: $\\ce{Cl2}$ forms by sharing a pair of electrons, each chlorine contributing one, giving a single covalent bond.",
+            "hi": "NCERT §4.1.2: $\\ce{Cl2}$ एक इलेक्ट्रॉन युग्म के साझे से बनता है, हर क्लोरीन एक इलेक्ट्रॉन देता है, और एकल सहसंयोजी आबंध बनता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Transfer happens between atoms of very different elements, like Na and Cl.",
+              "hi": "स्थानांतरण बहुत भिन्न तत्वों के परमाणुओं में होता है, जैसे Na और Cl।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Two shared pairs make a double bond; $\\ce{Cl2}$ has a single bond.",
+              "hi": "दो साझे युग्म द्वि-आबंध बनाते हैं; $\\ce{Cl2}$ में एकल आबंध है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Two negative ions repel each other.",
+              "hi": "दो ऋण आयन एक-दूसरे को प्रतिकर्षित करते हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.kossel-lewis.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "In the Lewis structure of ozone in which the central O forms one double and one single bond, the formal charge on the central oxygen is",
+        "hi": "ओज़ोन की उस लूइस संरचना में, जिसमें केंद्रीय O एक द्वि-आबंध और एक एकल आबंध बनाता है, केंद्रीय ऑक्सीजन पर औपचारिक आवेश है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$0$",
+            "hi": "$0$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$+1$",
+            "hi": "$+1$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$-1$",
+            "hi": "$-1$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$+2$",
+            "hi": "$+2$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Use $V - L - \\tfrac{1}{2}S$ with $L = 2$ and $S = 6$.",
+          "hi": "$V - L - \\tfrac{1}{2}S$ लगाइए, जिसमें $L = 2$ और $S = 6$।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The central oxygen keeps one lone pair and shares three pairs. It owns fewer electrons than a free oxygen atom, so its formal charge is positive.",
+          "hi": "केंद्रीय ऑक्सीजन के पास एक एकाकी युग्म है और वह तीन युग्म साझा करता है। उसके हिस्से में मुक्त ऑक्सीजन परमाणु से कम इलेक्ट्रॉन आते हैं, इसलिए उसका औपचारिक आवेश धनात्मक है।"
+        },
+        "steps": [
+          {
+            "en": "$\\text{F.C.} = 6 - 2 - \\tfrac{1}{2}(6) = +1$ (NCERT §4.1.4).",
+            "hi": "$\\text{F.C.} = 6 - 2 - \\tfrac{1}{2}(6) = +1$ (NCERT §4.1.4)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "$0$ is the formal charge on the end oxygen joined by the double bond.",
+              "hi": "$0$ द्वि-आबंध से जुड़े सिरे वाले ऑक्सीजन का औपचारिक आवेश है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$-1$ is the formal charge on the end oxygen joined by the single bond.",
+              "hi": "$-1$ एकल आबंध से जुड़े सिरे वाले ऑक्सीजन का औपचारिक आवेश है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That would need all six shared electrons and no lone pair, which is not this structure.",
+              "hi": "इसके लिए छह साझे इलेक्ट्रॉन और कोई एकाकी युग्म नहीं चाहिए, जो यह संरचना नहीं है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.kossel-lewis.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which molecule has an expanded octet around its central atom?",
+        "hi": "किस अणु के केंद्रीय परमाणु के चारों ओर प्रसारित अष्टक है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\ce{BCl3}$",
+            "hi": "$\\ce{BCl3}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\ce{NO2}$",
+            "hi": "$\\ce{NO2}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\ce{SF6}$",
+            "hi": "$\\ce{SF6}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\ce{CH4}$",
+            "hi": "$\\ce{CH4}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Look for a central atom from the third period.",
+          "hi": "तीसरे आवर्त का केंद्रीय परमाणु खोजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Only an atom of the third period or beyond can hold more than eight electrons, because it has $d$ orbitals available.",
+          "hi": "केवल तीसरे या उसके बाद के आवर्त का परमाणु आठ से अधिक इलेक्ट्रॉन रख सकता है, क्योंकि उसके पास $d$ कक्षक उपलब्ध हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.1.5: $\\ce{SF6}$ has 12 electrons around S, an expanded octet.",
+            "hi": "NCERT §4.1.5: $\\ce{SF6}$ में S के चारों ओर 12 इलेक्ट्रॉन हैं, यानी प्रसारित अष्टक।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "$\\ce{BCl3}$ has an incomplete octet: only six electrons around B.",
+              "hi": "$\\ce{BCl3}$ में अपूर्ण अष्टक है: B के चारों ओर केवल छह इलेक्ट्रॉन।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$\\ce{NO2}$ is an odd-electron molecule.",
+              "hi": "$\\ce{NO2}$ विषम इलेक्ट्रॉन अणु है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Carbon in $\\ce{CH4}$ has exactly eight.",
+              "hi": "$\\ce{CH4}$ में कार्बन के पास ठीक आठ इलेक्ट्रॉन हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.kossel-lewis.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which statement about the Kössel-Lewis octet theory is NOT correct?",
+        "hi": "कॉसेल-लूइस अष्टक सिद्धांत के बारे में कौन-सा कथन सही नहीं है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "It is based on the chemical inertness of noble gases.",
+            "hi": "यह उत्कृष्ट गैसों की रासायनिक अक्रियता पर आधारित है।"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "It explains the shapes of molecules.",
+            "hi": "यह अणुओं की आकृतियाँ समझाता है।"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "It does not explain compounds such as $\\ce{XeF2}$.",
+            "hi": "यह $\\ce{XeF2}$ जैसे यौगिकों की व्याख्या नहीं करता।"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "It says nothing about the energy of a molecule.",
+            "hi": "यह अणु की ऊर्जा के बारे में कुछ नहीं बताता।"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which later theory was built to predict shapes?",
+          "hi": "आकृतियाँ बताने के लिए बाद में कौन-सा सिद्धांत बना?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The octet picture counts electrons; it has no geometry in it at all. Shapes needed a later theory, VSEPR.",
+          "hi": "अष्टक का चित्र केवल इलेक्ट्रॉन गिनता है; उसमें ज्यामिति है ही नहीं। आकृतियों के लिए बाद का सिद्धांत, VSEPR, चाहिए था।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.1.5 lists the drawbacks: noble gas compounds, no account of shape, silent on energy.",
+            "hi": "NCERT §4.1.5 कमियाँ गिनाता है: उत्कृष्ट गैस यौगिक, आकृति की व्याख्या नहीं, ऊर्जा पर मौन।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "This is true; the theory starts from noble gas inertness.",
+              "hi": "यह सही है; सिद्धांत उत्कृष्ट गैसों की अक्रियता से शुरू होता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "This is true and is one of its drawbacks.",
+              "hi": "यह सही है और इसकी एक कमी है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "This is true and is one of its drawbacks.",
+              "hi": "यह सही है और इसकी एक कमी है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 50,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.kossel-lewis.0005",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "How many electrons in total are used to write the Lewis structure of the nitrite ion, $\\ce{NO2-}$?",
+        "hi": "नाइट्राइट आयन, $\\ce{NO2-}$, की लूइस संरचना लिखने में कुल कितने इलेक्ट्रॉन लगते हैं?"
+      },
+      "answer": {
+        "value": 18,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "An anion has more electrons than its neutral atoms.",
+          "hi": "ऋणायन में उसके उदासीन परमाणुओं से अधिक इलेक्ट्रॉन होते हैं।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Add the valence electrons of every atom, then add one electron for the single negative charge.",
+          "hi": "हर परमाणु के संयोजकता इलेक्ट्रॉन जोड़िए, फिर एक ऋण आवेश के लिए एक इलेक्ट्रॉन और जोड़िए।"
+        },
+        "steps": [
+          {
+            "en": "N has 5 and each O has 6: $5 + 2 \\times 6 = 17$; the negative charge adds one: $17 + 1 = 18$ (NCERT §4.1.3).",
+            "hi": "N के 5 और हर O के 6: $5 + 2 \\times 6 = 17$; ऋण आवेश एक जोड़ता है: $17 + 1 = 18$ (NCERT §4.1.3)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Forgetting the extra electron for the negative charge gives 17.",
+              "hi": "ऋण आवेश का अतिरिक्त इलेक्ट्रॉन भूलने पर 17 आता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.kossel-lewis.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "In which species does every atom NOT complete an octet because the total number of electrons is odd?",
+        "hi": "किस स्पीशीज़ में इलेक्ट्रॉनों की कुल संख्या विषम होने के कारण हर परमाणु का अष्टक पूरा नहीं होता?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\ce{NO}$",
+            "hi": "$\\ce{NO}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\ce{CO}$",
+            "hi": "$\\ce{CO}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\ce{BeH2}$",
+            "hi": "$\\ce{BeH2}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\ce{PF5}$",
+            "hi": "$\\ce{PF5}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Add up valence electrons and check whether the total is odd.",
+          "hi": "संयोजकता इलेक्ट्रॉन जोड़कर देखिए कि योग विषम है या नहीं।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Add the valence electrons: $5 + 6$ is odd for NO, so one electron must stay unpaired.",
+          "hi": "संयोजकता इलेक्ट्रॉन जोड़िए: NO के लिए $5 + 6$ विषम है, इसलिए एक इलेक्ट्रॉन अयुग्मित रहेगा।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.1.5 names NO and $\\ce{NO2}$ as odd-electron molecules.",
+            "hi": "NCERT §4.1.5 में NO और $\\ce{NO2}$ विषम इलेक्ट्रॉन अणु बताए गए हैं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "CO has $4 + 6$ valence electrons, an even number; both atoms complete octets with a triple bond.",
+              "hi": "CO में $4 + 6$ संयोजकता इलेक्ट्रॉन हैं, सम संख्या; त्रि-आबंध से दोनों का अष्टक पूरा होता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$\\ce{BeH2}$ has an incomplete octet, but its electron count is even.",
+              "hi": "$\\ce{BeH2}$ में अपूर्ण अष्टक है, पर इलेक्ट्रॉन संख्या सम है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$\\ce{PF5}$ has an expanded octet.",
+              "hi": "$\\ce{PF5}$ में प्रसारित अष्टक है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

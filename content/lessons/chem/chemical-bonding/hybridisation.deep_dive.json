@@ -1,0 +1,323 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khch104) could not be retrieved, so a reviewer should check the terms.",
+  "id": "chem.chemical-bonding.hybridisation:deep_dive",
+  "topic": "chem.chemical-bonding.hybridisation",
+  "mode": "deep_dive",
+  "estimated_minutes": 5,
+  "min_depth": 2,
+  "max_depth": 3,
+  "concepts": [
+    "chem.chemical-bonding.hybridisation.core.hybridisation-spd"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Mixing orbitals",
+        "hi": "कक्षकों का मिश्रण"
+      },
+      "subtopic": "chem.chemical-bonding.hybridisation.core",
+      "card_ids": [
+        "chem.chemical-bonding.hybridisation:dd:01",
+        "chem.chemical-bonding.hybridisation:dd:02",
+        "chem.chemical-bonding.hybridisation:dd:03",
+        "chem.chemical-bonding.hybridisation:dd:04"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Bringing in d orbitals",
+        "hi": "d कक्षकों को शामिल करना"
+      },
+      "subtopic": "chem.chemical-bonding.hybridisation.core",
+      "card_ids": [
+        "chem.chemical-bonding.hybridisation:dd:05",
+        "chem.chemical-bonding.hybridisation:dd:06",
+        "chem.chemical-bonding.hybridisation:dd:07",
+        "chem.chemical-bonding.hybridisation:dd:08"
+      ],
+      "estimated_minutes": 3
+    }
+  ],
+  "cards": [
+    {
+      "id": "chem.chemical-bonding.hybridisation:dd:01",
+      "type": "explainer",
+      "concepts": [
+        "chem.chemical-bonding.hybridisation.core.hybridisation-spd"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Why carbon's four bonds are identical",
+        "hi": "कार्बन के चारों आबंध एक जैसे क्यों हैं"
+      },
+      "body": {
+        "en": "To explain the shapes of $\\ce{CH4}$, $\\ce{NH3}$ and water, Pauling introduced hybridisation: orbitals of slightly different energies intermix to give a new set of orbitals of equivalent energy and shape, called hybrid orbitals.\n\nThe number of hybrid orbitals equals the number of atomic orbitals mixed. Hybrid orbitals are always equivalent, form more effective bonds than pure orbitals, and point in directions that minimise repulsion, so the type of hybridisation tells the geometry.\n\nOnly valence-shell orbitals of almost equal energy hybridise. Promotion of an electron is not essential, and even filled orbitals can take part.\n\nIn $\\ce{CH4}$ one 2s and three 2p orbitals of carbon give four $sp^3$ orbitals, each 25% s and 75% p, pointing to the corners of a tetrahedron at $109.5^\\circ$.",
+        "hi": "$\\ce{CH4}$, $\\ce{NH3}$ और जल की आकृतियाँ समझाने के लिए पॉलिंग ने संकरण की अवधारणा दी: थोड़ी भिन्न ऊर्जा वाले कक्षक आपस में मिलकर समान ऊर्जा और आकृति वाले कक्षकों का नया समूह बनाते हैं, जिन्हें संकर कक्षक कहते हैं।\n\nसंकर कक्षकों की संख्या मिलने वाले परमाणु कक्षकों की संख्या के बराबर होती है। संकर कक्षक सदा तुल्य होते हैं, शुद्ध कक्षकों से अधिक प्रभावी आबंध बनाते हैं, और ऐसी दिशाओं में होते हैं जहाँ प्रतिकर्षण न्यूनतम हो, इसलिए संकरण का प्रकार ज्यामिति बताता है।\n\nकेवल संयोजकता कोश के लगभग समान ऊर्जा वाले कक्षक संकरित होते हैं। इलेक्ट्रॉन का उन्नयन आवश्यक नहीं, और भरे कक्षक भी भाग ले सकते हैं।\n\n$\\ce{CH4}$ में कार्बन के एक 2s और तीन 2p कक्षक चार $sp^3$ कक्षक देते हैं, हर एक में 25% s और 75% p, जो चतुष्फलक के कोनों की ओर $109.5^\\circ$ पर होते हैं।"
+      },
+      "media": "img.chemical-bonding.sp3-lobes",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.6, §4.6.1"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.hybridisation:dd:02",
+      "type": "interactive",
+      "concepts": [
+        "chem.chemical-bonding.hybridisation.core.hybridisation-spd"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Match each molecule with the hybridisation of its central atom.",
+        "hi": "हर अणु को उसके केंद्रीय परमाणु के संकरण से मिलाइए।"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "becl2",
+            "text": {
+              "en": "$\\ce{BeCl2}$",
+              "hi": "$\\ce{BeCl2}$"
+            }
+          },
+          {
+            "id": "bcl3",
+            "text": {
+              "en": "$\\ce{BCl3}$",
+              "hi": "$\\ce{BCl3}$"
+            }
+          },
+          {
+            "id": "ch4",
+            "text": {
+              "en": "$\\ce{CH4}$",
+              "hi": "$\\ce{CH4}$"
+            }
+          },
+          {
+            "id": "pcl5",
+            "text": {
+              "en": "$\\ce{PCl5}$",
+              "hi": "$\\ce{PCl5}$"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "sp",
+            "label": {
+              "en": "$sp$",
+              "hi": "$sp$"
+            }
+          },
+          {
+            "id": "sp2",
+            "label": {
+              "en": "$sp^2$",
+              "hi": "$sp^2$"
+            }
+          },
+          {
+            "id": "sp3",
+            "label": {
+              "en": "$sp^3$",
+              "hi": "$sp^3$"
+            }
+          },
+          {
+            "id": "sp3d",
+            "label": {
+              "en": "$sp^3d$",
+              "hi": "$sp^3d$"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "becl2",
+            "bin": "sp"
+          },
+          {
+            "item": "bcl3",
+            "bin": "sp2"
+          },
+          {
+            "item": "ch4",
+            "bin": "sp3"
+          },
+          {
+            "item": "pcl5",
+            "bin": "sp3d"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: the number of hybrid orbitals equals the number of bonds here, 2 to 5.",
+          "hi": "सही: यहाँ संकर कक्षकों की संख्या आबंधों की संख्या के बराबर है, 2 से 5।"
+        },
+        "wrong": {
+          "en": "Count the atoms around the central atom.",
+          "hi": "केंद्रीय परमाणु के चारों ओर परमाणु गिनिए।"
+        }
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.hybridisation:dd:03",
+      "type": "explainer",
+      "concepts": [
+        "chem.chemical-bonding.hybridisation.core.hybridisation-spd"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "sp, sp2 and sp3 in action",
+        "hi": "sp, sp2 और sp3 का प्रयोग"
+      },
+      "body": {
+        "en": "$sp$: in $\\ce{BeCl2}$ one 2s and one 2p orbital of Be give two $sp$ orbitals at $180^\\circ$, each 50% s and 50% p: a linear molecule. This is also called diagonal hybridisation.\n\n$sp^2$: in $\\ce{BCl3}$ one 2s and two 2p orbitals of B give three $sp^2$ orbitals in a plane at $120^\\circ$: trigonal planar.\n\n$sp^3$ with lone pairs: N in $\\ce{NH3}$ and O in water are also $sp^3$, but lone pairs occupy one and two of the hybrid orbitals, so the angles shrink to $107^\\circ$ and $104.5^\\circ$.\n\nIn ethane each C is $sp^3$ (C-C $154\\ \\mathrm{pm}$). In ethene each C is $sp^2$: the C=C bond is one $sp^2$-$sp^2$ sigma bond plus one pi bond from the unhybridised 2p orbitals ($134\\ \\mathrm{pm}$; H-C-H $117.6^\\circ$, H-C-C $121^\\circ$). In ethyne each C is $sp$, and the triple bond is one sigma and two pi bonds.",
+        "hi": "$sp$: $\\ce{BeCl2}$ में Be के एक 2s और एक 2p कक्षक से दो $sp$ कक्षक बनते हैं जो $180^\\circ$ पर हैं, हर एक में 50% s और 50% p: रैखिक अणु। इसे विकर्ण संकरण भी कहते हैं।\n\n$sp^2$: $\\ce{BCl3}$ में B के एक 2s और दो 2p कक्षकों से तीन $sp^2$ कक्षक बनते हैं जो एक तल में $120^\\circ$ पर हैं: त्रिकोणीय समतलीय।\n\nएकाकी युग्मों के साथ $sp^3$: $\\ce{NH3}$ में N और जल में O भी $sp^3$ हैं, पर एकाकी युग्म एक और दो संकर कक्षक घेरते हैं, इसलिए कोण घटकर $107^\\circ$ और $104.5^\\circ$ हो जाते हैं।\n\nएथेन में हर C $sp^3$ है (C-C $154\\ \\mathrm{pm}$)। एथीन में हर C $sp^2$ है: C=C आबंध एक $sp^2$-$sp^2$ सिग्मा आबंध और असंकरित 2p कक्षकों से बना एक पाई आबंध है ($134\\ \\mathrm{pm}$; H-C-H $117.6^\\circ$, H-C-C $121^\\circ$)। एथाइन में हर C $sp$ है, और त्रि-आबंध एक सिग्मा और दो पाई आबंध है।"
+      },
+      "media": "img.chemical-bonding.sp3-lobes",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.6.1, §4.6.2"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.hybridisation:dd:04",
+      "type": "question",
+      "concepts": [
+        "chem.chemical-bonding.hybridisation.core.hybridisation-spd"
+      ],
+      "depth": 2,
+      "question": "q.chem.chemical-bonding.hybridisation.0001"
+    },
+    {
+      "id": "chem.chemical-bonding.hybridisation:dd:05",
+      "type": "explainer",
+      "concepts": [
+        "chem.chemical-bonding.hybridisation.core.hybridisation-spd"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "dsp2, sp3d and sp3d2",
+        "hi": "dsp2, sp3d और sp3d2"
+      },
+      "body": {
+        "en": "Third-period elements have $3d$ orbitals close in energy to $3s$ and $3p$, so they can hybridise d orbitals too.\n\nSquare planar, $dsp^2$: $\\ce{[Ni(CN)4]^2-}$, $\\ce{[PtCl4]^2-}$. Trigonal bipyramidal, $sp^3d$: $\\ce{PF5}$, $\\ce{PCl5}$. Square pyramidal, $sp^3d^2$: $\\ce{BrF5}$. Octahedral, $sp^3d^2$ or $d^2sp^3$: $\\ce{SF6}$, $\\ce{[CrF6]^3-}$, $\\ce{[Co(NH3)6]^3+}$.\n\nIn $\\ce{PCl5}$ the bond angles are not all equal. Three P-Cl bonds lie in one plane at $120^\\circ$ (equatorial); two lie above and below at $90^\\circ$ to that plane (axial). The axial bonds suffer more repulsion, so they are slightly longer and weaker, which makes $\\ce{PCl5}$ more reactive.",
+        "hi": "तीसरे आवर्त के तत्वों के $3d$ कक्षक ऊर्जा में $3s$ और $3p$ के पास होते हैं, इसलिए वे d कक्षकों का भी संकरण कर सकते हैं।\n\nवर्ग समतलीय, $dsp^2$: $\\ce{[Ni(CN)4]^2-}$, $\\ce{[PtCl4]^2-}$। त्रिकोणीय द्विपिरामिडी, $sp^3d$: $\\ce{PF5}$, $\\ce{PCl5}$। वर्ग पिरामिडी, $sp^3d^2$: $\\ce{BrF5}$। अष्टफलकीय, $sp^3d^2$ या $d^2sp^3$: $\\ce{SF6}$, $\\ce{[CrF6]^3-}$, $\\ce{[Co(NH3)6]^3+}$।\n\n$\\ce{PCl5}$ में सभी आबंध कोण बराबर नहीं हैं। तीन P-Cl आबंध एक तल में $120^\\circ$ पर हैं (विषुवतीय); दो उस तल के ऊपर और नीचे $90^\\circ$ पर हैं (अक्षीय)। अक्षीय आबंधों पर अधिक प्रतिकर्षण होता है, इसलिए वे थोड़े लंबे और कमज़ोर होते हैं, जिससे $\\ce{PCl5}$ अधिक क्रियाशील होता है।"
+      },
+      "media": "img.chemical-bonding.sp3-lobes",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.6.3"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.hybridisation:dd:06",
+      "type": "worked_example",
+      "concepts": [
+        "chem.chemical-bonding.hybridisation.core.hybridisation-spd"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "Explain the hybridisation and shape of $\\ce{SF6}$.",
+        "hi": "$\\ce{SF6}$ के संकरण और आकृति की व्याख्या कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "S has the outer configuration $3s^2 3p^4$. In the excited state six orbitals, one 3s, three 3p and two 3d, are singly occupied.",
+          "hi": "S का बाह्य विन्यास $3s^2 3p^4$ है। उत्तेजित अवस्था में छह कक्षक, एक 3s, तीन 3p और दो 3d, एकल रूप से भरे होते हैं।"
+        },
+        {
+          "en": "These six mix to give six $sp^3d^2$ hybrid orbitals.",
+          "hi": "ये छह मिलकर छह $sp^3d^2$ संकर कक्षक देते हैं।"
+        },
+        {
+          "en": "Each overlaps with a singly occupied orbital of F to give six S-F sigma bonds, pointing to the corners of a regular octahedron.",
+          "hi": "हर एक F के एकल भरे कक्षक से अतिव्यापन कर छह S-F सिग्मा आबंध देता है, जो नियमित अष्टफलक के कोनों की ओर हैं।"
+        }
+      ],
+      "answer": {
+        "en": "$sp^3d^2$, octahedral.",
+        "hi": "$sp^3d^2$, अष्टफलकीय।"
+      },
+      "common_trap": {
+        "en": "Calling it $sp^3$ because S is in the same group as O.",
+        "hi": "S को O के समूह में होने के कारण $sp^3$ कह देना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.6.3"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.hybridisation:dd:07",
+      "type": "question",
+      "concepts": [
+        "chem.chemical-bonding.hybridisation.core.hybridisation-spd"
+      ],
+      "depth": 3,
+      "question": "q.chem.chemical-bonding.hybridisation.0002"
+    },
+    {
+      "id": "chem.chemical-bonding.hybridisation:dd:08",
+      "type": "summary",
+      "concepts": [
+        "chem.chemical-bonding.hybridisation.core.hybridisation-spd"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Hybrid orbitals: equal in number to the orbitals mixed, equivalent, directed; their type gives the geometry.",
+          "hi": "संकर कक्षक: मिलने वाले कक्षकों के बराबर संख्या, तुल्य, दिशात्मक; इनका प्रकार ज्यामिति बताता है।"
+        },
+        {
+          "en": "$sp$ $180^\\circ$, $sp^2$ $120^\\circ$, $sp^3$ $109.5^\\circ$; s character 50%, 33%, 25%.",
+          "hi": "$sp$ $180^\\circ$, $sp^2$ $120^\\circ$, $sp^3$ $109.5^\\circ$; s गुण 50%, 33%, 25%।"
+        },
+        {
+          "en": "$dsp^2$ square planar, $sp^3d$ trigonal bipyramidal, $sp^3d^2$ octahedral.",
+          "hi": "$dsp^2$ वर्ग समतलीय, $sp^3d$ त्रिकोणीय द्विपिरामिडी, $sp^3d^2$ अष्टफलकीय।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.6"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

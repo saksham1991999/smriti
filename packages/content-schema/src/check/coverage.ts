@@ -50,11 +50,22 @@ export function computeCoverage(set: ContentSet, profileId: string, findings: Fi
     }
   }
   const hookLocales = new Map<string, Set<string>>();
-  for (const { mnemonic } of set.mnemonics.values()) {
-    const s = hookLocales.get(mnemonic.concept) ?? new Set<string>();
-    s.add(mnemonic.locale);
-    hookLocales.set(mnemonic.concept, s);
+  const addHook = (concept: string, locale: string): void => {
+    const s = hookLocales.get(concept) ?? new Set<string>();
+    s.add(locale);
+    hookLocales.set(concept, s);
+  };
+  for (const { mnemonic } of set.mnemonics.values()) addHook(mnemonic.concept, mnemonic.locale);
+  // A song is a memory hook in every locale it is sung in (PRD §6.3 "Mnemonics, rhymes and songs").
+  // Stories and songs teach little learners; play activities are their practice (learn §5.6).
+  const storySong = new Set<string>();
+  const played = new Set<string>();
+  for (const { doc } of set.extras) {
+    if (doc.schema === "song@1") for (const c of doc.concepts) for (const v of doc.versions) addHook(c, v.locale);
+    if (doc.schema === "song@1" || doc.schema === "storybook@1") for (const c of doc.concepts) storySong.add(c);
+    if (doc.schema === "play@1") for (const c of doc.concepts) played.add(c);
   }
+  const little = profile.profile.audience === "little_learner";
 
   type Row = { subject: string; chapter: string; chapterSort: number; coverage: ConceptCoverage };
   const rows: Row[] = [];
@@ -66,15 +77,21 @@ export function computeCoverage(set: ContentSet, profileId: string, findings: Fi
     const cards = (cardsByConcept.get(id) ?? []).filter((u) => u.card.depth <= depth);
     const dd = cards.filter((u) => u.mode === "deep_dive");
     const qr = cards.filter((u) => u.mode === "quick_revision");
-    const required: Requirement[] = ["teaching_card", "revision_card", "practice_question", "srs_card"];
+    // Little learners (class 1–5) learn from a story, song or little lesson and practise in play;
+    // they have no Quick Revision or practice sets (learn §5.6, §6.1 "One [Play]").
+    const required: Requirement[] = little
+      ? ["teaching_card", "play_activity"]
+      : ["teaching_card", "revision_card", "practice_question", "srs_card"];
     const met = new Set<Requirement>();
     if (dd.some((u) => TEACHING_CARD_TYPES.includes(u.card.type))) met.add("teaching_card");
+    if (little && storySong.has(id)) met.add("teaching_card");
+    if (little && played.has(id)) met.add("play_activity");
     if (qr.length > 0) met.add("revision_card");
     if ((questionsByConcept.get(id) ?? []).some((q) => q.use.includes("practice") && q.depth <= depth)) {
       met.add("practice_question");
     }
     if (cards.some((u) => u.card.type === "summary")) met.add("srs_card");
-    if (concept.concept.kind === "formula") {
+    if (concept.concept.kind === "formula" && !little) {
       required.push("formula_card", "worked_example");
       if (dd.some((u) => u.card.type === "formula")) met.add("formula_card");
       if (dd.some((u) => u.card.type === "worked_example")) met.add("worked_example");

@@ -1,3 +1,4 @@
+import { gentlePetState } from '../little/gentle';
 import type { PetState } from '../rules/pet';
 import { displayHealth, type PlantHealth, type PlantStage } from '../rules/plant';
 import { localDate, parseHhmm, toIso, type Instant, type LocalDate } from '../time';
@@ -73,9 +74,6 @@ export interface WidgetSnapshotInput {
   eveningHour: number | null;
 }
 
-/** Pet states below `sleepy` that an under-10 widget never shows. */
-const UNDER10_PET_FLOOR: readonly PetState[] = ['tired', 'missing_you'];
-
 export function widgetEveningHour(eveningHour: number | null, quietStart: string): number {
   const beforeQuiet = Math.floor(((parseHhmm(quietStart) - 180 + 1440) % 1440) / 60);
   return eveningHour === null ? beforeQuiet : Math.min(eveningHour, beforeQuiet);
@@ -84,10 +82,8 @@ export function widgetEveningHour(eveningHour: number | null, quietStart: string
 export function widgetSnapshot(input: WidgetSnapshotInput): WidgetSnapshot {
   const progress = Number.isFinite(input.goalProgress) ? Math.min(1, Math.max(0, input.goalProgress)) : 0;
   const pet = input.pet
-    ? {
-        ...input.pet,
-        state: input.isUnder10 && UNDER10_PET_FLOOR.includes(input.pet.state) ? ('sleepy' as const) : input.pet.state,
-      }
+    ? // Under-10s never see below `sleepy`, `resting` included (me-money §3.3).
+      { ...input.pet, state: gentlePetState(input.pet.state, input.isUnder10) }
     : null;
   return {
     schema_version: WIDGET_SCHEMA_VERSION,

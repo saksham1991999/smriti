@@ -17,7 +17,6 @@ import type { Confidence } from "@smriti/ui-web";
 import { useServices } from "../../../boot/context";
 import type { Services } from "../../../boot/services";
 import { bundleEntry, contentKeys, useManifest } from "../../../lib/content";
-import { useDaily } from "../../../lib/daily";
 import { useI18n } from "../../../lib/i18n";
 import { useOnline } from "../../../lib/network";
 import { completeServerSession, toAnswerIn, type ServerSession } from "../../../lib/practice";
@@ -143,14 +142,13 @@ function useBundles(topicIds: readonly string[]) {
 
 async function submitAnswer(s: Services, sessionId: string, a: { qid: string; topicId: string; draft: Answer; r: CheckResult; ms: number; confidence: Confidence | null; locale: "en" | "hi" }) {
   try {
-    const res = await unwrap(
+    await unwrap(
       s.client.POST("/v1/practice/sessions/{session_id}/answers", {
         params: { path: { session_id: sessionId }, header: { "Idempotency-Key": newIdempotencyKey() } },
         body: { question_id: a.qid, answer: toAnswerIn(a.draft), attempt: 1, time_ms: Math.round(Math.min(3_600_000, a.ms)), locale: a.locale, confidence: a.confidence ? CONF[a.confidence] : null },
       }),
       s.client,
     );
-    if (res.counted) useDaily.getState().addPractice(1);
     return;
   } catch {
     // The server didn't take it (offline, or the in-process fake): the outbox carries it.
@@ -165,7 +163,6 @@ async function submitAnswer(s: Services, sessionId: string, a: { qid: string; to
     confidence: a.confidence ? CONF[a.confidence] : null,
     ms_to_answer: Math.round(a.ms),
   });
-  useDaily.getState().addPractice(1);
 }
 
 function Runner({ session, onDone, onClose }: { session: ServerSession; onDone: (r: { answered: number; correct: number; total: number; ms: number }) => void; onClose: () => void }) {
@@ -198,7 +195,6 @@ function Runner({ session, onDone, onClose }: { session: ServerSession; onDone: 
     const correct = list.filter(Boolean).length;
     const server = await completeServerSession(s, session.id, endedBy);
     if (!server && list.length) await s.record("practice_session_completed", { session_id: session.id, kind: "drill", answered: list.length, correct, ms_total: ms });
-    if (list.length) useDaily.getState().add(ms);
     s.analytics.track("drill_completed", { session_id: session.id, answered: list.length, correct, duration_ms: ms, ended_by: endedBy, free_cap: "none" });
     onDone({ answered: list.length, correct, total: items.length, ms });
   };

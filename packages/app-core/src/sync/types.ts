@@ -86,7 +86,25 @@ export interface SyncEventPayloads {
   cards_queued: { concept_ids: string[]; source: CardsQueuedSource };
   /** memory-labs §5.2. */
   comeback_plan_started: { days_away: number; cards: number };
+  /**
+   * (v1.4) A little learner finished a story, song or play activity (lesson-core
+   * `ActivityCompletion`, see `activityCompletedPayload`). Ids and counts only, no free text.
+   */
+  activity_completed: {
+    kind: LittleActivityCompletionKind;
+    activity_id: string;
+    topic_id: string;
+    concept_ids: string[];
+    bundle_version: string;
+    locale: Locale;
+    stars: number;
+    ms_total: number;
+    completed_at: string;
+  };
 }
+
+/** The activity kinds with a completion event (lesson-core `ActivityKind`). */
+export type LittleActivityCompletionKind = 'story' | 'song' | 'play';
 
 /** `cards_queued.source` on the wire (sync contract v1.1). */
 export type CardsQueuedSource = 'lesson' | 'practice' | 'comeback';
@@ -115,7 +133,14 @@ export const CONTRACT_V1_EVENT_TYPES = [
   'rescue_completed',
   'cards_queued',
   'comeback_plan_started',
+  'activity_completed',
 ] as const satisfies readonly SyncEventType[];
+
+/**
+ * Events added in contract v1.4 (pending). A server on v1.3 rejects them as unknown, so send them
+ * only once `/v1/config` or the contract says v1.4 is live.
+ */
+export const CONTRACT_V14_EVENT_TYPES = ['activity_completed'] as const satisfies readonly SyncEventType[];
 
 export interface WireEvent<T extends SyncEventType = SyncEventType> {
   event_id: string;
@@ -209,6 +234,12 @@ export interface TopicProgress {
   learned_via?: 'lesson' | 'test_out' | 'placement' | 'chapter_test' | null;
 }
 
+/**
+ * Where Pro comes from (the API's `EntitlementOut.source`): a store or web subscription, a promo
+ * grant, or a seat on someone else's family plan (`family`, managed only by the payer).
+ */
+export type EntitlementSource = 'razorpay' | 'play' | 'app_store' | 'promo' | 'family';
+
 export interface EntitlementSection {
   plan: 'free' | 'pro';
   pro_until: string | null;
@@ -216,8 +247,16 @@ export interface EntitlementSection {
   grace_until?: string | null;
   cancel_at_period_end?: boolean;
   is_intro?: boolean;
-  source?: string;
+  source?: EntitlementSource | null;
+  /** (sync v1.4) Who manages the plan; absent from older servers (see `planManagedIn`). */
+  managed_in?: PlanManagedIn;
 }
+
+/**
+ * Where Manage plan goes (sync v1.4 `entitlement.managed_in`): this app's web checkout, a store,
+ * the parent who pays (PAY-17), the family plan's payer, or nothing to manage.
+ */
+export type PlanManagedIn = 'web' | 'play' | 'app_store' | 'parent' | 'family' | 'none';
 
 export interface SyncStateResponse {
   state_version: number;

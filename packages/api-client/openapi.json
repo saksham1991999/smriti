@@ -3269,6 +3269,115 @@
         }
       }
     },
+    "/v1/ai/doubt-photos": {
+      "post": {
+        "tags": ["tutor"],
+        "summary": "AI-16 to AI-18: upload a photo of a question and read it (Pro, 13+, uploads scope)",
+        "operationId": "upload_doubt_photo_v1_ai_doubt_photos_post",
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 200 }, { "type": "null" }],
+              "title": "Exam"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DoubtPhotoOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "description": "One compressed photo of one question (at most 4 MiB)",
+          "content": {
+            "image/jpeg": { "schema": { "type": "string", "format": "binary" } },
+            "image/png": { "schema": { "type": "string", "format": "binary" } },
+            "image/webp": { "schema": { "type": "string", "format": "binary" } }
+          }
+        }
+      }
+    },
+    "/v1/ai/doubt-photos/{photo_id}": {
+      "get": {
+        "tags": ["tutor"],
+        "summary": "A photo doubt: what was read, and its chat once solved",
+        "operationId": "get_doubt_photo_v1_ai_doubt_photos__photo_id__get",
+        "parameters": [
+          {
+            "name": "photo_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Photo Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DoubtPhotoOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/ai/doubt-photos/{photo_id}/solve": {
+      "post": {
+        "tags": ["tutor"],
+        "summary": "AI-19: solve the confirmed question as a tutor chat, hints first (SSE)",
+        "operationId": "solve_doubt_photo_v1_ai_doubt_photos__photo_id__solve_post",
+        "parameters": [
+          {
+            "name": "photo_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Photo Id" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/DoubtSolve" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Server-sent events (delta, replace, safety, citations, chips, quota, quota_exhausted, error, done)",
+            "content": { "text/event-stream": { "schema": { "type": "string" } } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/reviews/queue": {
       "post": {
         "tags": ["reviews"],
@@ -3918,6 +4027,217 @@
         }
       }
     },
+    "/v1/guardian/learners/{learner_id}/pro": {
+      "get": {
+        "tags": ["billing"],
+        "summary": "PAY-17 and SET-14: the child's plan, as the guardian who manages it sees it",
+        "operationId": "child_pro_v1_guardian_learners__learner_id__pro_get",
+        "parameters": [
+          {
+            "name": "learner_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Learner Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SubscriptionDetailsOut" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["billing"],
+        "summary": "PAY-17 [Continue to pay]: a web subscription on the child's account, payer guardian",
+        "operationId": "child_pro_start_v1_guardian_learners__learner_id__pro_post",
+        "parameters": [
+          {
+            "name": "learner_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Learner Id" }
+          },
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/ChildProRequest" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/RazorpaySubscriptionOut" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/guardian/learners/{learner_id}/pro/verify": {
+      "post": {
+        "tags": ["billing"],
+        "summary": "Check the Checkout signature for the child's plan; Pro follows the webhook",
+        "operationId": "child_pro_verify_v1_guardian_learners__learner_id__pro_verify_post",
+        "parameters": [
+          {
+            "name": "learner_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Learner Id" }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/RazorpayVerifyRequest" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/EntitlementOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/guardian/learners/{learner_id}/pro/cancel": {
+      "post": {
+        "tags": ["billing"],
+        "summary": "Cancel the plan the guardian pays for, at the end of the paid period",
+        "operationId": "child_pro_cancel_v1_guardian_learners__learner_id__pro_cancel_post",
+        "parameters": [
+          {
+            "name": "learner_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Learner Id" }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/RazorpayCancelRequest" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/EntitlementOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/guardian/consent-requests": {
       "post": {
         "tags": ["guardian"],
@@ -4210,6 +4530,342 @@
             "description": "Successful Response",
             "content": {
               "application/json": { "schema": { "$ref": "#/components/schemas/LearnersOut" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/guardian/children": {
+      "post": {
+        "tags": ["guardian"],
+        "summary": "AUTH-24/26: create a managed child (adopting this device's guest, or a new account)",
+        "operationId": "create_child_v1_guardian_children_post",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/ChildCreate" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ManagedChildOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/guardian/children/{child_id}/session": {
+      "post": {
+        "tags": ["guardian"],
+        "summary": "A one-time token hash for a child session on this device (sign-in in the last 10 min)",
+        "operationId": "child_session_v1_guardian_children__child_id__session_post",
+        "parameters": [
+          {
+            "name": "child_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Child Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ChildSessionOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/guardian/children/{child_id}": {
+      "delete": {
+        "tags": ["guardian"],
+        "summary": "Delete a managed child: erasure after the grace period, devices signed out",
+        "operationId": "delete_child_v1_guardian_children__child_id__delete",
+        "parameters": [
+          {
+            "name": "child_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Child Id" }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ChildDeletionOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/guardian/link-requests": {
+      "post": {
+        "tags": ["guardian"],
+        "summary": "SET-18 path 2: ask to link an existing teen by their email or invite code, or as a QR",
+        "operationId": "create_link_request_v1_guardian_link_requests_post",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/LinkRequestCreate" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/LinkRequestCreated" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["guardian"],
+        "summary": "The calling guardian's link requests, newest first (the teen's name once accepted)",
+        "operationId": "my_link_requests_v1_guardian_link_requests_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GuardianLinkRequestOut" },
+                  "title": "Response My Link Requests V1 Guardian Link Requests Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/guardian/link-requests/{request_id}": {
+      "delete": {
+        "tags": ["guardian"],
+        "summary": "Withdraw an open link request",
+        "operationId": "cancel_link_request_v1_guardian_link_requests__request_id__delete",
+        "parameters": [
+          {
+            "name": "request_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Request Id" }
+          }
+        ],
+        "responses": {
+          "204": { "description": "Successful Response" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/me/link-requests": {
+      "get": {
+        "tags": ["guardian"],
+        "summary": "AUTH-27: open requests from guardians to link this teen",
+        "operationId": "teen_link_requests_v1_me_link_requests_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": { "$ref": "#/components/schemas/TeenLinkRequestOut" },
+                  "type": "array",
+                  "title": "Response Teen Link Requests V1 Me Link Requests Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/me/link-requests/claim": {
+      "post": {
+        "tags": ["guardian"],
+        "summary": "The teen scanned or typed the guardian's code: the request becomes theirs",
+        "operationId": "claim_link_request_v1_me_link_requests_claim_post",
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/LinkClaim" } }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/TeenLinkRequestOut" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/me/link-requests/{request_id}/accept": {
+      "post": {
+        "tags": ["guardian"],
+        "summary": "AUTH-27 [Yes, link]: record the teen's OK and open the consent request for AUTH-20",
+        "operationId": "accept_link_request_v1_me_link_requests__request_id__accept_post",
+        "parameters": [
+          {
+            "name": "request_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Request Id" }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/LinkAccept" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/LinkDecision" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/me/link-requests/{request_id}/decline": {
+      "post": {
+        "tags": ["guardian"],
+        "summary": "AUTH-27 [This isn't my parent]: nothing is linked",
+        "operationId": "decline_link_request_v1_me_link_requests__request_id__decline_post",
+        "parameters": [
+          {
+            "name": "request_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Request Id" }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/LinkDecision" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
             }
           }
         }
@@ -4929,6 +5585,53 @@
             "description": "Successful Response",
             "content": {
               "application/json": { "schema": { "$ref": "#/components/schemas/PracticeSession" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/analytics/summary": {
+      "get": {
+        "tags": ["insights", "analytics"],
+        "summary": "PRC-14: readiness, speed, confidence and mistake cards from your own answers",
+        "operationId": "analytics_summary_v1_analytics_summary_get",
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 200 }, { "type": "null" }],
+              "title": "Exam"
+            }
+          },
+          {
+            "name": "period",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": ["7d", "30d", "all"],
+              "type": "string",
+              "default": "30d",
+              "title": "Period"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AnalyticsSummaryOut" }
+              }
             }
           },
           "422": {
@@ -7491,10 +8194,63 @@
         },
         "x-dev-only": true
       }
+    },
+    "/v1/dev/auth/verify-otp": {
+      "post": {
+        "tags": ["dev-auth"],
+        "summary": "Dev stand-in for verifyOtp with a token hash (a managed child's session)",
+        "operationId": "verify_otp_v1_dev_auth_verify_otp_post",
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/DevVerifyOtpRequest" } }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DevSession" } }
+            }
+          },
+          "401": { "description": "otp_expired: used, unknown or older than 5 minutes" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "x-dev-only": true
+      }
     }
   },
   "components": {
     "schemas": {
+      "AnalyticsSummaryOut": {
+        "properties": {
+          "exam_profile_id": { "type": "string", "title": "Exam Profile Id" },
+          "period": { "type": "string", "enum": ["7d", "30d", "all"], "title": "Period" },
+          "computed_at": { "type": "string", "format": "date-time", "title": "Computed At" },
+          "readiness": { "$ref": "#/components/schemas/ReadinessCard" },
+          "speed": { "$ref": "#/components/schemas/SpeedCard" },
+          "confidence": { "$ref": "#/components/schemas/ConfidenceCard" },
+          "mistakes": { "$ref": "#/components/schemas/MistakesCard" }
+        },
+        "type": "object",
+        "required": [
+          "exam_profile_id",
+          "period",
+          "computed_at",
+          "readiness",
+          "speed",
+          "confidence",
+          "mistakes"
+        ],
+        "title": "AnalyticsSummaryOut"
+      },
       "AnswerResult": {
         "properties": {
           "question_id": { "type": "string", "title": "Question Id" },
@@ -8287,6 +9043,81 @@
         "title": "ChildCard",
         "description": "SET-14: pet, name, this week's minutes, streak, the practice line and \"Needs you\"."
       },
+      "ChildCreate": {
+        "properties": {
+          "first_name": {
+            "type": "string",
+            "maxLength": 40,
+            "minLength": 1,
+            "title": "First Name"
+          },
+          "age_band": { "type": "string", "enum": ["u10", "10_12"], "title": "Age Band" },
+          "scopes": {
+            "items": {
+              "type": "string",
+              "enum": ["account", "social", "community", "voice", "uploads"]
+            },
+            "type": "array",
+            "maxItems": 5,
+            "minItems": 1,
+            "title": "Scopes"
+          },
+          "declaration": { "type": "boolean", "const": true, "title": "Declaration" },
+          "notice_version": {
+            "type": "string",
+            "maxLength": 40,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9._-]+$",
+            "title": "Notice Version"
+          },
+          "adopt_guest": {
+            "anyOf": [{ "type": "string", "maxLength": 4096, "minLength": 16 }, { "type": "null" }],
+            "title": "Adopt Guest"
+          },
+          "locale": {
+            "anyOf": [{ "type": "string", "enum": ["en", "hi"] }, { "type": "null" }],
+            "title": "Locale"
+          }
+        },
+        "type": "object",
+        "required": ["first_name", "age_band", "scopes", "declaration", "notice_version"],
+        "title": "ChildCreate",
+        "description": "AUTH-24/AUTH-26: the parent creates a managed child, adopting the guest that did onboarding\non this device (``adopt_guest`` is that guest's access token) or making a new account."
+      },
+      "ChildDeletionOut": {
+        "properties": {
+          "user_id": { "type": "string", "format": "uuid", "title": "User Id" },
+          "scheduled_for": { "type": "string", "format": "date-time", "title": "Scheduled For" }
+        },
+        "type": "object",
+        "required": ["user_id", "scheduled_for"],
+        "title": "ChildDeletionOut"
+      },
+      "ChildProRequest": {
+        "properties": {
+          "plan": {
+            "type": "string",
+            "enum": ["monthly", "yearly"],
+            "title": "Plan",
+            "default": "monthly"
+          }
+        },
+        "type": "object",
+        "title": "ChildProRequest",
+        "description": "PAY-17: a parent buys Pro for one child's account (individual plans only; a family plan is\nthe parent's own and adds the child as a member instead)."
+      },
+      "ChildSessionOut": {
+        "properties": {
+          "user_id": { "type": "string", "format": "uuid", "title": "User Id" },
+          "token_hash": { "type": "string", "title": "Token Hash" },
+          "type": { "type": "string", "const": "email", "title": "Type", "default": "email" },
+          "expires_in": { "type": "integer", "title": "Expires In" }
+        },
+        "type": "object",
+        "required": ["user_id", "token_hash", "expires_in"],
+        "title": "ChildSessionOut",
+        "description": "Exchanged once, within ``expires_in`` seconds, with supabase-js\n``verifyOtp({ token_hash, type: 'email' })`` (locally ``POST /v1/dev/auth/verify-otp``)."
+      },
       "ComingUp": {
         "properties": {
           "kind": { "type": "string", "const": "mock", "title": "Kind" },
@@ -8313,6 +9144,49 @@
         "type": "object",
         "required": ["concept_id", "attempted", "correct", "accuracy", "marks_lost"],
         "title": "ConceptRow"
+      },
+      "ConfidenceCard": {
+        "properties": {
+          "shown": { "type": "boolean", "title": "Shown" },
+          "reason": {
+            "anyOf": [
+              { "type": "string", "enum": ["not_enough_data", "threshold_unset"] },
+              { "type": "null" }
+            ],
+            "title": "Reason"
+          },
+          "have": { "type": "integer", "title": "Have" },
+          "needed": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Needed" },
+          "levels": {
+            "anyOf": [
+              { "items": { "$ref": "#/components/schemas/ConfidenceLevel" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Levels"
+          },
+          "lucky_guesses": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Lucky Guesses"
+          }
+        },
+        "type": "object",
+        "required": ["shown", "have", "needed"],
+        "title": "ConfidenceCard"
+      },
+      "ConfidenceLevel": {
+        "properties": {
+          "confidence": {
+            "type": "string",
+            "enum": ["sure", "fifty", "guess"],
+            "title": "Confidence"
+          },
+          "answers": { "type": "integer", "title": "Answers" },
+          "correct": { "type": "integer", "title": "Correct" },
+          "accuracy": { "anyOf": [{ "type": "number" }, { "type": "null" }], "title": "Accuracy" }
+        },
+        "type": "object",
+        "required": ["confidence", "answers", "correct", "accuracy"],
+        "title": "ConfidenceLevel"
       },
       "ConfidenceRow": {
         "properties": {
@@ -8662,7 +9536,7 @@
         "properties": {
           "kind": {
             "type": "string",
-            "enum": ["card", "question", "topic", "concept", "lab"],
+            "enum": ["card", "question", "topic", "concept", "lab", "doubt"],
             "title": "Kind"
           },
           "ref": { "type": "string", "title": "Ref" },
@@ -9047,6 +9921,20 @@
         "required": ["id", "is_anonymous"],
         "title": "DevUser"
       },
+      "DevVerifyOtpRequest": {
+        "properties": {
+          "token_hash": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 16,
+            "title": "Token Hash"
+          },
+          "type": { "type": "string", "const": "email", "title": "Type", "default": "email" }
+        },
+        "type": "object",
+        "required": ["token_hash"],
+        "title": "DevVerifyOtpRequest"
+      },
       "DeviceOut": {
         "properties": {
           "id": { "type": "string", "format": "uuid", "title": "Id" },
@@ -9119,6 +10007,78 @@
         "type": "object",
         "required": ["text", "confidence", "quota"],
         "title": "DictationOut"
+      },
+      "DoubtPhotoOut": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "status": {
+            "type": "string",
+            "enum": ["read", "unreadable", "rejected", "solved"],
+            "title": "Status"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "blurry",
+                  "no_question",
+                  "multiple",
+                  "unreadable",
+                  "not_study",
+                  "personal",
+                  "unsafe",
+                  "ai_unavailable"
+                ]
+              },
+              { "type": "null" }
+            ],
+            "title": "Reason"
+          },
+          "question_text": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Question Text"
+          },
+          "subject": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Subject" },
+          "session_id": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "Session Id"
+          },
+          "created_at": { "type": "string", "format": "date-time", "title": "Created At" }
+        },
+        "type": "object",
+        "required": ["id", "status", "created_at"],
+        "title": "DoubtPhotoOut",
+        "description": "AI-18: what the vision model read from the photo, for the student to check or edit.\n``reason`` says why nothing usable was read (the app shows Retake)."
+      },
+      "DoubtSolve": {
+        "properties": {
+          "client_message_id": { "type": "string", "format": "uuid", "title": "Client Message Id" },
+          "text": { "type": "string", "maxLength": 4000, "minLength": 1, "title": "Text" },
+          "input": {
+            "type": "string",
+            "enum": ["typed", "chip", "prefill"],
+            "title": "Input",
+            "default": "typed"
+          },
+          "chip_id": {
+            "anyOf": [{ "type": "string", "maxLength": 40 }, { "type": "null" }],
+            "title": "Chip Id"
+          },
+          "question_text": {
+            "anyOf": [{ "type": "string", "maxLength": 4000, "minLength": 1 }, { "type": "null" }],
+            "title": "Question Text"
+          },
+          "reveal": { "type": "boolean", "title": "Reveal", "default": false },
+          "exam": {
+            "anyOf": [{ "type": "string", "maxLength": 200 }, { "type": "null" }],
+            "title": "Exam"
+          }
+        },
+        "type": "object",
+        "required": ["client_message_id", "text"],
+        "title": "DoubtSolve",
+        "description": "AI-19: solve the confirmed question as a tutor chat (SSE, the tutor's events). ``text`` is\nthe student's message (the confirmed question or a chip); ``question_text`` saves an edit\nfrom AI-18 first; ``reveal`` is \"Show full solution\" (hints first until then)."
       },
       "DrillPreview": {
         "properties": {
@@ -9552,6 +10512,12 @@
               { "type": "null" }
             ],
             "title": "Source"
+          },
+          "managed_in": {
+            "type": "string",
+            "enum": ["web", "play", "app_store", "parent", "family", "none"],
+            "title": "Managed In",
+            "default": "none"
           }
         },
         "type": "object",
@@ -10034,6 +11000,46 @@
         "title": "GenerateMock",
         "description": "MOCK-26 custom weak-area mock (Pro) or a timed chapter mock (counts as sectional, Q15)."
       },
+      "GuardianLinkRequestOut": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "status": {
+            "type": "string",
+            "enum": ["pending", "accepted", "declined", "expired", "cancelled"],
+            "title": "Status"
+          },
+          "scopes": {
+            "items": {
+              "type": "string",
+              "enum": ["account", "social", "community", "voice", "uploads"]
+            },
+            "type": "array",
+            "title": "Scopes"
+          },
+          "learner_first_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Learner First Name"
+          },
+          "consent_request_id": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "Consent Request Id"
+          },
+          "created_at": { "type": "string", "format": "date-time", "title": "Created At" },
+          "expires_at": { "type": "string", "format": "date-time", "title": "Expires At" }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "status",
+          "scopes",
+          "learner_first_name",
+          "consent_request_id",
+          "created_at",
+          "expires_at"
+        ],
+        "title": "GuardianLinkRequestOut",
+        "description": "The guardian's own list (SET-18). The teen's name shows only after the teen accepts."
+      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
@@ -10406,6 +11412,112 @@
         "required": ["is_pro", "day", "practice_questions", "tutor_messages", "sectional_mocks"],
         "title": "Limits"
       },
+      "LinkAccept": {
+        "properties": {
+          "notice_version": {
+            "type": "string",
+            "maxLength": 40,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9._-]+$",
+            "title": "Notice Version"
+          },
+          "app_version": {
+            "anyOf": [{ "type": "string", "maxLength": 40 }, { "type": "null" }],
+            "title": "App Version"
+          },
+          "platform": {
+            "anyOf": [{ "type": "string", "enum": ["ios", "android", "web"] }, { "type": "null" }],
+            "title": "Platform"
+          }
+        },
+        "type": "object",
+        "required": ["notice_version"],
+        "title": "LinkAccept",
+        "description": "The teen's confirmation, kept as the request's evidence (no free text)."
+      },
+      "LinkClaim": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "maxLength": 12,
+            "minLength": 6,
+            "pattern": "^[A-Za-z0-9]+$",
+            "title": "Code"
+          }
+        },
+        "type": "object",
+        "required": ["code"],
+        "title": "LinkClaim"
+      },
+      "LinkDecision": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "status": { "type": "string", "enum": ["accepted", "declined"], "title": "Status" },
+          "consent_request_id": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "Consent Request Id"
+          }
+        },
+        "type": "object",
+        "required": ["id", "status", "consent_request_id"],
+        "title": "LinkDecision"
+      },
+      "LinkRequestCreate": {
+        "properties": {
+          "teen_email": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 254,
+                "minLength": 3,
+                "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$"
+              },
+              { "type": "null" }
+            ],
+            "title": "Teen Email"
+          },
+          "teen_code": {
+            "anyOf": [
+              { "type": "string", "maxLength": 16, "minLength": 4, "pattern": "^[A-Za-z0-9]+$" },
+              { "type": "null" }
+            ],
+            "title": "Teen Code"
+          },
+          "scopes": {
+            "items": {
+              "type": "string",
+              "enum": ["account", "social", "community", "voice", "uploads"]
+            },
+            "type": "array",
+            "maxItems": 5,
+            "minItems": 1,
+            "title": "Scopes"
+          }
+        },
+        "type": "object",
+        "required": ["scopes"],
+        "title": "LinkRequestCreate",
+        "description": "SET-18 path 2. At most one of ``teen_email`` (the teen's sign-in email) and ``teen_code``\n(the teen's invite code, as on their friend QR); with neither, the teen claims the returned\ncode. The answer never says whether an account matched."
+      },
+      "LinkRequestCreated": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "code": { "type": "string", "title": "Code" },
+          "link": { "type": "string", "title": "Link" },
+          "scopes": {
+            "items": {
+              "type": "string",
+              "enum": ["account", "social", "community", "voice", "uploads"]
+            },
+            "type": "array",
+            "title": "Scopes"
+          },
+          "expires_at": { "type": "string", "format": "date-time", "title": "Expires At" }
+        },
+        "type": "object",
+        "required": ["id", "code", "link", "scopes", "expires_at"],
+        "title": "LinkRequestCreated"
+      },
       "LinkedRequest": {
         "properties": {
           "referral_code": {
@@ -10560,6 +11672,18 @@
         ],
         "title": "LiveRoom",
         "description": "MOCK-03. Times are the server's; ``server_time`` gives the client its clock offset."
+      },
+      "ManagedChildOut": {
+        "properties": {
+          "user_id": { "type": "string", "format": "uuid", "title": "User Id" },
+          "first_name": { "type": "string", "title": "First Name" },
+          "age_band": { "type": "string", "enum": ["u10", "10_12"], "title": "Age Band" },
+          "adopted": { "type": "boolean", "title": "Adopted" },
+          "consent": { "$ref": "#/components/schemas/ConsentOut" }
+        },
+        "type": "object",
+        "required": ["user_id", "first_name", "age_band", "adopted", "consent"],
+        "title": "ManagedChildOut"
       },
       "ManifestResponse": {
         "properties": {
@@ -10878,6 +12002,44 @@
         "type": "object",
         "required": ["person", "tier", "streak", "is_friend", "request_pending"],
         "title": "MiniProfile"
+      },
+      "MistakeCount": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["conceptual", "calculation", "misread", "silly", "time"],
+            "title": "Type"
+          },
+          "count": { "type": "integer", "title": "Count" }
+        },
+        "type": "object",
+        "required": ["type", "count"],
+        "title": "MistakeCount"
+      },
+      "MistakesCard": {
+        "properties": {
+          "shown": { "type": "boolean", "title": "Shown" },
+          "reason": {
+            "anyOf": [
+              { "type": "string", "enum": ["not_enough_data", "threshold_unset"] },
+              { "type": "null" }
+            ],
+            "title": "Reason"
+          },
+          "have": { "type": "integer", "title": "Have" },
+          "needed": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Needed" },
+          "counts": {
+            "anyOf": [
+              { "items": { "$ref": "#/components/schemas/MistakeCount" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Counts"
+          }
+        },
+        "type": "object",
+        "required": ["shown", "have", "needed"],
+        "title": "MistakesCard",
+        "description": "The student's own tags. Shown once anything is tagged."
       },
       "MockAccess": {
         "properties": {
@@ -11225,6 +12387,11 @@
           "retry_at": {
             "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
             "title": "Retry At"
+          },
+          "pending_link_requests": {
+            "type": "integer",
+            "title": "Pending Link Requests",
+            "default": 0
           }
         },
         "type": "object",
@@ -12347,6 +13514,28 @@
         "required": ["url", "mime", "cached", "quota"],
         "title": "ReadAloudOut"
       },
+      "ReadinessCard": {
+        "properties": {
+          "shown": { "type": "boolean", "title": "Shown" },
+          "reason": {
+            "anyOf": [
+              { "type": "string", "enum": ["not_enough_data", "threshold_unset"] },
+              { "type": "null" }
+            ],
+            "title": "Reason"
+          },
+          "have": { "type": "integer", "title": "Have" },
+          "needed": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Needed" },
+          "percent": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Percent" },
+          "practised": { "type": "integer", "title": "Practised" },
+          "total": { "type": "integer", "title": "Total" },
+          "weighted": { "type": "boolean", "title": "Weighted" }
+        },
+        "type": "object",
+        "required": ["shown", "have", "needed", "practised", "total", "weighted"],
+        "title": "ReadinessCard",
+        "description": "Ignores the period (a current state). Not a predicted score (PRD §6.3)."
+      },
       "Registration": {
         "properties": {
           "mock_id": { "type": "string", "title": "Mock Id" },
@@ -12974,6 +14163,37 @@
         "required": ["attempt_id", "items"],
         "title": "Solutions"
       },
+      "SpeedCard": {
+        "properties": {
+          "shown": { "type": "boolean", "title": "Shown" },
+          "reason": {
+            "anyOf": [
+              { "type": "string", "enum": ["not_enough_data", "threshold_unset"] },
+              { "type": "null" }
+            ],
+            "title": "Reason"
+          },
+          "have": { "type": "integer", "title": "Have" },
+          "needed": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Needed" },
+          "avg_ms": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Avg Ms" },
+          "target_ms": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Target Ms"
+          },
+          "right_but_slow": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Right But Slow"
+          },
+          "fast_and_wrong": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Fast And Wrong"
+          }
+        },
+        "type": "object",
+        "required": ["shown", "have", "needed"],
+        "title": "SpeedCard",
+        "description": "Answers to questions with an ``ideal_time_s``. Slow means over the ideal time, fast means\nunder it."
+      },
       "SquadCheerIn": {
         "properties": {
           "preset_id": {
@@ -13467,6 +14687,33 @@
         "required": ["state_version"],
         "title": "SyncStateResponse",
         "description": "Sections that did not change since ``since`` are omitted."
+      },
+      "TeenLinkRequestOut": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "status": {
+            "type": "string",
+            "enum": ["pending", "accepted", "declined", "expired", "cancelled"],
+            "title": "Status"
+          },
+          "parent_first_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Parent First Name"
+          },
+          "scopes": {
+            "items": {
+              "type": "string",
+              "enum": ["account", "social", "community", "voice", "uploads"]
+            },
+            "type": "array",
+            "title": "Scopes"
+          },
+          "expires_at": { "type": "string", "format": "date-time", "title": "Expires At" }
+        },
+        "type": "object",
+        "required": ["id", "status", "parent_first_name", "scopes", "expires_at"],
+        "title": "TeenLinkRequestOut",
+        "description": "AUTH-27 on the teen's phone: \"Link {parent_first_name} as your guardian?\"."
       },
       "TierName": {
         "properties": {

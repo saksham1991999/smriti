@@ -2179,6 +2179,32 @@ Early submit variant (blueprint `early_section_submit` true): a confirm first, "
 
 ---
 
+### WEB-06 · Web practice and mock messages
+**Purpose:** Short messages on the web drill (PRC-03 to PRC-05) and mock screens (MOCK-01 to MOCK-22) now that the server runs every drill and mock attempt, and the "not stated" label for blueprint values the official notice leaves out (shown the same way on the marketing site).
+
+**Copy:**
+| Key | EN | HI |
+|---|---|---|
+| Answer not saved | That answer didn't reach us. Check your connection and try again. | यह जवाब हम तक नहीं पहुँचा। इंटरनेट देखकर फिर से कोशिश करें। |
+| Drill unavailable | This drill can't start right now. Try again in a moment. | यह ड्रिल अभी शुरू नहीं हो पा रही। थोड़ी देर में फिर से कोशिश करें। |
+| Needs internet | Drills and mocks need the internet. | ड्रिल और मॉक के लिए इंटरनेट चाहिए। |
+| Not stated | Not stated in the notice | सूचना में नहीं बताया गया |
+| Mock start failed | This mock can't start right now. Try again in a moment. | यह मॉक अभी शुरू नहीं हो पा रहा। थोड़ी देर में फिर से कोशिश करें। |
+| Mock save failed | Some answers aren't saved yet. We'll keep trying. | कुछ जवाब अभी सेव नहीं हुए। हम कोशिश करते रहेंगे। |
+| Marks per question | +{correct} / {wrong} | +{correct} / {wrong} |
+| Max marks | {max} marks | {max} अंक |
+| Your mocks empty | Your finished mocks show up here. | आपके पूरे किए गए मॉक यहाँ दिखेंगे। |
+| Language en | English | English |
+| Language hi | हिन्दी | हिन्दी |
+| Mock load failed | This mock didn't load. Check your connection and try again. | यह मॉक लोड नहीं हुआ। इंटरनेट देखकर फिर से कोशिश करें। |
+| Try again | Try again | फिर से कोशिश करें |
+| Score not stated | Score not worked out: the notice doesn't state the marks. | स्कोर नहीं निकाला गया: सूचना में अंक नहीं बताए गए। |
+| Question of | Question {n} of {total} | प्रश्न {n} / {total} |
+
+**Mock priority:** P1.
+
+---
+
 ## Appendix: Proposed components
 
 New components for this area, to add to DESIGN.md §5 and build in `ui-native` and `ui-web`. Props are named in TypeScript style; every visual value is a token. Every component has a dark variant from the dark token set, respects reduced motion and has an accessible name.

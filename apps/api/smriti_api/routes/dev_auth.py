@@ -2,7 +2,10 @@
 
 from __future__ import annotations
 
+from typing import Annotated, Literal
+
 from fastapi import APIRouter
+from pydantic import BaseModel, Field
 
 from smriti_api.core.deps import OptionalUser, Services, rate_limited
 from smriti_api.schemas.api import DevGoogleRequest, DevRefreshRequest, DevSession
@@ -44,3 +47,20 @@ async def google(body: DevGoogleRequest, services: Services, guest: OptionalUser
 )
 async def refresh(body: DevRefreshRequest, services: Services) -> DevSession:
     return await dev_auth.refresh(services.db, services.verifier, body.refresh_token)
+
+
+class DevVerifyOtpRequest(BaseModel):
+    token_hash: Annotated[str, Field(min_length=16, max_length=256)]
+    type: Literal["email"] = "email"
+
+
+@router.post(
+    "/verify-otp",
+    response_model=DevSession,
+    summary="Dev stand-in for verifyOtp with a token hash (a managed child's session)",
+    responses={401: {"description": "otp_expired: used, unknown or older than 5 minutes"}},
+)
+async def verify_otp(body: DevVerifyOtpRequest, services: Services) -> DevSession:
+    return await dev_auth.verify_token_hash(
+        services.db, services.verifier, services.auth_admin, body.token_hash
+    )

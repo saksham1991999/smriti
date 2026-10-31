@@ -74,8 +74,9 @@ export default ({ config }: ConfigContext): ExpoConfig => {
         // One OAuth URL scheme per variant bundle id (public, not a secret).
         CFBundleURLTypes: variant.googleIosUrlScheme ? [{ CFBundleURLSchemes: [variant.googleIosUrlScheme] }] : [],
       },
-      // Widgets (NTF-08..10) are Phase 2: the App Group the snapshot is written to.
-      entitlements: { 'com.apple.security.application-groups': [`group.${variant.bundleId}`] },
+      // Widgets (NTF-08..10): the App Group the snapshot is written to, one per environment so
+      // dev, preview and production builds installed side by side keep their own data.
+      entitlements: { 'com.apple.security.application-groups': [`group.${variant.bundleId}${suffix}`] },
     },
     android: {
       package: `${variant.androidPackage}${suffix}`,
@@ -97,14 +98,20 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     },
     web: { bundler: 'metro', output: 'single' },
     plugins: [
-      'expo-router',
+      // Web preview: each route is its own chunk, loaded when opened (heavy screens such as the
+      // mock runner, labs and the tutor stay out of the first load). Native keeps one bundle.
+      ['expo-router', { asyncRoutes: { web: true, default: 'development' } }],
       'expo-font',
       'expo-secure-store',
       'expo-sqlite',
       'expo-localization',
       'expo-apple-authentication',
       ['expo-notifications', { color: accent }],
+      // AI photo doubts (AI-07 / PRC-01 "Snap a doubt"): one photo of one question, never the mic.
+      ['expo-image-picker', { photosPermission: 'Choose a photo of a question you want help with.', cameraPermission: 'Take a photo of a question you want help with.', microphonePermission: false }],
       ['expo-splash-screen', { image: brand(variant.splash.image), imageWidth: 160, backgroundColor: splashBg }],
+      // Home-screen widgets (G-5, NTF-08..10): WidgetKit extension and Android AppWidgets.
+      './plugins/widgets/index.cjs',
     ],
     experiments: { typedRoutes: false },
     extra: {

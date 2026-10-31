@@ -66,6 +66,26 @@ function dirSize(dir: string): number {
   return total;
 }
 
+/** The manifest file exactly as written: pretty JSON plus a final newline. */
+export function manifestText(manifest: Record<string, unknown>): string {
+  return `${JSON.stringify(manifest, null, 2)}\n`;
+}
+
+/**
+ * Total size in bytes of a built sim: the other files plus the manifest itself, counted as UTF-8 bytes
+ * (Hindi strings take more bytes than characters). The manifest counts toward the size it reports, so
+ * iterate until the number stops changing; it settles in two or three rounds.
+ */
+export function settleSizeBytes(withoutManifest: number, source: Record<string, unknown>): number {
+  let size = 0;
+  for (let i = 0; i < 10; i += 1) {
+    const next = withoutManifest + Buffer.byteLength(manifestText({ ...source, size_bytes: size }), 'utf8');
+    if (next === size) return size;
+    size = next;
+  }
+  throw new Error('size_bytes did not settle');
+}
+
 function manifestAndBudget(simDir: string, outDir: string): Plugin {
   return {
     name: 'smriti-sim-manifest',
@@ -73,15 +93,11 @@ function manifestAndBudget(simDir: string, outDir: string): Plugin {
     closeBundle() {
       const sourcePath = join(simDir, 'manifest.json');
       const source = JSON.parse(readFileSync(sourcePath, 'utf8')) as Record<string, unknown>;
-      const withoutManifest = dirSize(outDir);
-      const draft = { ...source, size_bytes: 0 };
-      // The manifest counts toward the size it reports; two passes settle it.
-      let size = withoutManifest + JSON.stringify(draft, null, 2).length + 1;
-      size = withoutManifest + JSON.stringify({ ...source, size_bytes: size }, null, 2).length + 1;
+      const size = settleSizeBytes(dirSize(outDir), source);
       const built = { ...source, size_bytes: size };
-      writeFileSync(join(outDir, 'manifest.json'), `${JSON.stringify(built, null, 2)}\n`);
+      writeFileSync(join(outDir, 'manifest.json'), manifestText(built));
       if (source.size_bytes !== size) {
-        writeFileSync(sourcePath, `${JSON.stringify(built, null, 2)}\n`);
+        writeFileSync(sourcePath, manifestText(built));
       }
       if (size > SIM_BUDGET_BYTES) {
         throw new Error(`${String(source.id)} is ${size} bytes, over the ${SIM_BUDGET_BYTES} byte budget`);

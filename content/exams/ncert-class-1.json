@@ -1,0 +1,41 @@
+{
+  "schema": "exam@1",
+  "id": "ncert-class-1",
+  "name": {
+    "en": "Class 1 (NCERT)",
+    "hi": "कक्षा 1 (एनसीईआरटी)"
+  },
+  "category": "school",
+  "conducting_body": "NCERT",
+  "official_url": "https://ncert.nic.in/",
+  "profiles": [
+    {
+      "id": "ncert-class-1-2026",
+      "cycle": "2026-27",
+      "name": {
+        "en": "Class 1, 2026-27",
+        "hi": "कक्षा 1, 2026-27"
+      },
+      "audience": "little_learner",
+      "locales": [
+        "en",
+        "hi"
+      ],
+      "papers": []
+    }
+  ],
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT CIET audiobook page for Class 1 Joyful Mathematics (chapter list, 13 chapters)",
+      "url": "https://ciet.ncert.gov.in/audio-book/118",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:exam-blueprint",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "A school class, not an exam: there are no papers or blueprints. The profile follows the NCERT textbook for the 2026-27 session. The textbook is NCERT Class 1 Joyful Mathematics. Its file code is aejm1 (chapter 3: aejm103), inferred from NCERT's file naming; ncert.nic.in failed TLS verification through the proxy on 2026-10-31, so the code and the printed pages could not be checked against the PDF. Facts come from the official CIET audiobook, which reads the textbook page by page; the audio was transcribed for this work and the transcript is kept outside the repo.",
+  "hi_source": "translation"
+}

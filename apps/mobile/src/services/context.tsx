@@ -1,7 +1,8 @@
 import { useStoreSelector } from '@smriti/app-core/react';
 import type { MessageKey, MessageValues } from '@smriti/i18n';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { createContext, useCallback, useContext, useState, type ReactNode } from 'react';
+import { ApiProvider } from '@smriti/api-client/react';
+import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react';
 
 import type { SmritiApp, UiState } from './app';
 
@@ -14,11 +15,30 @@ function newQueryClient(): QueryClient {
 
 export function AppProvider({ app, children }: { app: SmritiApp; children: ReactNode }) {
   const [queries] = useState(newQueryClient);
+  // api-client's hooks key queries without the account, so a different account or plan starts
+  // from an empty cache (our own keys carry useQueryScope as well).
+  useEffect(() => {
+    let scope = scopeOf(app);
+    return app.store.subscribe(() => {
+      const next = scopeOf(app);
+      if (next !== scope) {
+        scope = next;
+        queries.clear();
+      }
+    });
+  }, [app, queries]);
   return (
     <AppContext.Provider value={app}>
-      <QueryClientProvider client={queries}>{children}</QueryClientProvider>
+      <QueryClientProvider client={queries}>
+        <ApiProvider client={app.api}>{children}</ApiProvider>
+      </QueryClientProvider>
     </AppContext.Provider>
   );
+}
+
+function scopeOf(app: SmritiApp): string {
+  const s = app.store.getState();
+  return `${s.session.userId ?? 'none'}|${s.entitlement?.plan ?? 'free'}`;
 }
 
 export function useApp(): SmritiApp {

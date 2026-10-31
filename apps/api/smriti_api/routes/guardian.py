@@ -14,7 +14,7 @@ from smriti_api.core.errors import ApiError
 from smriti_api.integrations import Integrations
 from smriti_api.routes._idempotent import idempotent
 from smriti_api.schemas import guardian as g
-from smriti_api.services import guardian
+from smriti_api.services import billing_checkout, guardian, guardian_links, managed_children
 
 router = APIRouter(prefix="/v1/guardian", tags=["guardian"])
 
@@ -168,3 +168,177 @@ async def withdraw_scope(
 )
 async def learners(services: Services, auth: Guardian) -> g.LearnersOut:
     return await guardian.learners(services.db, auth)
+
+
+# --- managed children (auth flow §6.11) -----------------------------------------------------------
+
+Parent = Annotated[AuthContext, signed_in("parent_mode")]
+
+
+@router.post(
+    "/children",
+    response_model=g.ManagedChildOut,
+    status_code=201,
+    summary="AUTH-24/26: create a managed child (adopting this device's guest, or a new account)",
+)
+async def create_child(
+    body: g.ChildCreate, services: Services, ints: Ints, auth: Parent, key: IdempotencyKey
+) -> JSONResponse:
+    return await idempotent(
+        services,
+        scope="managed_child_create",
+        subject=auth.user_id,
+        key=key,
+        body=body,
+        required=True,
+        status=201,
+        fn=lambda: managed_children.create_child(
+            services.db,
+            services.settings,
+            ints,
+            services.auth_admin,
+            services.verifier,
+            auth,
+            body,
+        ),
+    )
+
+
+@router.post(
+    "/children/{child_id}/session",
+    response_model=g.ChildSessionOut,
+    summary="A one-time token hash for a child session on this device (sign-in in the last 10 min)",
+)
+async def child_session(child_id: uuid.UUID, services: Services, auth: Parent) -> g.ChildSessionOut:
+    return await managed_children.child_session(
+        services.db, services.settings, services.auth_admin, auth, child_id
+    )
+
+
+@router.delete(
+    "/children/{child_id}",
+    response_model=g.ChildDeletionOut,
+    status_code=202,
+    summary="Delete a managed child: erasure after the grace period, devices signed out",
+)
+async def delete_child(
+    child_id: uuid.UUID, services: Services, auth: Parent, key: IdempotencyKey
+) -> JSONResponse:
+    async def run() -> g.ChildDeletionOut:
+        out = await managed_children.delete_child(services.db, services.auth_admin, auth, child_id)
+        if services.integrations is not None:  # stop web renewals, as for any deletion
+            await billing_checkout.cancel_for_deletion(services.db, services.integrations, child_id)
+        return out
+
+    return await idempotent(
+        services,
+        scope="managed_child_delete",
+        subject=auth.user_id,
+        key=key,
+        body={"child_id": str(child_id)},
+        status=202,
+        fn=run,
+    )
+
+
+# --- AUTH-27: a guardian links an existing teen (auth flow §6.11) ---------------------------------
+
+
+@router.post(
+    "/link-requests",
+    response_model=g.LinkRequestCreated,
+    status_code=201,
+    summary="SET-18 path 2: ask to link an existing teen by their email or invite code, or as a QR",
+)
+async def create_link_request(
+    body: g.LinkRequestCreate, services: Services, ints: Ints, auth: Guardian, key: IdempotencyKey
+) -> JSONResponse:
+    return await idempotent(
+        services,
+        scope="guardian_link_request",
+        subject=auth.user_id,
+        key=key,
+        body=body,
+        required=True,
+        status=201,
+        fn=lambda: guardian_links.create(services.db, ints, auth, body),
+    )
+
+
+@router.get(
+    "/link-requests",
+    response_model=list[g.GuardianLinkRequestOut],
+    summary="The calling guardian's link requests, newest first (the teen's name once accepted)",
+)
+async def my_link_requests(services: Services, auth: Guardian) -> list[g.GuardianLinkRequestOut]:
+    return await guardian_links.for_guardian(services.db, auth)
+
+
+@router.delete(
+    "/link-requests/{request_id}",
+    status_code=204,
+    summary="Withdraw an open link request",
+)
+async def cancel_link_request(request_id: uuid.UUID, services: Services, auth: Guardian) -> None:
+    await guardian_links.cancel(services.db, auth, request_id)
+
+
+# The teen's side lives under /v1/me (AUTH-27 on the teen's own phone).
+me_router = APIRouter(prefix="/v1/me/link-requests", tags=["guardian"])
+
+
+@me_router.get(
+    "",
+    response_model=list[g.TeenLinkRequestOut],
+    summary="AUTH-27: open requests from guardians to link this teen",
+)
+async def teen_link_requests(services: Services, auth: Teen) -> list[g.TeenLinkRequestOut]:
+    return await guardian_links.for_teen(services.db, auth)
+
+
+@me_router.post(
+    "/claim",
+    response_model=g.TeenLinkRequestOut,
+    summary="The teen scanned or typed the guardian's code: the request becomes theirs",
+)
+async def claim_link_request(
+    body: g.LinkClaim, services: Services, auth: Teen
+) -> g.TeenLinkRequestOut:
+    await _limit_codes(services, auth)
+    return await guardian_links.claim(services.db, auth, body)
+
+
+@me_router.post(
+    "/{request_id}/accept",
+    response_model=g.LinkDecision,
+    summary="AUTH-27 [Yes, link]: record the teen's OK and open the consent request for AUTH-20",
+)
+async def accept_link_request(
+    request_id: uuid.UUID, body: g.LinkAccept, services: Services, auth: Teen, key: IdempotencyKey
+) -> JSONResponse:
+    return await idempotent(
+        services,
+        scope="guardian_link_accept",
+        subject=auth.user_id,
+        key=key,
+        body={"request_id": str(request_id), **body.model_dump(mode="json")},
+        fn=lambda: guardian_links.accept(services.db, auth, request_id, body),
+    )
+
+
+@me_router.post(
+    "/{request_id}/decline",
+    response_model=g.LinkDecision,
+    summary="AUTH-27 [This isn't my parent]: nothing is linked",
+)
+async def decline_link_request(
+    request_id: uuid.UUID, services: Services, auth: Teen, key: IdempotencyKey
+) -> JSONResponse:
+    return await idempotent(
+        services,
+        scope="guardian_link_decline",
+        subject=auth.user_id,
+        key=key,
+        body={"request_id": str(request_id)},
+        fn=lambda: guardian_links.decline(services.db, auth, request_id),
+    )

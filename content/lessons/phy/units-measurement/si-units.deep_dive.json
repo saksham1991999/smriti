@@ -1,0 +1,442 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 1 Units and Measurement (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khph101) could not be retrieved, so a reviewer should check the terms.",
+  "id": "phy.units-measurement.si-units:deep_dive",
+  "topic": "phy.units-measurement.si-units",
+  "mode": "deep_dive",
+  "estimated_minutes": 6,
+  "min_depth": 1,
+  "max_depth": 2,
+  "concepts": [
+    "phy.units-measurement.si-units.core.fundamental-derived-units"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "A number and a unit",
+        "hi": "एक संख्या और एक मात्रक"
+      },
+      "subtopic": "phy.units-measurement.si-units.core",
+      "card_ids": [
+        "phy.units-measurement.si-units:dd:01",
+        "phy.units-measurement.si-units:dd:02",
+        "phy.units-measurement.si-units:dd:03",
+        "phy.units-measurement.si-units:dd:04",
+        "phy.units-measurement.si-units:dd:05"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "The seven SI base units",
+        "hi": "सात SI मूल मात्रक"
+      },
+      "subtopic": "phy.units-measurement.si-units.core",
+      "card_ids": [
+        "phy.units-measurement.si-units:dd:06",
+        "phy.units-measurement.si-units:dd:07",
+        "phy.units-measurement.si-units:dd:08",
+        "phy.units-measurement.si-units:dd:09",
+        "phy.units-measurement.si-units:dd:10",
+        "phy.units-measurement.si-units:dd:11",
+        "phy.units-measurement.si-units:dd:12"
+      ],
+      "estimated_minutes": 4
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.units-measurement.si-units:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.units-measurement.si-units.core.fundamental-derived-units"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "The sabzi seller's weights",
+        "hi": "सब्ज़ी वाले के बाट"
+      },
+      "body": {
+        "en": "At the market the seller puts round iron weights in one pan and tomatoes in the other. You trust the reading because a one-kilogram weight means the same thing in every shop in the country. Physics needs the same agreement, worldwide, for every quantity it measures.",
+        "hi": "बाज़ार में सब्ज़ी वाला एक पलड़े में लोहे के गोल बाट रखता है और दूसरे में टमाटर। आप उस तौल पर भरोसा करते हैं क्योंकि एक किलोग्राम का बाट देश की हर दुकान में एक ही चीज़ का अर्थ रखता है। भौतिकी को भी हर मापी जाने वाली राशि के लिए पूरी दुनिया में ऐसी ही सहमति चाहिए।"
+      },
+      "media": "img.units-measurement.vegetable-scale"
+    },
+    {
+      "id": "phy.units-measurement.si-units:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.units-measurement.si-units.core.fundamental-derived-units"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "What a unit is",
+        "hi": "मात्रक क्या है"
+      },
+      "body": {
+        "en": "Measuring a physical quantity means comparing it with an internationally accepted reference standard called a unit. The result is a number (the numerical measure) together with the unit.\n\nThe units of the base quantities are fundamental or base units. The units of all other quantities are combinations of the base units and are called derived units. The full set of base and derived units is a system of units.",
+        "hi": "किसी भौतिक राशि को मापने का अर्थ है उसकी तुलना एक अंतर्राष्ट्रीय स्तर पर स्वीकृत संदर्भ मानक से करना, जिसे मात्रक कहते हैं। परिणाम एक संख्या (आंकिक माप) और उसके साथ मात्रक होता है।\n\nमूल राशियों के मात्रक मूल मात्रक कहलाते हैं। अन्य सभी राशियों के मात्रक मूल मात्रकों के संयोजन होते हैं और व्युत्पन्न मात्रक कहलाते हैं। मूल और व्युत्पन्न मात्रकों का पूरा समूह मात्रकों की पद्धति कहलाता है।"
+      },
+      "media": "img.units-measurement.vegetable-scale",
+      "highlights": [
+        {
+          "term": {
+            "en": "base unit",
+            "hi": "मूल मात्रक"
+          },
+          "definition": {
+            "en": "the unit of a base quantity",
+            "hi": "किसी मूल राशि का मात्रक"
+          }
+        },
+        {
+          "term": {
+            "en": "derived unit",
+            "hi": "व्युत्पन्न मात्रक"
+          },
+          "definition": {
+            "en": "a unit made by combining base units",
+            "hi": "मूल मात्रकों को मिलाकर बना मात्रक"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 1 Units and Measurement (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.1"
+      }
+    },
+    {
+      "id": "phy.units-measurement.si-units:dd:03",
+      "type": "explainer",
+      "concepts": [
+        "phy.units-measurement.si-units.core.fundamental-derived-units"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Four systems of units",
+        "hi": "मात्रकों की चार पद्धतियाँ"
+      },
+      "body": {
+        "en": "Three systems were in wide use until recently. Their base units of length, mass and time were: CGS, the centimetre, gram and second; FPS, the foot, pound and second; MKS, the metre, kilogram and second.\n\nToday the internationally accepted system is the Système International d'Unités, SI. Its scheme of symbols, units and abbreviations was developed by the International Bureau of Weights and Measures (BIPM) in 1971 and revised by the General Conference on Weights and Measures in November 2018. Because SI is decimal, conversions within it are simple.",
+        "hi": "कुछ समय पहले तक तीन पद्धतियाँ व्यापक रूप से प्रचलित थीं। उनमें लंबाई, द्रव्यमान और समय के मूल मात्रक थे: CGS में सेंटीमीटर, ग्राम और सेकंड; FPS में फ़ुट, पाउंड और सेकंड; MKS में मीटर, किलोग्राम और सेकंड।\n\nआज अंतर्राष्ट्रीय स्तर पर स्वीकृत पद्धति Système International d'Unités, यानी SI है। इसकी प्रतीकों, मात्रकों और संक्षिप्त रूपों की योजना अंतर्राष्ट्रीय माप-तौल ब्यूरो (BIPM) ने 1971 में बनाई और माप-तौल के महासम्मेलन ने नवंबर 2018 में इसे संशोधित किया। SI दशमलव पद्धति है, इसलिए इसके भीतर मात्रक बदलना सरल है।"
+      },
+      "media": "img.units-measurement.vegetable-scale",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 1 Units and Measurement (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.2"
+      }
+    },
+    {
+      "id": "phy.units-measurement.si-units:dd:04",
+      "type": "question",
+      "concepts": [
+        "phy.units-measurement.si-units.core.fundamental-derived-units"
+      ],
+      "depth": 2,
+      "question": "q.phy.units-measurement.si-units.0001"
+    },
+    {
+      "id": "phy.units-measurement.si-units:dd:05",
+      "type": "summary",
+      "concepts": [
+        "phy.units-measurement.si-units.core.fundamental-derived-units"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "A measurement is a number times a unit.",
+          "hi": "माप एक संख्या गुणा एक मात्रक है।"
+        },
+        {
+          "en": "Base units belong to base quantities; derived units are combinations of them.",
+          "hi": "मूल मात्रक मूल राशियों के होते हैं; व्युत्पन्न मात्रक उनके संयोजन होते हैं।"
+        },
+        {
+          "en": "CGS: cm, g, s. FPS: foot, pound, s. MKS: m, kg, s.",
+          "hi": "CGS: cm, g, s। FPS: फ़ुट, पाउंड, s। MKS: m, kg, s।"
+        }
+      ]
+    },
+    {
+      "id": "phy.units-measurement.si-units:dd:06",
+      "type": "explainer",
+      "concepts": [
+        "phy.units-measurement.si-units.core.fundamental-derived-units"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Seven base quantities",
+        "hi": "सात मूल राशियाँ"
+      },
+      "body": {
+        "en": "SI has seven base units: the metre (m) for length, the kilogram (kg) for mass, the second (s) for time, the ampere (A) for electric current, the kelvin (K) for thermodynamic temperature, the mole (mol) for amount of substance and the candela (cd) for luminous intensity.\n\nEach is now defined by fixing the numerical value of a constant of nature, such as the speed of light for the metre and the Planck constant for the kilogram. NCERT notes that these values need not be remembered.",
+        "hi": "SI में सात मूल मात्रक हैं: लंबाई के लिए मीटर (m), द्रव्यमान के लिए किलोग्राम (kg), समय के लिए सेकंड (s), विद्युत धारा के लिए ऐम्पियर (A), ऊष्मागतिक ताप के लिए केल्विन (K), पदार्थ की मात्रा के लिए मोल (mol) और ज्योति तीव्रता के लिए कैन्डेला (cd)।\n\nअब हर मात्रक प्रकृति के किसी नियतांक का आंकिक मान स्थिर करके परिभाषित है, जैसे मीटर के लिए प्रकाश की चाल और किलोग्राम के लिए प्लांक नियतांक। NCERT के अनुसार ये मान याद रखना ज़रूरी नहीं है।"
+      },
+      "media": "img.units-measurement.measuring-tools",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 1 Units and Measurement (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.2, Table 1.1"
+      }
+    },
+    {
+      "id": "phy.units-measurement.si-units:dd:07",
+      "type": "memory_hook",
+      "concepts": [
+        "phy.units-measurement.si-units.core.fundamental-derived-units"
+      ],
+      "depth": 1,
+      "mnemonic": {
+        "en": "m.phy.units-measurement.si-units.core.fundamental-derived-units.1",
+        "hi": "m.phy.units-measurement.si-units.core.fundamental-derived-units.2"
+      }
+    },
+    {
+      "id": "phy.units-measurement.si-units:dd:08",
+      "type": "explainer",
+      "concepts": [
+        "phy.units-measurement.si-units.core.fundamental-derived-units"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Two more: radian and steradian",
+        "hi": "दो और: रेडियन और स्टेरेडियन"
+      },
+      "body": {
+        "en": "Besides the seven base units, SI defines a unit for plane angle, the radian (rad), as arc length divided by radius, and for solid angle, the steradian (sr), as the intercepted area divided by the square of the radius. Both are dimensionless.",
+        "hi": "सात मूल मात्रकों के अलावा SI में समतल कोण के लिए रेडियन (rad), यानी चाप की लंबाई बटा त्रिज्या, और घन कोण के लिए स्टेरेडियन (sr), यानी अंतःखंडित क्षेत्रफल बटा त्रिज्या का वर्ग, परिभाषित हैं। दोनों विमाहीन हैं।"
+      },
+      "media": "img.units-measurement.measuring-tools",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 1 Units and Measurement (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.2"
+      }
+    },
+    {
+      "id": "phy.units-measurement.si-units:dd:09",
+      "type": "formula",
+      "concepts": [
+        "phy.units-measurement.si-units.core.fundamental-derived-units"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "A derived unit: the newton",
+        "hi": "एक व्युत्पन्न मात्रक: न्यूटन"
+      },
+      "latex": "1\\,\\mathrm{N} = 1\\,\\mathrm{kg\\,m\\,s^{-2}}",
+      "symbols": [
+        {
+          "symbol": "\\mathrm{N}",
+          "meaning": {
+            "en": "newton, the unit of force",
+            "hi": "न्यूटन, बल का मात्रक"
+          },
+          "unit": "N"
+        },
+        {
+          "symbol": "\\mathrm{kg}",
+          "meaning": {
+            "en": "kilogram",
+            "hi": "किलोग्राम"
+          },
+          "unit": "kg"
+        },
+        {
+          "symbol": "\\mathrm{m}",
+          "meaning": {
+            "en": "metre",
+            "hi": "मीटर"
+          },
+          "unit": "m"
+        },
+        {
+          "symbol": "\\mathrm{s}",
+          "meaning": {
+            "en": "second",
+            "hi": "सेकंड"
+          },
+          "unit": "s"
+        }
+      ],
+      "conditions": {
+        "en": "Force is mass times acceleration, so its unit is kg times m s⁻².",
+        "hi": "बल द्रव्यमान गुणा त्वरण है, इसलिए इसका मात्रक kg गुणा m s⁻² है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 1 Units and Measurement (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.4 (force = mass × acceleration)"
+      }
+    },
+    {
+      "id": "phy.units-measurement.si-units:dd:10",
+      "type": "interactive",
+      "concepts": [
+        "phy.units-measurement.si-units.core.fundamental-derived-units"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Sort the units.",
+        "hi": "मात्रकों को छाँटिए।"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "kg",
+            "text": {
+              "en": "kilogram",
+              "hi": "किलोग्राम"
+            }
+          },
+          {
+            "id": "n",
+            "text": {
+              "en": "newton",
+              "hi": "न्यूटन"
+            }
+          },
+          {
+            "id": "mol",
+            "text": {
+              "en": "mole",
+              "hi": "मोल"
+            }
+          },
+          {
+            "id": "ms",
+            "text": {
+              "en": "metre per second",
+              "hi": "मीटर प्रति सेकंड"
+            }
+          },
+          {
+            "id": "cd",
+            "text": {
+              "en": "candela",
+              "hi": "कैन्डेला"
+            }
+          },
+          {
+            "id": "j",
+            "text": {
+              "en": "joule",
+              "hi": "जूल"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "base",
+            "label": {
+              "en": "SI base unit",
+              "hi": "SI मूल मात्रक"
+            }
+          },
+          {
+            "id": "derived",
+            "label": {
+              "en": "Derived unit",
+              "hi": "व्युत्पन्न मात्रक"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "kg",
+            "bin": "base"
+          },
+          {
+            "item": "mol",
+            "bin": "base"
+          },
+          {
+            "item": "cd",
+            "bin": "base"
+          },
+          {
+            "item": "n",
+            "bin": "derived"
+          },
+          {
+            "item": "ms",
+            "bin": "derived"
+          },
+          {
+            "item": "j",
+            "bin": "derived"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right. Only the seven base units are fundamental; the rest are built from them.",
+          "hi": "सही। केवल सात मूल मात्रक मूल हैं; बाकी उन्हीं से बनते हैं।"
+        },
+        "wrong": {
+          "en": "Check the list of seven: m, kg, s, A, K, mol, cd.",
+          "hi": "सात की सूची देखिए: m, kg, s, A, K, mol, cd।"
+        }
+      }
+    },
+    {
+      "id": "phy.units-measurement.si-units:dd:11",
+      "type": "question",
+      "concepts": [
+        "phy.units-measurement.si-units.core.fundamental-derived-units"
+      ],
+      "depth": 2,
+      "question": "q.phy.units-measurement.si-units.0002"
+    },
+    {
+      "id": "phy.units-measurement.si-units:dd:12",
+      "type": "summary",
+      "concepts": [
+        "phy.units-measurement.si-units.core.fundamental-derived-units"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "SI base units: m, kg, s, A, K, mol, cd.",
+          "hi": "SI मूल मात्रक: m, kg, s, A, K, mol, cd।"
+        },
+        {
+          "en": "Radian and steradian are dimensionless units of angle.",
+          "hi": "रेडियन और स्टेरेडियन कोण के विमाहीन मात्रक हैं।"
+        },
+        {
+          "en": "Derived units such as $\\mathrm{N} = \\mathrm{kg\\,m\\,s^{-2}}$ combine base units.",
+          "hi": "$\\mathrm{N} = \\mathrm{kg\\,m\\,s^{-2}}$ जैसे व्युत्पन्न मात्रक मूल मात्रकों का संयोजन हैं।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

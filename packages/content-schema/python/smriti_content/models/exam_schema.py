@@ -102,6 +102,12 @@ class ExamProfile(BaseModel):
     id: common_schema.ExamProfileId
     cycle: Annotated[str, Field(min_length=1)]
     name: common_schema.I18nText | None = None
+    audience: Annotated[
+        Literal["standard", "little_learner"] | None,
+        Field(
+            description="little_learner: a class 1–5 profile (learn §5.6). Its coverage needs a story, song or little lesson and a play activity per concept instead of the exam-prep set (PRD §14)."
+        ),
+    ] = "standard"
     locales: Annotated[
         list[common_schema.Locale],
         Field(

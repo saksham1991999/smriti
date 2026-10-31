@@ -1,0 +1,113 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "chem.thermodynamics.reaction-enthalpy",
+  "questions": [
+    {
+      "id": "q.chem.thermodynamics.reaction-enthalpy.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.thermodynamics.reaction-enthalpy.core.hess-law",
+          "weight": 0.7
+        },
+        {
+          "id": "chem.thermodynamics.enthalpy-types.core.enthalpy-types-def",
+          "weight": 0.3
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Consider the following data. (i) $\\ce{2Al(s) + 6HCl(aq) -> Al2Cl6(aq) + 3H2(g)} + 1200\\ \\mathrm{kJ/mol}$ (ii) $\\ce{H2(g) + Cl2(g) -> 2HCl(g)} + 164\\ \\mathrm{kJ/mol}$. (iii) $\\ce{HCl(g) + aq -> HCl(aq)} + 83\\ \\mathrm{kJ/mol}$. (iv) $\\ce{Al2Cl6(s) + aq -> Al2Cl6(aq)} + 663\\ \\mathrm{kJ/mol}$ The enthalpy of formation of anhydrous solid $\\ce{Al2Cl6}$ is :",
+        "hi": "निम्नलिखित आँकड़ों पर विचार कीजिए। (i) $\\ce{2Al(s) + 6HCl(aq) -> Al2Cl6(aq) + 3H2(g)} + 1200\\ \\mathrm{kJ/mol}$ (ii) $\\ce{H2(g) + Cl2(g) -> 2HCl(g)} + 164\\ \\mathrm{kJ/mol}$। (iii) $\\ce{HCl(g) + aq -> HCl(aq)} + 83\\ \\mathrm{kJ/mol}$। (iv) $\\ce{Al2Cl6(s) + aq -> Al2Cl6(aq)} + 663\\ \\mathrm{kJ/mol}$ निर्जल ठोस $\\ce{Al2Cl6}$ की विरचन एन्थैल्पी है :"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$-648\\ \\mathrm{kJ\\,mol^{-1}}$",
+            "hi": "$-648\\ \\mathrm{kJ\\,mol^{-1}}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$-1350\\ \\mathrm{kJ\\,mol^{-1}}$",
+            "hi": "$-1350\\ \\mathrm{kJ\\,mol^{-1}}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$-2002\\ \\mathrm{kJ\\,mol^{-1}}$",
+            "hi": "$-2002\\ \\mathrm{kJ\\,mol^{-1}}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$-1527\\ \\mathrm{kJ\\,mol^{-1}}$",
+            "hi": "$-1527\\ \\mathrm{kJ\\,mol^{-1}}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "d"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Heat written on the product side is heat given out, so each $\\Delta H$ is negative. Combine the equations so that everything cancels except $\\ce{2Al(s) + 3Cl2(g) -> Al2Cl6(s)}$.",
+          "hi": "उत्पाद की ओर लिखी ऊष्मा मुक्त ऊष्मा है, अतः प्रत्येक $\\Delta H$ ऋणात्मक है। समीकरणों को ऐसे जोड़िए कि $\\ce{2Al(s) + 3Cl2(g) -> Al2Cl6(s)}$ के अतिरिक्त सब कट जाए।"
+        },
+        "steps": [
+          {
+            "en": "Target $=(\\mathrm{i})+3(\\mathrm{ii})+6(\\mathrm{iii})-(\\mathrm{iv})$.",
+            "hi": "लक्ष्य $=(\\mathrm{i})+3(\\mathrm{ii})+6(\\mathrm{iii})-(\\mathrm{iv})$।"
+          },
+          {
+            "en": "$\\Delta_fH=-1200-492-498+663=-1527\\ \\mathrm{kJ\\,mol^{-1}}$.",
+            "hi": "$\\Delta_fH=-1200-492-498+663=-1527\\ \\mathrm{kJ\\,mol^{-1}}$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 180,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 54
+      }
+    }
+  ]
+}

@@ -1,0 +1,550 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax Chemistry 2e, §10.5 The Solid State of Matter (metallic solids)",
+      "url": "https://openstax.org/books/chemistry-2e/pages/10-5-the-solid-state-of-matter",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the exam's own format. Each solution cites its NCERT section (OpenStax for metallic bonding). Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khch104) could not be retrieved, so a reviewer should check the terms.",
+  "topic": "chem.chemical-bonding.hydrogen-bonding",
+  "questions": [
+    {
+      "id": "q.chem.chemical-bonding.hydrogen-bonding.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.hydrogen-bonding.core.hydrogen-bond",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Hydrogen bonding occurs when hydrogen is bonded to",
+        "hi": "हाइड्रोजन आबंधन तब होता है जब हाइड्रोजन किससे जुड़ा हो?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "C, Si or Ge",
+            "hi": "C, Si या Ge"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "F, O or N",
+            "hi": "F, O या N"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Na, K or Li",
+            "hi": "Na, K या Li"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Cl, Br or I only",
+            "hi": "केवल Cl, Br या I"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "The three most electronegative small atoms.",
+          "hi": "तीन सबसे विद्युत् ऋणात्मक छोटे परमाणु।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Hydrogen must lose most of its share of the electron pair, which happens only next to a highly electronegative atom.",
+          "hi": "हाइड्रोजन को इलेक्ट्रॉन युग्म का अधिकांश हिस्सा खोना चाहिए, जो केवल अत्यधिक विद्युत् ऋणात्मक परमाणु के पास होता है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.9: hydrogen bonding involves H attached to the highly electronegative elements N, O and F.",
+            "hi": "NCERT §4.9: हाइड्रोजन आबंधन में अत्यधिक विद्युत् ऋणात्मक तत्वों N, O और F से जुड़ा H होता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "These are not electronegative enough.",
+              "hi": "ये पर्याप्त विद्युत् ऋणात्मक नहीं हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "These are electropositive metals.",
+              "hi": "ये विद्युत् धनात्मक धातुएँ हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "NCERT names F, O and N as the atoms involved.",
+              "hi": "NCERT में शामिल परमाणुओं के रूप में F, O और N बताए गए हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.hydrogen-bonding.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.hydrogen-bonding.core.hydrogen-bond",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "o-Nitrophenol shows",
+        "hi": "o-नाइट्रोफ़ीनॉल दिखाता है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "intermolecular hydrogen bonding only",
+            "hi": "केवल अंतराआण्विक हाइड्रोजन आबंधन"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "intramolecular hydrogen bonding",
+            "hi": "अंतःआण्विक हाइड्रोजन आबंधन"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "no hydrogen bonding",
+            "hi": "कोई हाइड्रोजन आबंधन नहीं"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "ionic bonding between its groups",
+            "hi": "इसके समूहों के बीच आयनिक आबंधन"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Where are the two oxygens that the hydrogen bridges?",
+          "hi": "हाइड्रोजन जिन दो ऑक्सीजनों को जोड़ता है वे कहाँ हैं?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The OH group and the nitro group sit next to each other on the ring, so the hydrogen bridges two oxygens of the same molecule.",
+          "hi": "OH समूह और नाइट्रो समूह वलय पर पास-पास हैं, इसलिए हाइड्रोजन उसी अणु के दो ऑक्सीजनों के बीच सेतु बनाता है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.9.2, Fig. 4.22: intramolecular hydrogen bonding in o-nitrophenol.",
+            "hi": "NCERT §4.9.2, चित्र 4.22: o-नाइट्रोफ़ीनॉल में अंतःआण्विक हाइड्रोजन आबंधन।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "NCERT's example of o-nitrophenol is of the intramolecular type.",
+              "hi": "NCERT में o-नाइट्रोफ़ीनॉल का उदाहरण अंतःआण्विक प्रकार का है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "It has an OH group next to an electronegative oxygen.",
+              "hi": "इसमें विद्युत् ऋणात्मक ऑक्सीजन के पास OH समूह है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The groups are covalently bonded to the same ring.",
+              "hi": "समूह एक ही वलय से सहसंयोजी रूप से जुड़े हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.hydrogen-bonding.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.hydrogen-bonding.core.hydrogen-bond",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The magnitude of hydrogen bonding in a compound is",
+        "hi": "किसी यौगिक में हाइड्रोजन आबंधन का परिमाण"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "maximum in the gaseous state",
+            "hi": "गैसीय अवस्था में अधिकतम होता है"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "the same in all states",
+            "hi": "सभी अवस्थाओं में समान होता है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "maximum in the solid state and minimum in the gaseous state",
+            "hi": "ठोस अवस्था में अधिकतम और गैसीय अवस्था में न्यूनतम होता है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "zero in the liquid state",
+            "hi": "द्रव अवस्था में शून्य होता है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Where are molecules closest together?",
+          "hi": "अणु सबसे पास कहाँ होते हैं?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Molecules are closest and most ordered in a solid, so hydrogen bonds are most effective there.",
+          "hi": "ठोस में अणु सबसे पास और सबसे व्यवस्थित होते हैं, इसलिए वहाँ हाइड्रोजन आबंध सबसे प्रभावी होते हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.9.1: the magnitude of H-bonding depends on the physical state; it is maximum in the solid and minimum in the gaseous state.",
+            "hi": "NCERT §4.9.1: H-आबंधन का परिमाण भौतिक अवस्था पर निर्भर है; ठोस में अधिकतम और गैसीय अवस्था में न्यूनतम।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Gas molecules are far apart; H-bonding is weakest there.",
+              "hi": "गैस के अणु दूर-दूर होते हैं; वहाँ H-आबंधन सबसे दुर्बल है।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "It depends on the physical state.",
+              "hi": "यह भौतिक अवस्था पर निर्भर है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Liquid water is strongly hydrogen bonded.",
+              "hi": "द्रव जल में प्रबल हाइड्रोजन आबंधन होता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.hydrogen-bonding.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.hydrogen-bonding.core.hydrogen-bond",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which statement about the hydrogen bond is correct?",
+        "hi": "हाइड्रोजन आबंध के बारे में कौन-सा कथन सही है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "It is stronger than a covalent bond.",
+            "hi": "यह सहसंयोजी आबंध से प्रबल है।"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "It is weaker than a covalent bond and is shown by a dotted line.",
+            "hi": "यह सहसंयोजी आबंध से कमज़ोर है और बिंदुकित रेखा से दिखाया जाता है।"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "It forms between two hydrogen atoms.",
+            "hi": "यह दो हाइड्रोजन परमाणुओं के बीच बनता है।"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "It needs a metal atom.",
+            "hi": "इसके लिए धातु परमाणु चाहिए।"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Compare with a full covalent bond.",
+          "hi": "पूर्ण सहसंयोजी आबंध से तुलना कीजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "A hydrogen bond is an electrostatic attraction between molecules, much weaker than sharing an electron pair.",
+          "hi": "हाइड्रोजन आबंध अणुओं के बीच स्थिरवैद्युत आकर्षण है, इलेक्ट्रॉन युग्म साझा करने से बहुत कमज़ोर।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.9: the hydrogen bond is weaker than the covalent bond and is represented by a dotted line.",
+            "hi": "NCERT §4.9: हाइड्रोजन आबंध सहसंयोजी आबंध से कमज़ोर है और बिंदुकित रेखा से दर्शाया जाता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "It is the other way round.",
+              "hi": "यह उल्टा है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "It forms between H and an electronegative atom such as F, O or N.",
+              "hi": "यह H और F, O या N जैसे विद्युत् ऋणात्मक परमाणु के बीच बनता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "No metal is involved.",
+              "hi": "इसमें कोई धातु शामिल नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.hydrogen-bonding.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.hydrogen-bonding.core.hydrogen-bond",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "In which of these is there intermolecular hydrogen bonding?",
+        "hi": "इनमें से किसमें अंतराआण्विक हाइड्रोजन आबंधन है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\ce{CH4}$",
+            "hi": "$\\ce{CH4}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "HF",
+            "hi": "HF"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\ce{H2}$",
+            "hi": "$\\ce{H2}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\ce{CCl4}$",
+            "hi": "$\\ce{CCl4}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Find H attached to F, O or N.",
+          "hi": "F, O या N से जुड़ा H खोजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Only HF has a hydrogen bonded to F, O or N.",
+          "hi": "केवल HF में F, O या N से जुड़ा हाइड्रोजन है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.9: in HF, the hydrogen bond exists between the hydrogen of one molecule and the fluorine of another.",
+            "hi": "NCERT §4.9: HF में हाइड्रोजन आबंध एक अणु के हाइड्रोजन और दूसरे अणु के फ़्लुओरीन के बीच होता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "H is bonded to carbon, which is not electronegative enough.",
+              "hi": "H कार्बन से जुड़ा है, जो पर्याप्त विद्युत् ऋणात्मक नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The H-H bond is non-polar.",
+              "hi": "H-H आबंध अध्रुवीय है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$\\ce{CCl4}$ has no hydrogen at all.",
+              "hi": "$\\ce{CCl4}$ में हाइड्रोजन है ही नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

@@ -1,0 +1,607 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax Chemistry 2e, §10.5 The Solid State of Matter (metallic solids)",
+      "url": "https://openstax.org/books/chemistry-2e/pages/10-5-the-solid-state-of-matter",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the exam's own format. Each solution cites its NCERT section (OpenStax for metallic bonding). Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khch104) could not be retrieved, so a reviewer should check the terms.",
+  "topic": "chem.chemical-bonding.hybridisation",
+  "questions": [
+    {
+      "id": "q.chem.chemical-bonding.hybridisation.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.hybridisation.core.hybridisation-spd",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The hybridisation of boron in $\\ce{BCl3}$ is",
+        "hi": "$\\ce{BCl3}$ में बोरॉन का संकरण है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$sp$",
+            "hi": "$sp$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$sp^2$",
+            "hi": "$sp^2$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$sp^3$",
+            "hi": "$sp^3$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$dsp^2$",
+            "hi": "$dsp^2$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Three bonds, no lone pair.",
+          "hi": "तीन आबंध, कोई एकाकी युग्म नहीं।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Boron makes three bonds and has no lone pair, so it needs three equivalent orbitals in a plane.",
+          "hi": "बोरॉन तीन आबंध बनाता है और उस पर कोई एकाकी युग्म नहीं है, इसलिए उसे एक तल में तीन तुल्य कक्षक चाहिए।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.6.1: one 2s and two 2p orbitals of B form three $sp^2$ orbitals; $\\ce{BCl3}$ is trigonal planar at $120^\\circ$.",
+            "hi": "NCERT §4.6.1: B के एक 2s और दो 2p कक्षक तीन $sp^2$ कक्षक बनाते हैं; $\\ce{BCl3}$ $120^\\circ$ पर त्रिकोणीय समतलीय है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "$sp$ gives two orbitals, as in $\\ce{BeCl2}$.",
+              "hi": "$sp$ दो कक्षक देता है, जैसे $\\ce{BeCl2}$ में।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$sp^3$ gives four orbitals.",
+              "hi": "$sp^3$ चार कक्षक देता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$dsp^2$ is for square planar complexes.",
+              "hi": "$dsp^2$ वर्ग समतलीय संकुलों के लिए है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.hybridisation.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.hybridisation.core.hybridisation-spd",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which statement about $\\ce{PCl5}$ is correct?",
+        "hi": "$\\ce{PCl5}$ के बारे में कौन-सा कथन सही है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "All five P-Cl bonds have the same length.",
+            "hi": "पाँचों P-Cl आबंधों की लंबाई समान है।"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "The axial bonds are slightly longer and weaker than the equatorial bonds.",
+            "hi": "अक्षीय आबंध विषुवतीय आबंधों से थोड़े लंबे और कमज़ोर हैं।"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Phosphorus is $sp^3$ hybridised.",
+            "hi": "फ़ॉस्फ़ोरस $sp^3$ संकरित है।"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "The molecule is square pyramidal.",
+            "hi": "अणु वर्ग पिरामिडी है।"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Compare the neighbours of an axial and an equatorial bond.",
+          "hi": "अक्षीय और विषुवतीय आबंध के पड़ोसियों की तुलना कीजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The two axial bonds each face three equatorial bond pairs at $90^\\circ$, so they are pushed harder and end up longer and weaker.",
+          "hi": "दोनों अक्षीय आबंध $90^\\circ$ पर तीन विषुवतीय आबंधी युग्मों का सामना करते हैं, इसलिए उन पर अधिक धक्का पड़ता है और वे लंबे व कमज़ोर हो जाते हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.6.3: the axial bond pairs suffer more repulsive interaction, so axial bonds are slightly longer and weaker; this makes $\\ce{PCl5}$ more reactive.",
+            "hi": "NCERT §4.6.3: अक्षीय आबंधी युग्मों पर अधिक प्रतिकर्षण होता है, इसलिए अक्षीय आबंध थोड़े लंबे और कमज़ोर हैं; इससे $\\ce{PCl5}$ अधिक क्रियाशील होता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "The bonds are not all equivalent in a trigonal bipyramid.",
+              "hi": "त्रिकोणीय द्विपिरामिड में सभी आबंध तुल्य नहीं होते।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Five bonds need five hybrid orbitals: $sp^3d$.",
+              "hi": "पाँच आबंधों के लिए पाँच संकर कक्षक चाहिए: $sp^3d$।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$\\ce{PCl5}$ is trigonal bipyramidal.",
+              "hi": "$\\ce{PCl5}$ त्रिकोणीय द्विपिरामिडी है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 50,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.hybridisation.0003",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.hybridisation.core.hybridisation-spd",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "What is the percentage of s character in an $sp^3$ hybrid orbital?",
+        "hi": "$sp^3$ संकर कक्षक में s गुण का प्रतिशत क्या है?"
+      },
+      "answer": {
+        "value": 25,
+        "unit": "%"
+      },
+      "hints": [
+        {
+          "en": "How many orbitals share the single s orbital?",
+          "hi": "एक s कक्षक को कितने कक्षक बाँटते हैं?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Four hybrid orbitals share one s orbital equally.",
+          "hi": "चार संकर कक्षक एक s कक्षक को बराबर बाँटते हैं।"
+        },
+        "steps": [
+          {
+            "en": "One s orbital and three p orbitals mix: s character $= \\frac{1}{4} \\times 100 = 25$ (NCERT §4.6.1).",
+            "hi": "एक s और तीन p कक्षक मिलते हैं: s गुण $= \\frac{1}{4} \\times 100 = 25$ (NCERT §4.6.1)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "50 is the s character of an $sp$ orbital.",
+              "hi": "50 एक $sp$ कक्षक का s गुण है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.hybridisation.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.hybridisation.core.hybridisation-spd",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The H-C-H bond angle in ethene is",
+        "hi": "एथीन में H-C-H आबंध कोण है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$109.5^\\circ$",
+            "hi": "$109.5^\\circ$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$117.6^\\circ$",
+            "hi": "$117.6^\\circ$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$180^\\circ$",
+            "hi": "$180^\\circ$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$90^\\circ$",
+            "hi": "$90^\\circ$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Ethene carbon is $sp^2$.",
+          "hi": "एथीन का कार्बन $sp^2$ है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Each carbon in ethene is $sp^2$, so the angles are close to $120^\\circ$; the measured H-C-H angle is a little less.",
+          "hi": "एथीन में हर कार्बन $sp^2$ है, इसलिए कोण $120^\\circ$ के पास हैं; मापा गया H-C-H कोण थोड़ा कम है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.6.2: in ethene the H-C-H angle is $117.6^\\circ$ and the H-C-C angle is $121^\\circ$.",
+            "hi": "NCERT §4.6.2: एथीन में H-C-H कोण $117.6^\\circ$ और H-C-C कोण $121^\\circ$ है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "$109.5^\\circ$ is the tetrahedral angle of $sp^3$ carbon, as in ethane.",
+              "hi": "$109.5^\\circ$ $sp^3$ कार्बन का चतुष्फलकीय कोण है, जैसे एथेन में।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$180^\\circ$ belongs to $sp$ carbon in ethyne.",
+              "hi": "$180^\\circ$ एथाइन के $sp$ कार्बन का है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$90^\\circ$ would come from unhybridised p orbitals.",
+              "hi": "$90^\\circ$ असंकरित p कक्षकों से आता।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.hybridisation.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.hybridisation.core.hybridisation-spd",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The hybridisation and shape of $\\ce{SF6}$ are",
+        "hi": "$\\ce{SF6}$ का संकरण और आकृति हैं"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$sp^3d$, trigonal bipyramidal",
+            "hi": "$sp^3d$, त्रिकोणीय द्विपिरामिडी"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$sp^3d^2$, octahedral",
+            "hi": "$sp^3d^2$, अष्टफलकीय"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$dsp^2$, square planar",
+            "hi": "$dsp^2$, वर्ग समतलीय"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$sp^3$, tetrahedral",
+            "hi": "$sp^3$, चतुष्फलकीय"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Six bonds.",
+          "hi": "छह आबंध।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Six S-F bonds need six hybrid orbitals: one s, three p and two d.",
+          "hi": "छह S-F आबंधों के लिए छह संकर कक्षक चाहिए: एक s, तीन p और दो d।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.6.3: S uses six $sp^3d^2$ orbitals; $\\ce{SF6}$ is a regular octahedron.",
+            "hi": "NCERT §4.6.3: S छह $sp^3d^2$ कक्षक प्रयोग करता है; $\\ce{SF6}$ नियमित अष्टफलक है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "That is $\\ce{PCl5}$, with five bonds.",
+              "hi": "वह $\\ce{PCl5}$ है, पाँच आबंधों वाला।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Square planar $dsp^2$ is for complexes like $\\ce{[Ni(CN)4]^2-}$.",
+              "hi": "वर्ग समतलीय $dsp^2$, $\\ce{[Ni(CN)4]^2-}$ जैसे संकुलों के लिए है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Four orbitals cannot hold six bonds.",
+              "hi": "चार कक्षक छह आबंध नहीं रख सकते।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.hybridisation.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.hybridisation.core.hybridisation-spd",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which complex ion is square planar with $dsp^2$ hybridisation?",
+        "hi": "कौन-सा संकुल आयन $dsp^2$ संकरण के साथ वर्ग समतलीय है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\ce{[Ni(CN)4]^2-}$",
+            "hi": "$\\ce{[Ni(CN)4]^2-}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\ce{[CrF6]^3-}$",
+            "hi": "$\\ce{[CrF6]^3-}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\ce{[Co(NH3)6]^3+}$",
+            "hi": "$\\ce{[Co(NH3)6]^3+}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\ce{SF6}$",
+            "hi": "$\\ce{SF6}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Look for four ligands.",
+          "hi": "चार लिगंड खोजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Four ligands in a square use one d, one s and two p orbitals.",
+          "hi": "वर्ग में चार लिगंड एक d, एक s और दो p कक्षक प्रयोग करते हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.6.3 table: square planar, $dsp^2$: $\\ce{[Ni(CN)4]^2-}$ and $\\ce{[PtCl4]^2-}$.",
+            "hi": "NCERT §4.6.3 सारणी: वर्ग समतलीय, $dsp^2$: $\\ce{[Ni(CN)4]^2-}$ और $\\ce{[PtCl4]^2-}$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Six ligands: octahedral.",
+              "hi": "छह लिगंड: अष्टफलकीय।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Six ligands: octahedral, $d^2sp^3$.",
+              "hi": "छह लिगंड: अष्टफलकीय, $d^2sp^3$।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$\\ce{SF6}$ is octahedral, $sp^3d^2$.",
+              "hi": "$\\ce{SF6}$ अष्टफलकीय है, $sp^3d^2$।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

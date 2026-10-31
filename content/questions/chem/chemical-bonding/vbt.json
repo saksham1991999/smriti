@@ -1,0 +1,503 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax Chemistry 2e, §10.5 The Solid State of Matter (metallic solids)",
+      "url": "https://openstax.org/books/chemistry-2e/pages/10-5-the-solid-state-of-matter",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the exam's own format. Each solution cites its NCERT section (OpenStax for metallic bonding). Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khch104) could not be retrieved, so a reviewer should check the terms.",
+  "topic": "chem.chemical-bonding.vbt",
+  "questions": [
+    {
+      "id": "q.chem.chemical-bonding.vbt.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.vbt.core.valence-bond-theory",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "In the formation of $\\ce{H2}$, the minimum of the potential energy curve corresponds to",
+        "hi": "$\\ce{H2}$ के बनने में स्थितिज ऊर्जा वक्र का न्यूनतम किससे संबंधित है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "the atoms being infinitely far apart",
+            "hi": "परमाणुओं के अनंत दूरी पर होने से"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "the most stable state of $\\ce{H2}$, at the bond length of $74\\ \\mathrm{pm}$",
+            "hi": "$\\ce{H2}$ की सबसे स्थायी अवस्था से, $74\\ \\mathrm{pm}$ की आबंध लंबाई पर"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "the nuclei touching each other",
+            "hi": "नाभिकों के एक-दूसरे को छूने से"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "the point where repulsion is greater than attraction",
+            "hi": "उस बिंदु से जहाँ प्रतिकर्षण आकर्षण से अधिक है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Where do attraction and repulsion balance?",
+          "hi": "आकर्षण और प्रतिकर्षण कहाँ संतुलित होते हैं?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Energy falls as attraction wins, then rises when repulsion takes over at very short distance. The bottom of the dip is where the molecule settles.",
+          "hi": "आकर्षण के जीतने पर ऊर्जा घटती है, फिर बहुत कम दूरी पर प्रतिकर्षण हावी होने पर बढ़ती है। गड्ढे का तल वह जगह है जहाँ अणु टिकता है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.5, Fig. 4.8: the minimum corresponds to the most stable state of $\\ce{H2}$, bond length $74\\ \\mathrm{pm}$.",
+            "hi": "NCERT §4.5, चित्र 4.8: न्यूनतम $\\ce{H2}$ की सबसे स्थायी अवस्था है, आबंध लंबाई $74\\ \\mathrm{pm}$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Far apart there is no interaction and the energy is the zero reference.",
+              "hi": "दूर पर कोई अन्योन्यक्रिया नहीं होती और ऊर्जा शून्य संदर्भ है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Repulsion between nuclei would make the energy very high there.",
+              "hi": "वहाँ नाभिकों के प्रतिकर्षण से ऊर्जा बहुत अधिक होगी।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "At the minimum, attraction and repulsion balance.",
+              "hi": "न्यूनतम पर आकर्षण और प्रतिकर्षण संतुलित होते हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.vbt.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.vbt.core.valence-bond-theory",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A pi bond is formed by",
+        "hi": "पाई आबंध किससे बनता है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "head-on overlap of two s orbitals",
+            "hi": "दो s कक्षकों के आमने-सामने अतिव्यापन से"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "head-on overlap of an s and a p orbital",
+            "hi": "एक s और एक p कक्षक के आमने-सामने अतिव्यापन से"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "sideways overlap of two p orbitals with parallel axes",
+            "hi": "समांतर अक्षों वाले दो p कक्षकों के अगल-बगल अतिव्यापन से"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "overlap of two orbitals of opposite sign along the axis",
+            "hi": "अक्ष के अनुदिश विपरीत चिह्न वाले दो कक्षकों के अतिव्यापन से"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Pi: side by side.",
+          "hi": "पाई: अगल-बगल।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Pi bonds are the side-by-side ones; head-on overlaps along the axis make sigma bonds.",
+          "hi": "पाई आबंध अगल-बगल वाले हैं; अक्ष के अनुदिश आमने-सामने के अतिव्यापन सिग्मा आबंध बनाते हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.5.4: in a pi bond the atomic orbitals overlap with their axes parallel to each other and perpendicular to the internuclear axis.",
+            "hi": "NCERT §4.5.4: पाई आबंध में परमाणु कक्षक ऐसे अतिव्यापन करते हैं कि उनके अक्ष एक-दूसरे के समांतर और अंतरनाभिकीय अक्ष के लंबवत हों।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "That is s-s overlap, a sigma bond.",
+              "hi": "वह s-s अतिव्यापन है, सिग्मा आबंध।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is s-p overlap, a sigma bond.",
+              "hi": "वह s-p अतिव्यापन है, सिग्मा आबंध।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Out-of-phase overlap is negative overlap and does not form a bond.",
+              "hi": "विपरीत कला का अतिव्यापन ऋणात्मक अतिव्यापन है और आबंध नहीं बनाता।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.vbt.0003",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.vbt.core.valence-bond-theory",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "How many sigma bonds are there in ethene, $\\ce{H2C=CH2}$?",
+        "hi": "एथीन, $\\ce{H2C=CH2}$, में कितने सिग्मा आबंध हैं?"
+      },
+      "answer": {
+        "value": 5,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "Only one of the two C=C bonds is sigma.",
+          "hi": "C=C के दो आबंधों में केवल एक सिग्मा है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Every single bond is one sigma bond, and the double bond holds one more sigma bond plus a pi bond.",
+          "hi": "हर एकल आबंध एक सिग्मा आबंध है, और द्वि-आबंध में एक और सिग्मा आबंध तथा एक पाई आबंध है।"
+        },
+        "steps": [
+          {
+            "en": "Four C-H bonds give 4 sigma; the C=C bond gives 1 sigma and 1 pi: $4 + 1 = 5$ sigma (NCERT §4.6.2).",
+            "hi": "चार C-H आबंध 4 सिग्मा देते हैं; C=C आबंध 1 सिग्मा और 1 पाई देता है: $4 + 1 = 5$ सिग्मा (NCERT §4.6.2)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Answering 6 counts the pi bond as a sigma bond.",
+              "hi": "6 उत्तर देना पाई आबंध को सिग्मा गिनता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.vbt.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.vbt.core.valence-bond-theory",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which statement about sigma and pi bonds is correct?",
+        "hi": "सिग्मा और पाई आबंधों के बारे में कौन-सा कथन सही है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "A sigma bond is weaker than a pi bond.",
+            "hi": "सिग्मा आबंध पाई आबंध से कमज़ोर है।"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "A sigma bond is stronger because its orbitals overlap to a larger extent.",
+            "hi": "सिग्मा आबंध मज़बूत है क्योंकि इसके कक्षक अधिक अतिव्यापन करते हैं।"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "A double bond is made of two sigma bonds.",
+            "hi": "द्वि-आबंध दो सिग्मा आबंधों से बना है।"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "A pi bond forms by head-on overlap.",
+            "hi": "पाई आबंध आमने-सामने अतिव्यापन से बनता है।"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which overlap is larger?",
+          "hi": "कौन-सा अतिव्यापन अधिक है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Bond strength follows the extent of overlap, and head-on overlap is the larger one.",
+          "hi": "आबंध की मज़बूती अतिव्यापन की मात्रा पर चलती है, और आमने-सामने का अतिव्यापन अधिक होता है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.5.5: in a sigma bond overlapping takes place to a larger extent, so it is stronger than a pi bond.",
+            "hi": "NCERT §4.5.5: सिग्मा आबंध में अतिव्यापन अधिक होता है, इसलिए यह पाई आबंध से मज़बूत है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "It is the other way round.",
+              "hi": "यह उल्टा है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "A double bond is one sigma and one pi bond.",
+              "hi": "द्वि-आबंध एक सिग्मा और एक पाई आबंध है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Pi bonds form by sideways overlap.",
+              "hi": "पाई आबंध अगल-बगल अतिव्यापन से बनते हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.vbt.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.vbt.core.valence-bond-theory",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The number of pi bonds in a molecule of $\\ce{N2}$ is",
+        "hi": "$\\ce{N2}$ के एक अणु में पाई आबंधों की संख्या है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "0",
+            "hi": "0"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "1",
+            "hi": "1"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "2",
+            "hi": "2"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "3",
+            "hi": "3"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "How many bonds join the two N atoms?",
+          "hi": "दोनों N परमाणुओं को कितने आबंध जोड़ते हैं?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "$\\ce{N2}$ has a triple bond: one sigma and two pi.",
+          "hi": "$\\ce{N2}$ में त्रि-आबंध है: एक सिग्मा और दो पाई।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.5.5: in multiple bonds, pi bonds form in addition to a sigma bond; a triple bond has one sigma and two pi bonds.",
+            "hi": "NCERT §4.5.5: बहु-आबंधों में पाई आबंध सिग्मा आबंध के अतिरिक्त बनते हैं; त्रि-आबंध में एक सिग्मा और दो पाई आबंध होते हैं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "A triple bond cannot be all sigma.",
+              "hi": "त्रि-आबंध पूरा सिग्मा नहीं हो सकता।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "One pi bond belongs to a double bond.",
+              "hi": "एक पाई आबंध द्वि-आबंध का होता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "One of the three bonds is always sigma.",
+              "hi": "तीन में से एक आबंध सदा सिग्मा होता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

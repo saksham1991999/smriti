@@ -54,12 +54,15 @@ import { FakeBilling, RevenueCatBilling, type IntroEligibility } from '../billin
 import type { BillingProvider, PurchaseResult } from '../billing/types';
 import { CATALOGUE_SNAPSHOT, catalogueFromApi, type CatalogueExam } from '../content/catalogue';
 import type { ContentRepo } from '../content/repo';
+import type { PhotoSource } from '../platform/photos';
+import type { SimFiles } from './labs';
 import { addPendingStrings } from '../i18n/pending';
 import type { MobileSwitches } from '../env';
 import { applyNotificationPlan, type LocalNotifier } from '../platform/notifications';
 import type { ProfileStores } from '../platform/profileDb';
-import { KvWidgetBridge, type WidgetBridge } from '../platform/widget';
+import { NativeWidgetBridge, type WidgetBridge } from '../platform/widget';
 import { createMobileApiClient, unwrap, type ApiClient } from './api';
+import { widgetData } from './widgetData';
 import { goalAnswer, toWireEnvelope } from './wire';
 import {
   ageBandFrom,
@@ -132,6 +135,15 @@ export interface AppDeps {
   analyticsTransport?: Transport;
   logger?: Logger;
   appVersion?: string;
+  /**
+   * A fetch whose response body streams (`expo/fetch`), for server-sent events such as the tutor's
+   * answer. Without it the tutor reads the stream once it closes (Jest and the in-app fake).
+   */
+  streamFetch?: (input: Request) => Promise<Response>;
+  /** Camera and photo library for photo doubts; absent in Jest unless a fake is passed. */
+  photos?: PhotoSource;
+  /** Where downloaded sims live (expo-file-system on phones); null on web, where sims run from the CDN. */
+  simFiles?: SimFiles | null;
 }
 
 /**
@@ -238,7 +250,13 @@ export class SmritiApp {
       onStateApplied: (state) => this.onServerState(state),
     });
     this.softPrompt = new SoftPromptBudget(stores.kv);
-    this.widget = deps.widget ?? new KvWidgetBridge(stores.kv);
+    this.widget =
+      deps.widget ??
+      new NativeWidgetBridge(stores.kv, () => ({
+        t: (key, values) => this.t(key, values),
+        scheme: variant.scheme,
+        goalMinutes: this.store.getState().profile?.daily_goal_minutes ?? this.ui.getState().onboarding.dailyGoalMinutes ?? 10,
+      }));
     this.billing =
       deps.billing ??
       (deps.switches.billing === 'fake'
@@ -411,6 +429,16 @@ export class SmritiApp {
 
   today(): string {
     return localDate(this.deps.clock(), this.deps.timeZone());
+  }
+
+  /**
+   * A readable name for a concept id the server sends without one (mock reports): the topic it
+   * belongs to, from the content on this device; the id itself when the topic is not here.
+   */
+  conceptName(conceptId: string): string {
+    const topics = this.deps.content.topics(this.ui.getState().locale, this.examProfileId());
+    const topic = topics.filter((t) => conceptId === t.id || conceptId.startsWith(`${t.id}.`)).sort((a, b) => b.id.length - a.id.length)[0];
+    return topic?.name ?? conceptId;
   }
 
   examProfileId(): string | null {
@@ -738,6 +766,7 @@ export class SmritiApp {
     await this.billing.logOut();
     this.analytics.clear();
     await this.deps.stores.storage.wipe();
+    await this.widget.clear();
     for (const k of ['onboarding.v1', PREFS_KEY, LESSONS_KEY, UPSELL_KEY]) await this.deps.stores.kv.delete(k);
     await this.softPrompt.clear();
     this.store.getState().reset();
@@ -891,9 +920,8 @@ export class SmritiApp {
 
   async writeWidget(): Promise<void> {
     const st = this.store.getState();
-    const ob = this.ui.getState().onboarding;
     const quiet = defaultQuietHours(this.audience(), this.flags);
-    const minutes = st.profile?.daily_goal_minutes ?? ob.dailyGoalMinutes ?? 10;
+    const live = await widgetData(this);
     const snapshot = widgetSnapshot({
       now: this.deps.clock(),
       timeZone: this.deps.timeZone(),
@@ -907,16 +935,15 @@ export class SmritiApp {
       restDayToday: false,
       lastActivityDay: st.streak?.today_qualified ? this.today() : null,
       plant: { species: 'default', skin: null, stage: st.plant?.stage ?? 'seed', health: st.plant?.health ?? 'thriving' },
-      pet: st.pet ? { species: st.pet.species, name: st.pet.name, state: 'happy', outfit: null } : null,
+      pet: st.pet ? { species: st.pet.species, name: st.pet.name, state: live.petState, outfit: null } : null,
       healthByMissedDays: healthByMissedDays(),
-      dueCards: 0,
-      planItems: [],
-      exam: null,
+      dueCards: live.dueCards,
+      planItems: live.planItems,
+      exam: live.exam,
       quietStart: quiet.start,
       quietEnd: quiet.end,
       eveningHour: null,
     });
-    void minutes;
     await this.widget.write(snapshot);
   }
 }

@@ -1,8 +1,7 @@
 import { describe, expect, it } from "vitest";
-import type { AnyQuestion } from "@smriti/lesson-core";
 import { ageBandFrom, nextStep, questionSteps } from "../src/lib/onboarding";
-import { toAnswerIn } from "../src/lib/practice";
-import { mockMarksFor, mockPaletteState } from "../src/screens/practice/Mock";
+import { localizeQuestion, markingLabel } from "../src/lib/mocks";
+import { fromAnswerIn, toAnswerIn } from "../src/lib/practice";
 
 describe("onboarding steps", () => {
   it("asks the class only for School and the exam date only for competitive exams", () => {
@@ -32,23 +31,24 @@ describe("practice answers on the wire", () => {
   });
 });
 
-describe("mock runner shell", () => {
-  it("uses the exam palette states, answered and marked first", () => {
-    const visited = new Set([0, 1, 2]);
-    const saved = new Map([[0, { kind: "options" as const, optionIds: ["a"] }], [2, { kind: "options" as const, optionIds: ["b"] }]]);
-    const marked = new Set([1, 2]);
-    expect(mockPaletteState(0, visited, saved, marked)).toBe("answered");
-    expect(mockPaletteState(1, visited, saved, marked)).toBe("marked");
-    expect(mockPaletteState(2, visited, saved, marked)).toBe("answeredMarked");
-    expect(mockPaletteState(3, visited, saved, marked)).toBe("notVisited");
-    expect(mockPaletteState(1, visited, saved, new Set())).toBe("notAnswered");
+describe("mocks on the server", () => {
+  it("reads saved answers back into lesson-core answers", () => {
+    expect(fromAnswerIn({ kind: "options", option_ids: ["b"] })).toEqual({ kind: "options", optionIds: ["b"] });
+    expect(fromAnswerIn({ kind: "pairs", pairs: [{ left: "l1", right: "r2" }] })).toEqual({ kind: "pairs", pairs: [{ left: "l1", right: "r2" }] });
+    expect(fromAnswerIn({ kind: "matrix", rows: [{ row: "p", columns: ["q"] }] })).toEqual({ kind: "matrix", rows: [{ row: "p", columns: ["q"] }] });
+    expect(fromAnswerIn(null)).toBeNull();
   });
 
-  it("scores with the blueprint's marking rule", () => {
-    const q = { id: "q1", type: "mcq_single", options: [{ id: "a" }, { id: "b" }], answer: { option_ids: ["a"] }, concepts: [] } as unknown as AnyQuestion;
-    const rule = { correct: 4, wrong: -1, unattempted: 0 };
-    expect(mockMarksFor(q, { kind: "options", optionIds: ["a"] }, rule)).toEqual({ marks: 4, correct: true, attempted: true });
-    expect(mockMarksFor(q, { kind: "options", optionIds: ["b"] }, rule)).toEqual({ marks: -1, correct: false, attempted: true });
-    expect(mockMarksFor(q, undefined, rule)).toEqual({ marks: 0, correct: false, attempted: false });
+  it("picks one language from the server's {en, hi} question body", () => {
+    const body = { id: "q1", type: "mcq_single", stem: { en: "Stem", hi: "प्रश्न" }, options: [{ id: "a", text: { en: "A", hi: "क" } }], ideal_time_s: 60 };
+    expect(localizeQuestion(body, "hi")).toMatchObject({ stem: "प्रश्न", options: [{ id: "a", text: "क" }], ideal_time_s: 60 });
+    expect(localizeQuestion(body, "en")).toMatchObject({ stem: "Stem" });
+  });
+
+  it("shows marks only when the notice states them", () => {
+    expect(markingLabel({ correct: 4, wrong: -1, unattempted: 0 })).toEqual({ correct: 4, wrong: -1 });
+    expect(markingLabel({ correct: 3, wrong: { fraction_of_question_marks: 0.25 }, unattempted: 0 } as never)).toEqual({ correct: 3, wrong: -0.75 });
+    expect(markingLabel({ correct: null, wrong: -1, unattempted: 0 } as never)).toBeNull();
+    expect(markingLabel(null)).toBeNull();
   });
 });

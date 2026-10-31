@@ -1,0 +1,113 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "phy.units-measurement.dimensions",
+  "questions": [
+    {
+      "id": "q.phy.units-measurement.dimensions.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.units-measurement.dimensions.core.dimensional-formula",
+          "weight": 0.7
+        },
+        {
+          "id": "phy.electrostatic-potential-capacitance.capacitor-energy.core.capacitor-energy-density",
+          "weight": 0.3
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "The dimensional formula of $\\frac12\\epsilon_0E^2$ ($\\epsilon_0=$ permittivity of vacuum and $E=$ electric field) is $M^aL^bT^c$. The value of $2a-b+c=$ ______.",
+        "hi": "$\\frac12\\epsilon_0E^2$ ($\\epsilon_0=$ निर्वात की विद्युतशीलता तथा $E=$ विद्युत क्षेत्र) का विमीय सूत्र $M^aL^bT^c$ है। $2a-b+c=$ ______ का मान है।"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$0$",
+            "hi": "$0$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$1$",
+            "hi": "$1$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$-1$",
+            "hi": "$-1$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$2$",
+            "hi": "$2$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "$\\frac12\\epsilon_0E^2$ is the energy stored per unit volume of an electric field, so it has the dimensions of energy divided by volume, which are also those of pressure.",
+          "hi": "$\\frac12\\epsilon_0E^2$ विद्युत क्षेत्र में प्रति एकांक आयतन संचित ऊर्जा है, अतः इसकी विमाएँ ऊर्जा/आयतन की हैं, जो दाब की विमाएँ भी हैं।"
+        },
+        "steps": [
+          {
+            "en": "$\\left[\\frac{\\text{energy}}{\\text{volume}}\\right]=\\frac{ML^2T^{-2}}{L^3}=ML^{-1}T^{-2}$, so $a=1$, $b=-1$, $c=-2$.",
+            "hi": "$\\left[\\frac{\\text{energy}}{\\text{volume}}\\right]=\\frac{ML^2T^{-2}}{L^3}=ML^{-1}T^{-2}$, अतः $a=1$, $b=-1$, $c=-2$।"
+          },
+          {
+            "en": "$2a-b+c=2+1-2=1$.",
+            "hi": "$2a-b+c=2+1-2=1$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 90,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 26
+      }
+    }
+  ]
+}

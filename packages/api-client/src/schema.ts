@@ -88,6 +88,74 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/ai/doubt-photos": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** AI-16 to AI-18: upload a photo of a question and read it (Pro, 13+, uploads scope) */
+    post: operations["upload_doubt_photo_v1_ai_doubt_photos_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/ai/doubt-photos/{photo_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** A photo doubt: what was read, and its chat once solved */
+    get: operations["get_doubt_photo_v1_ai_doubt_photos__photo_id__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/ai/doubt-photos/{photo_id}/solve": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** AI-19: solve the confirmed question as a tutor chat, hints first (SSE) */
+    post: operations["solve_doubt_photo_v1_ai_doubt_photos__photo_id__solve_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/analytics/summary": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** PRC-14: readiness, speed, confidence and mistake cards from your own answers */
+    get: operations["analytics_summary_v1_analytics_summary_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/attempts": {
     parameters: {
       query?: never;
@@ -787,6 +855,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/dev/auth/verify-otp": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Dev stand-in for verifyOtp with a token hash (a managed child's session) */
+    post: operations["verify_otp_v1_dev_auth_verify_otp_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/devices": {
     parameters: {
       query?: never;
@@ -1369,6 +1454,57 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/guardian/children": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** AUTH-24/26: create a managed child (adopting this device's guest, or a new account) */
+    post: operations["create_child_v1_guardian_children_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/children/{child_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** Delete a managed child: erasure after the grace period, devices signed out */
+    delete: operations["delete_child_v1_guardian_children__child_id__delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/children/{child_id}/session": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** A one-time token hash for a child session on this device (sign-in in the last 10 min) */
+    post: operations["child_session_v1_guardian_children__child_id__session_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/guardian/consent": {
     parameters: {
       query?: never;
@@ -1557,6 +1693,58 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/guardian/learners/{learner_id}/pro": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** PAY-17 and SET-14: the child's plan, as the guardian who manages it sees it */
+    get: operations["child_pro_v1_guardian_learners__learner_id__pro_get"];
+    put?: never;
+    /** PAY-17 [Continue to pay]: a web subscription on the child's account, payer guardian */
+    post: operations["child_pro_start_v1_guardian_learners__learner_id__pro_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/learners/{learner_id}/pro/cancel": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Cancel the plan the guardian pays for, at the end of the paid period */
+    post: operations["child_pro_cancel_v1_guardian_learners__learner_id__pro_cancel_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/learners/{learner_id}/pro/verify": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Check the Checkout signature for the child's plan; Pro follows the webhook */
+    post: operations["child_pro_verify_v1_guardian_learners__learner_id__pro_verify_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/guardian/learners/{learner_id}/report": {
     parameters: {
       query?: never;
@@ -1569,6 +1757,41 @@ export interface paths {
     put?: never;
     post?: never;
     delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/link-requests": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** The calling guardian's link requests, newest first (the teen's name once accepted) */
+    get: operations["my_link_requests_v1_guardian_link_requests_get"];
+    put?: never;
+    /** SET-18 path 2: ask to link an existing teen by their email or invite code, or as a QR */
+    post: operations["create_link_request_v1_guardian_link_requests_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/link-requests/{request_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** Withdraw an open link request */
+    delete: operations["cancel_link_request_v1_guardian_link_requests__request_id__delete"];
     options?: never;
     head?: never;
     patch?: never;
@@ -1876,6 +2099,74 @@ export interface paths {
     get: operations["my_limits_v1_me_limits_get"];
     put?: never;
     post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/me/link-requests": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** AUTH-27: open requests from guardians to link this teen */
+    get: operations["teen_link_requests_v1_me_link_requests_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/me/link-requests/{request_id}/accept": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** AUTH-27 [Yes, link]: record the teen's OK and open the consent request for AUTH-20 */
+    post: operations["accept_link_request_v1_me_link_requests__request_id__accept_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/me/link-requests/{request_id}/decline": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** AUTH-27 [This isn't my parent]: nothing is linked */
+    post: operations["decline_link_request_v1_me_link_requests__request_id__decline_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/me/link-requests/claim": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** The teen scanned or typed the guardian's code: the request becomes theirs */
+    post: operations["claim_link_request_v1_me_link_requests_claim_post"];
     delete?: never;
     options?: never;
     head?: never;
@@ -3210,6 +3501,25 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
   schemas: {
+    /** AnalyticsSummaryOut */
+    AnalyticsSummaryOut: {
+      /**
+       * Computed At
+       * Format: date-time
+       */
+      computed_at: string;
+      confidence: components["schemas"]["ConfidenceCard"];
+      /** Exam Profile Id */
+      exam_profile_id: string;
+      mistakes: components["schemas"]["MistakesCard"];
+      /**
+       * Period
+       * @enum {string}
+       */
+      period: "7d" | "30d" | "all";
+      readiness: components["schemas"]["ReadinessCard"];
+      speed: components["schemas"]["SpeedCard"];
+    };
     /** AnswerResult */
     AnswerResult: {
       /** Attempt */
@@ -3826,6 +4136,81 @@ export interface components {
       /** Week Minutes */
       week_minutes: number;
     };
+    /**
+     * ChildCreate
+     * @description AUTH-24/AUTH-26: the parent creates a managed child, adopting the guest that did onboarding
+     *     on this device (``adopt_guest`` is that guest's access token) or making a new account.
+     */
+    ChildCreate: {
+      /** Adopt Guest */
+      adopt_guest?: string | null;
+      /**
+       * Age Band
+       * @enum {string}
+       */
+      age_band: "u10" | "10_12";
+      /**
+       * Declaration
+       * @constant
+       */
+      declaration: true;
+      /** First Name */
+      first_name: string;
+      /** Locale */
+      locale?: ("en" | "hi") | null;
+      /** Notice Version */
+      notice_version: string;
+      /** Scopes */
+      scopes: ("account" | "social" | "community" | "voice" | "uploads")[];
+    };
+    /** ChildDeletionOut */
+    ChildDeletionOut: {
+      /**
+       * Scheduled For
+       * Format: date-time
+       */
+      scheduled_for: string;
+      /**
+       * User Id
+       * Format: uuid
+       */
+      user_id: string;
+    };
+    /**
+     * ChildProRequest
+     * @description PAY-17: a parent buys Pro for one child's account (individual plans only; a family plan is
+     *     the parent's own and adds the child as a member instead).
+     */
+    ChildProRequest: {
+      /**
+       * Plan
+       * @default monthly
+       * @enum {string}
+       */
+      plan: "monthly" | "yearly";
+    };
+    /**
+     * ChildSessionOut
+     * @description Exchanged once, within ``expires_in`` seconds, with supabase-js
+     *     ``verifyOtp({ token_hash, type: 'email' })`` (locally ``POST /v1/dev/auth/verify-otp``).
+     */
+    ChildSessionOut: {
+      /** Expires In */
+      expires_in: number;
+      /** Token Hash */
+      token_hash: string;
+      /**
+       * Type
+       * @default email
+       * @constant
+       */
+      type: "email";
+      /**
+       * User Id
+       * Format: uuid
+       */
+      user_id: string;
+    };
     /** ComingUp */
     ComingUp: {
       /**
@@ -3857,6 +4242,35 @@ export interface components {
       correct: number;
       /** Marks Lost */
       marks_lost: number;
+    };
+    /** ConfidenceCard */
+    ConfidenceCard: {
+      /** Have */
+      have: number;
+      /** Levels */
+      levels?: components["schemas"]["ConfidenceLevel"][] | null;
+      /** Lucky Guesses */
+      lucky_guesses?: number | null;
+      /** Needed */
+      needed: number | null;
+      /** Reason */
+      reason?: ("not_enough_data" | "threshold_unset") | null;
+      /** Shown */
+      shown: boolean;
+    };
+    /** ConfidenceLevel */
+    ConfidenceLevel: {
+      /** Accuracy */
+      accuracy: number | null;
+      /** Answers */
+      answers: number;
+      /**
+       * Confidence
+       * @enum {string}
+       */
+      confidence: "sure" | "fifty" | "guess";
+      /** Correct */
+      correct: number;
     };
     /** ConfidenceRow */
     ConfidenceRow: {
@@ -4141,7 +4555,7 @@ export interface components {
        * Kind
        * @enum {string}
        */
-      kind: "card" | "question" | "topic" | "concept" | "lab";
+      kind: "card" | "question" | "topic" | "concept" | "lab" | "doubt";
       /** Ref */
       ref: string;
       /** Title */
@@ -4545,11 +4959,95 @@ export interface components {
       /** Is Anonymous */
       is_anonymous: boolean;
     };
+    /** DevVerifyOtpRequest */
+    DevVerifyOtpRequest: {
+      /** Token Hash */
+      token_hash: string;
+      /**
+       * Type
+       * @default email
+       * @constant
+       */
+      type: "email";
+    };
     /** DictationOut */
     DictationOut: {
       /** Confidence */
       confidence: number | null;
       quota: components["schemas"]["QuotaOut"];
+      /** Text */
+      text: string;
+    };
+    /**
+     * DoubtPhotoOut
+     * @description AI-18: what the vision model read from the photo, for the student to check or edit.
+     *     ``reason`` says why nothing usable was read (the app shows Retake).
+     */
+    DoubtPhotoOut: {
+      /**
+       * Created At
+       * Format: date-time
+       */
+      created_at: string;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Question Text */
+      question_text?: string | null;
+      /** Reason */
+      reason?:
+        | (
+            | "blurry"
+            | "no_question"
+            | "multiple"
+            | "unreadable"
+            | "not_study"
+            | "personal"
+            | "unsafe"
+            | "ai_unavailable"
+          )
+        | null;
+      /** Session Id */
+      session_id?: string | null;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "read" | "unreadable" | "rejected" | "solved";
+      /** Subject */
+      subject?: string | null;
+    };
+    /**
+     * DoubtSolve
+     * @description AI-19: solve the confirmed question as a tutor chat (SSE, the tutor's events). ``text`` is
+     *     the student's message (the confirmed question or a chip); ``question_text`` saves an edit
+     *     from AI-18 first; ``reveal`` is "Show full solution" (hints first until then).
+     */
+    DoubtSolve: {
+      /** Chip Id */
+      chip_id?: string | null;
+      /**
+       * Client Message Id
+       * Format: uuid
+       */
+      client_message_id: string;
+      /** Exam */
+      exam?: string | null;
+      /**
+       * Input
+       * @default typed
+       * @enum {string}
+       */
+      input: "typed" | "chip" | "prefill";
+      /** Question Text */
+      question_text?: string | null;
+      /**
+       * Reveal
+       * @default false
+       */
+      reveal: boolean;
       /** Text */
       text: string;
     };
@@ -4920,6 +5418,12 @@ export interface components {
        * @default false
        */
       is_intro: boolean;
+      /**
+       * Managed In
+       * @default none
+       * @enum {string}
+       */
+      managed_in: "web" | "play" | "app_store" | "parent" | "family" | "none";
       /**
        * Plan
        * @enum {string}
@@ -5352,6 +5856,38 @@ export interface components {
        */
       time_policy: "practice" | "strict";
     };
+    /**
+     * GuardianLinkRequestOut
+     * @description The guardian's own list (SET-18). The teen's name shows only after the teen accepts.
+     */
+    GuardianLinkRequestOut: {
+      /** Consent Request Id */
+      consent_request_id: string | null;
+      /**
+       * Created At
+       * Format: date-time
+       */
+      created_at: string;
+      /**
+       * Expires At
+       * Format: date-time
+       */
+      expires_at: string;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Learner First Name */
+      learner_first_name: string | null;
+      /** Scopes */
+      scopes: ("account" | "social" | "community" | "voice" | "uploads")[];
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "pending" | "accepted" | "declined" | "expired" | "cancelled";
+    };
     /** HandleCheck */
     HandleCheck: {
       /** Available */
@@ -5665,6 +6201,38 @@ export interface components {
       sectional_mocks: components["schemas"]["QuotaOut"];
       tutor_messages: components["schemas"]["QuotaOut"];
     };
+    /**
+     * LinkAccept
+     * @description The teen's confirmation, kept as the request's evidence (no free text).
+     */
+    LinkAccept: {
+      /** App Version */
+      app_version?: string | null;
+      /** Notice Version */
+      notice_version: string;
+      /** Platform */
+      platform?: ("ios" | "android" | "web") | null;
+    };
+    /** LinkClaim */
+    LinkClaim: {
+      /** Code */
+      code: string;
+    };
+    /** LinkDecision */
+    LinkDecision: {
+      /** Consent Request Id */
+      consent_request_id: string | null;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "accepted" | "declined";
+    };
     /** LinkedRequest */
     LinkedRequest: {
       /** Referral Code */
@@ -5677,6 +6245,39 @@ export interface components {
       profile: components["schemas"]["ProfileState"];
       /** Show Shared Phone Check */
       show_shared_phone_check: boolean;
+    };
+    /**
+     * LinkRequestCreate
+     * @description SET-18 path 2. At most one of ``teen_email`` (the teen's sign-in email) and ``teen_code``
+     *     (the teen's invite code, as on their friend QR); with neither, the teen claims the returned
+     *     code. The answer never says whether an account matched.
+     */
+    LinkRequestCreate: {
+      /** Scopes */
+      scopes: ("account" | "social" | "community" | "voice" | "uploads")[];
+      /** Teen Code */
+      teen_code?: string | null;
+      /** Teen Email */
+      teen_email?: string | null;
+    };
+    /** LinkRequestCreated */
+    LinkRequestCreated: {
+      /** Code */
+      code: string;
+      /**
+       * Expires At
+       * Format: date-time
+       */
+      expires_at: string;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Link */
+      link: string;
+      /** Scopes */
+      scopes: ("account" | "social" | "community" | "voice" | "uploads")[];
     };
     /** LiveLeaderboard */
     LiveLeaderboard: {
@@ -5780,6 +6381,24 @@ export interface components {
        * Format: date-time
        */
       window_start: string;
+    };
+    /** ManagedChildOut */
+    ManagedChildOut: {
+      /** Adopted */
+      adopted: boolean;
+      /**
+       * Age Band
+       * @enum {string}
+       */
+      age_band: "u10" | "10_12";
+      consent: components["schemas"]["ConsentOut"];
+      /** First Name */
+      first_name: string;
+      /**
+       * User Id
+       * Format: uuid
+       */
+      user_id: string;
     };
     /** ManifestResponse */
     ManifestResponse: {
@@ -6039,6 +6658,32 @@ export interface components {
       /** Tier */
       tier: number | null;
     };
+    /** MistakeCount */
+    MistakeCount: {
+      /** Count */
+      count: number;
+      /**
+       * Type
+       * @enum {string}
+       */
+      type: "conceptual" | "calculation" | "misread" | "silly" | "time";
+    };
+    /**
+     * MistakesCard
+     * @description The student's own tags. Shown once anything is tagged.
+     */
+    MistakesCard: {
+      /** Counts */
+      counts?: components["schemas"]["MistakeCount"][] | null;
+      /** Have */
+      have: number;
+      /** Needed */
+      needed: number | null;
+      /** Reason */
+      reason?: ("not_enough_data" | "threshold_unset") | null;
+      /** Shown */
+      shown: boolean;
+    };
     /**
      * MockAccess
      * @description app-core ``mockAccess``. A locked mock names the paywall source; the client opens PAY-01 only
@@ -6282,6 +6927,11 @@ export interface components {
       consented_at: string | null;
       /** Needs Consent */
       needs_consent: boolean;
+      /**
+       * Pending Link Requests
+       * @default 0
+       */
+      pending_link_requests: number;
       /** Pending Request Id */
       pending_request_id: string | null;
       /** Retry At */
@@ -7136,6 +7786,28 @@ export interface components {
        */
       url: string;
     };
+    /**
+     * ReadinessCard
+     * @description Ignores the period (a current state). Not a predicted score (PRD §6.3).
+     */
+    ReadinessCard: {
+      /** Have */
+      have: number;
+      /** Needed */
+      needed: number | null;
+      /** Percent */
+      percent?: number | null;
+      /** Practised */
+      practised: number;
+      /** Reason */
+      reason?: ("not_enough_data" | "threshold_unset") | null;
+      /** Shown */
+      shown: boolean;
+      /** Total */
+      total: number;
+      /** Weighted */
+      weighted: boolean;
+    };
     /** Registration */
     Registration: {
       /** Mock Id */
@@ -7722,6 +8394,29 @@ export interface components {
       /** Items */
       items: components["schemas"]["SolutionItem"][];
     };
+    /**
+     * SpeedCard
+     * @description Answers to questions with an ``ideal_time_s``. Slow means over the ideal time, fast means
+     *     under it.
+     */
+    SpeedCard: {
+      /** Avg Ms */
+      avg_ms?: number | null;
+      /** Fast And Wrong */
+      fast_and_wrong?: number | null;
+      /** Have */
+      have: number;
+      /** Needed */
+      needed: number | null;
+      /** Reason */
+      reason?: ("not_enough_data" | "threshold_unset") | null;
+      /** Right But Slow */
+      right_but_slow?: number | null;
+      /** Shown */
+      shown: boolean;
+      /** Target Ms */
+      target_ms?: number | null;
+    };
     /** SquadCheerIn */
     SquadCheerIn: {
       /** Preset Id */
@@ -8088,6 +8783,31 @@ export interface components {
       /** Topic Progress */
       topic_progress?: components["schemas"]["TopicProgressState"][] | null;
       wallet?: components["schemas"]["WalletState"] | null;
+    };
+    /**
+     * TeenLinkRequestOut
+     * @description AUTH-27 on the teen's phone: "Link {parent_first_name} as your guardian?".
+     */
+    TeenLinkRequestOut: {
+      /**
+       * Expires At
+       * Format: date-time
+       */
+      expires_at: string;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Parent First Name */
+      parent_first_name: string | null;
+      /** Scopes */
+      scopes: ("account" | "social" | "community" | "voice" | "uploads")[];
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "pending" | "accepted" | "declined" | "expired" | "cancelled";
     };
     /** TierName */
     TierName: {
@@ -8847,6 +9567,142 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["MergeStatus"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  upload_doubt_photo_v1_ai_doubt_photos_post: {
+    parameters: {
+      query?: {
+        exam?: string | null;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description One compressed photo of one question (at most 4 MiB) */
+    requestBody: {
+      content: {
+        "image/jpeg": string;
+        "image/png": string;
+        "image/webp": string;
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DoubtPhotoOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  get_doubt_photo_v1_ai_doubt_photos__photo_id__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        photo_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DoubtPhotoOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  solve_doubt_photo_v1_ai_doubt_photos__photo_id__solve_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        photo_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["DoubtSolve"];
+      };
+    };
+    responses: {
+      /** @description Server-sent events (delta, replace, safety, citations, chips, quota, quota_exhausted, error, done) */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "text/event-stream": string;
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  analytics_summary_v1_analytics_summary_get: {
+    parameters: {
+      query?: {
+        exam?: string | null;
+        period?: "7d" | "30d" | "all";
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["AnalyticsSummaryOut"];
         };
       };
       /** @description Validation Error */
@@ -10240,6 +11096,46 @@ export interface operations {
       };
     };
   };
+  verify_otp_v1_dev_auth_verify_otp_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["DevVerifyOtpRequest"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DevSession"];
+        };
+      };
+      /** @description otp_expired: used, unknown or older than 5 minutes */
+      401: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
   register_device_v1_devices_post: {
     parameters: {
       query?: never;
@@ -11388,6 +12284,105 @@ export interface operations {
       };
     };
   };
+  create_child_v1_guardian_children_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ChildCreate"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ManagedChildOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  delete_child_v1_guardian_children__child_id__delete: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path: {
+        child_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      202: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ChildDeletionOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  child_session_v1_guardian_children__child_id__session_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        child_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ChildSessionOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
   my_consent_v1_guardian_consent_get: {
     parameters: {
       query?: never;
@@ -11753,6 +12748,152 @@ export interface operations {
       };
     };
   };
+  child_pro_v1_guardian_learners__learner_id__pro_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        learner_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SubscriptionDetailsOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  child_pro_start_v1_guardian_learners__learner_id__pro_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        learner_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ChildProRequest"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["RazorpaySubscriptionOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  child_pro_cancel_v1_guardian_learners__learner_id__pro_cancel_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path: {
+        learner_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["RazorpayCancelRequest"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["EntitlementOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  child_pro_verify_v1_guardian_learners__learner_id__pro_verify_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path: {
+        learner_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["RazorpayVerifyRequest"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["EntitlementOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
   report_v1_guardian_learners__learner_id__report_get: {
     parameters: {
       query?: {
@@ -11774,6 +12915,90 @@ export interface operations {
         content: {
           "application/json": components["schemas"]["WeekReport"];
         };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  my_link_requests_v1_guardian_link_requests_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GuardianLinkRequestOut"][];
+        };
+      };
+    };
+  };
+  create_link_request_v1_guardian_link_requests_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["LinkRequestCreate"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LinkRequestCreated"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  cancel_link_request_v1_guardian_link_requests__request_id__delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        request_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
       /** @description Validation Error */
       422: {
@@ -12324,6 +13549,129 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["MyLimits"];
+        };
+      };
+    };
+  };
+  teen_link_requests_v1_me_link_requests_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["TeenLinkRequestOut"][];
+        };
+      };
+    };
+  };
+  accept_link_request_v1_me_link_requests__request_id__accept_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path: {
+        request_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["LinkAccept"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LinkDecision"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  decline_link_request_v1_me_link_requests__request_id__decline_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path: {
+        request_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LinkDecision"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  claim_link_request_v1_me_link_requests_claim_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["LinkClaim"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["TeenLinkRequestOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
         };
       };
     };

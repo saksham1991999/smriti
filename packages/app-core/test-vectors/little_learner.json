@@ -1,0 +1,633 @@
+{
+  "version": 1,
+  "today": "2026-10-30",
+  "experiences": [
+    {
+      "facts": {
+        "ageBand": "u10",
+        "schoolClass": 3,
+        "managedChild": true
+      },
+      "littleLearnerEnabled": true,
+      "expected": {
+        "littleLearner": true,
+        "gentle": true,
+        "register": "tum",
+        "home": "HOME-06",
+        "tabs": [
+          "learn",
+          "labs",
+          "me"
+        ],
+        "showPrices": false,
+        "paywall": "ask_grown_up",
+        "tutorButton": false,
+        "tutorVariant": "chips_only",
+        "search": false,
+        "gems": false,
+        "leagues": false,
+        "examSwitcher": false,
+        "topicModeChoice": false,
+        "socialDeepLinks": false,
+        "signIn": "parent",
+        "analytics": "learning_only",
+        "readAloud": true,
+        "mnemonicForge": false,
+        "timeLimits": true,
+        "defaultTheme": "light"
+      }
+    },
+    {
+      "facts": {
+        "ageBand": "u10",
+        "schoolClass": 3,
+        "managedChild": true
+      },
+      "littleLearnerEnabled": false,
+      "expected": {
+        "littleLearner": false,
+        "gentle": true,
+        "register": "aap",
+        "home": "HOME-01",
+        "tabs": [
+          "learn",
+          "labs",
+          "practice",
+          "me"
+        ],
+        "showPrices": false,
+        "paywall": "ask_grown_up",
+        "tutorButton": true,
+        "tutorVariant": "standard",
+        "search": true,
+        "gems": true,
+        "leagues": true,
+        "examSwitcher": true,
+        "topicModeChoice": true,
+        "socialDeepLinks": true,
+        "signIn": "parent",
+        "analytics": "learning_only",
+        "readAloud": false,
+        "mnemonicForge": true,
+        "timeLimits": true,
+        "defaultTheme": "system"
+      }
+    },
+    {
+      "facts": {
+        "ageBand": "u10",
+        "schoolClass": null
+      },
+      "littleLearnerEnabled": true,
+      "expected": {
+        "littleLearner": false,
+        "gentle": true,
+        "register": "aap",
+        "home": "HOME-01",
+        "tabs": [
+          "learn",
+          "labs",
+          "practice",
+          "me"
+        ],
+        "showPrices": false,
+        "paywall": "ask_grown_up",
+        "tutorButton": true,
+        "tutorVariant": "standard",
+        "search": true,
+        "gems": true,
+        "leagues": true,
+        "examSwitcher": true,
+        "topicModeChoice": true,
+        "socialDeepLinks": true,
+        "signIn": "parent",
+        "analytics": "learning_only",
+        "readAloud": false,
+        "mnemonicForge": true,
+        "timeLimits": false,
+        "defaultTheme": "system"
+      }
+    },
+    {
+      "facts": {
+        "ageBand": "u10",
+        "schoolClass": null
+      },
+      "littleLearnerEnabled": false,
+      "expected": {
+        "littleLearner": false,
+        "gentle": true,
+        "register": "aap",
+        "home": "HOME-01",
+        "tabs": [
+          "learn",
+          "labs",
+          "practice",
+          "me"
+        ],
+        "showPrices": false,
+        "paywall": "ask_grown_up",
+        "tutorButton": true,
+        "tutorVariant": "standard",
+        "search": true,
+        "gems": true,
+        "leagues": true,
+        "examSwitcher": true,
+        "topicModeChoice": true,
+        "socialDeepLinks": true,
+        "signIn": "parent",
+        "analytics": "learning_only",
+        "readAloud": false,
+        "mnemonicForge": true,
+        "timeLimits": false,
+        "defaultTheme": "system"
+      }
+    },
+    {
+      "facts": {
+        "ageBand": "10_12",
+        "schoolClass": 5
+      },
+      "littleLearnerEnabled": true,
+      "expected": {
+        "littleLearner": true,
+        "gentle": true,
+        "register": "tum",
+        "home": "HOME-06",
+        "tabs": [
+          "learn",
+          "labs",
+          "me"
+        ],
+        "showPrices": false,
+        "paywall": "ask_grown_up",
+        "tutorButton": false,
+        "tutorVariant": "chips_only",
+        "search": false,
+        "gems": false,
+        "leagues": false,
+        "examSwitcher": false,
+        "topicModeChoice": false,
+        "socialDeepLinks": false,
+        "signIn": "parent",
+        "analytics": "learning_only",
+        "readAloud": true,
+        "mnemonicForge": false,
+        "timeLimits": true,
+        "defaultTheme": "light"
+      }
+    },
+    {
+      "facts": {
+        "ageBand": "10_12",
+        "schoolClass": 5
+      },
+      "littleLearnerEnabled": false,
+      "expected": {
+        "littleLearner": false,
+        "gentle": false,
+        "register": "aap",
+        "home": "HOME-01",
+        "tabs": [
+          "learn",
+          "labs",
+          "practice",
+          "me"
+        ],
+        "showPrices": true,
+        "paywall": "ask_grown_up",
+        "tutorButton": true,
+        "tutorVariant": "standard",
+        "search": true,
+        "gems": true,
+        "leagues": true,
+        "examSwitcher": true,
+        "topicModeChoice": true,
+        "socialDeepLinks": true,
+        "signIn": "parent",
+        "analytics": "reduced",
+        "readAloud": false,
+        "mnemonicForge": true,
+        "timeLimits": false,
+        "defaultTheme": "system"
+      }
+    },
+    {
+      "facts": {
+        "ageBand": "10_12",
+        "schoolClass": 7
+      },
+      "littleLearnerEnabled": true,
+      "expected": {
+        "littleLearner": false,
+        "gentle": false,
+        "register": "aap",
+        "home": "HOME-01",
+        "tabs": [
+          "learn",
+          "labs",
+          "practice",
+          "me"
+        ],
+        "showPrices": true,
+        "paywall": "ask_grown_up",
+        "tutorButton": true,
+        "tutorVariant": "standard",
+        "search": true,
+        "gems": true,
+        "leagues": true,
+        "examSwitcher": true,
+        "topicModeChoice": true,
+        "socialDeepLinks": true,
+        "signIn": "parent",
+        "analytics": "reduced",
+        "readAloud": false,
+        "mnemonicForge": true,
+        "timeLimits": false,
+        "defaultTheme": "system"
+      }
+    },
+    {
+      "facts": {
+        "ageBand": "10_12",
+        "schoolClass": 7
+      },
+      "littleLearnerEnabled": false,
+      "expected": {
+        "littleLearner": false,
+        "gentle": false,
+        "register": "aap",
+        "home": "HOME-01",
+        "tabs": [
+          "learn",
+          "labs",
+          "practice",
+          "me"
+        ],
+        "showPrices": true,
+        "paywall": "ask_grown_up",
+        "tutorButton": true,
+        "tutorVariant": "standard",
+        "search": true,
+        "gems": true,
+        "leagues": true,
+        "examSwitcher": true,
+        "topicModeChoice": true,
+        "socialDeepLinks": true,
+        "signIn": "parent",
+        "analytics": "reduced",
+        "readAloud": false,
+        "mnemonicForge": true,
+        "timeLimits": false,
+        "defaultTheme": "system"
+      }
+    },
+    {
+      "facts": {
+        "ageBand": "13_17",
+        "schoolClass": 8
+      },
+      "littleLearnerEnabled": true,
+      "expected": {
+        "littleLearner": false,
+        "gentle": false,
+        "register": "aap",
+        "home": "HOME-01",
+        "tabs": [
+          "learn",
+          "labs",
+          "practice",
+          "me"
+        ],
+        "showPrices": true,
+        "paywall": "standard",
+        "tutorButton": true,
+        "tutorVariant": "standard",
+        "search": true,
+        "gems": true,
+        "leagues": true,
+        "examSwitcher": true,
+        "topicModeChoice": true,
+        "socialDeepLinks": true,
+        "signIn": "self",
+        "analytics": "reduced",
+        "readAloud": false,
+        "mnemonicForge": true,
+        "timeLimits": false,
+        "defaultTheme": "system"
+      }
+    },
+    {
+      "facts": {
+        "ageBand": "13_17",
+        "schoolClass": 8
+      },
+      "littleLearnerEnabled": false,
+      "expected": {
+        "littleLearner": false,
+        "gentle": false,
+        "register": "aap",
+        "home": "HOME-01",
+        "tabs": [
+          "learn",
+          "labs",
+          "practice",
+          "me"
+        ],
+        "showPrices": true,
+        "paywall": "standard",
+        "tutorButton": true,
+        "tutorVariant": "standard",
+        "search": true,
+        "gems": true,
+        "leagues": true,
+        "examSwitcher": true,
+        "topicModeChoice": true,
+        "socialDeepLinks": true,
+        "signIn": "self",
+        "analytics": "reduced",
+        "readAloud": false,
+        "mnemonicForge": true,
+        "timeLimits": false,
+        "defaultTheme": "system"
+      }
+    },
+    {
+      "facts": {
+        "ageBand": "18p",
+        "schoolClass": null
+      },
+      "littleLearnerEnabled": true,
+      "expected": {
+        "littleLearner": false,
+        "gentle": false,
+        "register": "aap",
+        "home": "HOME-01",
+        "tabs": [
+          "learn",
+          "labs",
+          "practice",
+          "me"
+        ],
+        "showPrices": true,
+        "paywall": "standard",
+        "tutorButton": true,
+        "tutorVariant": "standard",
+        "search": true,
+        "gems": true,
+        "leagues": true,
+        "examSwitcher": true,
+        "topicModeChoice": true,
+        "socialDeepLinks": true,
+        "signIn": "self",
+        "analytics": "full",
+        "readAloud": false,
+        "mnemonicForge": true,
+        "timeLimits": false,
+        "defaultTheme": "system"
+      }
+    },
+    {
+      "facts": {
+        "ageBand": "18p",
+        "schoolClass": null
+      },
+      "littleLearnerEnabled": false,
+      "expected": {
+        "littleLearner": false,
+        "gentle": false,
+        "register": "aap",
+        "home": "HOME-01",
+        "tabs": [
+          "learn",
+          "labs",
+          "practice",
+          "me"
+        ],
+        "showPrices": true,
+        "paywall": "standard",
+        "tutorButton": true,
+        "tutorVariant": "standard",
+        "search": true,
+        "gems": true,
+        "leagues": true,
+        "examSwitcher": true,
+        "topicModeChoice": true,
+        "socialDeepLinks": true,
+        "signIn": "self",
+        "analytics": "full",
+        "readAloud": false,
+        "mnemonicForge": true,
+        "timeLimits": false,
+        "defaultTheme": "system"
+      }
+    },
+    {
+      "facts": {
+        "ageBand": null,
+        "schoolClass": null
+      },
+      "littleLearnerEnabled": true,
+      "expected": {
+        "littleLearner": false,
+        "gentle": false,
+        "register": "aap",
+        "home": "HOME-01",
+        "tabs": [
+          "learn",
+          "labs",
+          "practice",
+          "me"
+        ],
+        "showPrices": true,
+        "paywall": "standard",
+        "tutorButton": true,
+        "tutorVariant": "standard",
+        "search": true,
+        "gems": true,
+        "leagues": true,
+        "examSwitcher": true,
+        "topicModeChoice": true,
+        "socialDeepLinks": true,
+        "signIn": "self",
+        "analytics": "reduced",
+        "readAloud": false,
+        "mnemonicForge": true,
+        "timeLimits": false,
+        "defaultTheme": "system"
+      }
+    },
+    {
+      "facts": {
+        "ageBand": null,
+        "schoolClass": null
+      },
+      "littleLearnerEnabled": false,
+      "expected": {
+        "littleLearner": false,
+        "gentle": false,
+        "register": "aap",
+        "home": "HOME-01",
+        "tabs": [
+          "learn",
+          "labs",
+          "practice",
+          "me"
+        ],
+        "showPrices": true,
+        "paywall": "standard",
+        "tutorButton": true,
+        "tutorVariant": "standard",
+        "search": true,
+        "gems": true,
+        "leagues": true,
+        "examSwitcher": true,
+        "topicModeChoice": true,
+        "socialDeepLinks": true,
+        "signIn": "self",
+        "analytics": "reduced",
+        "readAloud": false,
+        "mnemonicForge": true,
+        "timeLimits": false,
+        "defaultTheme": "system"
+      }
+    }
+  ],
+  "gentle_pet": [
+    {
+      "state": "happy",
+      "shown": "happy"
+    },
+    {
+      "state": "content",
+      "shown": "content"
+    },
+    {
+      "state": "sleepy",
+      "shown": "sleepy"
+    },
+    {
+      "state": "tired",
+      "shown": "sleepy"
+    },
+    {
+      "state": "missing_you",
+      "shown": "sleepy"
+    },
+    {
+      "state": "resting",
+      "shown": "sleepy"
+    }
+  ],
+  "gentle_plant": [
+    {
+      "health": "thriving",
+      "shown": "thriving"
+    },
+    {
+      "health": "droopy",
+      "shown": "droopy"
+    },
+    {
+      "health": "dry",
+      "shown": "droopy"
+    },
+    {
+      "health": "wilted",
+      "shown": "droopy"
+    },
+    {
+      "health": "dormant",
+      "shown": "droopy"
+    }
+  ],
+  "time_limits": [
+    {
+      "limits": {
+        "dailyMinutes": 30,
+        "allowedHours": {
+          "start": "16:00",
+          "end": "20:00"
+        }
+      },
+      "used": 10,
+      "extra": 0,
+      "at": "2026-10-30T17:00:00+05:30",
+      "inActivity": false,
+      "timeZone": "Asia/Kolkata",
+      "expected": {
+        "kind": "ok",
+        "minutesLeft": 20
+      }
+    },
+    {
+      "limits": {
+        "dailyMinutes": 30,
+        "allowedHours": {
+          "start": "16:00",
+          "end": "20:00"
+        }
+      },
+      "used": 30,
+      "extra": 0,
+      "at": "2026-10-30T17:00:00+05:30",
+      "inActivity": true,
+      "timeZone": "Asia/Kolkata",
+      "expected": {
+        "kind": "finish_current",
+        "reason": "daily_limit"
+      }
+    },
+    {
+      "limits": {
+        "dailyMinutes": 30,
+        "allowedHours": {
+          "start": "16:00",
+          "end": "20:00"
+        }
+      },
+      "used": 30,
+      "extra": 15,
+      "at": "2026-10-30T17:00:00+05:30",
+      "inActivity": false,
+      "timeZone": "Asia/Kolkata",
+      "expected": {
+        "kind": "ok",
+        "minutesLeft": 15
+      }
+    },
+    {
+      "limits": {
+        "dailyMinutes": 30,
+        "allowedHours": {
+          "start": "16:00",
+          "end": "20:00"
+        }
+      },
+      "used": 0,
+      "extra": 0,
+      "at": "2026-10-30T20:00:00+05:30",
+      "inActivity": false,
+      "timeZone": "Asia/Kolkata",
+      "expected": {
+        "kind": "times_up",
+        "reason": "outside_hours"
+      }
+    },
+    {
+      "limits": {
+        "dailyMinutes": 0,
+        "allowedHours": null
+      },
+      "used": 300,
+      "extra": 0,
+      "at": "2026-10-30T23:00:00+05:30",
+      "inActivity": false,
+      "timeZone": "Asia/Kolkata",
+      "expected": {
+        "kind": "ok",
+        "minutesLeft": null
+      }
+    }
+  ]
+}

@@ -53,6 +53,18 @@ export const CATALOGUE = {
     areas: ['auth'],
     props: {},
   },
+  activity_completed: {
+    stream: 'learning',
+    essential: false,
+    areas: ['learn'],
+    props: {
+      kind: { type: 'enum', values: ['story', 'song', 'play'] },
+      activity_id: { type: 'id' },
+      topic_id: { type: 'id' },
+      stars: { type: 'number' },
+      duration_s: { type: 'number' },
+    },
+  },
   age_resolved: {
     stream: 'product',
     essential: true,
@@ -2771,6 +2783,29 @@ export const CATALOGUE = {
       species: { type: 'token' },
     },
   },
+  play_completed: {
+    stream: 'product',
+    essential: false,
+    areas: ['learn'],
+    props: {
+      activity_id: { type: 'id' },
+      topic_id: { type: 'id' },
+      stars: { type: 'number' },
+      duration_s: { type: 'number' },
+    },
+  },
+  play_round_completed: {
+    stream: 'product',
+    essential: false,
+    areas: ['learn'],
+    props: {
+      activity_id: { type: 'id' },
+      round_index: { type: 'number' },
+      round_kind: { type: 'enum', values: ['tap', 'match', 'sort', 'drag', 'trace'] },
+      attempts: { type: 'number' },
+      was_guided: { type: 'boolean' },
+    },
+  },
   practice_hub_viewed: {
     stream: 'product',
     essential: false,
@@ -3442,6 +3477,17 @@ export const CATALOGUE = {
       question_id: { type: 'id' },
       context: { type: 'token' },
       sections_opened: { type: 'enum_list', values: ['feynman', 'steps', 'shortcut', 'traps'] },
+    },
+  },
+  song_completed: {
+    stream: 'product',
+    essential: false,
+    areas: ['learn'],
+    props: {
+      activity_id: { type: 'id' },
+      topic_id: { type: 'id' },
+      stars: { type: 'number' },
+      duration_s: { type: 'number' },
     },
   },
   squad_created: {

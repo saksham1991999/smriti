@@ -1,4 +1,4 @@
-import type { EntitlementSection } from '../sync/types';
+import type { EntitlementSection, EntitlementSource, PlanManagedIn } from '../sync/types';
 import { toMs, type Instant } from '../time';
 
 /**
@@ -41,4 +41,35 @@ export function billingBanner(ent: EntitlementSection | null | undefined): 'bill
   if (ent.status === 'grace') return 'billing_issue';
   if (ent.status === 'pending') return 'payment_pending';
   return null;
+}
+
+/** What an older server (before sync v1.4) lets the app infer from, besides the entitlement. */
+export interface ManagedInHints {
+  /** `subscription.payer` from `GET /v1/billing/subscription` (PAY-17 sets `guardian`). */
+  payer?: 'self' | 'guardian_declared' | 'guardian' | null;
+}
+
+const BY_SOURCE: Record<EntitlementSource, PlanManagedIn> = {
+  razorpay: 'web',
+  play: 'play',
+  app_store: 'app_store',
+  family: 'family',
+  promo: 'none',
+};
+
+/**
+ * Who manages the plan. Reads the server's `managed_in` (sync v1.4); for older servers it falls
+ * back to inferring it: `parent` when the subscription's payer is a guardian, else from `source`.
+ */
+export function planManagedIn(ent: EntitlementSection | null | undefined, hints: ManagedInHints = {}): PlanManagedIn {
+  if (!ent) return 'none';
+  if (ent.managed_in) return ent.managed_in;
+  if (ent.plan !== 'pro') return 'none';
+  if (hints.payer === 'guardian') return 'parent';
+  return ent.source ? BY_SOURCE[ent.source] : 'none';
+}
+
+/** Parent mode: the child sees "Your parent manages this plan" and no cancel or store links. */
+export function isManagedByParent(ent: EntitlementSection | null | undefined, hints: ManagedInHints = {}): boolean {
+  return planManagedIn(ent, hints) === 'parent';
 }

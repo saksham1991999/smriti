@@ -1,0 +1,49 @@
+{
+  "schema": "media-requests@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Figures of ingested previous-year questions, to be recreated as diagrams through visual-director (never scanned). Each brief describes the official figure; labels are placed at anchors once an image exists.",
+  "requests": [
+    {
+      "id": "img.semiconductor-electronics.pyq-zener-clipper",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "physics",
+      "brief": "three panels side by side on white. Left panel: a circuit with an AC source on the left; across the two rails, a vertical branch holding an ordinary diode pointing down in series with a Zener diode pointing up; on the right, a tall empty rectangular box connected between a top terminal and a bottom terminal. Middle panel: axes with one full cycle of a sine wave, peak level marked by a dotted line and trough level by a dashed line, two tick marks on the time axis. Right panel: axes with a flat-topped positive pulse during the first half cycle and a flat-bottomed negative pulse of equal size during the second half cycle, two tick marks on the time axis. Recreate the figure of NTA's JEE (Main) 2026 paper, 2 April Shift 1, question 37 faithfully (same parts, positions and directions); every letter, number, sign and arrow label is added by the app at label anchors.",
+      "must_show": [
+        "AC source",
+        "diode pointing down in series with a Zener diode pointing up across the rails",
+        "empty box between the top and bottom terminals",
+        "one sine cycle",
+        "flat-topped positive and flat-bottomed negative output of equal size"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "plus or minus signs",
+        "a scan or copy of the original paper"
+      ],
+      "alt": {
+        "en": "Part A: an AC source across an ideal diode in series with a 5 V Zener diode, with the unknown block between X and Y across the output. Part B: input sine wave of peak 20 V over 2 minutes. Part C: output clipped to +5 V in the first minute and to -5 V in the second.",
+        "hi": "भाग A: एक AC स्रोत, जिसके सिरों पर एक आदर्श डायोड और 5 V ज़ेनर डायोड श्रेणी में हैं, तथा निर्गत के सिरों पर X और Y के बीच अज्ञात खंड है। भाग B: 2 मिनट में शिखर 20 V की निवेशी ज्या तरंग। भाग C: निर्गत पहले मिनट में +5 V पर और दूसरे में -5 V पर कटा हुआ।"
+      },
+      "used_by": [
+        "q.phy.semiconductor-electronics.zener.9001"
+      ],
+      "status": "requested",
+      "rejected_reason": null,
+      "result": null
+    }
+  ]
+}

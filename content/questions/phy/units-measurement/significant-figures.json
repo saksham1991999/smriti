@@ -1,0 +1,736 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "official",
+      "ref": "JCGM 200:2012 International vocabulary of metrology (VIM), 3rd edition, published by the BIPM",
+      "url": "https://www.bipm.org/documents/20126/2071204/JCGM_200_2012.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 1 Units and Measurement (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax University Physics Volume 1, §1.6 Significant Figures",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-6-significant-figures",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax College Physics 2e, §1.3 Accuracy, Precision, and Significant Figures",
+      "url": "https://openstax.org/books/college-physics-2e/pages/1-3-accuracy-precision-and-significant-figures",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the exam's own format. Each solution cites its NCERT section, or the BIPM vocabulary of metrology and OpenStax for accuracy, precision, least count and the kinds of error, which the current NCERT chapter does not cover. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khph101) could not be retrieved, so a reviewer should check the terms.",
+  "topic": "phy.units-measurement.significant-figures",
+  "questions": [
+    {
+      "id": "q.phy.units-measurement.significant-figures.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.units-measurement.significant-figures.core.least-count",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A ruler reads to the nearest millimetre and a calliper to the nearest 0.01 mm. Which statement is correct?",
+        "hi": "एक पैमाना निकटतम मिलीमीटर तक और एक कैलिपर निकटतम 0.01 mm तक पढ़ता है। कौन-सा कथन सही है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "The calliper has the smaller least count, so it is more precise.",
+            "hi": "कैलिपर का अल्पतमांक छोटा है, इसलिए वह अधिक परिशुद्ध है।"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "The ruler is more precise because its marks are easier to see.",
+            "hi": "पैमाना अधिक परिशुद्ध है क्योंकि उसके निशान आसानी से दिखते हैं।"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Both have the same least count.",
+            "hi": "दोनों का अल्पतमांक समान है।"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Least count does not affect precision.",
+            "hi": "अल्पतमांक परिशुद्धता को प्रभावित नहीं करता।"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Compare the smallest steps.",
+          "hi": "सबसे छोटे चरणों की तुलना कीजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The finer the smallest step an instrument can read, the more precise its readings.",
+          "hi": "यंत्र जितना छोटा अंतर पढ़ सके, उसके पाठ्यांक उतने परिशुद्ध होते हैं।"
+        },
+        "steps": [
+          {
+            "en": "Least count: ruler 1 mm, calliper 0.01 mm. The smaller step gives more precise readings.",
+            "hi": "अल्पतमांक: पैमाना 1 mm, कैलिपर 0.01 mm। छोटा चरण अधिक परिशुद्ध पाठ्यांक देता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Ease of reading is not precision.",
+              "hi": "पढ़ने में आसानी परिशुद्धता नहीं है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "1 mm and 0.01 mm differ by a factor of 100.",
+              "hi": "1 mm और 0.01 mm में 100 गुना अंतर है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Precision depends on the least count (NCERT §1.3).",
+              "hi": "परिशुद्धता अल्पतमांक पर निर्भर करती है (NCERT §1.3)।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.units-measurement.significant-figures.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.units-measurement.significant-figures.core.significant-figure-rules",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The number of significant figures in 0.0006032 m² is",
+        "hi": "0.0006032 m² में सार्थक अंकों की संख्या है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "4",
+            "hi": "4"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "7",
+            "hi": "7"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "8",
+            "hi": "8"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "3",
+            "hi": "3"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Start at the first non-zero digit.",
+          "hi": "पहले शून्येतर अंक से शुरू कीजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Leading zeros only place the decimal point. Count from the 6: 6, 0, 3, 2.",
+          "hi": "आगे के शून्य केवल दशमलव का स्थान बताते हैं। 6 से गिनिए: 6, 0, 3, 2।"
+        },
+        "steps": [
+          {
+            "en": "Leading zeros are not significant; the zero between 6 and 3 is.",
+            "hi": "आगे के शून्य सार्थक नहीं; 6 और 3 के बीच का शून्य सार्थक है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "This counts the leading zeros after the decimal point.",
+              "hi": "इसमें दशमलव के बाद के आगे वाले शून्य गिन लिए गए।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "This counts every digit, including the zero before the decimal point.",
+              "hi": "इसमें दशमलव से पहले के शून्य समेत हर अंक गिन लिया गया।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The zero between 6 and 3 is significant.",
+              "hi": "6 और 3 के बीच का शून्य सार्थक है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.units-measurement.significant-figures.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.units-measurement.significant-figures.core.significant-figure-rules",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "5.74 g of a substance occupies 1.2 cm³. Its density, to the right significant figures, is",
+        "hi": "किसी पदार्थ के 5.74 g का आयतन 1.2 cm³ है। सही सार्थक अंकों तक उसका घनत्व है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "4.8 g cm⁻³",
+            "hi": "4.8 g cm⁻³"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "4.78 g cm⁻³",
+            "hi": "4.78 g cm⁻³"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "4.783 g cm⁻³",
+            "hi": "4.783 g cm⁻³"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "5 g cm⁻³",
+            "hi": "5 g cm⁻³"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Division: fewest significant figures.",
+          "hi": "भाग: सबसे कम सार्थक अंक।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Divide, then keep as many significant figures as the less precise input: the volume has two.",
+          "hi": "भाग दीजिए, फिर कम परिशुद्ध आँकड़े जितने सार्थक अंक रखिए: आयतन में दो हैं।"
+        },
+        "steps": [
+          {
+            "en": "$5.74 / 1.2 = 4.783...$",
+            "hi": "$5.74 / 1.2 = 4.783...$"
+          },
+          {
+            "en": "1.2 has two significant figures, so the density is 4.8 g cm⁻³ (NCERT Example 1.2).",
+            "hi": "1.2 में दो सार्थक अंक हैं, अतः घनत्व 4.8 g cm⁻³ (NCERT उदाहरण 1.2)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Three figures follow the mass, but the volume has only two.",
+              "hi": "तीन अंक द्रव्यमान के अनुसार हैं, पर आयतन में केवल दो हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "This keeps calculator digits.",
+              "hi": "इसमें कैलकुलेटर के अंक रखे गए हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "One figure is too few; the volume has two.",
+              "hi": "एक अंक बहुत कम है; आयतन में दो हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.units-measurement.significant-figures.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.units-measurement.significant-figures.core.significant-figure-rules",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "2.745 and 2.735 are each rounded off to three significant figures. The results are",
+        "hi": "2.745 और 2.735 दोनों को तीन सार्थक अंकों तक पूर्णांकित किया गया। परिणाम हैं"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "2.74 and 2.74",
+            "hi": "2.74 और 2.74"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "2.75 and 2.74",
+            "hi": "2.75 और 2.74"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "2.75 and 2.73",
+            "hi": "2.75 और 2.73"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "2.74 and 2.73",
+            "hi": "2.74 और 2.73"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Look at the digit before the 5.",
+          "hi": "5 से पहले वाला अंक देखिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "When exactly 5 is dropped, an even digit before it stays and an odd digit goes up.",
+          "hi": "जब ठीक 5 हटता है, उससे पहले का सम अंक वैसा ही रहता है और विषम अंक एक बढ़ता है।"
+        },
+        "steps": [
+          {
+            "en": "2.745: the 4 is even, so 2.74.",
+            "hi": "2.745: 4 सम है, अतः 2.74।"
+          },
+          {
+            "en": "2.735: the 3 is odd, so 2.74.",
+            "hi": "2.735: 3 विषम है, अतः 2.74।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "2.745 keeps the even 4.",
+              "hi": "2.745 में सम 4 वैसा ही रहता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Both halves of the rule are reversed here.",
+              "hi": "यहाँ नियम के दोनों भाग उलट दिए गए हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "2.735 raises the odd 3 to 4.",
+              "hi": "2.735 में विषम 3 बढ़कर 4 होता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.units-measurement.significant-figures.0005",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.units-measurement.significant-figures.core.significant-figure-rules",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "436.32 g, 227.2 g and 0.301 g are added. How many significant figures does the correctly reported total have?",
+        "hi": "436.32 g, 227.2 g और 0.301 g जोड़े गए। सही ढंग से लिखे गए योग में कितने सार्थक अंक हैं?"
+      },
+      "answer": {
+        "value": 4,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "Addition: count decimal places.",
+          "hi": "जोड़: दशमलव स्थान गिनिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Addition keeps the fewest decimal places, one here, so the total is 663.8 g.",
+          "hi": "जोड़ में सबसे कम दशमलव स्थान रहते हैं, यहाँ एक, अतः योग 663.8 g है।"
+        },
+        "steps": [
+          {
+            "en": "Sum $= 663.821$ g; one decimal place, as in 227.2 g, gives 663.8 g: four significant figures.",
+            "hi": "योग $= 663.821$ g; 227.2 g की तरह एक दशमलव स्थान रखने पर 663.8 g: चार सार्थक अंक।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Using the fewest significant figures, as for multiplication.",
+              "hi": "गुणा की तरह सबसे कम सार्थक अंकों का नियम लगाना।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.units-measurement.significant-figures.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.units-measurement.significant-figures.core.significant-figure-rules",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The length, breadth and thickness of a sheet are 4.234 m, 1.005 m and 2.01 cm. Its volume, correctly reported, is",
+        "hi": "एक चादर की लंबाई, चौड़ाई और मोटाई 4.234 m, 1.005 m और 2.01 cm हैं। सही ढंग से लिखा उसका आयतन है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "0.0855 m³",
+            "hi": "0.0855 m³"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "0.08553 m³",
+            "hi": "0.08553 m³"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "0.086 m³",
+            "hi": "0.086 m³"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "0.085528 m³",
+            "hi": "0.085528 m³"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Product: fewest significant figures.",
+          "hi": "गुणनफल: सबसे कम सार्थक अंक।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Convert the thickness to metres, multiply, and keep three significant figures, as in 2.01 cm.",
+          "hi": "मोटाई को मीटर में बदलिए, गुणा कीजिए, और 2.01 cm की तरह तीन सार्थक अंक रखिए।"
+        },
+        "steps": [
+          {
+            "en": "$V = 4.234 \\times 1.005 \\times 0.0201 = 0.08553$ m³",
+            "hi": "$V = 4.234 \\times 1.005 \\times 0.0201 = 0.08553$ m³"
+          },
+          {
+            "en": "2.01 cm has three significant figures, so $V = 0.0855$ m³.",
+            "hi": "2.01 cm में तीन सार्थक अंक हैं, अतः $V = 0.0855$ m³।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Four figures are too many; the thickness has three.",
+              "hi": "चार अंक अधिक हैं; मोटाई में तीन हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Two figures are too few.",
+              "hi": "दो अंक बहुत कम हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "These are unrounded calculator digits.",
+              "hi": "ये बिना पूर्णांकन वाले कैलकुलेटर अंक हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 90,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.units-measurement.significant-figures.0007",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.units-measurement.significant-figures.core.least-count",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which device is the most precise for measuring length?",
+        "hi": "लंबाई मापने के लिए कौन-सा उपकरण सबसे परिशुद्ध है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "an optical instrument that measures to within a wavelength of light",
+            "hi": "प्रकाश की एक तरंगदैर्घ्य तक मापने वाला प्रकाशिक यंत्र"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "a ruler that reads to the nearest millimetre",
+            "hi": "निकटतम मिलीमीटर तक पढ़ने वाला पैमाना"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "a calliper that reads to the nearest 0.01 mm",
+            "hi": "निकटतम 0.01 mm तक पढ़ने वाला कैलिपर"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "a measuring tape that reads to the nearest centimetre",
+            "hi": "निकटतम सेंटीमीटर तक पढ़ने वाला फ़ीता"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "The smallest least count wins.",
+          "hi": "सबसे छोटा अल्पतमांक जीतता है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "A wavelength of visible light is far smaller than 0.01 mm, so that instrument has the smallest least count.",
+          "hi": "दृश्य प्रकाश की तरंगदैर्घ्य 0.01 mm से बहुत छोटी है, इसलिए उस यंत्र का अल्पतमांक सबसे छोटा है।"
+        },
+        "steps": [
+          {
+            "en": "Compare least counts: tape 1 cm, ruler 1 mm, calliper 0.01 mm, optical instrument about one wavelength of light (less than 0.001 mm for visible light). Based on NCERT Exercise 1.6.",
+            "hi": "अल्पतमांकों की तुलना: फ़ीता 1 cm, पैमाना 1 mm, कैलिपर 0.01 mm, प्रकाशिक यंत्र लगभग प्रकाश की एक तरंगदैर्घ्य (दृश्य प्रकाश के लिए 0.001 mm से कम)। NCERT अभ्यास 1.6 पर आधारित।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "1 mm is the coarsest step but one.",
+              "hi": "1 mm दूसरा सबसे मोटा चरण है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "0.01 mm is fine, but a light wavelength is finer still.",
+              "hi": "0.01 mm बारीक है, पर प्रकाश की तरंगदैर्घ्य उससे भी बारीक है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "1 cm is the coarsest step.",
+              "hi": "1 cm सबसे मोटा चरण है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useNavigate, useParams } from "@tanstack/react-router";
 import { lessonAccess } from "@smriti/app-core";
 import { Button, Card, Chip, ChoiceChips, Icon, ProgressBar, ProgressRing, Text, TopBar } from "@smriti/ui-web";
+import { TutorButton } from "../tutor/TutorButton";
 import { useServices } from "../../boot/context";
 import { findTopic, useCatalog, type CatalogChapter } from "../../lib/content";
 import { parts, useI18n } from "../../lib/i18n";
@@ -174,6 +175,7 @@ export function TopicScreen() {
   return (
     <div className="flex flex-col gap-4 pb-6" data-subject={subject.family} data-testid="lrn-03">
       <TopBar onBack={back} />
+      <TutorButton context={{ ref: `topic:${topic.id}`, kind: "topic", title: topic.name }} />
       <div className="flex flex-col gap-4 px-4 md:px-8">
         <Text variant="caption" tone="muted">
           {subject.name} · {chapter.name}

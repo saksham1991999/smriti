@@ -7,13 +7,14 @@
   "main": "expo-router/entry",
   "scripts": {
     "seed": "node scripts/seed-pack.mjs",
+    "sims:stage": "node scripts/stage-sims.mjs",
     "dev": "node scripts/seed-pack.mjs && expo start",
     "web": "node scripts/seed-pack.mjs && expo start --web",
     "export:ios": "node scripts/seed-pack.mjs && expo export --platform ios --output-dir dist-ios",
     "export:android": "node scripts/seed-pack.mjs && expo export --platform android --output-dir dist-android",
     "export:web": "node scripts/seed-pack.mjs && expo export --platform web --output-dir dist-web",
     "typecheck": "node scripts/seed-pack.mjs && tsc --noEmit -p .",
-    "lint": "node scripts/seed-pack.mjs && tsc --noEmit -p . && node scripts/lint-rules.mjs",
+    "lint": "node scripts/seed-pack.mjs && tsc --noEmit -p . && node scripts/lint-rules.mjs && node scripts/phosphor-lite.mjs --check",
     "test": "node scripts/seed-pack.mjs && jest",
     "test:live": "node scripts/seed-pack.mjs && jest test/live"
   },
@@ -38,13 +39,15 @@
     "expo-apple-authentication": "57.0.2",
     "expo-asset": "57.0.20",
     "expo-constants": "57.0.22",
+    "expo-file-system": "57.0.7",
     "expo-crypto": "57.0.4",
     "expo-font": "57.0.4",
     "expo-haptics": "57.0.3",
+    "expo-image-picker": "57.0.20",
     "expo-linking": "57.0.13",
     "expo-localization": "57.0.2",
-    "expo-notifications": "57.0.23",
-    "expo-router": "57.0.27",
+    "expo-notifications": "57.0.24",
+    "expo-router": "57.0.29",
     "expo-secure-store": "57.0.4",
     "expo-splash-screen": "57.0.10",
     "expo-sqlite": "57.0.4",
@@ -59,7 +62,7 @@
     "react-native-safe-area-context": "5.7.0",
     "react-native-screens": "4.26.0",
     "react-native-svg": "15.15.4",
-    "react-native-web": "0.21.0",
+    "react-native-web": "0.21.2",
     "react-native-webview": "13.16.1",
     "react-native-worklets": "0.10.1",
     "zustand": "5.0.15"
@@ -73,5 +76,10 @@
     "jest-expo": "57.0.6",
     "test-renderer": "1.2.0",
     "typescript": "5.9.3"
+  },
+  "expo": {
+    "install": {
+      "exclude": ["typescript", "expo"]
+    }
   }
 }

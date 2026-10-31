@@ -1,5 +1,6 @@
 import { realScheduler, type Fetch, type HttpRequestInit } from '@smriti/app-core';
 import Constants from 'expo-constants';
+import { fetch as expoFetch } from 'expo/fetch';
 import { Platform } from 'react-native';
 
 import { DevGoogleSignIn, ExpoAppleSignIn, NativeGoogleSignIn, noApple } from '../auth/providers';
@@ -8,6 +9,8 @@ import { FakeApiServer } from '../dev/fake-api/server';
 import { readClientEnv, readSwitches } from '../env';
 import { getVariant } from '@smriti/config';
 import { expoCrypto } from '../platform/crypto';
+import { expoPhotoSource } from '../platform/photos';
+import { deviceSimFiles } from '../platform/simFiles';
 import { installDeviceId } from '../platform/deviceId';
 import { NetInfoNetwork, onForeground } from '../platform/network';
 import { ExpoNotifier, MemoryNotifier } from '../platform/notifications';
@@ -82,6 +85,9 @@ async function createDeviceApp(): Promise<SmritiApp> {
     content: new ContentRepo(seedPacks),
     platform: Platform.OS === 'ios' ? 'ios' : Platform.OS === 'android' ? 'android' : 'web',
     appVersion: Constants.expoConfig?.version ?? '1.0.0',
+    ...(fake ? {} : { streamFetch: streamingFetch }),
+    photos: expoPhotoSource,
+    simFiles: deviceSimFiles(),
   });
   await app.boot();
   onForeground(() => {
@@ -90,4 +96,14 @@ async function createDeviceApp(): Promise<SmritiApp> {
     void app.refreshReminders();
   });
   return app;
+}
+
+/** `expo/fetch` streams response bodies on iOS, Android and web (the tutor's server-sent events). */
+async function streamingFetch(req: Request): Promise<Response> {
+  const headers: Record<string, string> = {};
+  req.headers.forEach((v, k) => {
+    headers[k] = v;
+  });
+  const body = req.method === 'GET' || req.method === 'HEAD' ? undefined : await req.text();
+  return (await expoFetch(req.url, { method: req.method, headers, ...(body ? { body } : {}) })) as unknown as Response;
 }

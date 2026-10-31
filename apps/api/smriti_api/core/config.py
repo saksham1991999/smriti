@@ -48,6 +48,9 @@ class Settings(BaseSettings):
     jwt_leeway_s: int = 60
     # Local and test only: HS256 key for dev tokens. Generated per process when unset.
     dev_jwt_secret: str = ""
+    # Managed children (auth flow §6.11): the internal identity is {child_user_id}@<this domain>,
+    # a domain we own with a null MX record. Local and test fall back to a reserved .invalid name.
+    managed_identity_domain: str = ""
 
     # Content
     content_local_dir: str = ""
@@ -64,6 +67,7 @@ class Settings(BaseSettings):
     ai_tier_tutor_model: str = ""
     ai_tier_cheap_model: str = ""
     ai_tier_author_model: str = ""
+    ai_tier_vision_model: str = ""
     ai_tier_image_model: str = ""
     ai_request_timeout_s: float = 60.0
     ai_image_timeout_s: float = 360.0

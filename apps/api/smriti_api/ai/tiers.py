@@ -14,6 +14,8 @@ class ModelTiers:
     cheap: str
     author: str
     image: str
+    # Photo doubt (tutor-social §A10): reads a question from a photo (AI-18).
+    vision: str = ""
 
     @classmethod
     def from_settings(cls, settings: Settings) -> ModelTiers:
@@ -22,10 +24,16 @@ class ModelTiers:
             cheap=settings.ai_tier_cheap_model,
             author=settings.ai_tier_author_model,
             image=settings.ai_tier_image_model,
+            vision=settings.ai_tier_vision_model,
         )
 
     def for_tier(self, tier: Tier) -> str:
-        model = {"tutor": self.tutor, "cheap": self.cheap, "author": self.author}[tier]
+        model = {
+            "tutor": self.tutor,
+            "cheap": self.cheap,
+            "author": self.author,
+            "vision": self.vision,
+        }[tier]
         if not model:
             raise AIConfigError(f"AI_TIER_{tier.upper()}_MODEL is not set")
         return model

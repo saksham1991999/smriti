@@ -232,7 +232,7 @@ export function createFakeApi(opts: FakeApiOptions): FakeApi {
       if (!co || co.userId !== u.id) return HttpResponse.json({ code: "not_found" }, { status: 404 });
       if (body.outcome === "failure") return HttpResponse.json({ status: "failed" });
       const until = now() + 30 * 86_400_000;
-      u.entitlement = { plan: "pro", pro_until: new Date(until).toISOString(), status: "active", is_intro: co.intro, source: "fake", cancel_at_period_end: false };
+      u.entitlement = { plan: "pro", pro_until: new Date(until).toISOString(), status: "active", is_intro: co.intro, source: "razorpay", cancel_at_period_end: false };
       if (co.intro) u.introClaimed = true;
       u.version += 1;
       delete data.checkouts[body.checkout_id ?? ""];

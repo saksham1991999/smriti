@@ -21,7 +21,7 @@ afterEach(cleanup);
 const readJson = (path: string) => JSON.parse(readFileSync(path, "utf8")) as Record<string, any>;
 
 async function publishLocal(root: string, out: string, now = NOW): Promise<PublishReport> {
-  return publish({ repoRoot, contentRoot: root, store: new LocalDirStore(out), reportDir: out, now });
+  return publish({ repoRoot, contentRoot: root, store: new LocalDirStore(out), environment: "local", reportDir: out, now });
 }
 
 describe("publishing the fixture course to a local folder", () => {
@@ -29,13 +29,13 @@ describe("publishing the fixture course to a local folder", () => {
     const out = tempDir();
     const report = await publishLocal(fixtures, out);
 
-    // 4 topics x 3 modes x 2 locales
-    expect(report.bundles).toHaveLength(24);
+    // 4 topics x 3 modes x 2 locales, plus story, song and play on topic-a in 2 locales
+    expect(report.bundles).toHaveLength(30);
     for (const b of report.bundles) {
       const bytes = readFileSync(join(out, b.path));
       const doc = JSON.parse(bytes.toString("utf8"));
       expect(validateWith("bundle.schema.json", doc).ok).toBe(true);
-      expect(b.path).toMatch(/^bundles\/fx\.chapter-a\.topic-[a-d]\.(deep_dive|quick_revision|practice)\.(en|hi)\.[0-9a-f]{64}\.json$/);
+      expect(b.path).toMatch(/^bundles\/fx\.chapter-a\.topic-[a-d]\.(deep_dive|quick_revision|practice|story|song|play)\.(en|hi)\.[0-9a-f]{64}\.json$/);
       expect(doc.fixture).toBe(true);
     }
 
@@ -49,6 +49,37 @@ describe("publishing the fixture course to a local folder", () => {
       expect(topic.depth["fx.chapter-a.topic-d.sub-1.concept-2"]).toBe(4);
       expect(Object.keys(topic.bundles).sort()).toEqual(["deep_dive", "practice", "quick_revision"]);
       expect(topic.bundles.deep_dive.is_free).toBe(true);
+      expect(topic.activities).toBeUndefined();
+
+      // Little learner path nodes: the chapter's storybook sits on its first topic.
+      const a = m.topics["fx.chapter-a.topic-a"];
+      expect(Object.keys(a.bundles).sort()).toEqual(["deep_dive", "play", "practice", "quick_revision", "song", "story"]);
+      expect(a.activities.map((x: { kind: string; id: string }) => `${x.kind}:${x.id}`)).toEqual([
+        "story:sb.fx.chapter-a",
+        "song:sg.fx.topic-a",
+        "play:pl.fx.topic-a",
+      ]);
+      const song = a.activities[1];
+      expect(song).toMatchObject({ minutes: 1, cover: "img.chapter-a.fx-hook" });
+      expect(typeof song.title).toBe("string");
+      expect(a.activities[0].cover).not.toBeNull();
+    }
+
+    // An activity bundle carries its items localised; a song carries only this locale's version.
+    for (const locale of ["en", "hi"]) {
+      const b = report.bundles.find((x) => x.id === `fx.chapter-a.topic-a:song:${locale}`)!;
+      const doc = JSON.parse(readFileSync(join(out, b.path), "utf8"));
+      const song = doc.activities["sg.fx.topic-a"];
+      expect(song.versions).toBeUndefined();
+      expect(song.version.locale).toBe(locale);
+      expect(song.version.audio).toBe(`audio.chapter-a.fx-song-${locale}`);
+      expect(doc.media[song.version.audio]).toBeDefined();
+      expect(typeof song.title).toBe("string");
+      expect(doc.cards).toEqual([]);
+      const play = report.bundles.find((x) => x.id === `fx.chapter-a.topic-a:play:${locale}`)!;
+      const pdoc = JSON.parse(readFileSync(join(out, play.path), "utf8"));
+      expect(pdoc.activities["pl.fx.topic-a"].rounds.map((r: { kind: string }) => r.kind)).toEqual(["tap", "match", "sort", "drag", "trace"]);
+      expect(typeof pdoc.activities["pl.fx.topic-a"].feedback.success).toBe("string");
     }
 
     // Seed packs under 8 MB, valid, with their files beside them.
@@ -61,6 +92,7 @@ describe("publishing the fixture course to a local folder", () => {
         expect(existsSync(join(out, "seed", s.variant_id, s.locale, f.path))).toBe(true);
       }
       expect(pack.assets.map((a: { ref: string }) => a.ref)).toContain("img.ui.pet-cat-base");
+      expect(pack.bundles.some((b: { path: string }) => b.path.includes(".song."))).toBe(true);
     }
 
     // Assets copied from design/mocks/assets under their sha256.
@@ -71,8 +103,12 @@ describe("publishing the fixture course to a local folder", () => {
     const sql = readFileSync(join(out, "metadata.sql"), "utf8");
     expect(sql).toContain("-- FIXTURE COURSE");
     for (const [table, rows] of Object.entries(report.sql.rows)) if (rows > 0) expect(sql).toContain(`insert into ${table} `);
-    expect(Object.keys(report.sql.tables)).toHaveLength(29);
-    expect(report.warnings).toEqual([]);
+    expect(Object.keys(report.sql.tables)).toHaveLength(30);
+    // Search documents for the tutor: topics and concepts in both locales, published text only.
+    expect(report.sql.rows["content.search_docs"]).toBeGreaterThan(0);
+    expect(sql).toMatch(/\('topic:fx\.chapter-a\.topic-a:hi', 'topic', 'fx\.chapter-a\.topic-a', 'hi', ARRAY\['fx-exam-2027'\]/);
+    // The only warnings are the fixture media that is not approved yet (listed item by item).
+    expect(report.warnings.filter((w) => !w.endsWith("shipped as unavailable (local build)"))).toEqual([]);
     expect(existsSync(join(out, "site-index.json"))).toBe(true);
   });
 
@@ -95,11 +131,12 @@ describe("publishing the fixture course to a local folder", () => {
 
 describe("determinism", () => {
   it("gives the same hashes for the same input, and changes nothing on a re-run", async () => {
-    const a = await publish({ repoRoot, contentRoot: fixtures, store: new MemoryStore(), reportDir: tempDir(), now: NOW });
+    const a = await publish({ repoRoot, contentRoot: fixtures, store: new MemoryStore(), environment: "local", reportDir: tempDir(), now: NOW });
     const b = await publish({
       repoRoot,
       contentRoot: fixtures,
       store: new MemoryStore(),
+      environment: "local",
       reportDir: tempDir(),
       now: new Date("2027-01-01T00:00:00Z"),
     });
@@ -175,9 +212,41 @@ describe("targets", () => {
       fake,
     );
     await expect(
-      publish({ repoRoot, contentRoot: fixtures, store, reportDir: tempDir(), now: NOW }),
+      publish({ repoRoot, contentRoot: fixtures, store, environment: "staging", reportDir: tempDir(), now: NOW }),
     ).rejects.toMatchObject({ code: "fixture_remote" });
     expect(sent).toEqual([]);
+  });
+
+  it("needs an explicit environment, keeps R2 off local builds and the fixture course off production", async () => {
+    const out = tempDir();
+    await expect(
+      publish({ repoRoot, contentRoot: fixtures, store: new LocalDirStore(out), environment: undefined as never, reportDir: out, now: NOW }),
+    ).rejects.toMatchObject({ code: "environment_required" });
+    expect(readdirSync(out)).toEqual([]);
+
+    const sent: unknown[] = [];
+    const store = new R2Store(
+      { accountId: "acc", accessKeyId: "k", secretAccessKey: "s", contentBucket: "c", assetsBucket: "a" },
+      { send: async (c) => void sent.push(c) },
+    );
+    await expect(
+      publish({ repoRoot, contentRoot: fixtures, store, environment: "local", reportDir: tempDir(), now: NOW }),
+    ).rejects.toMatchObject({ code: "environment_remote" });
+    expect(sent).toEqual([]);
+
+    await expect(
+      publish({ repoRoot, contentRoot: fixtures, store: new MemoryStore(), environment: "production", reportDir: tempDir(), now: NOW }),
+    ).rejects.toMatchObject({ code: "fixture_production" });
+  });
+
+  it("lists each unapproved media item that shipped as unavailable", async () => {
+    const report = await publishLocal(fixtures, tempDir());
+    expect(report.environment).toBe("local");
+    expect(report.unapproved_media.map((m) => m.ref)).toContain("img.chapter-a.fx-pending");
+    for (const m of report.unapproved_media) {
+      expect(m.status).not.toBe("approved");
+      expect(report.warnings).toContain(`${m.ref} is ${m.status}, not approved: shipped as unavailable (local build)`);
+    }
   });
 
   it("refuses to mix the fixture course into a target that holds real content", async () => {

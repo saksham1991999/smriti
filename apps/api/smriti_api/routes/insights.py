@@ -3,10 +3,14 @@ interleaved practice builder and the metacognitive calibration dashboard."""
 
 from __future__ import annotations
 
-from fastapi import APIRouter
+from typing import Annotated
+
+from fastapi import APIRouter, Query
 
 from smriti_api.core.deps import CurrentUser, Services
+from smriti_api.schemas import analytics_summary as asum
 from smriti_api.schemas import practice as p
+from smriti_api.services import analytics_summary as analytics_summary_service
 from smriti_api.services import learning_science as ls
 
 router = APIRouter(prefix="/v1", tags=["insights"])
@@ -48,3 +52,18 @@ async def interleaved(
     body: ls.InterleavedIn, services: Services, auth: CurrentUser
 ) -> p.PracticeSession:
     return await ls.build_interleaved(services.db, auth, body)
+
+
+@router.get(
+    "/analytics/summary",
+    response_model=asum.AnalyticsSummaryOut,
+    tags=["analytics"],
+    summary="PRC-14: readiness, speed, confidence and mistake cards from your own answers",
+)
+async def analytics_summary(
+    services: Services,
+    auth: CurrentUser,
+    exam: Annotated[str | None, Query(max_length=200)] = None,
+    period: asum.Period = "30d",
+) -> asum.AnalyticsSummaryOut:
+    return await analytics_summary_service.summary(services.db, auth, exam, period)

@@ -1,0 +1,117 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "math.limits-derivatives.trig-limits",
+  "questions": [
+    {
+      "id": "q.math.limits-derivatives.trig-limits.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.limits-derivatives.trig-limits.core.trig-limits-standard",
+          "weight": 0.6
+        },
+        {
+          "id": "math.limits-derivatives.limits-intro.core.limit-definition",
+          "weight": 0.4
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "If $\\lim\\limits_{x\\to2}\\frac{\\sin\\left(x^3-5x^2+ax+b\\right)}{\\left(\\sqrt{x-1}-1\\right)\\log_e(x-1)}=m$, then $a+b+m$ is equal to :",
+        "hi": "यदि $\\lim\\limits_{x\\to2}\\frac{\\sin\\left(x^3-5x^2+ax+b\\right)}{\\left(\\sqrt{x-1}-1\\right)\\log_e(x-1)}=m$ है, तो $a+b+m$ बराबर है :"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$5$",
+            "hi": "$5$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$6$",
+            "hi": "$6$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$8$",
+            "hi": "$8$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$10$",
+            "hi": "$10$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Near $x=2$ the denominator behaves like $\\frac{(x-2)^2}{2}$. For a finite limit the cubic inside the sine must vanish to second order at $x=2$, which fixes $a$ and $b$.",
+          "hi": "$x=2$ के पास हर $\\frac{(x-2)^2}{2}$ की तरह व्यवहार करता है। सीमित सीमा के लिए ज्या के भीतर का त्रिघात $x=2$ पर दूसरे क्रम तक शून्य होना चाहिए, जिससे $a$ और $b$ मिलते हैं।"
+        },
+        "steps": [
+          {
+            "en": "$\\sqrt{x-1}-1 \\approx \\frac{x-2}{2}$ and $\\log_e(x-1) \\approx x-2$.",
+            "hi": "$\\sqrt{x-1}-1 \\approx \\frac{x-2}{2}$ और $\\log_e(x-1) \\approx x-2$।"
+          },
+          {
+            "en": "Let $p(x)=x^3-5x^2+ax+b$. Need $p(2)=2a+b-12=0$ and $p'(2)=a-8=0$: $a=8$, $b=-4$, and $p(x)=(x-2)^2(x-1)$.",
+            "hi": "माना $p(x)=x^3-5x^2+ax+b$। आवश्यक: $p(2)=2a+b-12=0$ और $p'(2)=a-8=0$: $a=8$, $b=-4$, और $p(x)=(x-2)^2(x-1)$।"
+          },
+          {
+            "en": "$m=\\lim\\frac{(x-2)^2(x-1)}{(x-2)^2/2}=2$, so $a+b+m=6$.",
+            "hi": "$m=\\lim\\frac{(x-2)^2(x-1)}{(x-2)^2/2}=2$, अतः $a+b+m=6$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 150,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 16
+      }
+    }
+  ]
+}

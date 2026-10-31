@@ -1,0 +1,200 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "math.trigonometric-functions.sum-difference",
+  "questions": [
+    {
+      "id": "q.math.trigonometric-functions.sum-difference.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.trigonometric-functions.sum-difference.core.trig-identities",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "If $\\sin\\left(\\frac{\\pi}{18}\\right)\\sin\\left(\\frac{5\\pi}{18}\\right)\\sin\\left(\\frac{7\\pi}{18}\\right)=K$, then the value of $\\sin\\left(\\frac{10K\\pi}{3}\\right)$ is :",
+        "hi": "यदि $\\sin\\left(\\frac{\\pi}{18}\\right)\\sin\\left(\\frac{5\\pi}{18}\\right)\\sin\\left(\\frac{7\\pi}{18}\\right)=K$ है, तो $\\sin\\left(\\frac{10K\\pi}{3}\\right)$ का मान है :"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\frac{\\sqrt3+1}{2\\sqrt2}$",
+            "hi": "$\\frac{\\sqrt3+1}{2\\sqrt2}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\frac{\\sqrt3-1}{\\sqrt2}$",
+            "hi": "$\\frac{\\sqrt3-1}{\\sqrt2}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\frac{\\sqrt3}{2}$",
+            "hi": "$\\frac{\\sqrt3}{2}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\frac12$",
+            "hi": "$\\frac12$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "The angles are $10^\\circ$, $50^\\circ$ and $70^\\circ$, which fit $\\sin\\theta\\sin(60^\\circ-\\theta)\\sin(60^\\circ+\\theta)=\\frac14\\sin3\\theta$.",
+          "hi": "कोण $10^\\circ$, $50^\\circ$ और $70^\\circ$ हैं, जो $\\sin\\theta\\sin(60^\\circ-\\theta)\\sin(60^\\circ+\\theta)=\\frac14\\sin3\\theta$ में बैठते हैं।"
+        },
+        "steps": [
+          {
+            "en": "With $\\theta=10^\\circ$: $K=\\frac14\\sin30^\\circ=\\frac18$.",
+            "hi": "$\\theta=10^\\circ$ लेने पर: $K=\\frac14\\sin30^\\circ=\\frac18$।"
+          },
+          {
+            "en": "$\\frac{10K\\pi}{3}=\\frac{5\\pi}{12}$, and $\\sin75^\\circ=\\frac{\\sqrt3+1}{2\\sqrt2}$.",
+            "hi": "$\\frac{10K\\pi}{3}=\\frac{5\\pi}{12}$, और $\\sin75^\\circ=\\frac{\\sqrt3+1}{2\\sqrt2}$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 120,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 11
+      }
+    },
+    {
+      "id": "q.math.trigonometric-functions.sum-difference.9002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.trigonometric-functions.sum-difference.core.trig-identities",
+          "weight": 0.6
+        },
+        {
+          "id": "math.trigonometric-functions.trig-functions.core.trig-functions-unit-circle",
+          "weight": 0.4
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Let $S=\\{x \\in [-\\pi,\\pi] : \\sin x(\\sin x+\\cos x)=a, a \\in \\mathbb{Z}\\}$. Then $n(S)$ is equal to :",
+        "hi": "माना $S=\\{x \\in [-\\pi,\\pi] : \\sin x(\\sin x+\\cos x)=a, a \\in \\mathbb{Z}\\}$ है। तब $n(S)$ बराबर है :"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$3$",
+            "hi": "$3$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$6$",
+            "hi": "$6$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$7$",
+            "hi": "$7$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$9$",
+            "hi": "$9$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "d"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "First find which integers $a$ the left side can reach; its range is narrow, so only $a=0$ and $a=1$ are possible. Then solve each case on $[-\\pi,\\pi]$ and count.",
+          "hi": "पहले देखिए कि बायाँ पक्ष कौन-से पूर्णांक $a$ तक पहुँच सकता है; इसका परिसर छोटा है, अतः केवल $a=0$ और $a=1$ संभव हैं। फिर $[-\\pi,\\pi]$ पर प्रत्येक स्थिति हल करके गिनिए।"
+        },
+        "steps": [
+          {
+            "en": "$\\sin^2x+\\sin x\\cos x=\\frac12+\\frac{\\sqrt2}{2}\\sin\\left(2x-\\frac{\\pi}{4}\\right)$, whose range is $\\left[\\frac{1-\\sqrt2}{2},\\frac{1+\\sqrt2}{2}\\right]$; integers in it: $0$ and $1$.",
+            "hi": "$\\sin^2x+\\sin x\\cos x=\\frac12+\\frac{\\sqrt2}{2}\\sin\\left(2x-\\frac{\\pi}{4}\\right)$, जिसका परिसर $\\left[\\frac{1-\\sqrt2}{2},\\frac{1+\\sqrt2}{2}\\right]$ है; इसमें पूर्णांक: $0$ और $1$।"
+          },
+          {
+            "en": "$a=0$: $\\sin x=0$ or $\\tan x=-1$: $x=-\\pi,0,\\pi,-\\frac{\\pi}{4},\\frac{3\\pi}{4}$ ($5$ values).",
+            "hi": "$a=0$: $\\sin x=0$ या $\\tan x=-1$: $x=-\\pi,0,\\pi,-\\frac{\\pi}{4},\\frac{3\\pi}{4}$ ($5$ मान)।"
+          },
+          {
+            "en": "$a=1$: $\\cos x(\\sin x-\\cos x)=0$: $x=\\pm\\frac{\\pi}{2},\\frac{\\pi}{4},-\\frac{3\\pi}{4}$ ($4$ values). So $n(S)=9$.",
+            "hi": "$a=1$: $\\cos x(\\sin x-\\cos x)=0$: $x=\\pm\\frac{\\pi}{2},\\frac{\\pi}{4},-\\frac{3\\pi}{4}$ ($4$ मान)। अतः $n(S)=9$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 180,
+      "difficulty_estimate": "hard",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 12
+      }
+    }
+  ]
+}

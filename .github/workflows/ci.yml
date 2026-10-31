@@ -34,6 +34,8 @@ jobs:
           node-version-file: .nvmrc
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      # Every env var the code reads is in an .env.example, and every listed name is read.
+      - run: pnpm env:check
       - run: pnpm lint
       - run: pnpm typecheck
       - run: pnpm test

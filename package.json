@@ -10,10 +10,13 @@
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",
     "content:check": "turbo run content:check --filter=@smriti/content-schema",
+    "env:check": "node tools/deploy/src/env-check.ts",
     "format": "prettier --write .",
     "db:up": "bash scripts/dev/db.sh up",
     "db:reset": "bash scripts/dev/db.sh reset",
-    "db:down": "bash scripts/dev/db.sh down"
+    "db:down": "bash scripts/dev/db.sh down",
+    "stack": "bash scripts/dev/stack.sh",
+    "stack:smoke": "bash scripts/dev/stack.sh --smoke"
   },
   "devDependencies": {
     "prettier": "3.3.3",

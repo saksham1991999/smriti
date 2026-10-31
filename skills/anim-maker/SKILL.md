@@ -30,6 +30,14 @@ Animations move art. They never replace it with hand-drawn shapes. For each anim
 4. Provide a `transcript` and a reduced-motion poster frame (the most informative frame as a still).
 5. Optionally render an MP4 version for the YouTube channel and for PDF export stills.
 
+## Stroke-order guides (little learner tracing)
+
+A `play@1` trace round names a `guide`: an `animation_rive` request showing how to write one letter or digit. The app draws the glyph itself from its own font, so the guide never contains a drawn letter shape.
+
+1. Build it as Rive over the glyph outline from the app's own font (DESIGN.md typography), animating a dot or a hand along each stroke in the order taught in NCERT class 1 books for that script (cite the book in the request's brief).
+2. One stroke at a time, `slow` duration per stroke, a short pause between strokes; loop with a rest at the end.
+3. Provide a `transcript` in both languages naming the strokes, and a reduced-motion poster with the stroke numbers placed as label anchors (labels are overlaid by the app, not baked in).
+
 ## Pet and plant Rive files
 
 - Prepare the art pack: every mood pose for each pet and all 25 plant images, consistent with the reference sheets.

@@ -284,3 +284,95 @@ async def family_accept(
         body={"code": code.upper()},
         fn=lambda: billing_family.accept_invite(services.db, auth, code),
     )
+
+
+# --- PAY-17: a parent pays for a child (me-money §5.4 "Parent mode") ------------------------------
+
+ParentUser = Annotated[AuthContext, signed_in("parent_mode")]
+
+
+@router.get(
+    "/guardian/learners/{learner_id}/pro",
+    response_model=b.SubscriptionDetailsOut,
+    summary="PAY-17 and SET-14: the child's plan, as the guardian who manages it sees it",
+)
+async def child_pro(
+    learner_id: uuid.UUID, services: Services, auth: ParentUser
+) -> b.SubscriptionDetailsOut:
+    return await billing_checkout.details_for_child(services.db, auth, learner_id)
+
+
+@router.post(
+    "/guardian/learners/{learner_id}/pro",
+    response_model=b.RazorpaySubscriptionOut,
+    summary="PAY-17 [Continue to pay]: a web subscription on the child's account, payer guardian",
+)
+async def child_pro_start(
+    learner_id: uuid.UUID,
+    body: b.ChildProRequest,
+    services: Services,
+    ints: Ints,
+    auth: ParentUser,
+    client: Client,
+    key: IdempotencyKey,
+) -> JSONResponse:
+    return await idempotent(
+        services,
+        scope="child_pro_start",
+        subject=auth.user_id,
+        key=key,
+        body={"learner_id": str(learner_id), **body.model_dump(mode="json")},
+        required=True,
+        fn=lambda: billing_checkout.start_for_child(
+            services.db, ints, auth, learner_id, body, client.app_variant
+        ),
+    )
+
+
+@router.post(
+    "/guardian/learners/{learner_id}/pro/verify",
+    response_model=b.EntitlementOut,
+    summary="Check the Checkout signature for the child's plan; Pro follows the webhook",
+)
+async def child_pro_verify(
+    learner_id: uuid.UUID,
+    body: b.RazorpayVerifyRequest,
+    services: Services,
+    ints: Ints,
+    auth: ParentUser,
+    key: IdempotencyKey,
+) -> JSONResponse:
+    return await idempotent(
+        services,
+        scope="child_pro_verify",
+        subject=auth.user_id,
+        key=key,
+        body={"learner_id": str(learner_id), **body.model_dump(mode="json")},
+        fn=lambda: billing_checkout.verify_for_child(services.db, ints, auth, learner_id, body),
+    )
+
+
+@router.post(
+    "/guardian/learners/{learner_id}/pro/cancel",
+    response_model=b.EntitlementOut,
+    summary="Cancel the plan the guardian pays for, at the end of the paid period",
+)
+async def child_pro_cancel(
+    learner_id: uuid.UUID,
+    body: b.RazorpayCancelRequest,
+    services: Services,
+    ints: Ints,
+    auth: ParentUser,
+    key: IdempotencyKey,
+) -> JSONResponse:
+    return await idempotent(
+        services,
+        scope="child_pro_cancel",
+        subject=auth.user_id,
+        key=key,
+        body={"learner_id": str(learner_id), **body.model_dump(mode="json")},
+        required=True,
+        fn=lambda: billing_checkout.cancel_for_child(
+            services.db, ints, auth, learner_id, body.reason
+        ),
+    )

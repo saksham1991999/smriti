@@ -1,0 +1,248 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "openstax",
+      "ref": "OpenStax Chemistry 2e, §10.5 The Solid State of Matter (metallic solids)",
+      "url": "https://openstax.org/books/chemistry-2e/pages/10-5-the-solid-state-of-matter",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khch104) could not be retrieved, so a reviewer should check the terms.",
+  "id": "chem.chemical-bonding.metallic-bonding:deep_dive",
+  "topic": "chem.chemical-bonding.metallic-bonding",
+  "mode": "deep_dive",
+  "estimated_minutes": 3,
+  "min_depth": 1,
+  "max_depth": 2,
+  "concepts": [
+    "chem.chemical-bonding.metallic-bonding.core.metallic-bond"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "A sea of electrons",
+        "hi": "इलेक्ट्रॉनों का सागर"
+      },
+      "subtopic": "chem.chemical-bonding.metallic-bonding.core",
+      "card_ids": [
+        "chem.chemical-bonding.metallic-bonding:dd:01",
+        "chem.chemical-bonding.metallic-bonding:dd:02"
+      ],
+      "estimated_minutes": 1
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Properties from the model",
+        "hi": "मॉडल से गुण"
+      },
+      "subtopic": "chem.chemical-bonding.metallic-bonding.core",
+      "card_ids": [
+        "chem.chemical-bonding.metallic-bonding:dd:03",
+        "chem.chemical-bonding.metallic-bonding:dd:04",
+        "chem.chemical-bonding.metallic-bonding:dd:05",
+        "chem.chemical-bonding.metallic-bonding:dd:06"
+      ],
+      "estimated_minutes": 2
+    }
+  ],
+  "cards": [
+    {
+      "id": "chem.chemical-bonding.metallic-bonding:dd:01",
+      "type": "explainer",
+      "concepts": [
+        "chem.chemical-bonding.metallic-bonding.core.metallic-bond"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "What holds a metal together",
+        "hi": "धातु को क्या बाँधे रखता है"
+      },
+      "body": {
+        "en": "Metallic solids such as copper, aluminium and iron are made of metal atoms. A simple model pictures the atomic nuclei, with their inner electrons, spread uniformly through a sea of delocalised electrons that belong to no single atom. The force holding the atoms together in this way is called metallic bonding.\n\nBecause the electrons are free to move, metals conduct heat and electricity well. They also have a metallic lustre.",
+        "hi": "ताँबा, ऐलुमिनियम और लोहा जैसे धात्विक ठोस धातु परमाणुओं से बने होते हैं। एक सरल मॉडल परमाणु नाभिकों को, उनके भीतरी इलेक्ट्रॉनों सहित, विस्थानीकृत इलेक्ट्रॉनों के एक सागर में समान रूप से फैला दिखाता है, जो किसी एक परमाणु के नहीं होते। परमाणुओं को इस प्रकार बाँधे रखने वाले बल को धात्विक आबंधन कहते हैं।\n\nइलेक्ट्रॉन गति के लिए मुक्त हैं, इसलिए धातुएँ ऊष्मा और विद्युत की अच्छी चालक हैं। उनमें धात्विक चमक भी होती है।"
+      },
+      "media": "img.chemical-bonding.electron-sea",
+      "source": {
+        "kind": "openstax",
+        "ref": "OpenStax Chemistry 2e, §10.5 The Solid State of Matter (metallic solids)",
+        "url": "https://openstax.org/books/chemistry-2e/pages/10-5-the-solid-state-of-matter",
+        "retrieved": "2026-10-30",
+        "pages": "metallic solids"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.metallic-bonding:dd:02",
+      "type": "question",
+      "concepts": [
+        "chem.chemical-bonding.metallic-bonding.core.metallic-bond"
+      ],
+      "depth": 1,
+      "question": "q.chem.chemical-bonding.metallic-bonding.0001"
+    },
+    {
+      "id": "chem.chemical-bonding.metallic-bonding:dd:03",
+      "type": "explainer",
+      "concepts": [
+        "chem.chemical-bonding.metallic-bonding.core.metallic-bond"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Bend, do not break",
+        "hi": "मुड़ें, टूटें नहीं"
+      },
+      "body": {
+        "en": "Metals are malleable: they deform under pressure or hammering instead of shattering. They are also ductile and can be drawn into wires.\n\nTheir melting points vary widely, which reflects differences in the strength of metallic bonding from metal to metal. Mercury is a liquid at room temperature and the alkali metals melt below $200\\ ^\\circ\\mathrm{C}$, while the transition metals melt above $1000\\ ^\\circ\\mathrm{C}$. Hardness varies too, and many metals are very hard and strong.",
+        "hi": "धातुएँ आघातवर्धनीय हैं: दबाव या हथौड़े की चोट से वे चूर होने के बजाय आकार बदल लेती हैं। वे तन्य भी हैं और उनसे तार खींचे जा सकते हैं।\n\nउनके गलनांक बहुत भिन्न होते हैं, जो धातु-धातु में धात्विक आबंधन की प्रबलता के अंतर को दिखाता है। मरकरी कमरे के ताप पर द्रव है और क्षार धातुएँ $200\\ ^\\circ\\mathrm{C}$ से नीचे पिघलती हैं, जबकि संक्रमण धातुएँ $1000\\ ^\\circ\\mathrm{C}$ से ऊपर पिघलती हैं। कठोरता भी भिन्न होती है, और अनेक धातुएँ बहुत कठोर और मज़बूत होती हैं।"
+      },
+      "media": "img.chemical-bonding.electron-sea",
+      "source": {
+        "kind": "openstax",
+        "ref": "OpenStax Chemistry 2e, §10.5 The Solid State of Matter (metallic solids)",
+        "url": "https://openstax.org/books/chemistry-2e/pages/10-5-the-solid-state-of-matter",
+        "retrieved": "2026-10-30",
+        "pages": "metallic solids; Table 10.2"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.metallic-bonding:dd:04",
+      "type": "interactive",
+      "concepts": [
+        "chem.chemical-bonding.metallic-bonding.core.metallic-bond"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Which properties belong to metallic solids?",
+        "hi": "कौन-से गुण धात्विक ठोसों के हैं?"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "cond",
+            "text": {
+              "en": "Conducts electricity well",
+              "hi": "विद्युत का अच्छा चालक"
+            }
+          },
+          {
+            "id": "lustre",
+            "text": {
+              "en": "Shiny lustre",
+              "hi": "चमकदार द्युति"
+            }
+          },
+          {
+            "id": "mall",
+            "text": {
+              "en": "Deforms when hammered",
+              "hi": "हथौड़े से आकार बदलता है"
+            }
+          },
+          {
+            "id": "shatter",
+            "text": {
+              "en": "Shatters when hammered",
+              "hi": "हथौड़े से चूर हो जाता है"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "metal",
+            "label": {
+              "en": "Metallic solid",
+              "hi": "धात्विक ठोस"
+            }
+          },
+          {
+            "id": "not",
+            "label": {
+              "en": "Not typical of metals",
+              "hi": "धातुओं का प्रतिनिधि गुण नहीं"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "cond",
+            "bin": "metal"
+          },
+          {
+            "item": "lustre",
+            "bin": "metal"
+          },
+          {
+            "item": "mall",
+            "bin": "metal"
+          },
+          {
+            "item": "shatter",
+            "bin": "not"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: mobile electrons conduct, give lustre and let layers slide without shattering.",
+          "hi": "सही: गतिशील इलेक्ट्रॉन चालन करते हैं, चमक देते हैं और परतों को बिना टूटे खिसकने देते हैं।"
+        },
+        "wrong": {
+          "en": "Think of a copper wire and a steel spoon.",
+          "hi": "ताँबे के तार और स्टील के चम्मच के बारे में सोचिए।"
+        }
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.metallic-bonding:dd:05",
+      "type": "question",
+      "concepts": [
+        "chem.chemical-bonding.metallic-bonding.core.metallic-bond"
+      ],
+      "depth": 2,
+      "question": "q.chem.chemical-bonding.metallic-bonding.0002"
+    },
+    {
+      "id": "chem.chemical-bonding.metallic-bonding:dd:06",
+      "type": "summary",
+      "concepts": [
+        "chem.chemical-bonding.metallic-bonding.core.metallic-bond"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Metallic bonding: metal atoms held together in a sea of delocalised electrons.",
+          "hi": "धात्विक आबंधन: विस्थानीकृत इलेक्ट्रॉनों के सागर में बँधे धातु परमाणु।"
+        },
+        {
+          "en": "Metals conduct heat and electricity, are lustrous, malleable and ductile.",
+          "hi": "धातुएँ ऊष्मा और विद्युत की चालक, चमकदार, आघातवर्धनीय और तन्य होती हैं।"
+        },
+        {
+          "en": "Melting points vary widely with the strength of metallic bonding.",
+          "hi": "गलनांक धात्विक आबंधन की प्रबलता के साथ बहुत बदलते हैं।"
+        }
+      ],
+      "source": {
+        "kind": "openstax",
+        "ref": "OpenStax Chemistry 2e, §10.5 The Solid State of Matter (metallic solids)",
+        "url": "https://openstax.org/books/chemistry-2e/pages/10-5-the-solid-state-of-matter",
+        "retrieved": "2026-10-30",
+        "pages": "metallic solids"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

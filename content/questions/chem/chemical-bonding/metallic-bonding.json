@@ -1,0 +1,441 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "openstax",
+      "ref": "OpenStax Chemistry 2e, §10.5 The Solid State of Matter (metallic solids)",
+      "url": "https://openstax.org/books/chemistry-2e/pages/10-5-the-solid-state-of-matter",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the exam's own format. Each solution cites its NCERT section (OpenStax for metallic bonding). Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khch104) could not be retrieved, so a reviewer should check the terms.",
+  "topic": "chem.chemical-bonding.metallic-bonding",
+  "questions": [
+    {
+      "id": "q.chem.chemical-bonding.metallic-bonding.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.metallic-bonding.core.metallic-bond",
+          "weight": 1
+        }
+      ],
+      "depth": 1,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "In the simple model of a metallic solid, the bonding electrons are",
+        "hi": "धात्विक ठोस के सरल मॉडल में आबंधन इलेक्ट्रॉन"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "fixed between pairs of neighbouring atoms",
+            "hi": "पड़ोसी परमाणुओं के जोड़ों के बीच स्थिर होते हैं"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "transferred completely to non-metal atoms",
+            "hi": "पूरी तरह अधातु परमाणुओं को स्थानांतरित हो जाते हैं"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "delocalised over the whole solid",
+            "hi": "पूरे ठोस पर विस्थानीकृत होते हैं"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "held only by hydrogen atoms",
+            "hi": "केवल हाइड्रोजन परमाणुओं द्वारा रखे जाते हैं"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Picture the sea.",
+          "hi": "सागर की कल्पना कीजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "No electron in the sea belongs to one atom; they spread through the whole metal.",
+          "hi": "सागर का कोई इलेक्ट्रॉन किसी एक परमाणु का नहीं; वे पूरी धातु में फैले होते हैं।"
+        },
+        "steps": [
+          {
+            "en": "OpenStax Chemistry 2e §10.5: metallic solids are a uniform distribution of atomic nuclei within a sea of delocalised electrons.",
+            "hi": "OpenStax Chemistry 2e §10.5: धात्विक ठोस विस्थानीकृत इलेक्ट्रॉनों के सागर में परमाणु नाभिकों का समान वितरण हैं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "That describes localised covalent bonds.",
+              "hi": "यह स्थानीकृत सहसंयोजी आबंधों का वर्णन है।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That describes an ionic bond.",
+              "hi": "यह आयनिक आबंध का वर्णन है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That has nothing to do with metals.",
+              "hi": "इसका धातुओं से कोई संबंध नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.metallic-bonding.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.metallic-bonding.core.metallic-bond",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "When a piece of metal is hammered it",
+        "hi": "धातु के टुकड़े पर हथौड़ा मारने पर वह"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "shatters into small crystals",
+            "hi": "छोटे क्रिस्टलों में चूर हो जाता है"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "deforms without shattering",
+            "hi": "बिना चूर हुए आकार बदल लेता है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "turns into ions",
+            "hi": "आयनों में बदल जाता है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "stops conducting electricity",
+            "hi": "विद्युत चालन बंद कर देता है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Think of beating a metal sheet.",
+          "hi": "धातु की चादर पीटने के बारे में सोचिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The atoms can shift while the electron sea keeps holding them, so the metal changes shape instead of breaking.",
+          "hi": "परमाणु खिसक सकते हैं जबकि इलेक्ट्रॉन सागर उन्हें बाँधे रखता है, इसलिए धातु टूटने के बजाय आकार बदलती है।"
+        },
+        "steps": [
+          {
+            "en": "OpenStax Chemistry 2e §10.5: because of their malleability, metals do not shatter.",
+            "hi": "OpenStax Chemistry 2e §10.5: आघातवर्धनीयता के कारण धातुएँ चूर नहीं होतीं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Brittle ionic crystals such as salt shatter; metals do not.",
+              "hi": "नमक जैसे भंगुर आयनिक क्रिस्टल चूर होते हैं; धातुएँ नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Hammering does not ionise a metal.",
+              "hi": "हथौड़ा मारने से धातु आयनित नहीं होती।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The electron sea is still there, so it still conducts.",
+              "hi": "इलेक्ट्रॉन सागर अब भी है, इसलिए चालन जारी रहता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.metallic-bonding.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.metallic-bonding.core.metallic-bond",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Which metal is a liquid at room temperature?",
+        "hi": "कौन-सी धातु कमरे के ताप पर द्रव है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Iron",
+            "hi": "लोहा"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Copper",
+            "hi": "ताँबा"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Mercury",
+            "hi": "मरकरी"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Aluminium",
+            "hi": "ऐलुमिनियम"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "It is used in old thermometers.",
+          "hi": "यह पुराने थर्मामीटरों में प्रयोग होती थी।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Metallic bonding strength varies a lot. In mercury it is weak enough that the metal is already liquid at room temperature.",
+          "hi": "धात्विक आबंधन की प्रबलता बहुत बदलती है। मरकरी में यह इतनी कमज़ोर है कि धातु कमरे के ताप पर ही द्रव है।"
+        },
+        "steps": [
+          {
+            "en": "OpenStax Chemistry 2e §10.5: mercury is a liquid at room temperature; melting points of metals vary widely.",
+            "hi": "OpenStax Chemistry 2e §10.5: मरकरी कमरे के ताप पर द्रव है; धातुओं के गलनांक बहुत भिन्न होते हैं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Iron is a transition metal and melts above $1000\\ ^\\circ\\mathrm{C}$.",
+              "hi": "लोहा संक्रमण धातु है और $1000\\ ^\\circ\\mathrm{C}$ से ऊपर पिघलता है।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Copper is a transition metal and melts above $1000\\ ^\\circ\\mathrm{C}$.",
+              "hi": "ताँबा संक्रमण धातु है और $1000\\ ^\\circ\\mathrm{C}$ से ऊपर पिघलता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Aluminium is a solid at room temperature.",
+              "hi": "ऐलुमिनियम कमरे के ताप पर ठोस है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.metallic-bonding.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.metallic-bonding.core.metallic-bond",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "The wide range of melting points of metals mainly reflects",
+        "hi": "धातुओं के गलनांकों की विस्तृत परास मुख्यतः क्या दर्शाती है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "differences in the strength of metallic bonding",
+            "hi": "धात्विक आबंधन की प्रबलता में अंतर"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "differences in the number of hydrogen bonds",
+            "hi": "हाइड्रोजन आबंधों की संख्या में अंतर"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "differences in dipole moment",
+            "hi": "द्विध्रुव आघूर्ण में अंतर"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "differences in lattice enthalpy of ionic bonds",
+            "hi": "आयनिक आबंधों की जालक एन्थैल्पी में अंतर"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "What kind of bond holds a metal?",
+          "hi": "धातु को कौन-सा आबंध बाँधता है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Melting means loosening the bonds that hold the solid; in a metal those are metallic bonds.",
+          "hi": "पिघलने का अर्थ है ठोस को बाँधने वाले आबंधों को ढीला करना; धातु में वे धात्विक आबंध हैं।"
+        },
+        "steps": [
+          {
+            "en": "OpenStax Chemistry 2e §10.5: the differences in melting points reflect differences in the strengths of metallic bonding among the metals.",
+            "hi": "OpenStax Chemistry 2e §10.5: गलनांकों का अंतर धातुओं के बीच धात्विक आबंधन की प्रबलता के अंतर को दर्शाता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Pure metals are not held by hydrogen bonds.",
+              "hi": "शुद्ध धातुएँ हाइड्रोजन आबंधों से नहीं बँधी होतीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Metal atoms have no permanent dipoles.",
+              "hi": "धातु परमाणुओं में स्थायी द्विध्रुव नहीं होते।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "A pure metal is not an ionic solid.",
+              "hi": "शुद्ध धातु आयनिक ठोस नहीं है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

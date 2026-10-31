@@ -8,12 +8,19 @@
  *   question -> feedback (right) | hint (wrong, first try) | explain (wrong again, or I don't know)
  *   hint -> question;  feedback -> card;  explain -> card (the card is queued for review)
  *   confidence -> complete;  any -> exited (progress saved)
+ *
+ * Little learner mode (plan mode `little`, playerRules): wrong again or "I don't know yet" goes to
+ * `guided` instead of `explain`. The answer is shown with the pet and only the right answer moves
+ * on, to `feedback` with `guided` set, so every question ends on a win. The guided tap sends no
+ * event (answer_submitted already recorded the miss) and earns no XP. Hints that would use a
+ * negative word fall back to the generic hint. There is no confidence step and no combo.
  */
 import { type Answer, type CheckResult, checkAnswer } from "./answers.js";
 import type { LessonConfig } from "./config.js";
 import type { AnswerContext, AnswerSubmittedPayload, Confidence, EventLessonMode, TimedEvent } from "./events.js";
 import { type Hint, hintFor, struckOptions } from "./help.js";
 import { checkInteractive, type InteractiveCardB, type WidgetResponse, type WidgetResult, widgetHasTask } from "./interactive.js";
+import { isGentleText } from "./little.js";
 import type { LessonPlan, Missed, PlanCard } from "./plan.js";
 
 export type Phase =
@@ -24,6 +31,8 @@ export type Phase =
   | "feedback"
   | "hint"
   | "explain"
+  /** Little learners: the answer is shown and the child taps it. */
+  | "guided"
   | "tutor"
   | "make_it_stick"
   | "confidence"
@@ -63,6 +72,8 @@ export interface LessonSummary {
   cardsSeen: number;
   missed: Missed[];
   comboReached: boolean;
+  /** Little learners: XP shown as stars (HOME-06, LES-08 "You got {n} stars!"); null otherwise. */
+  stars: number | null;
 }
 
 export interface LessonState {
@@ -79,6 +90,8 @@ export interface LessonState {
   struckOptionIds: string[];
   lastResult: CheckResult | null;
   hint: Hint | null;
+  /** Little learners: the question is (or was just) finished by tapping the shown answer. */
+  guided: boolean;
   /** The current card has a task (interactive or sim) not done yet: forward is blocked. */
   pendingTask: boolean;
   /** Set when the last action was refused, for the host to explain why. */
@@ -136,6 +149,7 @@ export function initialState(config: LessonConfig): LessonState {
     struckOptionIds: [],
     lastResult: null,
     hint: null,
+    guided: false,
     pendingTask: false,
     blocked: null,
     outcomes: {},
@@ -172,8 +186,11 @@ export const answerContext = (p: LessonPlan): AnswerContext =>
 const browsing = (s: LessonState): boolean => s.phase === "card" || s.phase === "question";
 
 // Fix mistakes sends no lesson events (lessonEvents is false); the mapping only keeps the type total.
+// A little learner lesson is a Deep Dive bite on the wire (sync.md v1.3 has no little mode).
 const eventMode = (p: LessonPlan): EventLessonMode =>
-  p.mode === "fix_mistakes" ? "quick_check" : p.mode;
+  p.mode === "fix_mistakes" ? "quick_check" : p.mode === "little" ? "deep_dive" : p.mode;
+
+const little = (p: LessonPlan): boolean => p.mode === "little";
 
 function hasTask(card: PlanCard): boolean {
   if (!card.card) return false;
@@ -193,6 +210,7 @@ function arrive(s: LessonState, now: number): LessonState {
     struckOptionIds: [],
     lastResult: null,
     hint: null,
+    guided: false,
     pendingTask: hasTask(card),
     cardShownAt: now,
     questionShownAt: card.question ? now : null,
@@ -244,6 +262,7 @@ function summarize(s: LessonState, now: number): LessonSummary {
     cardsSeen: s.seen.length,
     missed,
     comboReached: s.comboShown,
+    stars: little(plan) ? s.xp : null,
   };
 }
 
@@ -285,8 +304,9 @@ function advance(s: LessonState, now: number): LessonState {
   const seen = s.seen.includes(card.key) ? s.seen : [...s.seen, card.key];
   const next: LessonState = { ...s, events, seen, index: s.index + 1, blocked: null };
   if (next.index >= plan.cards.length) {
-    // Checks and Fix mistakes end straight away; onboarding skips LES-07 (learn §7.1).
-    if (plan.mode === "quick_check" || plan.mode === "fix_mistakes" || plan.mode === "onboarding") {
+    // Checks and Fix mistakes end straight away; onboarding skips LES-07 (learn §7.1), and so do
+    // little learners (LES-08 little learner variant).
+    if (plan.mode === "quick_check" || plan.mode === "fix_mistakes" || plan.mode === "onboarding" || little(plan)) {
       return complete({ ...next, index: plan.cards.length - 1, viewIndex: plan.cards.length - 1 }, now);
     }
     return { ...next, index: plan.cards.length - 1, viewIndex: plan.cards.length - 1, phase: "confidence" };
@@ -382,6 +402,12 @@ export function reduce(prev: LessonState, action: TimedAction): LessonState {
     }
 
     case "submit": {
+      if (s.phase === "guided" && !isReadOnly(s)) {
+        const card = s.plan!.cards[s.index]!;
+        const result = checkAnswer(card.question!, action.answer);
+        // Only the shown answer moves on; anything else stays here, with nothing sent or lost.
+        return result.correct ? { ...s, phase: "feedback", guided: true, lastResult: result } : { ...s, lastResult: result };
+      }
       if (s.phase !== "question" || isReadOnly(s)) return s;
       const plan = s.plan!;
       const card = plan.cards[s.index]!;
@@ -435,7 +461,7 @@ export function reduce(prev: LessonState, action: TimedAction): LessonState {
           streak: 0,
           lastResult: result,
           phase: "hint",
-          hint: hintFor(q, result, attempts),
+          hint: gentleHint(plan, q, hintFor(q, result, attempts)),
           struckOptionIds: [...new Set([...s.struckOptionIds, ...struckOptions(q, result)])],
           outcomes: withOutcome(s, card, { attempts, confidence }),
         };
@@ -501,7 +527,16 @@ export function reduce(prev: LessonState, action: TimedAction): LessonState {
   }
 }
 
-/** Wrong for good (second wrong, one-try modes) or "I don't know yet": the worked solution. */
+/** Little learners never get a hint with a negative word; the generic nudge replaces it. */
+function gentleHint(plan: LessonPlan, q: { concepts: { id: string }[] }, hint: Hint): Hint {
+  if (!little(plan) || hint.source === "generic" || isGentleText(hint.text)) return hint;
+  return { source: "generic", conceptId: q.concepts[0]?.id ?? null };
+}
+
+/**
+ * Wrong for good (second wrong, one-try modes) or "I don't know yet": the worked solution, or for
+ * little learners the guided finish.
+ */
 function missed(
   s: LessonState,
   card: PlanCard,
@@ -529,7 +564,7 @@ function missed(
     xp: s.xp + s.config.xp.attempt,
     lastResult: result,
     hint: null,
-    phase: "explain",
+    phase: little(plan) ? "guided" : "explain",
     reviewQueue: queue,
     ratings,
     outcomes: withOutcome(s, card, { correct: false, attempts, firstTry: false, dontKnow, confidence }),

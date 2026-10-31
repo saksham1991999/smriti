@@ -11,8 +11,13 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 import {
+  DEFAULT_LITTLE_ACTIVITY_STAR_XP,
   DEFAULT_RULES,
   EMPTY_STREAK,
+  activityByDay,
+  activityCompletedPayload,
+  activityCompletedXp,
+  activityDedupeKey,
   NEW_PLANT,
   SrsScheduler,
   addDays,
@@ -21,7 +26,16 @@ import {
   closePlantDay,
   derivePetState,
   grantMonthlyFreezes,
+  learnerExperience,
   newPet,
+  plantDisplay,
+  gentlePetState,
+  resolveAgeBand,
+  timeLimitState,
+  PET_STATES,
+  PLANT_HEALTH,
+  type ActivityCompletionLike,
+  type AgeBandInput,
   type DayInput,
   type PetStats,
   type PlantDayInput,
@@ -214,5 +228,96 @@ describe('golden vectors', () => {
         runFsrs('higher retention (0.95)', '2026-10-01T04:30:00.000Z', [{ afterDays: 0, rating: 3 }, { afterDays: 0.007, rating: 3 }, { afterDays: 2, rating: 3 }], { requestRetention: 0.95 }),
       ],
     });
+  });
+  it('age_band', () => {
+    // R56: a known age first, then class (class 5 is u10), then the stored band. The server's
+    // profile_rules.resolve_age_band runs these same cases (apps/api/tests/test_vectors.py).
+    const today = '2026-10-30';
+    const cases: { name: string; input: AgeBandInput }[] = [
+      ...[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((c) => ({ name: `class ${c} only`, input: { schoolClass: c, birth: null } })),
+      { name: 'born 2017, month unknown: 8', input: { schoolClass: null, birth: { year: 2017 } } },
+      { name: 'born 2016, month unknown: 9', input: { schoolClass: null, birth: { year: 2016 } } },
+      { name: 'born 2016-10: birthday month not over, 9', input: { schoolClass: null, birth: { year: 2016, month: 10 } } },
+      { name: 'born 2016-09: 10', input: { schoolClass: null, birth: { year: 2016, month: 9 } } },
+      { name: 'born 2014, month unknown: 11', input: { schoolClass: null, birth: { year: 2014 } } },
+      { name: 'born 2013, month unknown: 12', input: { schoolClass: null, birth: { year: 2013 } } },
+      { name: 'born 2008, month unknown: 17', input: { schoolClass: null, birth: { year: 2008 } } },
+      { name: 'born 2008-10: still 17', input: { schoolClass: null, birth: { year: 2008, month: 10 } } },
+      { name: 'born 2008-09: 18', input: { schoolClass: null, birth: { year: 2008, month: 9 } } },
+      { name: 'birth year beats class', input: { schoolClass: 4, birth: { year: 2008, month: 1 } } },
+      { name: 'birth year beats a declared stored band', input: { schoolClass: null, birth: { year: 2017 }, storedBand: '18p', storedSource: 'self_declared' } },
+      { name: 'self-declared adult in class 12', input: { schoolClass: 12, birth: null, storedBand: '18p', storedSource: 'self_declared' } },
+      { name: 'guardian-set band beats class', input: { schoolClass: 6, birth: null, storedBand: 'u10', storedSource: 'guardian' } },
+      { name: 'stored birth-year band beats class', input: { schoolClass: 2, birth: null, storedBand: '13_17', storedSource: 'birth_year' } },
+      { name: 'class beats a class-derived stored band', input: { schoolClass: 5, birth: null, storedBand: '10_12', storedSource: 'class' } },
+      { name: 'class beats a stored band of unknown source', input: { schoolClass: 9, birth: null, storedBand: '18p' } },
+      { name: 'stored band when nothing else is known', input: { schoolClass: null, birth: null, storedBand: '10_12', storedSource: 'class' } },
+      { name: 'stored band beats "Prefer not to say"', input: { schoolClass: null, birth: 'declined', storedBand: '10_12', storedSource: 'class' } },
+      { name: 'class beats "Prefer not to say"', input: { schoolClass: 3, birth: 'declined' } },
+      { name: '"Prefer not to say" alone', input: { schoolClass: null, birth: 'declined' } },
+      { name: 'nothing known', input: { schoolClass: null, birth: null } },
+    ];
+    golden('age_band', { version: 1, today, cases: cases.map((c) => ({ ...c, expected: resolveAgeBand(c.input, today) })) });
+  });
+
+  it('little_learner', () => {
+    const today = '2026-10-30';
+    const facts = [
+      { ageBand: 'u10', schoolClass: 3, managedChild: true },
+      { ageBand: 'u10', schoolClass: null },
+      { ageBand: '10_12', schoolClass: 5 },
+      { ageBand: '10_12', schoolClass: 7 },
+      { ageBand: '13_17', schoolClass: 8 },
+      { ageBand: '18p', schoolClass: null },
+      { ageBand: null, schoolClass: null },
+    ] as const;
+    const experiences = facts.flatMap((f) =>
+      [true, false].map((enabled) => ({ facts: f, littleLearnerEnabled: enabled, expected: learnerExperience(f, { littleLearnerEnabled: enabled }) })),
+    );
+    const plant = (health: (typeof PLANT_HEALTH)[number]) => ({ ...NEW_PLANT, health });
+    golden('little_learner', {
+      version: 1,
+      today,
+      experiences,
+      gentle_pet: PET_STATES.map((s) => ({ state: s, shown: gentlePetState(s, true) })),
+      gentle_plant: PLANT_HEALTH.map((h) => ({ health: h, shown: plantDisplay(plant(h), true).health })),
+      time_limits: [
+        { limits: { dailyMinutes: 30, allowedHours: { start: '16:00', end: '20:00' } }, used: 10, extra: 0, at: '2026-10-30T17:00:00+05:30', inActivity: false },
+        { limits: { dailyMinutes: 30, allowedHours: { start: '16:00', end: '20:00' } }, used: 30, extra: 0, at: '2026-10-30T17:00:00+05:30', inActivity: true },
+        { limits: { dailyMinutes: 30, allowedHours: { start: '16:00', end: '20:00' } }, used: 30, extra: 15, at: '2026-10-30T17:00:00+05:30', inActivity: false },
+        { limits: { dailyMinutes: 30, allowedHours: { start: '16:00', end: '20:00' } }, used: 0, extra: 0, at: '2026-10-30T20:00:00+05:30', inActivity: false },
+        { limits: { dailyMinutes: 0, allowedHours: null }, used: 300, extra: 0, at: '2026-10-30T23:00:00+05:30', inActivity: false },
+      ].map((c) => ({
+        ...c,
+        timeZone: 'Asia/Kolkata',
+        expected: timeLimitState(c.limits, { day: today, usedMinutes: c.used, extraMinutes: c.extra, requestsToday: 0 }, { now: c.at, timeZone: 'Asia/Kolkata', inActivity: c.inActivity }),
+      })),
+    });
+  });
+
+  it('activity_completed', () => {
+    // One little learner's completions in order (sync contract v1.4). The server must accept,
+    // reject and credit them exactly so, and count each accepted one as a lesson on its day.
+    const timeZone = 'Asia/Kolkata';
+    const base = { topicId: 'fx.chapter-a.topic-a', concepts: ['fx.chapter-a.topic-a.sub-1.concept-1'], locale: 'en', msTotal: 180_000 };
+    const steps: { name: string; completion: ActivityCompletionLike }[] = [
+      { name: 'a story: one star', completion: { ...base, kind: 'story', activityId: 'sb.fx.topic-a', bundleVersion: 'v1', stars: 1, completedAt: '2026-10-30T04:30:00.000Z' } },
+      { name: 'play: a star per round', completion: { ...base, kind: 'play', activityId: 'play.fx.topic-a', bundleVersion: 'v1', stars: 3, completedAt: '2026-10-30T05:00:00.000Z' } },
+      { name: 'the same story again that day', completion: { ...base, kind: 'story', activityId: 'sb.fx.topic-a', bundleVersion: 'v1', stars: 1, completedAt: '2026-10-30T12:30:00.000Z' } },
+      { name: 'the same story in a new bundle', completion: { ...base, kind: 'story', activityId: 'sb.fx.topic-a', bundleVersion: 'v2', stars: 1, completedAt: '2026-10-30T13:00:00.000Z' } },
+      { name: 'a song in Hindi', completion: { ...base, kind: 'song', activityId: 'song.fx.topic-a', bundleVersion: 'v1', stars: 1, locale: 'hi', completedAt: '2026-10-30T13:30:00.000Z' } },
+      { name: 'the first story the next local day (still the 30th in UTC)', completion: { ...base, kind: 'story', activityId: 'sb.fx.topic-a', bundleVersion: 'v1', stars: 1, completedAt: '2026-10-30T19:00:00.000Z' } },
+    ];
+    const seen = new Set<string>();
+    const cases = steps.map((step) => {
+      const payload = activityCompletedPayload(step.completion);
+      const key = activityDedupeKey(payload, timeZone);
+      const accepted = !seen.has(key);
+      seen.add(key);
+      return { name: step.name, completion: step.completion, payload, expected: { accepted, code: accepted ? null : 'already_recorded', xp: accepted ? activityCompletedXp(payload.stars) : 0, dedupe_key: key } };
+    });
+    const acceptedEvents = cases.filter((c) => c.expected.accepted).map((c) => ({ type: 'activity_completed' as const, occurred_at: c.payload.completed_at }));
+    const days = [...activityByDay(acceptedEvents, timeZone)].map(([day, a]) => ({ day, lessons_completed: a.lessonsCompleted }));
+    golden('activity_completed', { version: 1, config: { xp_little_activity_star: DEFAULT_LITTLE_ACTIVITY_STAR_XP }, time_zone: timeZone, cases, days });
   });
 });

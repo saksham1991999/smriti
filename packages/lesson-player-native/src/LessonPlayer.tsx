@@ -13,6 +13,7 @@ import {
   currentCard,
   isReadOnly,
   LessonSession,
+  lessonPetEvent,
   petReaction,
   playerRules,
   readyMediaUrl,
@@ -51,6 +52,7 @@ import { ScrollView, StyleSheet, View, type ImageSourcePropType } from "react-na
 import { CardView, type SimCardData, type SimHostApi } from "./cards";
 import { PlayerProvider, sharedKey, usePlayer as usePlayerT, type PlayerContextValue, type Translate } from "./context";
 import { canSubmit, initialDraft, QuestionView } from "./questions";
+import { CornerPet } from "./CornerPet";
 import { useNarration } from "./narration";
 import { RichText } from "./RichText";
 
@@ -239,6 +241,10 @@ export function LessonPlayer(props: LessonPlayerProps) {
                       onPress={narration.toggle}
                       testID="lesson-listen"
                     />
+                  ) : null}
+                  {/* LES-01 little learner: the pet stays at the top-right of every card and reacts (hop on correct, think on wrong). */}
+                  {rules.cornerPet && pet ? (
+                    <CornerPet species={pet.species} event={readOnly ? null : lessonPetEvent(state.phase)} n={`${state.viewIndex}:${state.phase}`} testID="lesson-pet" size={48} />
                   ) : null}
                 </View>
                 {shownCard.question ? (

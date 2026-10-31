@@ -1,0 +1,133 @@
+/* Motion graphs scene. Token variables only. */
+
+.motion-graphs .small {
+  font-size: 10px;
+}
+
+.motion-graphs .panel-label {
+  font-size: 11px;
+  fill: var(--s-text);
+}
+
+.motion-graphs .track-line {
+  stroke: var(--ink-muted);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.motion-graphs .tick {
+  stroke: var(--ink-muted);
+  stroke-width: 1.5;
+}
+
+.motion-graphs .cart {
+  fill: var(--surface);
+  stroke: var(--s-strong);
+  stroke-width: 2.5;
+}
+
+.motion-graphs .wheel {
+  fill: var(--ink);
+}
+
+.motion-graphs .arrow-v .arrow-shaft {
+  stroke: var(--s-strong);
+  stroke-width: 3;
+}
+
+.motion-graphs .arrow-v .arrow-head {
+  fill: var(--s-strong);
+}
+
+/* Acceleration: a different colour and a dashed shaft, so colour is not the only signal. */
+.motion-graphs .arrow-a .arrow-shaft {
+  stroke: var(--f-maths-strong);
+  stroke-width: 3;
+  stroke-dasharray: 5 4;
+}
+
+.motion-graphs .arrow-a .arrow-head {
+  fill: var(--f-maths-strong);
+}
+
+.motion-graphs .arrow-label {
+  font-size: 12px;
+  font-style: italic;
+}
+
+.motion-graphs .g-frame {
+  fill: var(--surface);
+  stroke: var(--ink-disabled);
+  stroke-width: 1;
+}
+
+.motion-graphs .g-grid {
+  stroke: var(--ink-disabled);
+  stroke-width: 0.75;
+  stroke-dasharray: 2 4;
+}
+
+.motion-graphs .g-zero {
+  stroke: var(--ink-muted);
+  stroke-width: 1.5;
+}
+
+.motion-graphs .curve-ghost {
+  fill: none;
+  stroke: var(--ink-disabled);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+}
+
+.motion-graphs .curve {
+  fill: none;
+  stroke: var(--s-strong);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+/* v-t areas: hatching above the axis, dots below (pattern, not colour alone). */
+.motion-graphs .hatch-line {
+  stroke: var(--s-strong);
+  stroke-width: 1.5;
+}
+
+.motion-graphs .dot-fill {
+  fill: var(--f-maths-strong);
+}
+
+.motion-graphs .area-above {
+  stroke: var(--s-strong);
+  stroke-width: 1;
+}
+
+.motion-graphs .area-below {
+  stroke: var(--f-maths-strong);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+.motion-graphs .area-label {
+  font-size: 10px;
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 3px;
+}
+
+.motion-graphs .cursor-line {
+  stroke: var(--ink);
+  stroke-width: 1.5;
+}
+
+.motion-graphs .cursor-dot {
+  fill: var(--surface);
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+
+.motion-graphs .hit {
+  fill: transparent;
+  cursor: ew-resize;
+  touch-action: none;
+}

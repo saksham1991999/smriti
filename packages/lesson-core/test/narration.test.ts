@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { autoNarrate, cardNarration, petReaction, planLesson, playerRules, readyMediaUrl } from "../src/index.js";
+import { autoNarrate, cardNarration, lessonPetEvent, petReaction, planLesson, playerRules, readyMediaUrl } from "../src/index.js";
 import { config, EXAM_DEPTH, fixtureBundle } from "./fixture.js";
 
 describe("card narration", () => {
@@ -46,5 +46,14 @@ describe("pet reactions", () => {
     expect(petReaction("page_turn", false)).toEqual({ mood: "excited", hop: true });
     expect(petReaction("wrong", false)).toEqual({ mood: "curious", hop: false });
     expect(petReaction(null, false)).toEqual({ mood: "happy", hop: false });
+  });
+
+  it("lesson phases: hop on correct, think on wrong and on the shown answer, rest otherwise", () => {
+    expect(lessonPetEvent("feedback")).toBe("correct");
+    expect(lessonPetEvent("hint")).toBe("wrong");
+    expect(lessonPetEvent("explain")).toBe("wrong");
+    expect(lessonPetEvent("guided")).toBe("shown");
+    for (const p of ["card", "question", "confidence"] as const) expect(lessonPetEvent(p)).toBeNull();
+    expect(petReaction(lessonPetEvent("feedback"), true)).toEqual({ mood: "excited", hop: false });
   });
 });

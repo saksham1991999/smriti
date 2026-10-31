@@ -23,6 +23,7 @@ const SPOKEN: Record<string, Spoken> = {
   mL: { en: ['millilitre', 'millilitres'], hi: 'मिलीलीटर' },
   M: { en: ['molar', 'molar'], hi: 'मोलर' },
   '°': { en: ['degree', 'degrees'], hi: 'डिग्री' },
+  'm/s': { en: ['metre per second', 'metres per second'], hi: 'मीटर प्रति सेकंड' },
   'm/s²': { en: ['metre per second squared', 'metres per second squared'], hi: 'मीटर प्रति सेकंड वर्ग' },
   D: { en: ['dioptre', 'dioptres'], hi: 'डायॉप्टर' },
   '×': { en: ['times', 'times'], hi: 'गुना' },

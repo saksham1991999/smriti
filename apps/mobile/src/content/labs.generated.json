@@ -136,7 +136,7 @@
     ],
     "preferredOrientation": "any",
     "entry": "index.html",
-    "sizeBytes": 365479,
+    "sizeBytes": 365581,
     "licence": "owned",
     "attribution": null,
     "aspect": "4:3"
@@ -291,10 +291,258 @@
     ],
     "preferredOrientation": "landscape",
     "entry": "index.html",
-    "sizeBytes": 368056,
+    "sizeBytes": 368158,
     "licence": "owned",
     "attribution": null,
     "aspect": "16:10"
+  },
+  {
+    "id": "motion-graphs",
+    "version": "1.0.0",
+    "title": {
+      "en": "Motion graphs",
+      "hi": "गति के ग्राफ़"
+    },
+    "subject": "phy",
+    "concepts": [
+      "phy.motion-straight-line.acceleration.core.acceleration-graphs",
+      "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+    ],
+    "tasks": 4,
+    "taskSpecs": [
+      {
+        "id": "stop-time",
+        "prompt": {
+          "en": "With u = 10 m/s and a = −2 m/s², stop the clock when the velocity reads zero.",
+          "hi": "u = 10 m/s और a = −2 m/s² के साथ, जब वेग शून्य दिखे तब घड़ी रोकिए।"
+        },
+        "hint": {
+          "en": "Near the end, use Step to move 0.1 s at a time.",
+          "hi": "अंत के पास, 0.1 s करके आगे बढ़ने के लिए एक कदम दबाइए।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "target",
+              "quantity": "initial_velocity",
+              "value": 10,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "acceleration",
+              "value": -2,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "velocity",
+              "value": 0,
+              "tolerance": 0.05
+            },
+            {
+              "kind": "target",
+              "quantity": "time",
+              "value": 5,
+              "tolerance": 0.1
+            }
+          ]
+        }
+      },
+      {
+        "id": "farthest",
+        "prompt": {
+          "en": "Leave the clock where the velocity is zero: the cart is farthest from the start.",
+          "hi": "घड़ी वहीं रहने दीजिए जहाँ वेग शून्य है: गाड़ी आरंभ से सबसे दूर है।"
+        },
+        "hint": {
+          "en": "The x-t curve is at its top where the v-t line crosses zero.",
+          "hi": "जहाँ v-t रेखा शून्य को काटती है, वहाँ x-t वक्र सबसे ऊपर होता है।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "target",
+              "quantity": "initial_velocity",
+              "value": 10,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "acceleration",
+              "value": -2,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "velocity",
+              "value": 0,
+              "tolerance": 0.05
+            },
+            {
+              "kind": "target",
+              "quantity": "position",
+              "value": 25,
+              "tolerance": 0.5
+            }
+          ]
+        }
+      },
+      {
+        "id": "back-home",
+        "prompt": {
+          "en": "Run on to t = 10 s and read the position.",
+          "hi": "t = 10 s तक चलाइए और स्थिति पढ़िए।"
+        },
+        "hint": {
+          "en": "Move the time slider to the end, or press Play.",
+          "hi": "समय स्लाइडर को अंत तक ले जाइए, या चलाएँ दबाइए।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "target",
+              "quantity": "initial_velocity",
+              "value": 10,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "acceleration",
+              "value": -2,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "time",
+              "value": 10,
+              "tolerance": 0.1
+            },
+            {
+              "kind": "target",
+              "quantity": "position",
+              "value": 0,
+              "tolerance": 0.5
+            }
+          ]
+        }
+      },
+      {
+        "id": "path",
+        "prompt": {
+          "en": "At t = 10 s, compare the displacement with the path length.",
+          "hi": "t = 10 s पर विस्थापन की तुलना पथ-लंबाई से कीजिए।"
+        },
+        "hint": {
+          "en": "Path length adds both shaded areas; displacement adds them with their signs.",
+          "hi": "पथ-लंबाई दोनों छायांकित क्षेत्रफल जोड़ती है; विस्थापन उन्हें चिह्न सहित जोड़ता है।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "target",
+              "quantity": "initial_velocity",
+              "value": 10,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "acceleration",
+              "value": -2,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "time",
+              "value": 10,
+              "tolerance": 0.1
+            },
+            {
+              "kind": "target",
+              "quantity": "path_length",
+              "value": 50,
+              "tolerance": 0.5
+            }
+          ]
+        }
+      }
+    ],
+    "readings": [
+      {
+        "name": "time",
+        "unit": "s",
+        "label": {
+          "en": "Time t",
+          "hi": "समय t"
+        }
+      },
+      {
+        "name": "position",
+        "unit": "m",
+        "label": {
+          "en": "Position x",
+          "hi": "स्थिति x"
+        }
+      },
+      {
+        "name": "velocity",
+        "unit": "m/s",
+        "label": {
+          "en": "Velocity v",
+          "hi": "वेग v"
+        }
+      },
+      {
+        "name": "acceleration",
+        "unit": "m/s²",
+        "label": {
+          "en": "Acceleration a",
+          "hi": "त्वरण a"
+        }
+      },
+      {
+        "name": "displacement",
+        "unit": "m",
+        "label": {
+          "en": "Displacement",
+          "hi": "विस्थापन"
+        }
+      },
+      {
+        "name": "path_length",
+        "unit": "m",
+        "label": {
+          "en": "Path length",
+          "hi": "पथ-लंबाई"
+        }
+      },
+      {
+        "name": "initial_velocity",
+        "unit": "m/s",
+        "label": {
+          "en": "Initial velocity u",
+          "hi": "प्रारंभिक वेग u"
+        }
+      }
+    ],
+    "capabilities": [
+      "tasks",
+      "record",
+      "pause",
+      "set_params",
+      "snapshot",
+      "resize"
+    ],
+    "preferredOrientation": "any",
+    "entry": "index.html",
+    "sizeBytes": 369732,
+    "licence": "owned",
+    "attribution": null,
+    "aspect": "1:1"
   },
   {
     "id": "ohms-law-circuit",
@@ -455,7 +703,270 @@
     ],
     "preferredOrientation": "any",
     "entry": "index.html",
-    "sizeBytes": 367952,
+    "sizeBytes": 368054,
+    "licence": "owned",
+    "attribution": null,
+    "aspect": "4:3"
+  },
+  {
+    "id": "projectile-launcher",
+    "version": "1.0.0",
+    "title": {
+      "en": "Projectile launcher",
+      "hi": "प्रक्षेप्य प्रक्षेपक"
+    },
+    "subject": "phy",
+    "concepts": [
+      "phy.motion-plane.projectile.core.projectile-motion"
+    ],
+    "tasks": 4,
+    "taskSpecs": [
+      {
+        "id": "range-45",
+        "prompt": {
+          "en": "Launch at 20 m/s and 45°. Read the range.",
+          "hi": "20 m/s और 45° पर प्रक्षेपित कीजिए। परास पढ़िए।"
+        },
+        "hint": {
+          "en": "Set the angle to 45°, then press Launch and wait for the ball to land.",
+          "hi": "कोण 45° रखिए, फिर प्रक्षेपित करें दबाइए और गेंद के गिरने तक रुकिए।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "target",
+              "quantity": "launch_speed",
+              "value": 20,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "gravity",
+              "value": 9.8,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "angle",
+              "value": 45,
+              "tolerance": 0.5
+            },
+            {
+              "kind": "target",
+              "quantity": "range",
+              "value": 40.8,
+              "tolerance": 0.5
+            }
+          ]
+        }
+      },
+      {
+        "id": "height-45",
+        "prompt": {
+          "en": "Read the maximum height for the same launch.",
+          "hi": "उसी प्रक्षेपण की अधिकतम ऊँचाई पढ़िए।"
+        },
+        "hint": {
+          "en": "The highest point is where vy reads zero.",
+          "hi": "सबसे ऊँचा बिंदु वहाँ है जहाँ vy शून्य होता है।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "target",
+              "quantity": "launch_speed",
+              "value": 20,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "gravity",
+              "value": 9.8,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "angle",
+              "value": 45,
+              "tolerance": 0.5
+            },
+            {
+              "kind": "target",
+              "quantity": "max_height",
+              "value": 10.2,
+              "tolerance": 0.2
+            }
+          ]
+        }
+      },
+      {
+        "id": "range-30",
+        "prompt": {
+          "en": "Keep the speed and launch at 30°. Read the range.",
+          "hi": "चाल वही रखकर 30° पर प्रक्षेपित कीजिए। परास पढ़िए।"
+        },
+        "hint": {
+          "en": "Change only the angle, then launch again.",
+          "hi": "केवल कोण बदलिए, फिर दोबारा प्रक्षेपित कीजिए।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "target",
+              "quantity": "launch_speed",
+              "value": 20,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "gravity",
+              "value": 9.8,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "angle",
+              "value": 30,
+              "tolerance": 0.5
+            },
+            {
+              "kind": "target",
+              "quantity": "range",
+              "value": 35.3,
+              "tolerance": 0.5
+            }
+          ]
+        }
+      },
+      {
+        "id": "range-60",
+        "prompt": {
+          "en": "Now launch at 60°. Read the range.",
+          "hi": "अब 60° पर प्रक्षेपित कीजिए। परास पढ़िए।"
+        },
+        "hint": {
+          "en": "Compare this path with the 30° path you kept.",
+          "hi": "इस पथ की तुलना रखे हुए 30° वाले पथ से कीजिए।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "target",
+              "quantity": "launch_speed",
+              "value": 20,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "gravity",
+              "value": 9.8,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "angle",
+              "value": 60,
+              "tolerance": 0.5
+            },
+            {
+              "kind": "target",
+              "quantity": "range",
+              "value": 35.3,
+              "tolerance": 0.5
+            }
+          ]
+        }
+      }
+    ],
+    "readings": [
+      {
+        "name": "time",
+        "unit": "s",
+        "label": {
+          "en": "Time t",
+          "hi": "समय t"
+        }
+      },
+      {
+        "name": "vx",
+        "unit": "m/s",
+        "label": {
+          "en": "Horizontal velocity vx",
+          "hi": "क्षैतिज वेग vx"
+        }
+      },
+      {
+        "name": "vy",
+        "unit": "m/s",
+        "label": {
+          "en": "Vertical velocity vy",
+          "hi": "ऊर्ध्वाधर वेग vy"
+        }
+      },
+      {
+        "name": "range",
+        "unit": "m",
+        "label": {
+          "en": "Range R",
+          "hi": "परास R"
+        }
+      },
+      {
+        "name": "max_height",
+        "unit": "m",
+        "label": {
+          "en": "Maximum height H",
+          "hi": "अधिकतम ऊँचाई H"
+        }
+      },
+      {
+        "name": "time_of_flight",
+        "unit": "s",
+        "label": {
+          "en": "Time of flight T",
+          "hi": "उड़ान का समय T"
+        }
+      },
+      {
+        "name": "launch_speed",
+        "unit": "m/s",
+        "label": {
+          "en": "Launch speed v0",
+          "hi": "प्रक्षेपण चाल v0"
+        }
+      },
+      {
+        "name": "angle",
+        "unit": "°",
+        "label": {
+          "en": "Launch angle θ",
+          "hi": "प्रक्षेपण कोण θ"
+        }
+      },
+      {
+        "name": "gravity",
+        "unit": "m/s²",
+        "label": {
+          "en": "Gravity g",
+          "hi": "गुरुत्वीय त्वरण g"
+        }
+      }
+    ],
+    "capabilities": [
+      "tasks",
+      "record",
+      "pause",
+      "set_params",
+      "snapshot",
+      "resize"
+    ],
+    "preferredOrientation": "any",
+    "entry": "index.html",
+    "sizeBytes": 369622,
     "licence": "owned",
     "attribution": null,
     "aspect": "4:3"
@@ -645,7 +1156,7 @@
     ],
     "preferredOrientation": "any",
     "entry": "index.html",
-    "sizeBytes": 365014,
+    "sizeBytes": 365116,
     "licence": "owned",
     "attribution": null,
     "aspect": "4:3"

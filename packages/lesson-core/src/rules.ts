@@ -36,6 +36,8 @@ export interface PlayerRules {
   guidedFinish: boolean;
   /** The LES-08 Fix mistakes row may show (A22: only after misses). Never for little learners. */
   fixRow: boolean;
+  /** LES-01 little learner: the pet avatar stays at the top-right of every card and reacts. */
+  cornerPet: boolean;
 }
 
 export function playerRules(mode: PlayerMode): PlayerRules {
@@ -54,6 +56,7 @@ export function playerRules(mode: PlayerMode): PlayerRules {
       narrationAutoPlay: true,
       guidedFinish: true,
       fixRow: false,
+      cornerPet: true,
     };
   }
   const check = mode === "quick_check";
@@ -71,5 +74,6 @@ export function playerRules(mode: PlayerMode): PlayerRules {
     narrationAutoPlay: false,
     guidedFinish: false,
     fixRow: mode !== "fix_mistakes",
+    cornerPet: false,
   };
 }

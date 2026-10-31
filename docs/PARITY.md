@@ -29,7 +29,7 @@ Last updated 30 Oct 2026, from the apps as merged into `claude/project-thread-vn
 |---|---|---|---|---|---|
 | Home (streak, hero, up next) | HOME-01 | Built | Built | Built | |
 | Today's plan card | HOME-02 | Not built | Not built | Not built | app-core has `buildLocalPlan`; mobile uses it only for the widgets so far. |
-| Little learner Home | HOME-06 | Not built | Not built | Not built | Rules are in app-core (`little/*`), behind `feature.little_learner`. |
+| Little learner Home | HOME-06, SET-13 | Partial | Partial | Not built | Mobile: three tabs (R14), the path (lessons playable; song and play shown as coming), gentle pet and plant, the 2-second "For grown-ups" hold and the SET-13 gate with the parent's own sign-in and PIN, behind `feature.little_learner`. Storybook nodes (LRN-11) wait for bundles that carry `storybook@1`. The speaker button plays on web only until `expo-audio` is linked. |
 | Subject and chapter | LRN-02, LRN-03 | Built | Built | Built | Web also has a topic page. |
 | Lesson player (Deep Dive) | LES-01 | Built | Built | Built | |
 | Lesson end | LES-09 | Built | Built | Built | |

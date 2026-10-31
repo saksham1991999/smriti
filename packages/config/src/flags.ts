@@ -265,6 +265,7 @@ export const FLAG_REGISTRY = {
   'feature.little_learner': def(bool, false, 'doc', 'Phase 3 (onboarding §6.3, learn §5.6)'),
   'feature.voice_tutor': def(bool, false, 'doc', 'Phase 2'),
   'feature.feynman': def(bool, false, 'doc', 'Phase 2'),
+  'feature.friends': def(bool, false, 'doc', 'R46 (the Friends tab and SOC screens arrive in Phase 2)'),
   'feature.photo_doubt': def(bool, false, 'doc', 'Phase 1 or 2'),
   'feature.pdf_export': def(bool, false, 'doc', 'Phase 2'),
   'feature.ai_notes': def(bool, false, 'doc', 'Phase 2'),

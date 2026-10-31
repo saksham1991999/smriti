@@ -415,6 +415,15 @@ The Pet line component (DESIGN §5): 40 px pet avatar plus a bubble on `surface`
 | Subject now | Now | अभी |
 | Needs internet | Ask a grown-up to connect to the internet. | इंटरनेट चालू करने के लिए किसी बड़े से कहो। |
 | Pro node | Ask a grown-up | किसी बड़े से पूछो |
+| Coming soon | Coming soon! | जल्दी आ रहा है! |
+| Song node | Song time | गाने का समय |
+| Play node | Play time | खेल का समय |
+| Story node | Story | कहानी |
+| Lesson node | Lesson | पाठ |
+| Node done a11y | {title}, done | {title}, पूरा हुआ |
+| Node coming a11y | {title}, coming soon | {title}, जल्दी आ रहा है |
+| Hold progress | Keep holding… | दबाकर रखो… |
+| Plant a11y | Your plant | तुम्हारा पौधा |
 
 **Illustration slots:**
 | Slot | Preset | Ratio | Shows | Alt intent |

@@ -37,8 +37,9 @@ import {
 } from '@smriti/app-core';
 
 import { CATALOGUE_SNAPSHOT, type CatalogueExam } from '../../content/catalogue';
+import { FeatureFakes } from './features';
 
-interface FakeUser {
+export interface FakeUser {
   id: string;
   isAnonymous: boolean;
   email: string | null;
@@ -101,12 +102,17 @@ export class FakeApiServer {
   /** Devices registered with `POST /v1/devices`, by user id. */
   readonly devices = new Map<string, { pushToken: string | null; permission: string }>();
   failSyncWith: number | null;
+  /** `/v1/config` flags (tests and demos turn Phase 2 and 3 features on here). */
+  flags: Record<string, unknown> = {};
+  /** Phase 2 and 3 endpoints (parent mode, social, speech, voice, insights, live mocks): ./features. */
+  readonly features: FeatureFakes;
 
   constructor(private readonly opts: FakeApiOptions = {}) {
     this.clock = opts.clock ?? (() => Date.now());
     this.ttl = opts.tokenTtlS ?? 3600;
     this.revenuecatAuth = opts.revenuecatWebhookAuth ?? '';
     this.failSyncWith = opts.failSyncWith ?? null;
+    this.features = new FeatureFakes({ clock: this.clock, user: (id) => this.users.get(id) ?? null, state: (u) => this.state(u) });
   }
 
   /** A `fetch` the app's platform layer can use in place of the network. */
@@ -213,6 +219,8 @@ export class FakeApiServer {
       const text = sse('delta', { text: `[fake] ${String(body.text ?? '')}` }) + sse('quota', { used: 0, limit: null, remaining: null, unlimited: true }) + sse('done', {});
       return raw(200, text, 'text/event-stream');
     }
+    const feature = await this.features.route({ method, path: p, url: u, body, user });
+    if (feature) return feature;
     return json(404, { code: 'not_found' });
   }
 
@@ -467,7 +475,7 @@ export class FakeApiServer {
     });
     return {
       app_version: { min_version: '0.1.0', latest_version: '0.1.0', update_required: null },
-      flags: {},
+      flags: this.flags,
       free_limits: {},
       pricing: ['ios', 'android', 'web'].flatMap((p) => [product(p, true), product(p, false)]),
       content_base_url: 'http://fake.local/content',
@@ -565,7 +573,7 @@ function b64url(text: string): string {
   return out;
 }
 
-function raw(status: number, text: string, contentType: string): HttpResponse {
+export function raw(status: number, text: string, contentType: string): HttpResponse {
   return {
     status,
     ok: status >= 200 && status < 300,
@@ -575,7 +583,7 @@ function raw(status: number, text: string, contentType: string): HttpResponse {
   };
 }
 
-function json(status: number, data: unknown): HttpResponse {
+export function json(status: number, data: unknown): HttpResponse {
   const text = JSON.stringify(data);
   return {
     status,

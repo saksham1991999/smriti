@@ -4,6 +4,8 @@ import { router, useFocusEffect, type Href } from 'expo-router';
 import { useCallback, useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
+import { useExperience } from '../../src/features/little/experience';
+import { LittleHome } from '../../src/features/little/LittleHome';
 import { bundledIllustrations } from '../../src/seed/illustrations';
 import { useApp, useT, useUiState } from '../../src/services/context';
 import { examName } from '../../src/services/exams';
@@ -12,8 +14,13 @@ import { Screen } from '../../src/ui/Screen';
 
 const subjectArt = (family: string) => (bundledIllustrations[`subject-${family}`] ? `subject-${family}` : undefined);
 
-/** HOME-01: one hero action from app-core's `selectHero`, the streak card, Up next, subjects. */
+/** The Learn tab: HOME-06 for little learners (`learnerExperience`), else HOME-01. */
 export default function Learn() {
+  return useExperience().littleLearner ? <LittleHome /> : <Home01 />;
+}
+
+/** HOME-01: one hero action from app-core's `selectHero`, the streak card, Up next, subjects. */
+function Home01() {
   const app = useApp();
   const t = useT();
   const theme = useTheme();

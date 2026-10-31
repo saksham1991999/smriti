@@ -1432,6 +1432,14 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 | PIN | Use parent PIN | पेरेंट PIN इस्तेमाल करें |
 | Back | Back to {pet} | {pet} के पास वापस |
 | PIN wrong | That PIN didn't match. | PIN मेल नहीं खाया। |
+| PIN label | Parent PIN, 4 digits | पेरेंट PIN, 4 अंक |
+| PIN locked | Too many tries. Try again in {n, plural, one {# minute} other {# minutes}}, or use Google. | बहुत बार गलत हुआ। {n} मिनट बाद फिर कोशिश करें, या Google इस्तेमाल करें। |
+| Set PIN title | Choose a 4-digit parent PIN | 4 अंकों का पेरेंट PIN चुनें |
+| Set PIN body | Next time, the PIN opens parent mode on this phone, even offline. | अगली बार इस फ़ोन पर PIN से पेरेंट मोड खुलेगा, ऑफ़लाइन भी। |
+| PIN saved | Parent PIN saved | पेरेंट PIN सेव हो गया |
+| Unlock | Unlock | खोलें |
+| Skip PIN | Not now | अभी नहीं |
+| Needs internet | Google sign-in needs the internet. Use the PIN if you set one. | Google साइन-इन के लिए इंटरनेट चाहिए। PIN सेट है तो उसे इस्तेमाल करें। |
 
 **Illustration slots:** `sunny-scene`, 3:2, an Indian parent and child at a home table with a phone and the pet nearby, warm light, alt "A parent and child study together" / "अभिभावक और बच्चा साथ में पढ़ते हुए".
 **States:** first time, returning, PIN set, offline (Google sign-in needs internet; PIN works offline if set before), dark.

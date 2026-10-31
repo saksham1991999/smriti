@@ -1,0 +1,53 @@
+/**
+ * FAKE API, dev and test only (see ./server.ts). The Phase 2 and 3 endpoints the app's later
+ * screens call, shaped as apps/api answers them: parent mode (`/v1/guardian/*`, `/v1/me/limits`,
+ * `/v1/me/time-requests`), social, speech, voice, Feynman, insights and live mocks.
+ *
+ * Every number comes from the users' own events or from what a test or demo put here. Nothing is
+ * invented: a learner with no activity gets zeros and empty lists, as from the real API.
+ */
+import type { HttpResponse, SyncStateResponse } from '@smriti/app-core';
+
+import { ParentFakes } from './parent';
+import type { FakeUser } from './server';
+
+export interface FeatureRequest {
+  method: string;
+  path: string;
+  url: URL;
+  body: Record<string, unknown>;
+  user: FakeUser;
+}
+
+export interface FeatureContext {
+  clock: () => number;
+  user: (id: string) => FakeUser | null;
+  state: (user: FakeUser) => SyncStateResponse;
+}
+
+export interface FeatureModule {
+  route(req: FeatureRequest): HttpResponse | null | Promise<HttpResponse | null>;
+}
+
+export class FeatureFakes {
+  readonly parent: ParentFakes;
+  private readonly modules: FeatureModule[];
+
+  constructor(readonly ctx: FeatureContext) {
+    this.parent = new ParentFakes(ctx);
+    this.modules = [this.parent];
+  }
+
+  /** Adds a module (later features register theirs here). */
+  use(module: FeatureModule): void {
+    this.modules.push(module);
+  }
+
+  async route(req: FeatureRequest): Promise<HttpResponse | null> {
+    for (const m of this.modules) {
+      const res = await m.route(req);
+      if (res) return res;
+    }
+    return null;
+  }
+}

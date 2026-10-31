@@ -19,10 +19,14 @@ import signal
 import sys
 from collections.abc import Sequence
 
+import arq.worker
 from arq.logs import default_log_config
-from arq.worker import Worker, create_worker, run_worker
+from smriti_api.core.config import get_settings
+from smriti_api.core.error_reporting import configure_error_reporting
 
 from smriti_worker.main import WORKERS, WorkerSettings
+
+WORKER_VERSION = "0.1.0"
 
 
 class UnknownQueue(ValueError):
@@ -53,7 +57,10 @@ async def run_many(settings: Sequence[WorkerSettings], stop: asyncio.Event | Non
             loop.add_signal_handler(sig, stop.set)
         except (NotImplementedError, RuntimeError):  # pragma: no cover - not on Linux
             pass
-    workers: list[Worker] = [create_worker(s, handle_signals=False) for s in settings]
+    # Looked up on the module, so Sentry's arq integration (which patches it) sees every job.
+    workers: list[arq.worker.Worker] = [
+        arq.worker.create_worker(s, handle_signals=False) for s in settings
+    ]
     tasks = [asyncio.create_task(w.async_run()) for w in workers]
     waiter = asyncio.create_task(stop.wait())
     await asyncio.wait([*tasks, waiter], return_when=asyncio.FIRST_COMPLETED)
@@ -67,6 +74,18 @@ async def run_many(settings: Sequence[WorkerSettings], stop: asyncio.Event | Non
     return 1 if crashed else 0
 
 
+def start_error_reporting() -> bool:
+    """Sentry for job errors, before any arq worker exists (off unless SENTRY_DSN is set)."""
+    settings = get_settings()
+    service = os.environ.get("OTEL_SERVICE_NAME") or "smriti-worker"
+    return configure_error_reporting(
+        dsn=settings.sentry_dsn,
+        environment=settings.app_env.value,
+        release=settings.sentry_release or f"smriti-worker@{WORKER_VERSION}",
+        service=service,
+    )
+
+
 def main(argv: list[str]) -> int:
     spec = argv[1] if len(argv) > 1 else os.environ.get("WORKER_QUEUE", "default")
     try:
@@ -75,8 +94,9 @@ def main(argv: list[str]) -> int:
         print(f"unknown queue {exc}; one of: all, {', '.join(WORKERS)}", file=sys.stderr)
         return 2
     logging.config.dictConfig(default_log_config(verbose=False))
+    start_error_reporting()
     if len(queues) == 1:
-        run_worker(WORKERS[queues[0]])
+        arq.worker.run_worker(WORKERS[queues[0]])
         return 0
     return asyncio.run(run_many([WORKERS[q] for q in queues]))
 

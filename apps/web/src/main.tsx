@@ -5,6 +5,7 @@ import { createRoot } from "react-dom/client";
 import { createServices } from "./boot/services";
 import { App } from "./App";
 import { initialLocale, preloadLocale } from "./lib/i18n";
+import { startErrorReporting } from "./lib/sentry";
 import type { RequestInterceptor } from "./platform/web";
 
 async function boot() {
@@ -20,6 +21,8 @@ async function boot() {
     createServices({ interceptor }),
     preloadLocale(initialLocale()),
   ]);
+  // Sentry (when VITE_SENTRY_DSN is set) loads as its own chunk, alongside the first frame.
+  void startErrorReporting(services.env, services.store).catch(() => false);
   // A guardian opening a consent link (AUTH-22) or a parent opening Parent mode on their own browser
   // isn't a student: no guest account is made for them (flow §6.10). Their own session is separate.
   const adultOnly = /^\/(guardian\/(?!ask$|handoff$|link$)[^/]+|parent)\/?$/.test(

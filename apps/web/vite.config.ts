@@ -92,6 +92,8 @@ export default defineConfig(({ mode }) => ({
         icons: [{ src: "/assets/app-icon.webp", sizes: "768x768", type: "image/webp" }],
       },
       workbox: {
+        // No public source maps for the service worker either (the app's maps go to Sentry).
+        sourcemap: false,
         // Web Push handlers (NTF-01 on web) live in public/push-sw.js.
         importScripts: ["/push-sw.js"],
         // App shell plus the art; sims are cached when first opened.
@@ -115,7 +117,8 @@ export default defineConfig(({ mode }) => ({
   preview: { port: 4317, host: "127.0.0.1" },
   build: {
     target: "es2022",
-    sourcemap: true,
+    // Hidden: maps are built for the Sentry upload (deploy-web.yml), and never deployed.
+    sourcemap: "hidden",
     // Never inline font subsets: an inlined subset downloads with the CSS even when its
     // unicode-range never matches, while a file is fetched only when a glyph needs it.
     assetsInlineLimit: (file: string) => (/\.(woff2?|ttf|otf)$/.test(file) ? false : undefined),

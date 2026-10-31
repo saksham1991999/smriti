@@ -17,6 +17,7 @@ from smriti_api.core.auth import JwtVerifier
 from smriti_api.core.config import JobsMode, Settings, get_settings
 from smriti_api.core.db import Database
 from smriti_api.core.deps import AppServices
+from smriti_api.core.error_reporting import configure_error_reporting
 from smriti_api.core.errors import install_error_handlers
 from smriti_api.core.idempotency import IdempotencyStore
 from smriti_api.core.logging import configure_logging
@@ -127,6 +128,12 @@ def create_app(settings: Settings | None = None, services: AppServices | None = 
     settings = settings or get_settings()
     configure_logging(settings.log_level, settings.log_hash_salt)
     configure_tracing(settings.otel_service_name, settings.otel_exporter_otlp_endpoint)
+    configure_error_reporting(
+        dsn=settings.sentry_dsn,
+        environment=settings.app_env.value,
+        release=settings.sentry_release or f"smriti-api@{API_VERSION}",
+        service=settings.otel_service_name,
+    )
 
     @asynccontextmanager
     async def lifespan(app: FastAPI) -> AsyncIterator[None]:
@@ -163,6 +170,11 @@ def create_app(settings: Settings | None = None, services: AppServices | None = 
             "X-Platform",
             "X-App-Version",
             "X-Request-Id",
+            # Trace context from the web app's Sentry SDK (TRD §13: one trace from app to API).
+            "traceparent",
+            "tracestate",
+            "baggage",
+            "sentry-trace",
         ],
         expose_headers=["Retry-After", "X-Request-Id"],
         max_age=600,

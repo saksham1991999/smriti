@@ -661,6 +661,15 @@ export const CATALOGUE = {
       days_away_bucket: { type: 'bucket' },
     },
   },
+  comeback_plan_skipped: {
+    stream: 'product',
+    essential: false,
+    areas: ['memory_labs'],
+    props: {
+      due_total_bucket: { type: 'bucket' },
+      days_away_bucket: { type: 'bucket' },
+    },
+  },
   comeback_plan_started: {
     stream: 'learning',
     essential: false,

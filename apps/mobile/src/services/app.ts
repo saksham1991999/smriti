@@ -53,6 +53,7 @@ import type { AppleSignInProvider, GoogleSignInProvider } from '../auth/provider
 import { FakeBilling, RevenueCatBilling, type IntroEligibility } from '../billing/fake';
 import type { BillingProvider, PurchaseResult } from '../billing/types';
 import { CATALOGUE_SNAPSHOT, catalogueFromApi, type CatalogueExam } from '../content/catalogue';
+import type { ContentDownloads } from '../content/downloads';
 import type { ContentRepo } from '../content/repo';
 import type { PhotoSource } from '../platform/photos';
 import type { SimFiles } from './labs';
@@ -144,6 +145,10 @@ export interface AppDeps {
   photos?: PhotoSource;
   /** Where downloaded sims live (expo-file-system on phones); null on web, where sims run from the CDN. */
   simFiles?: SimFiles | null;
+  /** LRN-15 chapter downloads; absent when the build has no content CDN (and in most tests). */
+  downloads?: ContentDownloads | null;
+  /** The connection type, for "Wi-Fi only" downloads and LAB-03's mobile-data confirm. */
+  connection?: { isCellular(): boolean };
 }
 
 /**

@@ -7,7 +7,7 @@ import type { TopicState } from '../src/services/progress';
 import { createTestApp } from './harness';
 
 const topic = (id: string, minutes: number | null): TopicView => ({ id, name: id, chapterId: 'ch', sort: 0, depth: {}, hasDeepDive: true, hasQuickRevision: true, freeDeepDive: true, minutes });
-const chapter = (id: string, topics: TopicView[]): ChapterView => ({ id, name: id, subjectId: 's', free: true, topics });
+const chapter = (id: string, topics: TopicView[]): ChapterView => ({ id, name: id, subjectId: 's', unitId: 'u', free: true, topics });
 const state = (tp: TopicView, status: TopicState['status'], percent: number): TopicState => ({ topic: tp, status, percent, bitesCompleted: [] });
 
 test('chapter progress picks the topic to continue and the minutes left', () => {

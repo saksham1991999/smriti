@@ -8,6 +8,7 @@ import { AppState, type AppStateStatus } from 'react-native';
  */
 export class NetInfoNetwork implements Network {
   private online = true;
+  private cellular = false;
   private listeners = new Set<(online: boolean) => void>();
   private unsubscribe: (() => void) | null = null;
 
@@ -23,6 +24,7 @@ export class NetInfoNetwork implements Network {
   }
 
   private update(s: NetInfoState) {
+    this.cellular = s.type === 'cellular';
     const next = Boolean(s.isConnected) && s.isInternetReachable !== false;
     if (next === this.online) return;
     this.online = next;
@@ -31,6 +33,11 @@ export class NetInfoNetwork implements Network {
 
   isOnline(): boolean {
     return this.online;
+  }
+
+  /** On mobile data (NetInfo `type === 'cellular'`): LRN-15 "Wi-Fi only" and LAB-03's size confirm. */
+  isCellular(): boolean {
+    return this.cellular;
   }
 
   subscribe(listener: (online: boolean) => void): () => void {

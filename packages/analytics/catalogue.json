@@ -4756,6 +4756,7 @@
           "type": "enum",
           "values": [
             "list",
+            "topic",
             "deck",
             "mnemonics"
           ]
@@ -4783,6 +4784,49 @@
         },
         "order_score_pct": {
           "type": "number"
+        }
+      }
+    },
+    "palace_source_picked": {
+      "stream": "product",
+      "essential": false,
+      "areas": [
+        "memory_labs"
+      ],
+      "props": {
+        "source": {
+          "type": "enum",
+          "values": [
+            "list",
+            "topic",
+            "deck",
+            "mnemonics"
+          ]
+        },
+        "items": {
+          "type": "number"
+        }
+      }
+    },
+    "palace_template_selected": {
+      "stream": "product",
+      "essential": false,
+      "areas": [
+        "memory_labs"
+      ],
+      "props": {
+        "template": {
+          "type": "enum",
+          "values": [
+            "home",
+            "school",
+            "monument",
+            "pano360",
+            "custom"
+          ]
+        },
+        "template_id": {
+          "type": "id"
         }
       }
     },

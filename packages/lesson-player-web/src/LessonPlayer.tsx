@@ -13,6 +13,7 @@ import {
   currentCard,
   isReadOnly,
   LessonSession,
+  lessonPetEvent,
   petReaction,
   playerRules,
   readyMediaUrl,
@@ -35,6 +36,7 @@ import {
   Icon,
   IconButton,
   PetLine,
+  PetView,
   RatingButtons,
   SegmentedProgress,
   Text,
@@ -183,6 +185,7 @@ export function LessonPlayer(props: LessonPlayerProps) {
   const browsing = phase === "card" || phase === "question";
   const outcome = state.outcomes[card.key];
   const pet = props.pet;
+  const cornerPet = rules.cornerPet && pet ? { species: pet.species, ...petReaction(readOnly ? null : lessonPetEvent(phase), reducedMotion) } : null;
   const correctLines = [t("learn:LES-02.correct_pet_lines_rotate.1"), t("learn:LES-02.correct_pet_lines_rotate.2"), t("learn:LES-02.correct_pet_lines_rotate.3")];
 
   if (phase === "confidence") {
@@ -277,14 +280,33 @@ export function LessonPlayer(props: LessonPlayerProps) {
               {t(`learn:WEB-02.kind_${kind}` as Parameters<Translate>[0])}
             </span>
             {readOnly && <Icon name="Check" size={20} color="success" label={t("learn:WEB-02.read_only_note")} />}
-            {narration.toggle && (
-              <span className="ms-auto">
-                <IconButton
-                  icon={narration.status === "playing" ? "PauseCircle" : "SpeakerHigh"}
-                  label={narration.status === "playing" ? t("learn:LES-01.listen_pause") : t("learn:LES-01.listen")}
-                  onPress={narration.toggle}
-                  testID="lesson-listen"
-                />
+            {(narration.toggle || cornerPet) && (
+              <span className="ms-auto flex items-center gap-2">
+                {narration.toggle && (
+                  <IconButton
+                    icon={narration.status === "playing" ? "PauseCircle" : "SpeakerHigh"}
+                    label={narration.status === "playing" ? t("learn:LES-01.listen_pause") : t("learn:LES-01.listen")}
+                    onPress={narration.toggle}
+                    testID="lesson-listen"
+                  />
+                )}
+                {cornerPet && (
+                  // LES-01 little learner: the pet stays at the top-right of every card and reacts (hop on
+                  // correct, think on wrong). Decorative: the feedback itself is announced.
+                  <span
+                    key={`${state.viewIndex}:${phase}`}
+                    aria-hidden
+                    data-testid="lesson-pet"
+                    data-mood={cornerPet.mood}
+                    data-hop={cornerPet.hop || undefined}
+                    className={cx(
+                      "inline-grid size-12 shrink-0 place-items-center overflow-hidden rounded-full bg-primary-tint",
+                      cornerPet.hop && "motion-safe:animate-[sm-hop_var(--sm-duration-slow)_ease-out_1]",
+                    )}
+                  >
+                    <PetView species={cornerPet.species} mood={cornerPet.mood} under10 decorative size={56} className="mt-[12%]" />
+                  </span>
+                )}
               </span>
             )}
           </div>

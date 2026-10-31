@@ -12,6 +12,7 @@
  * happy, excited, curious, sleepy) and whether to hop. Reduced motion never hops; the mood still
  * changes, so the reaction is not motion alone.
  */
+import type { Phase } from "./machine.js";
 import type { PlanCard } from "./plan.js";
 import type { PlayerRules } from "./rules.js";
 
@@ -60,5 +61,23 @@ export function petReaction(event: PetReactionEvent | null, reducedMotion: boole
       return { mood: "curious", hop: false };
     case null:
       return { mood: "happy", hop: false };
+  }
+}
+
+/**
+ * The reaction a lesson phase calls for (LES-01 little learner: the corner pet hops on correct and
+ * thinks on wrong). The guided finish (the answer shown with the pet) thinks too. Other phases: at rest.
+ */
+export function lessonPetEvent(phase: Phase): PetReactionEvent | null {
+  switch (phase) {
+    case "feedback":
+      return "correct";
+    case "hint":
+    case "explain":
+      return "wrong";
+    case "guided":
+      return "shown";
+    default:
+      return null;
   }
 }

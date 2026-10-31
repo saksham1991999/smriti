@@ -3,13 +3,14 @@
  * page by page, "Read to me" (on by default for little learners), the 2 s auto-turn after the
  * narration, "The end!" with [Read again] and [Done]. Props follow @smriti/lesson-player-web.
  */
-import { initialStory, PET_REACTION_MS, petReaction, planStory, reduceStory, type PetReactionEvent, type StoryAction, type StoryState } from "@smriti/lesson-core";
-import { Button, Chip, PetView, Text, useTheme, useUI } from "@smriti/ui-native";
+import { initialStory, PET_REACTION_MS, planStory, reduceStory, type PetReactionEvent, type StoryAction, type StoryState } from "@smriti/lesson-core";
+import { Button, Chip, Text, useTheme, useUI } from "@smriti/ui-native";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { View } from "react-native";
-import Animated, { FadeIn, SlideInRight, useAnimatedStyle, useSharedValue, withSequence, withTiming } from "react-native-reanimated";
+import Animated, { FadeIn, SlideInRight } from "react-native-reanimated";
 
 import { ActivityShell, audioSource, PetSays, Row, useClocked, useCompletion, type ActivityPlayerProps } from "./activity";
+import { CornerPet } from "./CornerPet";
 import { Media } from "./Media";
 
 export interface StoryPlayerProps extends ActivityPlayerProps {
@@ -68,7 +69,7 @@ export function StoryPlayer(props: StoryPlayerProps) {
       testID="story-player"
       header={
         <>
-          {little && props.pet ? <CornerPet species={props.pet.species} event={reaction.event} n={reaction.n} /> : null}
+          {little && props.pet ? <CornerPet species={props.pet.species} event={reaction.event} n={reaction.n} testID="story-pet" /> : null}
           <Text variant="label" tone="muted" testID="story-page-count">
             {t("learn:LRN-11.page", { n: s.page + 1, total })}
           </Text>
@@ -146,31 +147,4 @@ function usePageReaction(page: number, end: boolean): { event: PetReactionEvent 
     return () => clearTimeout(id);
   }, [page, end]);
   return r;
-}
-
-/**
- * LRN-11 little learner: the pet in the corner reacts at each page turn (its mood changes, and it
- * hops unless motion is reduced). Decorative: the page and its words are announced already.
- */
-function CornerPet({ species, event, n }: { species: "cat" | "dog"; event: PetReactionEvent | null; n: number }) {
-  const theme = useTheme();
-  const { reducedMotion } = useUI();
-  const r = petReaction(event, reducedMotion);
-  const y = useSharedValue(0);
-  useEffect(() => {
-    if (r.hop) y.value = withSequence(withTiming(-8, { duration: theme.motion.duration.base }), withTiming(0, { duration: theme.motion.duration.base }));
-  }, [n, r.hop, y, theme.motion.duration.base]);
-  const hop = useAnimatedStyle(() => ({ transform: [{ translateY: y.value }] }));
-  return (
-    <Animated.View
-      testID="story-pet"
-      importantForAccessibility="no-hide-descendants"
-      accessibilityElementsHidden
-      style={[{ width: 56, height: 56, borderRadius: 28, overflow: "hidden", alignItems: "center", backgroundColor: theme.colors.primaryTint }, hop]}
-    >
-      <View testID={`story-pet-${r.mood}`}>
-        <PetView species={species} mood={r.mood} under10 decorative size={64} style={{ marginTop: 7 }} />
-      </View>
-    </Animated.View>
-  );
 }

@@ -86,7 +86,9 @@ describe("player rules", () => {
       narrationAutoPlay: true,
       guidedFinish: true,
       fixRow: false,
+      cornerPet: true,
     });
+    expect(playerRules("deep_dive").cornerPet).toBe(false);
     expect(playerRules("deep_dive")).toMatchObject({ tone: "standard", combos: true, confidenceStep: true, guidedFinish: false, timers: false });
     expect(playerRules("quick_check")).toMatchObject({ hints: false, attemptsAllowed: 1, combos: false, confidenceStep: false });
   });

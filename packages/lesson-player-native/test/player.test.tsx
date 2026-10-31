@@ -209,6 +209,32 @@ describe("LessonPlayer", () => {
     expect(screen.getByTestId("feedback-hint")).toHaveTextContent(/Fixture trap A1\.b/);
   });
 
+  it("keeps the corner pet on every little learner card: thinks on a wrong try, cheers on the win", async () => {
+    const hidden = { includeHiddenElements: true };
+    await renderPlayer("little", "fx.chapter-a.topic-a", undefined, 3, { pet: { species: "cat", name: "Miko" } });
+    expect(screen.getByTestId("lesson-pet", hidden).props.accessibilityElementsHidden).toBe(true);
+    expect(screen.getByTestId("lesson-pet-happy", hidden)).toBeTruthy();
+    await fireEvent.press(screen.getByTestId("option-b"));
+    await fireEvent.press(screen.getByTestId("lesson-check"));
+    expect(screen.getByTestId("lesson-pet-curious", hidden)).toBeTruthy();
+    await fireEvent.press(screen.getByTestId("lesson-try-again"));
+    await fireEvent.press(screen.getByTestId("option-c"));
+    await fireEvent.press(screen.getByTestId("lesson-check"));
+    expect(screen.getByTestId("lesson-pet-excited", hidden)).toBeTruthy();
+    await fireEvent.press(screen.getByTestId("lesson-continue"));
+    expect(screen.getByTestId("lesson-pet-happy", hidden)).toBeTruthy();
+  });
+
+  it("has no corner pet outside little learner mode or without a pet", async () => {
+    await renderPlayer("deep_dive", "fx.chapter-a.topic-a", undefined, undefined, { pet: { species: "cat", name: "Miko" } });
+    expect(screen.queryByTestId("lesson-pet", { includeHiddenElements: true })).toBeNull();
+  });
+
+  it("has no corner pet for a little learner without a pet", async () => {
+    await renderPlayer("little", "fx.chapter-a.topic-a");
+    expect(screen.queryByTestId("lesson-pet", { includeHiddenElements: true })).toBeNull();
+  });
+
   describe("card narration", () => {
     const ready = (b: TypedBundle) => {
       const ref = (b.cards[0] as { narration?: string }).narration!;

@@ -4849,8 +4849,25 @@ export interface components {
       /** Title */
       title: string;
     };
+    /**
+     * DeletionRequest
+     * @description Optional body of ``POST /v1/account/deletion``. An account that signs in with Apple sends
+     *     the authorization code from its fresh Sign in with Apple (AUTH-15), so the server can revoke
+     *     the app's Apple tokens (auth flow §6.8, Apple TN3194).
+     */
+    DeletionRequest: {
+      /** Apple Authorization Code */
+      apple_authorization_code?: string | null;
+      /** Apple Client Id */
+      apple_client_id?: string | null;
+    };
     /** DeletionResponse */
     DeletionResponse: {
+      /**
+       * Apple Revoked
+       * @default false
+       */
+      apple_revoked: boolean;
       /** Scheduled For */
       scheduled_for: string | null;
     };
@@ -9434,7 +9451,11 @@ export interface operations {
       path?: never;
       cookie?: never;
     };
-    requestBody?: never;
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["DeletionRequest"] | null;
+      };
+    };
     responses: {
       /** @description Successful Response */
       202: {

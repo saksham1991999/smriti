@@ -95,6 +95,15 @@ class IntegrationSettings(BaseSettings):
     app_attest_root_ca_pem: str = ""
     attestation_nonce_ttl_s: int = 300
 
+    # Sign in with Apple token revocation on account deletion (auth flow §6.8, Apple TN3194).
+    # The client secret is a short-lived ES256 JWT made per call from the team id, key id and
+    # .p8 key; client ids are the variant bundle ids, comma separated.
+    apple_signin_base_url: str = "https://appleid.apple.com"
+    apple_team_id: str = ""
+    apple_signin_key_id: str = ""
+    apple_signin_private_key: str = ""
+    apple_signin_client_ids: str = ""
+
     # Realtime fan-out for live mocks: supabase | redis. Supabase when its URL and service key are
     # set outside local; Redis pub/sub (and the SSE stream) always.
     realtime_provider: str = ""

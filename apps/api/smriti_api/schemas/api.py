@@ -319,8 +319,21 @@ class MergeStatus(BaseModel):
     finished_at: datetime | None
 
 
+class DeletionRequest(BaseModel):
+    """Optional body of ``POST /v1/account/deletion``. An account that signs in with Apple sends
+    the authorization code from its fresh Sign in with Apple (AUTH-15), so the server can revoke
+    the app's Apple tokens (auth flow §6.8, Apple TN3194)."""
+
+    apple_authorization_code: str | None = Field(default=None, min_length=1, max_length=2048)
+    # The bundle id the code was issued to (the variant app). Needed when several are configured.
+    apple_client_id: str | None = Field(default=None, min_length=1, max_length=255)
+
+
 class DeletionResponse(BaseModel):
     scheduled_for: datetime | None
+    # True when Apple tokens were revoked during this request; false when no code was sent or
+    # Apple could not be reached (the deletion still goes ahead).
+    apple_revoked: bool = False
 
 
 # --- gamification ----------------------------------------------------------------------------

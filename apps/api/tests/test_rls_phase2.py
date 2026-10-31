@@ -37,7 +37,13 @@ def _claims(user_id: uuid.UUID) -> dict[str, Any]:
 
 @pytest.mark.parametrize(
     "table",
-    ["ai.tts_cache", "app.attest_keys", "ops.integrity_flags", "ops.live_mock_runs"],
+    [
+        "ai.tts_cache",
+        "ai.image_cache",
+        "app.attest_keys",
+        "ops.integrity_flags",
+        "ops.live_mock_runs",
+    ],
 )
 async def test_service_only_tables(services: AppServices, table: str) -> None:
     me = await _user(services)

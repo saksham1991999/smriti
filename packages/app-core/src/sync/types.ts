@@ -109,6 +109,15 @@ export interface SyncEventPayloads {
   palace_saved: PalaceDoc;
   /** (v1.5) A deleted palace stays deleted. */
   palace_deleted: { palace_id: string };
+  /** (v1.6) LES-13: topics a Test out passed (`topicTestedOutPayload`, `applyTopicMark`). */
+  topic_tested_out: { check_id: string; kind: 'test_out'; chapter_id: string; topic_ids: string[] };
+  /** (v1.6) LES-13 "Undo this" (`topicTestOutUndonePayload`). */
+  topic_test_out_undone: {
+    check_id: string;
+    topics: { topic_id: string; previous_status: 'not_started' | 'in_progress' | null }[];
+  };
+  /** (v1.6) LRN-02 "Reset chapter progress" (`chapterResetPayload`). */
+  chapter_reset: { chapter_id: string };
 }
 
 /** The activity kinds with a completion event (lesson-core `ActivityKind`). */
@@ -144,6 +153,9 @@ export const CONTRACT_V1_EVENT_TYPES = [
   'activity_completed',
   'palace_saved',
   'palace_deleted',
+  'topic_tested_out',
+  'topic_test_out_undone',
+  'chapter_reset',
 ] as const satisfies readonly SyncEventType[];
 
 /**
@@ -157,6 +169,12 @@ export const CONTRACT_V14_EVENT_TYPES = ['activity_completed'] as const satisfie
  * send them only to a v1.5 server.
  */
 export const CONTRACT_V15_EVENT_TYPES = ['palace_saved', 'palace_deleted'] as const satisfies readonly SyncEventType[];
+
+/**
+ * Events added in contract v1.6 (topic marks from Test out and chapter reset). A v1.5 server
+ * rejects them as `unknown_type`, so send them only to a v1.6 server.
+ */
+export const CONTRACT_V16_EVENT_TYPES = ['topic_tested_out', 'topic_test_out_undone', 'chapter_reset'] as const satisfies readonly SyncEventType[];
 
 export interface WireEvent<T extends SyncEventType = SyncEventType> {
   event_id: string;

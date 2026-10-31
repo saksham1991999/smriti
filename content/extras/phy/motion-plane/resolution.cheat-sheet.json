@@ -1,0 +1,98 @@
+{
+  "schema": "cheat_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Cheat sheet for this topic. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph103 (summary and table, pp. 44-46): अदिश, सदिश, शीर्ष व पुच्छ, समांतर चतुर्भुज, क्रम-विनिमेय, साहचर्य, शून्य सदिश, एकांक सदिश, घटक, विश्लेषणात्मक विधि, स्थिति सदिश, प्रक्षेप्य, परवलय, अधिकतम ऊँचाई, क्षैतिज परास, एकसमान वृत्तीय गति, अभिकेंद्र त्वरण, कोणीय चाल, आवर्तकाल, आवृत्ति. Other wording is ours.",
+  "id": "cs.phy.motion-plane.resolution",
+  "scope": "topic",
+  "topic": "phy.motion-plane.resolution",
+  "title": {
+    "en": "Resolution of Vectors",
+    "hi": "सदिशों का वियोजन"
+  },
+  "concepts": [
+    "phy.motion-plane.resolution.core.unit-vector-resolution"
+  ],
+  "key_ideas": [
+    {
+      "en": "$\\vec{A} = \\lambda \\vec{a} + \\mu \\vec{b}$ along any two non-parallel vectors.",
+      "hi": "किन्हीं दो असमांतर सदिशों के अनुदिश $\\vec{A} = \\lambda \\vec{a} + \\mu \\vec{b}$।"
+    },
+    {
+      "en": "Unit vector: magnitude 1, no unit; $\\hat{n} = \\vec{A} / |\\vec{A}|$.",
+      "hi": "एकांक सदिश: परिमाण 1, कोई मात्रक नहीं; $\\hat{n} = \\vec{A} / |\\vec{A}|$।"
+    },
+    {
+      "en": "Components add separately: $R_x = A_x + B_x$, $R_y = A_y + B_y$.",
+      "hi": "घटक अलग-अलग जुड़ते हैं: $R_x = A_x + B_x$, $R_y = A_y + B_y$।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Components",
+        "hi": "घटक"
+      },
+      "latex": "A_x = A\\cos\\theta,\\ A_y = A\\sin\\theta"
+    },
+    {
+      "name": {
+        "en": "Magnitude and direction",
+        "hi": "परिमाण और दिशा"
+      },
+      "latex": "A = \\sqrt{A_x^2 + A_y^2},\\ \\tan\\theta = \\frac{A_y}{A_x}"
+    },
+    {
+      "name": {
+        "en": "Unit vector",
+        "hi": "एकांक सदिश"
+      },
+      "latex": "\\hat{n} = \\frac{\\vec{A}}{|\\vec{A}|}"
+    }
+  ],
+  "mnemonics": [],
+  "traps": [
+    {
+      "mistake": {
+        "en": "A unit vector has the unit of the quantity, such as metres.",
+        "hi": "एकांक सदिश का मात्रक राशि वाला होता है, जैसे मीटर।"
+      },
+      "correct": {
+        "en": "A unit vector has no dimension and no unit.",
+        "hi": "एकांक सदिश की न विमा होती है, न मात्रक।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "$A_x = A\\sin\\theta$ when $\\theta$ is measured from the x-axis.",
+        "hi": "$A_x = A\\sin\\theta$, जब $\\theta$ x-अक्ष से मापा हो।"
+      },
+      "correct": {
+        "en": "From the x-axis, $A_x = A\\cos\\theta$.",
+        "hi": "x-अक्ष से मापने पर $A_x = A\\cos\\theta$।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "Components are always positive.",
+        "hi": "घटक सदा धनात्मक होते हैं।"
+      },
+      "correct": {
+        "en": "A component can be positive, negative or zero.",
+        "hi": "घटक धनात्मक, ऋणात्मक या शून्य हो सकता है।"
+      }
+    }
+  ],
+  "diagram": "img.motion-plane.rope-pull",
+  "hi_source": "translation"
+}

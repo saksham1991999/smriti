@@ -13,6 +13,7 @@ export * from './storage/memory';
 export * from './sync/types';
 export * from './sync/outbox';
 export * from './sync/activity';
+export * from './sync/topicMarks';
 export * from './palace/types';
 export * from './palace/ops';
 export * from './palace/selectors';

@@ -41,10 +41,17 @@ const TABLE: Record<string, UnitInfo> = {
   // acceleration (m/s^2)
   "m/s^2": U("acceleration", 1),
   "m/s²": U("acceleration", 1),
+  "cm/s^2": U("acceleration", 1e-2),
+  "cm/s²": U("acceleration", 1e-2),
+  // angular speed (rad/s)
+  "rad/s": U("angular_speed", 1),
   // force (N)
   N: U("force", 1),
   kN: U("force", 1e3),
   dyn: U("force", 1e-5),
+  // momentum and impulse (kg m/s = N s)
+  "kg m/s": U("momentum", 1),
+  "N s": U("momentum", 1),
   // energy (J)
   J: U("energy", 1),
   kJ: U("energy", 1e3),

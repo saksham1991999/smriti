@@ -122,6 +122,7 @@ async def test_voice_session_tools_and_transcript(
                 "queue_cards",
                 "get_mastery",
                 "make_flashcard",
+                "generate_image",
             }
             ctx = fake.contexts[-1]
             assert voice.VOICE_RULES in ctx.system_instruction

@@ -1,0 +1,130 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Quick Revision for this topic. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph104 (text, summary and table, pp. 64-68): जड़त्व, न्यूटन का गति का प्रथम/द्वितीय/तृतीय नियम, संवेग, आवेग, क्रिया-प्रतिक्रिया युगल, निकाय, संवेग संरक्षण, बल निर्देशक आरेख, अभिलंब बल, स्थैतिक घर्षण, गतिज घर्षण, घर्षण गुणांक, लोटनिक घर्षण, बॉल-बेयरिंग, स्नेहक, अभिकेंद्र बल, वर्तुल गति, समतल सड़क, ढालू सड़क, अनुकूलतम चाल. Other wording is ours.",
+  "id": "phy.laws-of-motion.friction:quick_revision",
+  "topic": "phy.laws-of-motion.friction",
+  "mode": "quick_revision",
+  "estimated_minutes": 4,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.laws-of-motion.friction.core.static-kinetic-friction",
+    "phy.laws-of-motion.friction.core.rolling-friction"
+  ],
+  "cards": [
+    {
+      "id": "phy.laws-of-motion.friction:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "phy.laws-of-motion.friction.core.static-kinetic-friction",
+        "phy.laws-of-motion.friction.core.rolling-friction"
+      ],
+      "depth": 1,
+      "sheet": "cs.phy.laws-of-motion.friction"
+    },
+    {
+      "id": "phy.laws-of-motion.friction:qr:02",
+      "type": "question",
+      "concepts": [
+        "phy.laws-of-motion.friction.core.static-kinetic-friction"
+      ],
+      "depth": 2,
+      "question": "q.phy.laws-of-motion.friction.0002"
+    },
+    {
+      "id": "phy.laws-of-motion.friction:qr:03",
+      "type": "question",
+      "concepts": [
+        "phy.laws-of-motion.friction.core.static-kinetic-friction"
+      ],
+      "depth": 3,
+      "question": "q.phy.laws-of-motion.friction.0004"
+    },
+    {
+      "id": "phy.laws-of-motion.friction:qr:04",
+      "type": "question",
+      "concepts": [
+        "phy.laws-of-motion.friction.core.rolling-friction"
+      ],
+      "depth": 2,
+      "question": "q.phy.laws-of-motion.friction.0009"
+    },
+    {
+      "id": "phy.laws-of-motion.friction:qr:05",
+      "type": "summary",
+      "concepts": [
+        "phy.laws-of-motion.friction.core.static-kinetic-friction",
+        "phy.laws-of-motion.friction.core.rolling-friction"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "$f_s \\le \\mu_s N$, $f_k = \\mu_k N$; angle of repose $\\tan\\theta = \\mu_s$.",
+          "hi": "$f_s \\le \\mu_s N$, $f_k = \\mu_k N$; विराम कोण $\\tan\\theta = \\mu_s$।"
+        },
+        {
+          "en": "Rolling friction is far smaller than sliding friction.",
+          "hi": "लोटनिक घर्षण सर्पी घर्षण से बहुत कम है।"
+        }
+      ]
+    },
+    {
+      "id": "phy.laws-of-motion.friction:qr:06",
+      "type": "common_traps",
+      "concepts": [
+        "phy.laws-of-motion.friction.core.static-kinetic-friction",
+        "phy.laws-of-motion.friction.core.rolling-friction"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "Static friction is always $\\mu_s N$.",
+            "hi": "स्थैतिक घर्षण सदा $\\mu_s N$ होता है।"
+          },
+          "correct": {
+            "en": "It equals the applied push, up to a maximum of $\\mu_s N$.",
+            "hi": "यह लगाए गए धक्के के बराबर है, अधिकतम $\\mu_s N$ तक।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "Friction always opposes motion.",
+            "hi": "घर्षण सदा गति का विरोध करता है।"
+          },
+          "correct": {
+            "en": "It opposes relative motion; it can drive a body forward.",
+            "hi": "यह आपेक्षिक गति का विरोध करता है; यह पिंड को आगे भी ले जा सकता है।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "A larger contact area gives more friction.",
+            "hi": "अधिक संपर्क क्षेत्रफल से अधिक घर्षण।"
+          },
+          "correct": {
+            "en": "Friction is independent of the area of contact.",
+            "hi": "घर्षण संपर्क क्षेत्रफल पर निर्भर नहीं।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

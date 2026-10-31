@@ -1,0 +1,510 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+      "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 3 Samtal mein Gati: Hindi terms (summary and table)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph103.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 44-46"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section or example it rests on; questions that state g = 10 m/s² do so for round numbers. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph103 (summary and table, pp. 44-46): अदिश, सदिश, शीर्ष व पुच्छ, समांतर चतुर्भुज, क्रम-विनिमेय, साहचर्य, शून्य सदिश, एकांक सदिश, घटक, विश्लेषणात्मक विधि, स्थिति सदिश, प्रक्षेप्य, परवलय, अधिकतम ऊँचाई, क्षैतिज परास, एकसमान वृत्तीय गति, अभिकेंद्र त्वरण, कोणीय चाल, आवर्तकाल, आवृत्ति. Other wording is ours.",
+  "topic": "phy.motion-plane.circular-kinematics",
+  "questions": [
+    {
+      "id": "q.phy.motion-plane.circular-kinematics.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.circular-kinematics.core.uniform-circular-motion",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "For a particle in uniform circular motion, which quantity stays constant?",
+        "hi": "एकसमान वृत्तीय गति में किसी कण की कौन-सी राशि नियत रहती है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Speed",
+            "hi": "चाल"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Velocity",
+            "hi": "वेग"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Acceleration vector",
+            "hi": "त्वरण सदिश"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Position vector",
+            "hi": "स्थिति सदिश"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which one has no direction?",
+          "hi": "किसकी कोई दिशा नहीं?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "'Uniform' is about speed; every vector here keeps turning.",
+          "hi": "'एकसमान' चाल के बारे में है; यहाँ हर सदिश घूमता रहता है।"
+        },
+        "steps": [
+          {
+            "en": "Speed is constant; velocity, acceleration and position vectors all change direction.",
+            "hi": "चाल नियत है; वेग, त्वरण और स्थिति सदिश सभी की दिशा बदलती है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Its direction changes along the tangent.",
+              "hi": "स्पर्श रेखा के साथ इसकी दिशा बदलती है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Its magnitude is fixed but it turns to face the centre.",
+              "hi": "इसका परिमाण स्थिर है पर यह केंद्र की ओर घूमता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "It sweeps round as the particle moves.",
+              "hi": "कण के चलने पर यह घूमता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 20,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-plane.circular-kinematics.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.circular-kinematics.core.uniform-circular-motion",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A car goes round a circular track of radius 50 m at a steady 10 m/s. Its centripetal acceleration is",
+        "hi": "एक कार 50 m त्रिज्या के वृत्ताकार ट्रैक पर स्थिर 10 m/s से घूमती है। उसका अभिकेंद्र त्वरण है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "2 m/s²",
+            "hi": "2 m/s²"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "0.2 m/s²",
+            "hi": "0.2 m/s²"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "5 m/s²",
+            "hi": "5 m/s²"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "500 m/s²",
+            "hi": "500 m/s²"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$a_c = v^2/R$",
+          "hi": "$a_c = v^2/R$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Square the speed and divide by the radius.",
+          "hi": "चाल का वर्ग करके त्रिज्या से भाग दीजिए।"
+        },
+        "steps": [
+          {
+            "en": "$a_c = \\frac{10^2}{50} = 2$ m/s²",
+            "hi": "$a_c = \\frac{10^2}{50} = 2$ m/s²"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is v/R, without squaring v.",
+              "hi": "यह v/R है, v का वर्ग किए बिना।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is R/v.",
+              "hi": "यह R/v है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That multiplies instead of dividing.",
+              "hi": "यह भाग के बजाय गुणा करता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-plane.circular-kinematics.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.circular-kinematics.core.uniform-circular-motion",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A particle moves on a circle of radius R. After half a revolution, its displacement and distance travelled are",
+        "hi": "एक कण त्रिज्या R के वृत्त पर चलता है। आधे चक्कर के बाद उसका विस्थापन और तय दूरी हैं"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "2R and πR",
+            "hi": "2R और πR"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "πR and 2R",
+            "hi": "πR और 2R"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "0 and 2πR",
+            "hi": "0 और 2πR"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "2R and 2πR",
+            "hi": "2R और 2πR"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Where is the particle after half a turn?",
+          "hi": "आधे चक्कर के बाद कण कहाँ है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Half way round, it is diametrically opposite the start.",
+          "hi": "आधे चक्कर पर यह आरंभ के ठीक सामने होता है।"
+        },
+        "steps": [
+          {
+            "en": "Displacement is the diameter, 2R; the path is half the circumference, πR.",
+            "hi": "विस्थापन व्यास 2R है; पथ परिधि का आधा, πR है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The two quantities are swapped.",
+              "hi": "दोनों राशियाँ अदल-बदल गई हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is for a full revolution.",
+              "hi": "यह पूरे चक्कर के लिए है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The distance is half the circumference.",
+              "hi": "दूरी परिधि की आधी है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-plane.circular-kinematics.0004",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.circular-kinematics.core.uniform-circular-motion",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A particle moves on a circle of radius 2 m with a constant angular speed of 3 rad/s. Its centripetal acceleration, in m/s², is",
+        "hi": "एक कण 2 m त्रिज्या के वृत्त पर नियत कोणीय चाल 3 rad/s से चलता है। उसका अभिकेंद्र त्वरण, m/s² में, है"
+      },
+      "answer": {
+        "value": 18,
+        "unit": "m/s²"
+      },
+      "hints": [
+        {
+          "en": "$a_c = \\omega^2 R$",
+          "hi": "$a_c = \\omega^2 R$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "With angular speed given, use $\\omega^2 R$.",
+          "hi": "कोणीय चाल दी हो तो $\\omega^2 R$ लगाइए।"
+        },
+        "steps": [
+          {
+            "en": "$a_c = \\omega^2 R = 3^2 \\times 2 = 18$ m/s²",
+            "hi": "$a_c = \\omega^2 R = 3^2 \\times 2 = 18$ m/s²"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Using $\\omega R$ gives 6, which is the speed in m/s.",
+              "hi": "$\\omega R$ लेने पर 6 आता है, जो m/s में चाल है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-plane.circular-kinematics.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.circular-kinematics.core.uniform-circular-motion",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "In uniform circular motion, if the speed is doubled and the radius is halved, the centripetal acceleration becomes",
+        "hi": "एकसमान वृत्तीय गति में यदि चाल दोगुनी और त्रिज्या आधी कर दी जाए, तो अभिकेंद्र त्वरण हो जाता है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "8 times",
+            "hi": "8 गुना"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "4 times",
+            "hi": "4 गुना"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "2 times",
+            "hi": "2 गुना"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "unchanged",
+            "hi": "अपरिवर्तित"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$a_c = v^2/R$",
+          "hi": "$a_c = v^2/R$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Speed is squared in the numerator; radius sits in the denominator.",
+          "hi": "अंश में चाल का वर्ग है; हर में त्रिज्या।"
+        },
+        "steps": [
+          {
+            "en": "$a_c' = \\frac{(2v)^2}{R/2} = \\frac{8v^2}{R} = 8a_c$",
+            "hi": "$a_c' = \\frac{(2v)^2}{R/2} = \\frac{8v^2}{R} = 8a_c$"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That counts only the speed change.",
+              "hi": "यह केवल चाल का परिवर्तन गिनता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That forgets to square the speed.",
+              "hi": "इसमें चाल का वर्ग छूट गया।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Both changes increase the acceleration.",
+              "hi": "दोनों परिवर्तन त्वरण बढ़ाते हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

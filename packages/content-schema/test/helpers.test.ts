@@ -81,6 +81,19 @@ describe("blanks and units", () => {
     expect(convertUnit(1, "°C^-1", "°C")).toBeUndefined();
   });
 
+  it("converts centripetal acceleration units and knows angular speed", () => {
+    expect(convertUnit(2.3, "cm/s²", "m/s²")).toBeCloseTo(0.023, 12);
+    expect(convertUnit(18, "m/s^2", "cm/s^2")).toBeCloseTo(1800);
+    expect(convertUnit(0.44, "rad/s", "rad/s")).toBeCloseTo(0.44);
+    expect(convertUnit(1, "rad/s", "m/s")).toBeUndefined();
+  });
+
+  it("treats momentum in kg m/s and impulse in N s as one dimension", () => {
+    expect(convertUnit(3.6, "N s", "kg m/s")).toBeCloseTo(3.6);
+    expect(convertUnit(0.08, "kg m/s", "N s")).toBeCloseTo(0.08);
+    expect(convertUnit(1, "N s", "N")).toBeUndefined();
+  });
+
   it("converts density between g/cm^3 and kg/m^3", () => {
     expect(convertUnit(4.8, "g/cm^3", "kg/m^3")).toBeCloseTo(4800);
     expect(convertUnit(1000, "kg/m³", "g/cm³")).toBeCloseTo(1);

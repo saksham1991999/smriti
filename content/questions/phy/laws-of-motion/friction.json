@@ -1,0 +1,932 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 4 Gati ke Niyam: Hindi terms (text, summary and table)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph104.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 64-68"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section or example it rests on; questions that state g = 10 m/s² do so for round numbers. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph104 (text, summary and table, pp. 64-68): जड़त्व, न्यूटन का गति का प्रथम/द्वितीय/तृतीय नियम, संवेग, आवेग, क्रिया-प्रतिक्रिया युगल, निकाय, संवेग संरक्षण, बल निर्देशक आरेख, अभिलंब बल, स्थैतिक घर्षण, गतिज घर्षण, घर्षण गुणांक, लोटनिक घर्षण, बॉल-बेयरिंग, स्नेहक, अभिकेंद्र बल, वर्तुल गति, समतल सड़क, ढालू सड़क, अनुकूलतम चाल. Other wording is ours.",
+  "topic": "phy.laws-of-motion.friction",
+  "questions": [
+    {
+      "id": "q.phy.laws-of-motion.friction.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.laws-of-motion.friction.core.static-kinetic-friction",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A 10 kg block rests on a floor with $\\mu_s = 0.4$. A horizontal push of 30 N is applied. Taking $g = 10$ m/s², the friction force on the block is",
+        "hi": "10 kg का गुटका फ़र्श पर रखा है, जहाँ $\\mu_s = 0.4$ है। 30 N का क्षैतिज धक्का लगाया जाता है। $g = 10$ m/s² लेकर गुटके पर घर्षण बल है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "30 N",
+            "hi": "30 N"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "40 N",
+            "hi": "40 N"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "0",
+            "hi": "0"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "10 N",
+            "hi": "10 N"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Compare the push with the limit.",
+          "hi": "धक्के की तुलना सीमा से कीजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The limit is 40 N, more than the push, so the block stays and friction matches the push.",
+          "hi": "सीमा 40 N है, जो धक्के से अधिक है, इसलिए गुटका स्थिर रहता है और घर्षण धक्के के बराबर होता है।"
+        },
+        "steps": [
+          {
+            "en": "$(f_s)_{max} = 0.4 \\times 100 = 40$ N, more than 30 N.",
+            "hi": "$(f_s)_{max} = 0.4 \\times 100 = 40$ N, जो 30 N से अधिक है।"
+          },
+          {
+            "en": "At rest, $f_s = 30$ N.",
+            "hi": "विराम में $f_s = 30$ N।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "40 N is the maximum, reached only if the push reaches it.",
+              "hi": "40 N अधिकतम है, जो धक्के के वहाँ पहुँचने पर ही आता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Friction appears as soon as there is a push.",
+              "hi": "धक्का लगते ही घर्षण आता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is the difference, which would only matter if it slid.",
+              "hi": "यह अंतर है, जो खिसकने पर ही मायने रखता।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.laws-of-motion.friction.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.laws-of-motion.friction.core.static-kinetic-friction",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The limiting static friction between two surfaces",
+        "hi": "दो सतहों के बीच सीमांत स्थैतिक घर्षण"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "is independent of the area of contact",
+            "hi": "संपर्क क्षेत्रफल पर निर्भर नहीं करता"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "doubles if the area of contact doubles",
+            "hi": "संपर्क क्षेत्रफल दोगुना होने पर दोगुना हो जाता है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "does not depend on the normal force",
+            "hi": "अभिलंब बल पर निर्भर नहीं करता"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "is smaller than kinetic friction",
+            "hi": "गतिज घर्षण से कम होता है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$(f_s)_{max} = \\mu_s N$",
+          "hi": "$(f_s)_{max} = \\mu_s N$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Limiting friction depends on the normal force and the surfaces, not on area.",
+          "hi": "सीमांत घर्षण अभिलंब बल और सतहों पर निर्भर है, क्षेत्रफल पर नहीं।"
+        },
+        "steps": [
+          {
+            "en": "$(f_s)_{max} = \\mu_s N$, with no area term.",
+            "hi": "$(f_s)_{max} = \\mu_s N$, क्षेत्रफल का कोई पद नहीं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Area does not appear in the law.",
+              "hi": "नियम में क्षेत्रफल नहीं आता।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "It is proportional to the normal force.",
+              "hi": "यह अभिलंब बल के अनुक्रमानुपाती है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Kinetic friction is the smaller one.",
+              "hi": "गतिज घर्षण छोटा होता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.laws-of-motion.friction.0003",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.laws-of-motion.friction.core.static-kinetic-friction",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A block on an inclined plane just begins to slide when the plane is tilted to an angle $\\theta$. If $\\mu_s = \\frac{1}{\\sqrt{3}}$, $\\theta$ in degrees is",
+        "hi": "आनत तल पर रखा गुटका तल को $\\theta$ कोण तक झुकाने पर खिसकना शुरू करता है। यदि $\\mu_s = \\frac{1}{\\sqrt{3}}$, तो $\\theta$, डिग्री में, है"
+      },
+      "answer": {
+        "value": 30,
+        "unit": "°"
+      },
+      "hints": [
+        {
+          "en": "$\\tan\\theta_{max} = \\mu_s$",
+          "hi": "$\\tan\\theta_{max} = \\mu_s$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "At the point of slipping, $\\tan\\theta = \\mu_s$.",
+          "hi": "खिसकने के बिंदु पर $\\tan\\theta = \\mu_s$।"
+        },
+        "steps": [
+          {
+            "en": "$\\tan\\theta = \\frac{1}{\\sqrt{3}}$, so $\\theta = 30°$",
+            "hi": "$\\tan\\theta = \\frac{1}{\\sqrt{3}}$, अतः $\\theta = 30°$"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Using $\\sin\\theta = \\mu_s$ gives about 35, which is wrong.",
+              "hi": "$\\sin\\theta = \\mu_s$ लेने पर लगभग 35 आता है, जो गलत है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.laws-of-motion.friction.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.laws-of-motion.friction.core.static-kinetic-friction",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A crate rests on the flat floor of a truck; $\\mu_s = 0.3$. Taking $g = 10$ m/s², the largest acceleration of the truck for which the crate does not slip is",
+        "hi": "एक बक्सा ट्रक के समतल फ़र्श पर रखा है; $\\mu_s = 0.3$। $g = 10$ m/s² लेकर ट्रक का वह अधिकतम त्वरण जिस पर बक्सा न खिसके, है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "3 m/s²",
+            "hi": "3 m/s²"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "0.3 m/s²",
+            "hi": "0.3 m/s²"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "30 m/s²",
+            "hi": "30 m/s²"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "10 m/s²",
+            "hi": "10 m/s²"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$a_{max} = \\mu_s g$",
+          "hi": "$a_{max} = \\mu_s g$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Static friction must give the crate the truck's acceleration.",
+          "hi": "स्थैतिक घर्षण को बक्से को ट्रक का त्वरण देना है।"
+        },
+        "steps": [
+          {
+            "en": "$ma \\le \\mu_s mg$, so $a_{max} = 0.3 \\times 10 = 3$ m/s²",
+            "hi": "$ma \\le \\mu_s mg$, अतः $a_{max} = 0.3 \\times 10 = 3$ m/s²"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "g was left out.",
+              "hi": "g छूट गया।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The coefficient was multiplied by 100.",
+              "hi": "गुणांक को 100 से गुणा कर दिया गया।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That ignores friction's limit.",
+              "hi": "यह घर्षण की सीमा को अनदेखा करता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.laws-of-motion.friction.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.laws-of-motion.friction.core.static-kinetic-friction",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A 5 kg block is pulled along a level floor by a horizontal 30 N force; $\\mu_k = 0.2$. Taking $g = 10$ m/s², its acceleration is",
+        "hi": "5 kg के गुटके को समतल फ़र्श पर 30 N के क्षैतिज बल से खींचा जाता है; $\\mu_k = 0.2$। $g = 10$ m/s² लेकर उसका त्वरण है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "4 m/s²",
+            "hi": "4 m/s²"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "6 m/s²",
+            "hi": "6 m/s²"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "2 m/s²",
+            "hi": "2 m/s²"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "8 m/s²",
+            "hi": "8 m/s²"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$a = (F - f_k)/m$",
+          "hi": "$a = (F - f_k)/m$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Subtract kinetic friction from the pull, then divide by the mass.",
+          "hi": "खिंचाव से गतिज घर्षण घटाइए, फिर द्रव्यमान से भाग दीजिए।"
+        },
+        "steps": [
+          {
+            "en": "$f_k = 0.2 \\times 50 = 10$ N",
+            "hi": "$f_k = 0.2 \\times 50 = 10$ N"
+          },
+          {
+            "en": "$a = \\frac{30 - 10}{5} = 4$ m/s²",
+            "hi": "$a = \\frac{30 - 10}{5} = 4$ m/s²"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That ignores friction.",
+              "hi": "यह घर्षण को अनदेखा करता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Friction was subtracted twice.",
+              "hi": "घर्षण दो बार घटाया गया।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Friction was added instead of subtracted.",
+              "hi": "घर्षण घटाने के बजाय जोड़ दिया गया।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.laws-of-motion.friction.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.laws-of-motion.friction.core.static-kinetic-friction",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A block slides down a plane inclined at $37°$ with $\\mu_k = 0.5$. Taking $g = 10$ m/s², $\\sin 37° = 0.6$ and $\\cos 37° = 0.8$, its acceleration is",
+        "hi": "एक गुटका $37°$ पर झुके तल पर $\\mu_k = 0.5$ के साथ नीचे खिसकता है। $g = 10$ m/s², $\\sin 37° = 0.6$ और $\\cos 37° = 0.8$ लेकर उसका त्वरण है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "2 m/s²",
+            "hi": "2 m/s²"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "6 m/s²",
+            "hi": "6 m/s²"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "10 m/s²",
+            "hi": "10 m/s²"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "4 m/s²",
+            "hi": "4 m/s²"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Resolve the weight along and normal to the plane.",
+          "hi": "भार को तल के अनुदिश और लंबवत वियोजित कीजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Gravity's part along the slope minus kinetic friction.",
+          "hi": "ढलान के अनुदिश गुरुत्व का भाग घटा गतिज घर्षण।"
+        },
+        "steps": [
+          {
+            "en": "$a = g(\\sin 37° - \\mu_k\\cos 37°) = 10(0.6 - 0.4) = 2$ m/s²",
+            "hi": "$a = g(\\sin 37° - \\mu_k\\cos 37°) = 10(0.6 - 0.4) = 2$ m/s²"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That ignores friction.",
+              "hi": "यह घर्षण को अनदेखा करता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is free fall.",
+              "hi": "यह मुक्त पतन है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is the friction term alone.",
+              "hi": "यह केवल घर्षण वाला पद है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.laws-of-motion.friction.0007",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.laws-of-motion.friction.core.rolling-friction",
+          "weight": 1
+        }
+      ],
+      "depth": 1,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "For the same weight, rolling friction compared with sliding friction is",
+        "hi": "समान भार के लिए सर्पी घर्षण की तुलना में लोटनिक घर्षण"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "much smaller",
+            "hi": "बहुत कम होता है"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "about the same",
+            "hi": "लगभग बराबर होता है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "much larger",
+            "hi": "बहुत अधिक होता है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "zero in practice",
+            "hi": "व्यवहार में शून्य होता है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Why do we put wheels on heavy loads?",
+          "hi": "हम भारी बोझ पर पहिए क्यों लगाते हैं?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "That is why wheels made such a difference.",
+          "hi": "इसीलिए पहियों ने इतना अंतर लाया।"
+        },
+        "steps": [
+          {
+            "en": "Rolling friction can be two or three orders of magnitude smaller.",
+            "hi": "लोटनिक घर्षण दो या तीन कोटि तक कम हो सकता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Rolling is far easier than sliding.",
+              "hi": "लुढ़कना फिसलने से कहीं आसान है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "It is the other way round.",
+              "hi": "बात उल्टी है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Slight deformation of the surfaces still causes some resistance.",
+              "hi": "सतहों की थोड़ी विकृति से फिर भी कुछ प्रतिरोध होता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 20,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.laws-of-motion.friction.0008",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.laws-of-motion.friction.core.rolling-friction",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Ball bearings reduce friction in a machine because they",
+        "hi": "बॉल-बेयरिंग मशीन में घर्षण घटाते हैं क्योंकि वे"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "replace sliding friction with much smaller rolling friction",
+            "hi": "सर्पी घर्षण की जगह बहुत कम लोटनिक घर्षण लाते हैं"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "increase the area of contact",
+            "hi": "संपर्क क्षेत्रफल बढ़ाते हैं"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "reduce the mass of the moving parts",
+            "hi": "गतिमान भागों का द्रव्यमान घटाते हैं"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "remove the normal force",
+            "hi": "अभिलंब बल हटा देते हैं"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Rolling or sliding?",
+          "hi": "लुढ़कना या फिसलना?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The parts roll on the balls instead of rubbing.",
+          "hi": "भाग रगड़ने के बजाय गेंदों पर लुढ़कते हैं।"
+        },
+        "steps": [
+          {
+            "en": "Rolling friction is much smaller, so less power is lost as heat.",
+            "hi": "लोटनिक घर्षण बहुत कम है, इसलिए कम शक्ति ऊष्मा में नष्ट होती है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Friction does not depend on area.",
+              "hi": "घर्षण क्षेत्रफल पर निर्भर नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The mass is unchanged.",
+              "hi": "द्रव्यमान नहीं बदलता।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The parts still press on each other.",
+              "hi": "भाग फिर भी एक-दूसरे को दबाते हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.laws-of-motion.friction.0009",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.laws-of-motion.friction.core.rolling-friction",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "In which situation is friction essential rather than a nuisance?",
+        "hi": "किस स्थिति में घर्षण बाधा के बजाय आवश्यक है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "A car accelerating on a road",
+            "hi": "सड़क पर त्वरित होती कार"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "A shaft turning in a machine",
+            "hi": "मशीन में घूमता धुरा"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Parts of an engine sliding past each other",
+            "hi": "इंजन के एक-दूसरे पर फिसलते भाग"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "A wheel turning on its axle",
+            "hi": "अपनी धुरी पर घूमता पहिया"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Where would zero friction be a disaster?",
+          "hi": "शून्य घर्षण कहाँ विपत्ति होगा?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The road's friction is the external force that drives the car.",
+          "hi": "सड़क का घर्षण ही वह बाह्य बल है जो कार को चलाता है।"
+        },
+        "steps": [
+          {
+            "en": "On a very slippery road the car cannot move.",
+            "hi": "बहुत फिसलन भरी सड़क पर कार नहीं चल सकती।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "There friction wastes power.",
+              "hi": "वहाँ घर्षण शक्ति नष्ट करता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Lubricants are used there to reduce friction.",
+              "hi": "वहाँ घर्षण घटाने के लिए स्नेहक लगते हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Bearings are used there to reduce friction.",
+              "hi": "वहाँ घर्षण घटाने के लिए बेयरिंग लगते हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

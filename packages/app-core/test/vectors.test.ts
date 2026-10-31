@@ -44,6 +44,13 @@ import {
   type ReviewRating,
   type SrsCardRow,
   type StreakState,
+  type TopicMarkContext,
+  type TopicMarkEvent,
+  type TopicMarkRow,
+  applyTopicMark,
+  chapterResetPayload,
+  topicTestOutUndonePayload,
+  topicTestedOutPayload,
 } from '../src';
 
 const DIR = join(__dirname, '..', 'test-vectors');
@@ -319,5 +326,38 @@ describe('golden vectors', () => {
     const acceptedEvents = cases.filter((c) => c.expected.accepted).map((c) => ({ type: 'activity_completed' as const, occurred_at: c.payload.completed_at }));
     const days = [...activityByDay(acceptedEvents, timeZone)].map(([day, a]) => ({ day, lessons_completed: a.lessonsCompleted }));
     golden('activity_completed', { version: 1, config: { xp_little_activity_star: DEFAULT_LITTLE_ACTIVITY_STAR_XP }, time_zone: timeZone, cases, days });
+  });
+
+  it('topic_marks', () => {
+    // Test out marks, their undo and a chapter reset (sync contract v1.6), in order, for one
+    // student. The server applies the same events to learn.topic_status and must end each step
+    // with these rows and codes.
+    const chapter = 'fx.chapter-a';
+    const [a, b, c, d] = ['a', 'b', 'c', 'd'].map((x) => `${chapter}.topic-${x}`) as [string, string, string, string];
+    const check1 = '0193a000-0000-7000-8000-000000000001';
+    const check2 = '0193a000-0000-7000-8000-000000000002';
+    const check3 = '0193a000-0000-7000-8000-000000000003';
+    const initial: Record<string, TopicMarkRow> = {
+      [a]: { status: 'in_progress', learned_via: null },
+      [b]: { status: 'learned', learned_via: 'lesson' },
+    };
+    const ctx: TopicMarkContext = { chapterTopics: { [chapter]: [a, b, c, d] }, checks: {} };
+    const steps: { name: string; event: TopicMarkEvent }[] = [
+      { name: 'a Test out passes a, b and c (b was already learned)', event: { type: 'topic_tested_out', payload: topicTestedOutPayload(check1, chapter, [a, b, c]) } },
+      { name: 'the same check again', event: { type: 'topic_tested_out', payload: topicTestedOutPayload(check1, chapter, [c]) } },
+      { name: 'a topic from another chapter', event: { type: 'topic_tested_out', payload: topicTestedOutPayload(check2, chapter, ['fx.chapter-z.topic-a']) } },
+      { name: 'Undo this: only the marks the check made', event: { type: 'topic_test_out_undone', payload: topicTestOutUndonePayload(check1, [{ topicId: a, previous: { status: 'in_progress' } }, { topicId: c, previous: null }]) } },
+      { name: 'undo of a check that never happened', event: { type: 'topic_test_out_undone', payload: topicTestOutUndonePayload(check2, [{ topicId: a, previous: null }]) } },
+      { name: 'a second Test out passes c and d', event: { type: 'topic_tested_out', payload: topicTestedOutPayload(check3, chapter, [c, d]) } },
+      { name: 'Reset chapter progress', event: { type: 'chapter_reset', payload: chapterResetPayload(chapter) } },
+      { name: 'reset of an unknown chapter', event: { type: 'chapter_reset', payload: chapterResetPayload('fx.chapter-z') } },
+    ];
+    const rows: Record<string, TopicMarkRow> = structuredClone(initial);
+    const cases = steps.map((step) => {
+      const code = applyTopicMark(rows, step.event, ctx);
+      const sorted = Object.fromEntries(Object.entries(rows).sort(([x], [y]) => x.localeCompare(y)));
+      return { name: step.name, type: step.event.type, payload: step.event.payload, expected: { accepted: code === null, code, rows: structuredClone(sorted) } };
+    });
+    golden('topic_marks', { version: 1, chapter_topics: ctx.chapterTopics, initial, cases });
   });
 });

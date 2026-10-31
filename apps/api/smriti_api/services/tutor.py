@@ -42,7 +42,7 @@ from smriti_api.core.db import Database
 from smriti_api.core.errors import ApiError
 from smriti_api.schemas import tutor as t
 from smriti_api.schemas.practice import QuotaOut
-from smriti_api.services import parent_mode, tutor_retrieval, tutor_safety
+from smriti_api.services import parent_mode, tutor_images, tutor_retrieval, tutor_safety
 from smriti_api.services import question_bank as bank
 from smriti_api.services.answers import AnswerFormatError, check_answer, parse_answer
 from smriti_api.services.usage import (
@@ -275,6 +275,7 @@ def _message_out(r: Any) -> t.MessageOut:
         status=r.status,
         citations=list(r.citations or []),
         created_at=r.created_at,
+        images=list(getattr(r, "images", None) or []),
     )
 
 
@@ -282,7 +283,11 @@ async def _messages(session: AsyncSession, session_id: uuid.UUID, limit: int = 1
     rows = (
         await session.execute(
             text(
-                "select id, role, content, status, citations, created_at from ai.tutor_messages"
+                "select id, role, content, status, citations, created_at,"
+                " (select coalesce(jsonb_agg(jsonb_build_object('generation_id', g.id,"
+                " 'status', g.status, 'alt', g.alt) order by g.created_at), '[]'::jsonb)"
+                " from ai.tutor_images g where g.message_id = m.id) as images"
+                " from ai.tutor_messages m"
                 " where session_id = :s and role in ('user', 'assistant')"
                 " order by created_at desc limit :n"
             ),
@@ -617,6 +622,10 @@ class Plan:
     counted: bool = False
     learner: Learner | None = None
     flags: Flags | None = None
+    # "Draw it" (tutor-social §A5 step 6): a picture for this answer, briefed from the material.
+    draw: bool = False
+    material: str = ""
+    concept_id: str | None = None
 
     @property
     def assistant_id(self) -> uuid.UUID:
@@ -929,6 +938,10 @@ async def prepare(
         ]
         + [ChatMessage("user", clean)]
     )
+    if body.input == "chip" and body.chip_id == "draw_it":
+        plan.draw = True
+        plan.material = _material(ctx, passages, _tutor_locale(learner))[:3000]
+        plan.concept_id = str(ctx.concepts[0]["id"]) if ctx and ctx.concepts else None
     # Two or three follow-ups from the fixed set (tutor-social §A5 step 7). "Draw it" makes a new
     # Agnes image, which is Pro (R35).
     if _hints_first(ctx):
@@ -942,9 +955,16 @@ async def prepare(
     return plan
 
 
-async def stream(db: Database, ai: AIGateway, auth: AuthContext, plan: Plan) -> AsyncIterator[str]:
-    """The SSE body: fixed events, or the model's answer as ``delta`` events, then ``citations``,
-    ``chips``, ``quota`` and ``done``."""
+async def stream(
+    db: Database,
+    ai: AIGateway,
+    auth: AuthContext,
+    plan: Plan,
+    images: tutor_images.ImageEnv | None = None,
+) -> AsyncIterator[str]:
+    """The SSE body: fixed events, or the model's answer as ``delta`` events, then (for "Draw
+    it") ``image_ready``, ``image_pending`` or ``image_failed``, then ``citations``, ``chips``,
+    ``quota`` and ``done``."""
     for event in plan.events:
         yield event
     if not plan.messages:
@@ -1003,6 +1023,8 @@ async def stream(db: Database, ai: AIGateway, auth: AuthContext, plan: Plan) -> 
     if error is not None:
         yield sse("error", {"code": error, "retry": True})
     await _finish(db, auth, plan, "".join(parts), status, flagged)
+    if status == "ok" and plan.draw and images is not None:
+        yield await _draw(db, ai, auth, plan, images, "".join(parts))
     async with db.system_tx() as session:
         assert plan.learner is not None and plan.flags is not None
         now = datetime.now(UTC)
@@ -1020,6 +1042,43 @@ async def stream(db: Database, ai: AIGateway, auth: AuthContext, plan: Plan) -> 
             "status": status,
         },
     )
+
+
+async def _draw(
+    db: Database,
+    ai: AIGateway,
+    auth: AuthContext,
+    plan: Plan,
+    images: tutor_images.ImageEnv,
+    answer: str,
+) -> str:
+    """The picture for a "Draw it" answer. The brief comes from the answer and the course
+    material, never from the student's message."""
+    assert plan.learner is not None
+    locale = _tutor_locale(plan.learner)
+    planned = await tutor_images.brief_from_answer(
+        ai, user_id=auth.user_id, answer=answer, material=plan.material, locale=locale
+    )
+    if planned is None:
+        outcome = tutor_images.Outcome(None, "failed", "failed", "")
+    else:
+        brief, alt, style = planned
+        outcome = await tutor_images.request_image(
+            db,
+            ai,
+            images,
+            user_id=auth.user_id,
+            is_guest=auth.is_anonymous,
+            source="tutor_chat",
+            brief=brief,
+            alt=alt,
+            style=style,
+            concept_id=plan.concept_id,
+            tutor_session_id=plan.session_id,
+            message_id=plan.assistant_id,
+        )
+    name, data = outcome.event()
+    return sse(name, data)
 
 
 async def _finish(

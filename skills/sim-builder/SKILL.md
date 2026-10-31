@@ -15,7 +15,7 @@ Writes `sims/{sim_id}/` and the matching `content.sims` metadata. Each sim runs 
 ## First, check what exists
 
 1. Search `sims/` for an existing sim that can take new `params`. Extending a sim beats a new one.
-2. Search PhET's HTML5 sims (CC BY 4.0). If one fits, adapt it: embed the official HTML5 build, map its state to bridge messages where possible, and show the attribution PhET requires. Record `origin: phet`, `licence: CC BY 4.0`, `attribution`.
+2. Check PhET's HTML5 sims for ideas only. Since 2026 PhET publishes them under CC BY-NC 4.0, and commercial use (Smriti has a paywall) needs a licence from the University of Colorado Boulder (https://phet.colorado.edu/en/licensing). Do not embed them or copy their code, art or layout unless the owner has a commercial licence on record; build our own sim instead. Other open sims are fine under a commercial-friendly licence (CC BY, CC0, MIT, Apache): record `origin`, `licence`, `attribution`.
 3. Avoid anything under a non-commercial licence (for example ChemCollective).
 
 ## Building a new sim

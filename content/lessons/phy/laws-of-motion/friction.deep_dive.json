@@ -1,0 +1,511 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph104 (text, summary and table, pp. 64-68): जड़त्व, न्यूटन का गति का प्रथम/द्वितीय/तृतीय नियम, संवेग, आवेग, क्रिया-प्रतिक्रिया युगल, निकाय, संवेग संरक्षण, बल निर्देशक आरेख, अभिलंब बल, स्थैतिक घर्षण, गतिज घर्षण, घर्षण गुणांक, लोटनिक घर्षण, बॉल-बेयरिंग, स्नेहक, अभिकेंद्र बल, वर्तुल गति, समतल सड़क, ढालू सड़क, अनुकूलतम चाल. Other wording is ours.",
+  "id": "phy.laws-of-motion.friction:deep_dive",
+  "topic": "phy.laws-of-motion.friction",
+  "mode": "deep_dive",
+  "estimated_minutes": 10,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.laws-of-motion.friction.core.static-kinetic-friction",
+    "phy.laws-of-motion.friction.core.rolling-friction"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Static and kinetic friction",
+        "hi": "स्थैतिक और गतिज घर्षण"
+      },
+      "subtopic": "phy.laws-of-motion.friction.core",
+      "card_ids": [
+        "phy.laws-of-motion.friction:dd:01",
+        "phy.laws-of-motion.friction:dd:02",
+        "phy.laws-of-motion.friction:dd:03",
+        "phy.laws-of-motion.friction:dd:04",
+        "phy.laws-of-motion.friction:dd:05",
+        "phy.laws-of-motion.friction:dd:06",
+        "phy.laws-of-motion.friction:dd:07",
+        "phy.laws-of-motion.friction:dd:08",
+        "phy.laws-of-motion.friction:dd:09"
+      ],
+      "estimated_minutes": 7
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Rolling friction, and friction as a friend",
+        "hi": "लोटनिक घर्षण, और मित्र के रूप में घर्षण"
+      },
+      "subtopic": "phy.laws-of-motion.friction.core",
+      "card_ids": [
+        "phy.laws-of-motion.friction:dd:10",
+        "phy.laws-of-motion.friction:dd:11",
+        "phy.laws-of-motion.friction:dd:12",
+        "phy.laws-of-motion.friction:dd:13",
+        "phy.laws-of-motion.friction:dd:14"
+      ],
+      "estimated_minutes": 3
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.laws-of-motion.friction:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.laws-of-motion.friction.core.static-kinetic-friction"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "The crate that will not budge",
+        "hi": "टस से मस न होने वाला बक्सा"
+      },
+      "body": {
+        "en": "Push a heavy crate gently and it does not move. Push harder: still nothing. Something is pushing back, exactly as hard as you push, until suddenly the crate gives way and slides.",
+        "hi": "किसी भारी बक्से को धीरे से धकेलिए, वह नहीं हिलता। और ज़ोर से धकेलिए: फिर भी कुछ नहीं। कुछ ठीक उतना ही पीछे धकेल रहा है जितना आप धकेलते हैं, जब तक कि अचानक बक्सा खिसकने नहीं लगता।"
+      },
+      "media": "img.laws-of-motion.box-push"
+    },
+    {
+      "id": "phy.laws-of-motion.friction:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.laws-of-motion.friction.core.static-kinetic-friction"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Static friction adjusts itself",
+        "hi": "स्थैतिक घर्षण स्वयं समायोजित होता है"
+      },
+      "body": {
+        "en": "When two surfaces touch, the contact force has a part normal to the surfaces, the normal reaction, and a part along them, friction. Other contact forces in mechanics are tension in a string, the spring force $F = -kx$, buoyancy and viscous drag.\n\nStatic friction $f_s$ opposes impending motion: the motion that would happen if there were no friction. It does not exist on its own; with no applied force there is none. As the push grows, $f_s$ grows with it, equal and opposite, up to a limit. That limit is found to be independent of the area of contact and proportional to the normal force: $(f_s)_{max} = \\mu_s N$, where $\\mu_s$, the coefficient of static friction, depends only on the two surfaces. So $f_s \\le \\mu_s N$. Never put $f_s = \\mu_s N$ unless the limit is really reached.",
+        "hi": "जब दो सतहें छूती हैं, तो संपर्क बल का सतहों के लंबवत भाग अभिलंब प्रतिक्रिया है, और उनके अनुदिश भाग घर्षण है। यांत्रिकी के अन्य संपर्क बल हैं डोरी में तनाव, कमानी बल $F = -kx$, उत्प्लावन और श्यान कर्षण।\n\nस्थैतिक घर्षण $f_s$ समुपस्थित गति का विरोध करता है: वह गति जो घर्षण न होने पर होती। इसका अपना अस्तित्व नहीं है; कोई बल न लगे तो यह भी नहीं होता। धक्का बढ़ने पर $f_s$ भी उसके बराबर और विपरीत बढ़ता है, एक सीमा तक। वह सीमा संपर्क क्षेत्रफल पर निर्भर नहीं पाई जाती और अभिलंब बल के अनुक्रमानुपाती होती है: $(f_s)_{max} = \\mu_s N$, जहाँ स्थैतिक घर्षण गुणांक $\\mu_s$ केवल दोनों सतहों पर निर्भर है। अतः $f_s \\le \\mu_s N$। जब तक सीमा सचमुच न आए, $f_s = \\mu_s N$ न रखिए।"
+      },
+      "media": "img.laws-of-motion.box-push",
+      "highlights": [
+        {
+          "term": {
+            "en": "static friction",
+            "hi": "स्थैतिक घर्षण"
+          },
+          "definition": {
+            "en": "opposes impending motion; self-adjusting up to its limit",
+            "hi": "समुपस्थित गति का विरोध; सीमा तक स्वयं समायोजित"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.9, §4.9.1, Eqs. 4.13-4.14, Points to Ponder 6"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.friction:dd:03",
+      "type": "explainer",
+      "concepts": [
+        "phy.laws-of-motion.friction.core.static-kinetic-friction"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Kinetic friction",
+        "hi": "गतिज घर्षण"
+      },
+      "body": {
+        "en": "Once sliding starts, the friction drops below the static maximum. This kinetic or sliding friction is also independent of the area of contact, nearly independent of the speed, and given by $f_k = \\mu_k N$; experiments show $\\mu_k$ is less than $\\mu_s$. With an applied force F the acceleration is $\\frac{F - f_k}{m}$; at constant velocity $F = f_k$.\n\nFriction opposes relative motion, not motion itself. A box at rest on the floor of an accelerating train accelerates with the train because static friction from the floor pushes it forward. These laws of friction are empirical and only approximately true, but very useful.",
+        "hi": "खिसकना शुरू होते ही घर्षण स्थैतिक अधिकतम से नीचे आ जाता है। यह गतिज या सर्पी घर्षण भी संपर्क क्षेत्रफल पर निर्भर नहीं, चाल पर लगभग निर्भर नहीं, और $f_k = \\mu_k N$ से मिलता है; प्रयोग बताते हैं कि $\\mu_k$, $\\mu_s$ से कम होता है। बल F लगाने पर त्वरण $\\frac{F - f_k}{m}$ है; नियत वेग पर $F = f_k$।\n\nघर्षण आपेक्षिक गति का विरोध करता है, स्वयं गति का नहीं। त्वरित ट्रेन के फ़र्श पर विराम में रखा बक्सा ट्रेन के साथ त्वरित होता है क्योंकि फ़र्श का स्थैतिक घर्षण उसे आगे धकेलता है। घर्षण के ये नियम आनुभविक हैं और केवल लगभग सही हैं, पर बहुत उपयोगी हैं।"
+      },
+      "media": "img.laws-of-motion.box-push",
+      "highlights": [
+        {
+          "term": {
+            "en": "kinetic friction",
+            "hi": "गतिज घर्षण"
+          },
+          "definition": {
+            "en": "opposes actual sliding; $f_k = \\mu_k N$",
+            "hi": "वास्तविक फिसलन का विरोध; $f_k = \\mu_k N$"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.9.1, Eq. 4.15, Fig. 4.10, Summary 8"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.friction:dd:04",
+      "type": "formula",
+      "concepts": [
+        "phy.laws-of-motion.friction.core.static-kinetic-friction"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Laws of friction",
+        "hi": "घर्षण के नियम"
+      },
+      "latex": "f_s \\le \\mu_s N,\\quad f_k = \\mu_k N,\\quad \\mu_k < \\mu_s",
+      "symbols": [
+        {
+          "symbol": "f_s, f_k",
+          "meaning": {
+            "en": "static and kinetic friction",
+            "hi": "स्थैतिक और गतिज घर्षण"
+          },
+          "unit": "N"
+        },
+        {
+          "symbol": "\\mu_s, \\mu_k",
+          "meaning": {
+            "en": "coefficients of static and kinetic friction",
+            "hi": "स्थैतिक और गतिज घर्षण गुणांक"
+          },
+          "unit": null
+        },
+        {
+          "symbol": "N",
+          "meaning": {
+            "en": "normal reaction",
+            "hi": "अभिलंब प्रतिक्रिया"
+          },
+          "unit": "N"
+        }
+      ],
+      "conditions": {
+        "en": "On an incline, a block just starts to slide at $\\tan\\theta_{max} = \\mu_s$, whatever its mass.",
+        "hi": "आनत तल पर गुटका $\\tan\\theta_{max} = \\mu_s$ पर खिसकना शुरू करता है, उसका द्रव्यमान चाहे जो हो।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Eqs. 4.14-4.15, Example 4.8"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.friction:dd:05",
+      "type": "worked_example",
+      "concepts": [
+        "phy.laws-of-motion.friction.core.static-kinetic-friction"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "A box lies on the floor of a train; the coefficient of static friction between them is 0.15. What is the largest acceleration of the train for which the box stays at rest relative to it? Take $g = 10$ m/s².",
+        "hi": "एक बक्सा ट्रेन के फ़र्श पर रखा है; उनके बीच स्थैतिक घर्षण गुणांक 0.15 है। ट्रेन का अधिकतम त्वरण क्या है जिस पर बक्सा उसके सापेक्ष विराम में रहे? $g = 10$ m/s² लीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "Only static friction accelerates the box: $ma = f_s \\le \\mu_s mg$.",
+          "hi": "केवल स्थैतिक घर्षण बक्से को त्वरित करता है: $ma = f_s \\le \\mu_s mg$।"
+        },
+        {
+          "en": "$a_{max} = \\mu_s g = 0.15 \\times 10 = 1.5$ m/s²",
+          "hi": "$a_{max} = \\mu_s g = 0.15 \\times 10 = 1.5$ m/s²"
+        }
+      ],
+      "answer": {
+        "en": "1.5 m/s²",
+        "hi": "1.5 m/s²"
+      },
+      "answer_value": {
+        "value": 1.5,
+        "unit": "m/s²",
+        "tolerance": {
+          "abs": 0.01
+        }
+      },
+      "common_trap": {
+        "en": "Thinking friction must oppose the train's direction of motion.",
+        "hi": "मानना कि घर्षण ट्रेन की गति की दिशा के विपरीत होना चाहिए।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 4.7"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.friction:dd:06",
+      "type": "worked_example",
+      "concepts": [
+        "phy.laws-of-motion.friction.core.static-kinetic-friction"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "A 4 kg block rests on a plane that is slowly tilted. It just begins to slide when the plane is at $15°$ to the horizontal. Find the coefficient of static friction.",
+        "hi": "4 kg का एक गुटका एक तल पर रखा है जिसे धीरे-धीरे झुकाया जाता है। तल क्षैतिज से $15°$ पर होने पर गुटका खिसकना शुरू करता है। स्थैतिक घर्षण गुणांक ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "Along the plane: $mg\\sin\\theta = f_s$; normal to it: $mg\\cos\\theta = N$.",
+          "hi": "तल के अनुदिश: $mg\\sin\\theta = f_s$; उसके लंबवत: $mg\\cos\\theta = N$।"
+        },
+        {
+          "en": "At the limit $f_s = \\mu_s N$, so $\\tan\\theta_{max} = \\mu_s$.",
+          "hi": "सीमा पर $f_s = \\mu_s N$, अतः $\\tan\\theta_{max} = \\mu_s$।"
+        },
+        {
+          "en": "$\\mu_s = \\tan 15° \\approx 0.27$; the mass does not matter.",
+          "hi": "$\\mu_s = \\tan 15° \\approx 0.27$; द्रव्यमान मायने नहीं रखता।"
+        }
+      ],
+      "answer": {
+        "en": "About 0.27",
+        "hi": "लगभग 0.27"
+      },
+      "answer_value": {
+        "value": 0.27,
+        "unit": null,
+        "tolerance": {
+          "abs": 0.01
+        }
+      },
+      "common_trap": {
+        "en": "Using the 4 kg mass in the answer.",
+        "hi": "उत्तर में 4 kg द्रव्यमान लगाना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 4.8, Fig. 4.11"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.friction:dd:07",
+      "type": "sim",
+      "concepts": [
+        "phy.laws-of-motion.friction.core.static-kinetic-friction"
+      ],
+      "depth": 3,
+      "sim": "sim.laws-of-motion.friction-incline",
+      "title": {
+        "en": "Tilt the plank",
+        "hi": "तख़्ते को झुकाइए"
+      },
+      "params": {
+        "mass": 2,
+        "mu_s": 0.5,
+        "mu_k": 0.4,
+        "angle": 0,
+        "g": 9.8
+      },
+      "tasks": [
+        {
+          "id": "friction-15",
+          "prompt": {
+            "en": "Raise the plank to $15°$. The block stays put. Read the friction force.",
+            "hi": "तख़्ते को $15°$ तक उठाइए। गुटका स्थिर रहता है। घर्षण बल पढ़िए।"
+          },
+          "measurement": "friction",
+          "expected": {
+            "value": 5.07,
+            "unit": "N",
+            "tolerance": {
+              "abs": 0.1
+            }
+          }
+        },
+        {
+          "id": "friction-20",
+          "prompt": {
+            "en": "Raise it to $20°$ and read the friction again.",
+            "hi": "इसे $20°$ तक उठाकर घर्षण फिर पढ़िए।"
+          },
+          "measurement": "friction",
+          "expected": {
+            "value": 6.7,
+            "unit": "N",
+            "tolerance": {
+              "abs": 0.1
+            }
+          }
+        },
+        {
+          "id": "slip-angle",
+          "prompt": {
+            "en": "Keep raising it slowly. Read the angle at which the block starts to slide.",
+            "hi": "इसे धीरे-धीरे उठाते रहिए। वह कोण पढ़िए जिस पर गुटका खिसकना शुरू करता है।"
+          },
+          "measurement": "angle",
+          "expected": {
+            "value": 26.6,
+            "unit": "°",
+            "tolerance": {
+              "abs": 0.5
+            }
+          }
+        }
+      ],
+      "debrief": {
+        "en": "Below the slipping angle the friction equals $mg\\sin\\theta$ and grows as you tilt: it adjusts itself. It cannot exceed $\\mu_s N$, so the block slips at $\\tan\\theta = \\mu_s = 0.5$, about $26.6°$.",
+        "hi": "खिसकने के कोण से नीचे घर्षण $mg\\sin\\theta$ के बराबर है और झुकाने पर बढ़ता है: यह स्वयं समायोजित होता है। यह $\\mu_s N$ से अधिक नहीं हो सकता, इसलिए गुटका $\\tan\\theta = \\mu_s = 0.5$ पर, लगभग $26.6°$ पर, खिसकता है।"
+      },
+      "fallback": {
+        "body": {
+          "en": "For a 2 kg block with $\\mu_s = 0.5$ and $g = 9.8$ m/s², friction at rest equals $mg\\sin\\theta$: about 5.07 N at $15°$ and 6.70 N at $20°$. It slides once $\\tan\\theta$ passes 0.5, at about $26.6°$.",
+          "hi": "$\\mu_s = 0.5$ और $g = 9.8$ m/s² वाले 2 kg के गुटके के लिए विराम में घर्षण $mg\\sin\\theta$ है: $15°$ पर लगभग 5.07 N और $20°$ पर 6.70 N। $\\tan\\theta$ के 0.5 पार करते ही, लगभग $26.6°$ पर, वह खिसकता है।"
+        },
+        "media": "img.laws-of-motion.box-push"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.friction:dd:08",
+      "type": "question",
+      "concepts": [
+        "phy.laws-of-motion.friction.core.static-kinetic-friction"
+      ],
+      "depth": 2,
+      "question": "q.phy.laws-of-motion.friction.0001"
+    },
+    {
+      "id": "phy.laws-of-motion.friction:dd:09",
+      "type": "summary",
+      "concepts": [
+        "phy.laws-of-motion.friction.core.static-kinetic-friction"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "$f_s \\le \\mu_s N$ adjusts itself; $f_k = \\mu_k N$ with $\\mu_k < \\mu_s$.",
+          "hi": "$f_s \\le \\mu_s N$ स्वयं समायोजित होता है; $f_k = \\mu_k N$, जहाँ $\\mu_k < \\mu_s$।"
+        },
+        {
+          "en": "Friction is independent of contact area and opposes relative motion.",
+          "hi": "घर्षण संपर्क क्षेत्रफल पर निर्भर नहीं और आपेक्षिक गति का विरोध करता है।"
+        }
+      ]
+    },
+    {
+      "id": "phy.laws-of-motion.friction:dd:10",
+      "type": "explainer",
+      "concepts": [
+        "phy.laws-of-motion.friction.core.rolling-friction"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Rolling friction",
+        "hi": "लोटनिक घर्षण"
+      },
+      "body": {
+        "en": "A ring or sphere rolling without slipping on a level surface touches it at just one point, which has no motion relative to the surface, so ideally there is no friction. In practice some resistance, rolling friction, does occur, because the surfaces deform slightly and touch over a small area. For the same weight, rolling friction is much smaller than static or sliding friction, even by two or three orders of magnitude. That is why the invention of the wheel was a major milestone in human history.",
+        "hi": "समतल सतह पर बिना फिसले लुढ़कता छल्ला या गोला उसे केवल एक बिंदु पर छूता है, जिसकी सतह के सापेक्ष कोई गति नहीं होती, इसलिए आदर्श रूप में कोई घर्षण नहीं होता। व्यवहार में कुछ प्रतिरोध, लोटनिक घर्षण, होता है, क्योंकि सतहें थोड़ी विकृत होकर छोटे क्षेत्र पर छूती हैं। समान भार के लिए लोटनिक घर्षण स्थैतिक या सर्पी घर्षण से बहुत कम होता है, दो या तीन कोटि तक कम। इसीलिए पहिए का आविष्कार मानव इतिहास में एक बड़ा पड़ाव था।"
+      },
+      "media": "img.laws-of-motion.ball-bearing",
+      "highlights": [
+        {
+          "term": {
+            "en": "rolling friction",
+            "hi": "लोटनिक घर्षण"
+          },
+          "definition": {
+            "en": "resistance to rolling; far smaller than sliding friction",
+            "hi": "लुढ़कने का प्रतिरोध; सर्पी घर्षण से बहुत कम"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.9.1 (Rolling friction)"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.friction:dd:11",
+      "type": "explainer",
+      "concepts": [
+        "phy.laws-of-motion.friction.core.rolling-friction"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Reducing friction, and needing it",
+        "hi": "घर्षण घटाना, और उसकी आवश्यकता"
+      },
+      "body": {
+        "en": "In machines, friction opposes relative motion and wastes power as heat. Lubricants reduce kinetic friction. Ball bearings between moving parts replace sliding with rolling, so very little power is lost. A thin cushion of compressed air between surfaces also cuts friction.\n\nYet friction is often essential. Brakes use kinetic friction to stop motion quickly. We can walk only because of friction, and a car cannot move on a very slippery road: on an ordinary road, friction between tyres and road provides the external force that accelerates the car.",
+        "hi": "मशीनों में घर्षण आपेक्षिक गति का विरोध करता है और शक्ति को ऊष्मा के रूप में नष्ट करता है। स्नेहक गतिज घर्षण घटाते हैं। गतिमान भागों के बीच बॉल-बेयरिंग फिसलन की जगह लुढ़कना लाते हैं, इसलिए बहुत कम शक्ति नष्ट होती है। सतहों के बीच संपीडित वायु की पतली परत भी घर्षण घटाती है।\n\nफिर भी घर्षण अक्सर आवश्यक है। ब्रेक गति को जल्दी रोकने के लिए गतिज घर्षण का उपयोग करते हैं। हम घर्षण के कारण ही चल पाते हैं, और बहुत फिसलन भरी सड़क पर कार नहीं चल सकती: सामान्य सड़क पर टायरों और सड़क के बीच घर्षण वह बाह्य बल देता है जो कार को त्वरित करता है।"
+      },
+      "media": "img.laws-of-motion.ball-bearing",
+      "highlights": [
+        {
+          "term": {
+            "en": "lubricant",
+            "hi": "स्नेहक"
+          },
+          "definition": {
+            "en": "a substance that reduces kinetic friction",
+            "hi": "गतिज घर्षण घटाने वाला पदार्थ"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.9.1, Fig. 4.13"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.friction:dd:12",
+      "type": "question",
+      "concepts": [
+        "phy.laws-of-motion.friction.core.rolling-friction"
+      ],
+      "depth": 1,
+      "question": "q.phy.laws-of-motion.friction.0007"
+    },
+    {
+      "id": "phy.laws-of-motion.friction:dd:13",
+      "type": "question",
+      "concepts": [
+        "phy.laws-of-motion.friction.core.rolling-friction"
+      ],
+      "depth": 2,
+      "question": "q.phy.laws-of-motion.friction.0008"
+    },
+    {
+      "id": "phy.laws-of-motion.friction:dd:14",
+      "type": "summary",
+      "concepts": [
+        "phy.laws-of-motion.friction.core.rolling-friction"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Rolling friction is far smaller than sliding friction.",
+          "hi": "लोटनिक घर्षण सर्पी घर्षण से बहुत कम है।"
+        },
+        {
+          "en": "Bearings, lubricants and air cushions reduce friction; brakes and walking need it.",
+          "hi": "बेयरिंग, स्नेहक और वायु-गद्दी घर्षण घटाते हैं; ब्रेक और चलने के लिए यह आवश्यक है।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

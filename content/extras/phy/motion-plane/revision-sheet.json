@@ -1,0 +1,237 @@
+{
+  "schema": "revision_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+      "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 3 Samtal mein Gati: Hindi terms (summary and table)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph103.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 44-46"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Revision sheet for the chapter, gathered from the topic cheat sheets. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph103 (summary and table, pp. 44-46): अदिश, सदिश, शीर्ष व पुच्छ, समांतर चतुर्भुज, क्रम-विनिमेय, साहचर्य, शून्य सदिश, एकांक सदिश, घटक, विश्लेषणात्मक विधि, स्थिति सदिश, प्रक्षेप्य, परवलय, अधिकतम ऊँचाई, क्षैतिज परास, एकसमान वृत्तीय गति, अभिकेंद्र त्वरण, कोणीय चाल, आवर्तकाल, आवृत्ति. Other wording is ours.",
+  "id": "rs.phy.motion-plane",
+  "scope": "chapter",
+  "chapter": "phy.motion-plane",
+  "title": {
+    "en": "Motion in a Plane",
+    "hi": "समतल में गति"
+  },
+  "concepts": [
+    "phy.motion-plane.scalars-vectors.core.scalar-vector",
+    "phy.motion-plane.vector-addition.core.vector-addition-laws",
+    "phy.motion-plane.resolution.core.unit-vector-resolution",
+    "phy.motion-plane.motion-2d.core.motion-plane-vectors",
+    "phy.motion-plane.projectile.core.projectile-motion",
+    "phy.motion-plane.circular-kinematics.core.uniform-circular-motion"
+  ],
+  "points": [
+    {
+      "en": "Scalar: magnitude only, combined by ordinary algebra (same units to add).",
+      "hi": "अदिश: केवल परिमाण, सामान्य बीजगणित से (जोड़ने के लिए समान मात्रक)।"
+    },
+    {
+      "en": "Vector: magnitude and direction; obeys the triangle and parallelogram laws.",
+      "hi": "सदिश: परिमाण और दिशा; त्रिभुज और समांतर चतुर्भुज नियमों का पालन करता है।"
+    },
+    {
+      "en": "Equal vectors: same magnitude and direction. Free vectors may be shifted parallel to themselves.",
+      "hi": "समान सदिश: समान परिमाण और दिशा। मुक्त सदिशों को उनके समांतर खिसकाया जा सकता है।"
+    },
+    {
+      "en": "Null vector: zero magnitude, no direction needed.",
+      "hi": "शून्य सदिश: परिमाण शून्य, दिशा की आवश्यकता नहीं।"
+    },
+    {
+      "en": "Head-to-tail and parallelogram methods are equivalent.",
+      "hi": "शीर्ष से पुच्छ और समांतर चतुर्भुज विधियाँ तुल्य हैं।"
+    },
+    {
+      "en": "Addition is commutative and associative; $\\vec{A} - \\vec{B} = \\vec{A} + (-\\vec{B})$.",
+      "hi": "योग क्रम-विनिमेय और साहचर्य है; $\\vec{A} - \\vec{B} = \\vec{A} + (-\\vec{B})$।"
+    },
+    {
+      "en": "$|A - B| \\le R \\le A + B$; at right angles $R = \\sqrt{A^2 + B^2}$.",
+      "hi": "$|A - B| \\le R \\le A + B$; समकोण पर $R = \\sqrt{A^2 + B^2}$।"
+    },
+    {
+      "en": "$\\vec{A} = \\lambda \\vec{a} + \\mu \\vec{b}$ along any two non-parallel vectors.",
+      "hi": "किन्हीं दो असमांतर सदिशों के अनुदिश $\\vec{A} = \\lambda \\vec{a} + \\mu \\vec{b}$।"
+    },
+    {
+      "en": "Unit vector: magnitude 1, no unit; $\\hat{n} = \\vec{A} / |\\vec{A}|$.",
+      "hi": "एकांक सदिश: परिमाण 1, कोई मात्रक नहीं; $\\hat{n} = \\vec{A} / |\\vec{A}|$।"
+    },
+    {
+      "en": "Components add separately: $R_x = A_x + B_x$, $R_y = A_y + B_y$.",
+      "hi": "घटक अलग-अलग जुड़ते हैं: $R_x = A_x + B_x$, $R_y = A_y + B_y$।"
+    },
+    {
+      "en": "$\\vec{v} = d\\vec{r}/dt$, tangent to the path; $\\vec{a} = d\\vec{v}/dt$.",
+      "hi": "$\\vec{v} = d\\vec{r}/dt$, पथ की स्पर्श रेखा पर; $\\vec{a} = d\\vec{v}/dt$।"
+    },
+    {
+      "en": "Average velocity is along the displacement.",
+      "hi": "औसत वेग विस्थापन के अनुदिश होता है।"
+    },
+    {
+      "en": "Constant acceleration: two independent one-dimensional motions.",
+      "hi": "नियत त्वरण: दो स्वतंत्र एकविमीय गतियाँ।"
+    },
+    {
+      "en": "Horizontal velocity constant; vertical acceleration g downwards; the two are independent.",
+      "hi": "क्षैतिज वेग नियत; ऊर्ध्वाधर त्वरण नीचे की ओर g; दोनों स्वतंत्र हैं।"
+    },
+    {
+      "en": "Path is a parabola.",
+      "hi": "पथ परवलय है।"
+    },
+    {
+      "en": "Maximum range at 45°: $R_m = v_0^2/g$; $45° \\pm \\alpha$ give equal ranges.",
+      "hi": "45° पर अधिकतम परास: $R_m = v_0^2/g$; $45° \\pm \\alpha$ बराबर परास देते हैं।"
+    },
+    {
+      "en": "Constant speed on a circle; velocity tangent, acceleration to the centre.",
+      "hi": "वृत्त पर नियत चाल; वेग स्पर्श रेखा पर, त्वरण केंद्र की ओर।"
+    },
+    {
+      "en": "Centripetal acceleration has constant magnitude but is not a constant vector.",
+      "hi": "अभिकेंद्र त्वरण का परिमाण नियत है पर यह नियत सदिश नहीं है।"
+    },
+    {
+      "en": "Constant-acceleration equations do not apply to circular motion.",
+      "hi": "नियत-त्वरण समीकरण वृत्तीय गति पर लागू नहीं होते।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Null vector properties",
+        "hi": "शून्य सदिश के गुण"
+      },
+      "latex": "\\vec{A} + \\vec{0} = \\vec{A},\\ \\lambda \\vec{0} = \\vec{0},\\ 0\\,\\vec{A} = \\vec{0}"
+    },
+    {
+      "name": {
+        "en": "Law of cosines",
+        "hi": "कोज्या नियम"
+      },
+      "latex": "R = \\sqrt{A^2 + B^2 + 2AB\\cos\\theta}"
+    },
+    {
+      "name": {
+        "en": "Direction of the resultant",
+        "hi": "परिणामी की दिशा"
+      },
+      "latex": "\\tan\\alpha = \\frac{B\\sin\\theta}{A + B\\cos\\theta}"
+    },
+    {
+      "name": {
+        "en": "Law of sines",
+        "hi": "ज्या नियम"
+      },
+      "latex": "\\frac{R}{\\sin\\theta} = \\frac{A}{\\sin\\beta} = \\frac{B}{\\sin\\alpha}"
+    },
+    {
+      "name": {
+        "en": "Components",
+        "hi": "घटक"
+      },
+      "latex": "A_x = A\\cos\\theta,\\ A_y = A\\sin\\theta"
+    },
+    {
+      "name": {
+        "en": "Magnitude and direction",
+        "hi": "परिमाण और दिशा"
+      },
+      "latex": "A = \\sqrt{A_x^2 + A_y^2},\\ \\tan\\theta = \\frac{A_y}{A_x}"
+    },
+    {
+      "name": {
+        "en": "Unit vector",
+        "hi": "एकांक सदिश"
+      },
+      "latex": "\\hat{n} = \\frac{\\vec{A}}{|\\vec{A}|}"
+    },
+    {
+      "name": {
+        "en": "Velocity",
+        "hi": "वेग"
+      },
+      "latex": "\\vec{v} = \\frac{d\\vec{r}}{dt} = v_x\\hat{i} + v_y\\hat{j}"
+    },
+    {
+      "name": {
+        "en": "Constant acceleration",
+        "hi": "नियत त्वरण"
+      },
+      "latex": "\\vec{r} = \\vec{r}_0 + \\vec{v}_0 t + \\frac{1}{2}\\vec{a}t^2"
+    },
+    {
+      "name": {
+        "en": "Trajectory",
+        "hi": "प्रक्षेप-पथ"
+      },
+      "latex": "y = (\\tan\\theta_0)x - \\frac{g x^2}{2(v_0\\cos\\theta_0)^2}"
+    },
+    {
+      "name": {
+        "en": "Time of flight",
+        "hi": "उड़ान का समय"
+      },
+      "latex": "T_f = \\frac{2v_0\\sin\\theta_0}{g}"
+    },
+    {
+      "name": {
+        "en": "Maximum height",
+        "hi": "अधिकतम ऊँचाई"
+      },
+      "latex": "h_m = \\frac{(v_0\\sin\\theta_0)^2}{2g}"
+    },
+    {
+      "name": {
+        "en": "Range",
+        "hi": "परास"
+      },
+      "latex": "R = \\frac{v_0^2\\sin 2\\theta_0}{g}"
+    },
+    {
+      "name": {
+        "en": "Centripetal acceleration",
+        "hi": "अभिकेंद्र त्वरण"
+      },
+      "latex": "a_c = \\frac{v^2}{R} = \\omega^2 R = 4\\pi^2\\nu^2 R"
+    },
+    {
+      "name": {
+        "en": "Linear and angular speed",
+        "hi": "रैखिक और कोणीय चाल"
+      },
+      "latex": "v = R\\omega = \\frac{2\\pi R}{T}"
+    },
+    {
+      "name": {
+        "en": "Angular speed and frequency",
+        "hi": "कोणीय चाल और आवृत्ति"
+      },
+      "latex": "\\omega = \\frac{2\\pi}{T} = 2\\pi\\nu"
+    }
+  ],
+  "hi_source": "translation"
+}

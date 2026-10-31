@@ -643,6 +643,7 @@ def _card(
         attempts=attempts,
         in_progress_attempt_id=in_progress,
         ranked=ref.ranked,
+        chapter_id=ref.chapter_id,
     )
 
 

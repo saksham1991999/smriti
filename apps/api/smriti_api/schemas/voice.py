@@ -14,7 +14,12 @@ from smriti_api.schemas.tutor import ContextRef
 ConceptId = Annotated[str, Field(min_length=1, max_length=200, pattern=r"^[A-Za-z0-9._:-]+$")]
 EndReason = Literal["user", "session_cap", "daily_cap", "network", "background", "phone_call"]
 VoiceTool = Literal[
-    "look_up_concept", "show_formula", "queue_cards", "get_mastery", "make_flashcard"
+    "look_up_concept",
+    "show_formula",
+    "queue_cards",
+    "get_mastery",
+    "make_flashcard",
+    "generate_image",
 ]
 
 

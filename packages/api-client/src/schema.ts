@@ -156,6 +156,40 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/ai/generations/{generation_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** A tutor picture: its status, and a short-lived signed link once ready */
+    get: operations["get_generation_v1_ai_generations__generation_id__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/ai/generations/{generation_id}/retry": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** [Try again] a failed tutor picture, once; never counts as a message */
+    post: operations["retry_generation_v1_ai_generations__generation_id__retry_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/analytics/events": {
     parameters: {
       query?: never;
@@ -6371,6 +6405,76 @@ export interface components {
       time_policy: "practice" | "strict";
     };
     /**
+     * GenerationOut
+     * @description One tutor picture. Poll while ``pending`` (the SSE ``image_ready`` event may never reach a
+     *     closed sheet). ``url`` is a short-lived signed link, set only when ``ready``: ask again after
+     *     ``url_expires_at``.
+     */
+    GenerationOut: {
+      /** Alt */
+      alt: string;
+      /**
+       * Can Retry
+       * @description [Try again] is offered once after a failure
+       */
+      can_retry: boolean;
+      /**
+       * Created At
+       * Format: date-time
+       */
+      created_at: string;
+      /** Finished At */
+      finished_at?: string | null;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /**
+       * Kind
+       * @default image
+       * @constant
+       */
+      kind: "image";
+      /** Locale */
+      locale: string;
+      /** Message Id */
+      message_id?: string | null;
+      /**
+       * Origin
+       * @description An approved index image, a cached picture, or a new one
+       */
+      origin?: ("index" | "cache" | "generated") | null;
+      /** Reason */
+      reason?:
+        | (
+            | "policy"
+            | "busy"
+            | "ai_unavailable"
+            | "failed"
+            | "pro_required"
+            | "not_for_age"
+            | "limit_reached"
+          )
+        | null;
+      /**
+       * Source
+       * @enum {string}
+       */
+      source: "tutor_chat" | "voice_board";
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "pending" | "ready" | "failed" | "blocked";
+      /** Tutor Session Id */
+      tutor_session_id?: string | null;
+      /** Url */
+      url?: string | null;
+      /** Url Expires At */
+      url_expires_at?: string | null;
+    };
+    /**
      * GuardianLinkRequestOut
      * @description The guardian's own list (SET-18). The teen's name shows only after the teen accepts.
      */
@@ -7162,6 +7266,24 @@ export interface components {
        */
       status: "queued" | "running" | "done" | "failed";
     };
+    /**
+     * MessageImage
+     * @description A picture attached to a tutor answer; fetch the link from ``GET /v1/ai/generations/{id}``.
+     */
+    MessageImage: {
+      /** Alt */
+      alt: string;
+      /**
+       * Generation Id
+       * Format: uuid
+       */
+      generation_id: string;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "pending" | "ready" | "failed" | "blocked";
+    };
     /** MessageIn */
     MessageIn: {
       /** Chip Id */
@@ -7198,6 +7320,8 @@ export interface components {
        * Format: uuid
        */
       id: string;
+      /** Images */
+      images?: components["schemas"]["MessageImage"][];
       /**
        * Role
        * @enum {string}
@@ -7275,6 +7399,8 @@ export interface components {
        * Format: uuid
        */
       blueprint_id: string;
+      /** Chapter Id */
+      chapter_id?: string | null;
       /** Duration Min */
       duration_min: number;
       /** Exam Profile Id */
@@ -7329,6 +7455,8 @@ export interface components {
       blueprint_id: string;
       /** Calculator */
       calculator: string;
+      /** Chapter Id */
+      chapter_id?: string | null;
       /** Duration Min */
       duration_min: number;
       /** Early Section Submit */
@@ -9877,7 +10005,13 @@ export interface components {
        * Name
        * @enum {string}
        */
-      name: "look_up_concept" | "show_formula" | "queue_cards" | "get_mastery" | "make_flashcard";
+      name:
+        | "look_up_concept"
+        | "show_formula"
+        | "queue_cards"
+        | "get_mastery"
+        | "make_flashcard"
+        | "generate_image";
     };
     /** ToolCallOut */
     ToolCallOut: {
@@ -9887,7 +10021,13 @@ export interface components {
        * Name
        * @enum {string}
        */
-      name: "look_up_concept" | "show_formula" | "queue_cards" | "get_mastery" | "make_flashcard";
+      name:
+        | "look_up_concept"
+        | "show_formula"
+        | "queue_cards"
+        | "get_mastery"
+        | "make_flashcard"
+        | "generate_image";
       /**
        * Result
        * @description Send back to Gemini Live as the function response
@@ -9947,6 +10087,8 @@ export interface components {
     };
     /** TopicProgressState */
     TopicProgressState: {
+      /** Learned Via */
+      learned_via?: ("lesson" | "test_out" | "placement" | "chapter_test") | null;
       /** Percent */
       percent: number;
       /**
@@ -10674,13 +10816,75 @@ export interface operations {
       };
     };
     responses: {
-      /** @description Server-sent events (delta, replace, safety, citations, chips, quota, quota_exhausted, error, done) */
+      /** @description Server-sent events (delta, replace, safety, image_ready, image_pending, image_failed, citations, chips, quota, quota_exhausted, error, done) */
       200: {
         headers: {
           [name: string]: unknown;
         };
         content: {
           "text/event-stream": string;
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  get_generation_v1_ai_generations__generation_id__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        generation_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GenerationOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  retry_generation_v1_ai_generations__generation_id__retry_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        generation_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GenerationOut"];
         };
       };
       /** @description Validation Error */
@@ -17567,7 +17771,7 @@ export interface operations {
       };
     };
     responses: {
-      /** @description Server-sent events (delta, replace, safety, citations, chips, quota, quota_exhausted, error, done) */
+      /** @description Server-sent events (delta, replace, safety, image_ready, image_pending, image_failed, citations, chips, quota, quota_exhausted, error, done) */
       200: {
         headers: {
           [name: string]: unknown;
@@ -17600,7 +17804,7 @@ export interface operations {
       };
     };
     responses: {
-      /** @description Server-sent events (delta, replace, safety, citations, chips, quota, quota_exhausted, error, done) */
+      /** @description Server-sent events (delta, replace, safety, image_ready, image_pending, image_failed, citations, chips, quota, quota_exhausted, error, done) */
       200: {
         headers: {
           [name: string]: unknown;
@@ -17795,7 +17999,7 @@ export interface operations {
       };
     };
     responses: {
-      /** @description Server-sent events (delta, replace, safety, citations, chips, quota, quota_exhausted, error, done) */
+      /** @description Server-sent events (delta, replace, safety, image_ready, image_pending, image_failed, citations, chips, quota, quota_exhausted, error, done) */
       200: {
         headers: {
           [name: string]: unknown;

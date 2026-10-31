@@ -39,6 +39,9 @@ EVENT_TYPES = (
     "activity_completed",
     "palace_saved",
     "palace_deleted",
+    "topic_tested_out",
+    "topic_test_out_undone",
+    "chapter_reset",
 )
 
 SETTINGS_KEYS = (
@@ -316,6 +319,37 @@ class ActivityCompleted(_Payload):
     completed_at: AwareDatetime
 
 
+class TopicTestedOut(_Payload):
+    """(v1.6) LES-13 after a Test out (learn §6.4): the topics the check passed. Each is marked
+    learned with ``learned_via = test_out`` unless it is already learned. ``check_id`` names the
+    check so LES-13's "Undo this" can take back exactly its marks."""
+
+    check_id: uuid.UUID
+    kind: Literal["test_out"] = "test_out"
+    chapter_id: Id
+    topic_ids: Annotated[list[Id], Field(min_length=1, max_length=100)]
+
+
+class UndoneTopic(_Payload):
+    topic_id: Id
+    # The row the check replaced (app-core ``TestOutMark.previous``); null when there was none.
+    previous_status: Literal["not_started", "in_progress"] | None = None
+
+
+class TopicTestOutUndone(_Payload):
+    """(v1.6) LES-13 "Undo this": the marks of one ``topic_tested_out`` go back to what they were."""
+
+    check_id: uuid.UUID
+    topics: Annotated[list[UndoneTopic], Field(min_length=1, max_length=100)]
+
+
+class ChapterReset(_Payload):
+    """(v1.6) LRN-02 "Reset chapter progress" (X13): every topic of the chapter goes back to not
+    started, whatever marked it learned. Review cards, XP and the streak stay."""
+
+    chapter_id: Id
+
+
 PalaceSaved = PalaceDoc
 """(v1.5) A memory palace, whole (``schemas.palaces.PalaceDoc``); the newest ``updated_at`` wins."""
 
@@ -344,6 +378,9 @@ PAYLOAD_MODELS: dict[str, type[BaseModel]] = {
     "activity_completed": ActivityCompleted,
     "palace_saved": PalaceSaved,
     "palace_deleted": PalaceDeleted,
+    "topic_tested_out": TopicTestedOut,
+    "topic_test_out_undone": TopicTestOutUndone,
+    "chapter_reset": ChapterReset,
 }
 
 
@@ -460,6 +497,8 @@ class TopicProgressState(BaseModel):
     topic_id: str
     status: Literal["not_started", "in_progress", "learned"]
     percent: int
+    # (v1.6) How the topic became learned, so a pull keeps a Test out mark as it is.
+    learned_via: Literal["lesson", "test_out", "placement", "chapter_test"] | None = None
 
 
 class EntitlementState(BaseModel):

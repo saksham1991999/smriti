@@ -1,0 +1,253 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph104 (text, summary and table, pp. 64-68): जड़त्व, न्यूटन का गति का प्रथम/द्वितीय/तृतीय नियम, संवेग, आवेग, क्रिया-प्रतिक्रिया युगल, निकाय, संवेग संरक्षण, बल निर्देशक आरेख, अभिलंब बल, स्थैतिक घर्षण, गतिज घर्षण, घर्षण गुणांक, लोटनिक घर्षण, बॉल-बेयरिंग, स्नेहक, अभिकेंद्र बल, वर्तुल गति, समतल सड़क, ढालू सड़क, अनुकूलतम चाल. Other wording is ours.",
+  "id": "phy.laws-of-motion.inertia-first-law:deep_dive",
+  "topic": "phy.laws-of-motion.inertia-first-law",
+  "mode": "deep_dive",
+  "estimated_minutes": 4,
+  "min_depth": 1,
+  "max_depth": 2,
+  "concepts": [
+    "phy.laws-of-motion.inertia-first-law.core.newton-first-law"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Does motion need a push?",
+        "hi": "क्या गति के लिए धक्का चाहिए?"
+      },
+      "subtopic": "phy.laws-of-motion.inertia-first-law.core",
+      "card_ids": [
+        "phy.laws-of-motion.inertia-first-law:dd:01",
+        "phy.laws-of-motion.inertia-first-law:dd:02",
+        "phy.laws-of-motion.inertia-first-law:dd:03",
+        "phy.laws-of-motion.inertia-first-law:dd:04",
+        "phy.laws-of-motion.inertia-first-law:dd:05",
+        "phy.laws-of-motion.inertia-first-law:dd:06",
+        "phy.laws-of-motion.inertia-first-law:dd:07",
+        "phy.laws-of-motion.inertia-first-law:dd:08"
+      ],
+      "estimated_minutes": 4
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.laws-of-motion.inertia-first-law:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.laws-of-motion.inertia-first-law.core.newton-first-law"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "The toy car stops",
+        "hi": "खिलौना कार रुक जाती है"
+      },
+      "body": {
+        "en": "A small child drags a wooden toy car across the floor by a string. The moment the child lets go, the car slows and stops. It looks as if a moving thing needs a constant pull to keep moving. For about two thousand years, that is exactly what people believed.",
+        "hi": "एक छोटा बच्चा डोरी से लकड़ी की खिलौना कार को फ़र्श पर खींचता है। जैसे ही बच्चा डोरी छोड़ता है, कार धीमी होकर रुक जाती है। लगता है कि चलती चीज़ को चलते रहने के लिए लगातार खिंचाव चाहिए। लगभग दो हज़ार वर्षों तक लोग ठीक यही मानते रहे।"
+      },
+      "media": "img.laws-of-motion.toy-car-string"
+    },
+    {
+      "id": "phy.laws-of-motion.inertia-first-law:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.laws-of-motion.inertia-first-law.core.newton-first-law"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Aristotle's fallacy",
+        "hi": "अरस्तू की भ्रांति"
+      },
+      "body": {
+        "en": "The Greek thinker Aristotle (384 B.C.-322 B.C.) held that if a body is moving, something external is needed to keep it moving: an arrow keeps flying because the air behind pushes it. In short, an external force is required to keep a body in motion.\n\nThis matches everyday experience, but it is wrong. The toy car stops because the floor exerts a force of friction on it that opposes its motion. The child's pull only cancels the friction. When the car moves uniformly, there is no net external force on it. Without friction, no force at all would be needed to keep it moving uniformly.",
+        "hi": "यूनानी विचारक अरस्तू (384 ई.पू.-322 ई.पू.) का मत था कि यदि कोई पिंड गतिमान है, तो उसे गतिमान रखने के लिए कुछ बाहरी चाहिए: तीर इसलिए उड़ता रहता है क्योंकि उसके पीछे की वायु उसे धकेलती है। संक्षेप में, किसी पिंड को गति में रखने के लिए बाह्य बल आवश्यक है।\n\nयह रोज़ के अनुभव से मेल खाता है, पर गलत है। खिलौना कार इसलिए रुकती है क्योंकि फ़र्श उस पर घर्षण बल लगाता है जो उसकी गति का विरोध करता है। बच्चे का खिंचाव केवल घर्षण को निरस्त करता है। जब कार एकसमान रूप से चलती है, तो उस पर कोई नेट बाह्य बल नहीं होता। घर्षण न हो तो उसे एकसमान चलाते रहने के लिए किसी बल की आवश्यकता नहीं होगी।"
+      },
+      "media": "img.laws-of-motion.toy-car-string",
+      "highlights": [
+        {
+          "term": {
+            "en": "friction",
+            "hi": "घर्षण"
+          },
+          "definition": {
+            "en": "the opposing force that stops moving bodies",
+            "hi": "वह विरोधी बल जो गतिमान पिंडों को रोकता है"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.2, Summary 1"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.inertia-first-law:dd:03",
+      "type": "explainer",
+      "concepts": [
+        "phy.laws-of-motion.inertia-first-law.core.newton-first-law"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Galileo and the law of inertia",
+        "hi": "गैलीलियो और जड़त्व का नियम"
+      },
+      "body": {
+        "en": "Galileo studied balls on inclined planes. Going down, they speed up; going up, they slow down; so on a frictionless horizontal plane a ball should do neither and move with constant velocity.\n\nWith a double inclined plane, a ball released on one side climbs the other to nearly the same height. Make the second slope gentler and it rolls further to reach that height. Make it horizontal and, without friction, it would never stop.\n\nSo rest and uniform motion in a straight line are equivalent: in both there is no net force. The property of a body by which it does not change its state of rest or uniform motion unless an external force makes it is called inertia, meaning resistance to change.",
+        "hi": "गैलीलियो ने आनत तलों पर गेंदों का अध्ययन किया। नीचे जाते समय वे तेज़ होती हैं; ऊपर जाते समय धीमी; इसलिए घर्षणरहित क्षैतिज तल पर गेंद को न तेज़ होना चाहिए न धीमा, बल्कि नियत वेग से चलना चाहिए।\n\nदोहरे आनत तल पर, एक ओर छोड़ी गई गेंद दूसरी ओर लगभग उतनी ही ऊँचाई तक चढ़ती है। दूसरी ढलान कम कीजिए तो वह उस ऊँचाई तक पहुँचने के लिए अधिक दूर लुढ़कती है। उसे क्षैतिज कर दीजिए तो, घर्षण के बिना, वह कभी नहीं रुकेगी।\n\nअतः विराम और सरल रेखा में एकसमान गति तुल्य हैं: दोनों में कोई नेट बल नहीं होता। पिंड का वह गुण जिसके कारण वह अपनी विराम या एकसमान गति की अवस्था तब तक नहीं बदलता जब तक कोई बाह्य बल उसे विवश न करे, जड़त्व कहलाता है, जिसका अर्थ है परिवर्तन का प्रतिरोध।"
+      },
+      "media": "img.laws-of-motion.toy-car-string",
+      "highlights": [
+        {
+          "term": {
+            "en": "inertia",
+            "hi": "जड़त्व"
+          },
+          "definition": {
+            "en": "resistance to change of the state of rest or uniform motion",
+            "hi": "विराम या एकसमान गति की अवस्था में परिवर्तन का प्रतिरोध"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.3, Fig. 4.1, Summary 2"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.inertia-first-law:dd:04",
+      "type": "explainer",
+      "concepts": [
+        "phy.laws-of-motion.inertia-first-law.core.newton-first-law"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Vega: an idea from ancient India",
+        "hi": "वेग: प्राचीन भारत का एक विचार"
+      },
+      "body": {
+        "en": "Ancient Indian thinkers classified forces: continuous pressure (nodan), as of wind on a sail; impact (abhighat), as when a potter's rod strikes the wheel; and a persistent tendency (sanskara). In the Vaisesika theory of motion, vega, the tendency to move in a straight line, perhaps comes closest to inertia. Vega was thought to be opposed by contact with objects, including the air: a parallel to friction and air resistance.",
+        "hi": "प्राचीन भारतीय विचारकों ने बलों का वर्गीकरण किया: सतत दाब (नोदन), जैसे पाल पर वायु का; आघात (अभिघात), जैसे जब कुम्हार की छड़ चाक से टकराती है; और स्थायी प्रवृत्ति (संस्कार)। वैशेषिक गति सिद्धांत में वेग, यानी सरल रेखा में चलने की प्रवृत्ति, शायद जड़त्व के सबसे निकट है। माना जाता था कि वायु सहित वस्तुओं के संपर्क से वेग का विरोध होता है: यह घर्षण और वायु प्रतिरोध से मिलता-जुलता विचार है।"
+      },
+      "media": "img.laws-of-motion.toy-car-string",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.4, box Ideas on Motion in Ancient Indian Science"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.inertia-first-law:dd:05",
+      "type": "explainer",
+      "concepts": [
+        "phy.laws-of-motion.inertia-first-law.core.newton-first-law"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Newton's first law",
+        "hi": "न्यूटन का गति का प्रथम नियम"
+      },
+      "body": {
+        "en": "Newton took Galileo's law of inertia as his first law: every body continues to be in its state of rest or of uniform motion in a straight line unless compelled by some external force to act otherwise. Put simply: if the net external force on a body is zero, its acceleration is zero.\n\nOn Earth there are always forces such as gravity and friction. A body at rest or in uniform motion is not free of forces; the forces on it add up to zero. For a book at rest on a table, the correct reasoning is: the book is at rest, so by the first law the net force is zero, so the normal force of the table equals the weight. Saying 'the forces cancel, so the book is at rest' gets the logic backwards.",
+        "hi": "न्यूटन ने गैलीलियो के जड़त्व के नियम को अपना प्रथम नियम बनाया: प्रत्येक पिंड तब तक अपनी विराम अवस्था या सरल रेखा में एकसमान गति की अवस्था में रहता है जब तक कोई बाह्य बल उसे अन्यथा व्यवहार करने के लिए विवश न करे। सरल शब्दों में: यदि किसी पिंड पर नेट बाह्य बल शून्य है, तो उसका त्वरण शून्य है।\n\nपृथ्वी पर गुरुत्व और घर्षण जैसे बल सदा रहते हैं। विराम या एकसमान गति वाला पिंड बलों से मुक्त नहीं होता; उस पर लगे बलों का योग शून्य होता है। मेज़ पर रखी किताब के लिए सही तर्क है: किताब विराम में है, इसलिए प्रथम नियम से नेट बल शून्य है, इसलिए मेज़ का अभिलंब बल भार के बराबर है। 'बल निरस्त होते हैं, इसलिए किताब विराम में है' कहना तर्क को उलट देता है।"
+      },
+      "media": "img.laws-of-motion.toy-car-string",
+      "highlights": [
+        {
+          "term": {
+            "en": "first law",
+            "hi": "प्रथम नियम"
+          },
+          "definition": {
+            "en": "zero net external force means zero acceleration",
+            "hi": "शून्य नेट बाह्य बल का अर्थ शून्य त्वरण"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.4, Fig. 4.2, Summary 2"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.inertia-first-law:dd:06",
+      "type": "explainer",
+      "concepts": [
+        "phy.laws-of-motion.inertia-first-law.core.newton-first-law"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Inertia in a bus",
+        "hi": "बस में जड़त्व"
+      },
+      "body": {
+        "en": "Stand in a bus that starts suddenly and you are thrown backwards. Friction makes your feet move with the floor, but the rest of your body stays where it was because of inertia, so relative to the bus you tilt back. When the bus stops suddenly, your feet stop with the floor while the rest of your body carries on, and you are thrown forwards. In both cases your muscles then bring your body along.",
+        "hi": "अचानक चल पड़ने वाली बस में खड़े हों तो आप पीछे की ओर गिरते हैं। घर्षण आपके पैरों को फ़र्श के साथ चला देता है, पर जड़त्व के कारण शरीर का शेष भाग वहीं रहता है, इसलिए बस के सापेक्ष आप पीछे झुकते हैं। जब बस अचानक रुकती है, तो आपके पैर फ़र्श के साथ रुक जाते हैं जबकि शरीर का शेष भाग चलता रहता है, और आप आगे की ओर गिरते हैं। दोनों स्थितियों में फिर आपकी पेशियाँ शरीर को साथ ले आती हैं।"
+      },
+      "media": "img.laws-of-motion.bus-passengers",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.4"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.inertia-first-law:dd:07",
+      "type": "question",
+      "concepts": [
+        "phy.laws-of-motion.inertia-first-law.core.newton-first-law"
+      ],
+      "depth": 1,
+      "question": "q.phy.laws-of-motion.inertia-first-law.0001"
+    },
+    {
+      "id": "phy.laws-of-motion.inertia-first-law:dd:08",
+      "type": "summary",
+      "concepts": [
+        "phy.laws-of-motion.inertia-first-law.core.newton-first-law"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "A force is needed in practice only to cancel friction, not to keep motion going.",
+          "hi": "व्यवहार में बल केवल घर्षण को निरस्त करने के लिए चाहिए, गति बनाए रखने के लिए नहीं।"
+        },
+        {
+          "en": "First law: zero net external force means zero acceleration.",
+          "hi": "प्रथम नियम: शून्य नेट बाह्य बल का अर्थ शून्य त्वरण।"
+        },
+        {
+          "en": "Inertia is resistance to a change of state of rest or uniform motion.",
+          "hi": "जड़त्व विराम या एकसमान गति की अवस्था में परिवर्तन का प्रतिरोध है।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

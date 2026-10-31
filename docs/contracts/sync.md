@@ -1,6 +1,6 @@
 # Sync contract (client outbox ↔ API)
 
-Status: v1.3, 30 Oct 2026. Shared by `packages/app-core` (client) and `apps/api` (server). The server's Pydantic models in `apps/api` are the source of truth for OpenAPI; this file describes the wire format they implement. If you need to change it, change both sides in the same pull request.
+Status: v1.4, 31 Oct 2026. Shared by `packages/app-core` (client) and `apps/api` (server). The server's Pydantic models in `apps/api` are the source of truth for OpenAPI; this file describes the wire format they implement. If you need to change it, change both sides in the same pull request.
 
 ## Envelope
 
@@ -89,12 +89,19 @@ The server recomputes XP, mastery, FSRS schedules, activity days, the streak, pl
   "wallet": { "xp_total": 120, "xp_today": 40, "gems": 35 },
   "srs": { "cards": [ { "card_ref": "c:...", "due": "...", "stability": 1.2, "difficulty": 5.1, "state": 2, "reps": 1, "lapses": 0, "last_review": "..." } ], "deleted": [] },
   "topic_progress": [ { "topic_id": "...", "status": "learned", "percent": 100 } ],
-  "entitlement": { "plan": "free", "pro_until": null }
+  "entitlement": { "plan": "free", "pro_until": null, "managed_in": "none" }
 }
 ```
 
 Server values win on conflict. The client replaces its local copy of each section it receives.
 
+(v1.4) `entitlement.managed_in` says who can manage the plan, so Manage plan goes to the right place: `web` (Razorpay, in the app), `play`, `app_store`, `parent` (PAY-17: the subscription's payer is a guardian and only they manage it; the child's own cancel answers 403 `managed_by_parent`), `family` (a seat on someone else's family plan) or `none` (free, or a promo grant). Clients that talk to an older server without the field infer it: `parent` when the subscription details say `payer: guardian`, otherwise from `source`.
+
 ## Dev auth
 
 Locally there is no Supabase Auth server. `apps/api` exposes `POST /v1/dev/auth/anonymous` and `POST /v1/dev/auth/google` (body `{ "email": "...", "name": "..." }`) only when `APP_ENV=local` or `test`. They return `{ "access_token": "...", "token_type": "bearer", "expires_in": 3600, "refresh_token": "...", "user": { "id": "uuid", "is_anonymous": true } }`, like Supabase's token endpoint. `POST /v1/dev/auth/refresh` (body `{ "refresh_token": "..." }`) returns the same shape. The access token is a JWT signed with the dev key and shaped exactly like a Supabase access token (`sub`, `role: authenticated`, `is_anonymous`, `aud`, `exp`, `amr`). Clients use them through the same auth interface they use for Supabase, so switching to real Supabase is config only.
+
+## Changelog
+
+- v1.4 (31 Oct 2026): `entitlement.managed_in` on `GET /v1/sync/state` (`web`, `play`, `app_store`, `parent`, `family`, `none`). Additive; clients fall back to inferring it.
+- v1.3 (30 Oct 2026): mock answers update mastery; practice and mock section events count once.

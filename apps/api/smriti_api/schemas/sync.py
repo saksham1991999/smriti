@@ -431,6 +431,10 @@ class EntitlementState(BaseModel):
     cancel_at_period_end: bool = False
     is_intro: bool = False
     source: Literal["razorpay", "play", "app_store", "promo", "family"] | None = None
+    # (sync v1.4) Who can manage the plan, so the app sends Manage plan to the right place:
+    # "web" (Razorpay in this app), "play", "app_store", "parent" (PAY-17: a guardian pays and
+    # only they manage it), "family" (a seat on someone else's family plan), "none" (free or promo).
+    managed_in: Literal["web", "play", "app_store", "parent", "family", "none"] = "none"
 
 
 class SyncStateResponse(BaseModel):

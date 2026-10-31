@@ -10219,6 +10219,12 @@
               { "type": "null" }
             ],
             "title": "Source"
+          },
+          "managed_in": {
+            "type": "string",
+            "enum": ["web", "play", "app_store", "parent", "family", "none"],
+            "title": "Managed In",
+            "default": "none"
           }
         },
         "type": "object",

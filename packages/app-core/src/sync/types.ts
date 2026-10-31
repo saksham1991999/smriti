@@ -223,7 +223,15 @@ export interface EntitlementSection {
   cancel_at_period_end?: boolean;
   is_intro?: boolean;
   source?: EntitlementSource | null;
+  /** (sync v1.4) Who manages the plan; absent from older servers (see `planManagedIn`). */
+  managed_in?: PlanManagedIn;
 }
+
+/**
+ * Where Manage plan goes (sync v1.4 `entitlement.managed_in`): this app's web checkout, a store,
+ * the parent who pays (PAY-17), the family plan's payer, or nothing to manage.
+ */
+export type PlanManagedIn = 'web' | 'play' | 'app_store' | 'parent' | 'family' | 'none';
 
 export interface SyncStateResponse {
   state_version: number;

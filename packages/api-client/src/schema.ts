@@ -5230,6 +5230,12 @@ export interface components {
        */
       is_intro: boolean;
       /**
+       * Managed In
+       * @default none
+       * @enum {string}
+       */
+      managed_in: "web" | "play" | "app_store" | "parent" | "family" | "none";
+      /**
        * Plan
        * @enum {string}
        */

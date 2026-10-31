@@ -16,7 +16,7 @@ import { Banner, DayDots, Meter, PetLine, Toast } from "./components/Feedback";
 import { FormulaBox } from "./components/FormulaBox";
 import { Icon } from "./components/Icon";
 import { Illustration, PetAvatar, PetView, PlantView } from "./components/Illustration";
-import { ConfidenceRow, Picker, RatingButtons, Switch } from "./components/Inputs";
+import { ConfidenceRow, Picker, RatingButtons, Switch, TextField } from "./components/Inputs";
 import { SidebarNav, TabBar, TopBar } from "./components/Navigation";
 import { Dialog, Sheet, Tooltip } from "./components/Overlays";
 import { HeatMapCell, LeaderboardRow, LimitMeter, MockPaletteCell, NumericKeypad, OmrBubbleRow, ScoreRing, SectionTabs, Timer, TimeStrip } from "./components/Practice";
@@ -85,8 +85,12 @@ function FormDemo({ c }: { c: GalleryCopy }) {
   const [year, setYear] = useState<string | null>("2012");
   const [month, setMonth] = useState<string | null>("2");
   const [sound, setSound] = useState(true);
+  const [note, setNote] = useState("");
+  const [email, setEmail] = useState("name@");
   return (
     <Stack>
+      <TextField label={c.noteLabel} value={note} onChange={setNote} placeholder={c.notePlaceholder} hint={c.noteHint} multiline maxLength={200} testID="gallery-note" />
+      <TextField label={c.emailLabel} value={email} onChange={setEmail} keyboard="email" error={c.emailError} />
       <Grid cols={2}>
         <Picker label={c.monthLabel} value={month} onChange={setMonth} options={c.months.map((m, i) => ({ value: String(i + 1), label: m }))} />
         <Picker label={c.yearLabel} value={year} onChange={setYear} options={["2010", "2011", "2012", "2013", "2014"].map((y) => ({ value: y, label: y }))} />
@@ -402,7 +406,7 @@ export const gallerySections: { id: string; title: string; render: Render }[] = 
       </Stack>
     ),
   },
-  { id: "forms", title: "Picker, Settings row, Switch", render: (c) => <FormDemo c={c} /> },
+  { id: "forms", title: "Text field, Picker, Settings row, Switch", render: (c) => <FormDemo c={c} /> },
   {
     id: "pro",
     title: "Price block and Trial timeline",
@@ -571,7 +575,7 @@ function TypeDemo({ c }: { c: GalleryCopy }) {
         ))}
       </View>
       <Row>
-        {(["Plant", "Snowflake", "Lightbulb", "Exam", "Flask", "LockSimple", "CloudCheck", "Timer"] as const).map((n) => (
+        {(["Plant", "Snowflake", "Lightbulb", "Exam", "Flask", "LockSimple", "CloudCheck", "Timer", "ArrowsOut", "ArrowsIn", "ThumbsUp", "ThumbsDown", "Camera", "ShareNetwork", "NotePencil"] as const).map((n) => (
           <Icon key={n} name={n} weight={n === "Plant" ? "fill" : "bold"} color={n === "Plant" ? "streak" : "ink"} label={n} />
         ))}
       </Row>

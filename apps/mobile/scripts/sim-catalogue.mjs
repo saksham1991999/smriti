@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Writes src/content/labs.generated.json from sims/*/manifest.json (the Labs tab list, LAB-01):
 // id, title (EN/HI), subject, tasks (LAB-03/04 run them through sim-bridge), readings, size and
-// licence. Run after a sim is added or changed.
+// licence. Run after a sim is added or changed; `--check` (run by lint) fails when it is stale.
 import { readdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -34,5 +34,14 @@ for (const dir of readdirSync(sims).sort()) {
     aspect: m.aspect,
   });
 }
-writeFileSync(out, `${JSON.stringify(labs, null, 2)}\n`);
-console.log(`labs: ${labs.length} sims -> ${out}`);
+const body = `${JSON.stringify(labs, null, 2)}\n`;
+if (process.argv.includes('--check')) {
+  if (!existsSync(out) || readFileSync(out, 'utf8') !== body) {
+    console.error('labs: src/content/labs.generated.json is out of date with sims/*/manifest.json; run node scripts/sim-catalogue.mjs');
+    process.exit(1);
+  }
+  console.log(`labs: ok (${labs.length} sims)`);
+} else {
+  writeFileSync(out, body);
+  console.log(`labs: ${labs.length} sims -> ${out}`);
+}

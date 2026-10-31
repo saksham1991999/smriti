@@ -1,7 +1,8 @@
-import { useEffect, useRef } from "react";
-import { Pressable, ScrollView, View, type NativeScrollEvent, type NativeSyntheticEvent, type StyleProp, type ViewStyle } from "react-native";
+import { useEffect, useRef, useState } from "react";
+import { Pressable, ScrollView, TextInput, View, type NativeScrollEvent, type NativeSyntheticEvent, type StyleProp, type ViewStyle } from "react-native";
 import Animated, { useAnimatedStyle, withTiming } from "react-native-reanimated";
-import type { Confidence, ConfidenceRowContract, IconName, PickerContract, Rating, RatingButtonsContract, SwitchContract } from "@smriti/tokens/ui";
+import type { Confidence, ConfidenceRowContract, IconName, PickerContract, Rating, RatingButtonsContract, SwitchContract, TextFieldContract } from "@smriti/tokens/ui";
+import { hasDevanagari } from "@smriti/tokens/ui";
 import { useTheme, useUI } from "../theme";
 import { Icon } from "./Icon";
 import { PressableScale } from "./Pressable";
@@ -217,5 +218,86 @@ export function Switch({ checked, onCheckedChange, label, disabled, hideLabel, t
         </Animated.View>
       </View>
     </Pressable>
+  );
+}
+
+export interface TextFieldProps extends TextFieldContract {
+  style?: StyleProp<ViewStyle>;
+}
+
+const KEYBOARD = { default: "default", email: "email-address", numeric: "numeric" } as const;
+
+/**
+ * Labelled text field (TextFieldContract): label above, the field on `surfaceSunken` at radius 16,
+ * a 2 px `primary` border while focused and `error` with a Warning icon and message on error.
+ */
+export function TextField({ label, value, onChange, placeholder, hint, error, maxLength, multiline, lines = 3, disabled, keyboard = "default", onSubmit, testID, style }: TextFieldProps) {
+  const theme = useTheme();
+  const { t, locale } = useUI();
+  const c = theme.colors;
+  const [focused, setFocused] = useState(false);
+  const script = hasDevanagari(value || placeholder || "") || locale === "hi" ? "devanagari" : "latin";
+  const type = theme.type[script].body;
+  const lineHeight = type.lineHeight ?? 24;
+  const remaining = maxLength === undefined ? null : maxLength - value.length;
+  const showCounter = remaining !== null && maxLength !== undefined && remaining <= Math.ceil(maxLength * 0.2);
+  const message = error ?? hint;
+  return (
+    <View testID={testID} style={[{ gap: 6 }, style]}>
+      <Text variant="label" tone="muted" importantForAccessibility="no">
+        {label}
+      </Text>
+      <TextInput
+        testID={testID ? `${testID}-input` : undefined}
+        value={value}
+        onChangeText={onChange}
+        placeholder={placeholder}
+        placeholderTextColor={c.inkMuted}
+        editable={!disabled}
+        maxLength={maxLength}
+        multiline={multiline}
+        keyboardType={KEYBOARD[keyboard]}
+        autoCapitalize={keyboard === "email" ? "none" : "sentences"}
+        returnKeyType={multiline ? "default" : "done"}
+        onSubmitEditing={multiline ? undefined : onSubmit}
+        onFocus={() => setFocused(true)}
+        onBlur={() => setFocused(false)}
+        accessibilityLabel={label}
+        accessibilityHint={message}
+        accessibilityState={{ disabled: Boolean(disabled) }}
+        textAlignVertical={multiline ? "top" : "center"}
+        style={[
+          type,
+          {
+            minHeight: multiline ? Math.max(48, lineHeight * lines + 24) : 48,
+            borderRadius: theme.radius.md,
+            backgroundColor: c.surfaceSunken,
+            color: c.ink,
+            paddingHorizontal: 16,
+            paddingVertical: 12,
+            borderWidth: 2,
+            borderColor: error ? c.error : focused ? c.primary : "transparent",
+            opacity: disabled ? 0.6 : 1,
+          },
+        ]}
+      />
+      {(message || showCounter) && (
+        <View style={{ flexDirection: "row", alignItems: "flex-start", gap: 8 }}>
+          {error ? <Icon name="Warning" size={16} color="errorText" /> : null}
+          <View style={{ flex: 1 }} accessibilityLiveRegion={error ? "polite" : undefined}>
+            {message ? (
+              <Text variant="caption" tone={error ? "error" : "muted"} testID={testID ? `${testID}-${error ? "error" : "hint"}` : undefined}>
+                {message}
+              </Text>
+            ) : null}
+          </View>
+          {showCounter && remaining !== null ? (
+            <Text variant="caption" tone={remaining <= 0 ? "error" : "muted"} numeric>
+              {t("chat.charsLeft", { n: Math.max(0, remaining) })}
+            </Text>
+          ) : null}
+        </View>
+      )}
+    </View>
   );
 }

@@ -4,7 +4,7 @@
  * half-finished download.
  */
 import { LABS } from '../src/content/labs';
-import { labProgress, nextLab, SimCache, simAssetRefs, simFolderUrl, saveLabProgress, type SimFiles } from '../src/services/labs';
+import { labLessonText, labProgress, nextLab, sameSim, SimCache, simAssetRefs, simFolderUrl, saveLabProgress, type SimFiles } from '../src/services/labs';
 import { createTestApp } from './harness';
 
 const BASE = 'https://cdn.example.test/sims';
@@ -101,5 +101,20 @@ test('lab progress keeps the best result and the completion', async () => {
   await saveLabProgress(app, lab.id, [{ taskId: 'a', status: 'pending', tries: 0 }, { taskId: 'b', status: 'pending', tries: 0 }], true);
   expect(await labProgress(app, lab.id)).toMatchObject({ done: 1, total: 2, completedAt: expect.any(String) });
   expect(nextLab(LABS, lab.id)?.id).not.toBe(lab.id);
+  app.stop();
+});
+
+test('LAB-05 and LAB-07 read the fallback body and debrief from the lesson sim card on the device', async () => {
+  expect(sameSim('sim.chapter-a.ohms-law-circuit', 'ohms-law-circuit')).toBe(true);
+  expect(sameSim('ohms-law-circuit', 'ohms-law-circuit')).toBe(true);
+  expect(sameSim('sim.chapter-a.ohms-law-circuit-2', 'ohms-law-circuit')).toBe(false);
+  const { app } = createTestApp();
+  await app.boot();
+  // The fixture seed pack's lesson uses a fixture sim, not one of the real labs.
+  expect(labLessonText(app, 'ohms-law-circuit')).toBeNull();
+  const fx = labLessonText(app, 'fx-sim-b');
+  expect(fx?.topicId).toBe('fx.chapter-a.topic-b');
+  expect(typeof fx?.fallbackBody).toBe('string');
+  expect(typeof fx?.debrief).toBe('string');
   app.stop();
 });

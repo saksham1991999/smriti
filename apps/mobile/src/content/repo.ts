@@ -1,4 +1,4 @@
-import type { Manifest, TopicEntry, TypedBundle } from '@smriti/content-schema';
+import type { Manifest, TopicEntry, TypedBundle } from '@smriti/content-schema/runtime';
 import type { ImageSourcePropType } from 'react-native';
 
 import type { SeedPackFiles } from '../seed/types';
@@ -23,6 +23,8 @@ export interface ChapterView {
   id: string;
   name: string;
   subjectId: string;
+  /** The manifest's unit id (manifest@1 has no unit names, so LRN-01 shows no unit headers yet). */
+  unitId: string;
   free: boolean;
   topics: TopicView[];
 }
@@ -31,6 +33,11 @@ export interface SubjectView {
   id: string;
   name: string;
   colorFamily: string;
+  /**
+   * Unit names (content-schema `SubjectFile.units`, localised). manifest@1 does not carry them
+   * yet, so this is empty and LRN-01 shows no unit headers until the publisher adds them.
+   */
+  units?: { id: string; name: string }[];
   chapters: ChapterView[];
 }
 
@@ -47,7 +54,40 @@ export interface LoadedBundle {
  * (see `downloads.ts`). Manifests are `manifest@1` from tools/content-publish.
  */
 export class ContentRepo {
+  /** Bundles downloaded after install (LRN-15), by manifest path; filled by `ContentDownloads`. */
+  private readonly downloaded: Record<ContentLocale, Map<string, unknown>> = { en: new Map(), hi: new Map() };
+
   constructor(private readonly packs: Record<ContentLocale, SeedPackFiles>) {}
+
+  /** A downloaded bundle becomes readable like a seed one (manifest paths are content-addressed). */
+  addBundle(locale: ContentLocale, path: string, json: unknown): void {
+    this.downloaded[locale].set(path, json);
+  }
+
+  removeBundle(locale: ContentLocale, path: string): void {
+    this.downloaded[locale].delete(path);
+  }
+
+  /** Shipped in the build's seed pack: always on the device, never downloaded or removed. */
+  inSeed(locale: ContentLocale, path: string): boolean {
+    return Boolean(this.packs[locale].bundles[path]);
+  }
+
+  hasBundle(locale: ContentLocale, path: string): boolean {
+    return this.inSeed(locale, path) || this.downloaded[locale].has(path);
+  }
+
+  /** Whether a topic's bundle for a mode is on the device (LRN-02 "Needs internet" chips). */
+  available(locale: ContentLocale, topicId: string, mode: BundleMode, examProfileId?: string | null): boolean {
+    const entry = this.manifest(locale, examProfileId).topics[topicId]?.bundles[mode];
+    return Boolean(entry && this.hasBundle(locale, entry.path));
+  }
+
+  private read(locale: ContentLocale, path: string): TypedBundle | null {
+    const loader = this.packs[locale].bundles[path];
+    if (loader) return loader() as TypedBundle;
+    return (this.downloaded[locale].get(path) as TypedBundle | undefined) ?? null;
+  }
 
   isFixture(locale: ContentLocale): boolean {
     return this.packs[locale].pack.fixture === true;
@@ -72,12 +112,14 @@ export class ContentRepo {
         id: s.id,
         name: s.name,
         colorFamily: s.color_family,
+        units: unitNames(s),
         chapters: [...s.chapters]
           .sort((a, b) => a.sort - b.sort)
           .map((c) => ({
             id: c.id,
             name: c.name,
             subjectId: s.id,
+            unitId: c.unit,
             free: c.free_deep_dive || free.has(c.id),
             topics: c.topics.map((t) => this.topicView(m, t, c.free_deep_dive || free.has(c.id), locale)).filter((t): t is TopicView => t !== null),
           })),
@@ -108,9 +150,9 @@ export class ContentRepo {
     const t = m.topics[topicId];
     const entry = t?.bundles[mode];
     if (!t || !entry) return null;
-    const loader = this.packs[locale].bundles[entry.path];
-    if (!loader) return null;
-    return { bundle: loader() as TypedBundle, hash: entry.hash, examDepth: depthMap(t) };
+    const bundle = this.read(locale, entry.path);
+    if (!bundle) return null;
+    return { bundle, hash: entry.hash, examDepth: depthMap(t) };
   }
 
   /** Bundled image for a media ref's file (`assets/<sha>.webp`), if it is in the seed pack. */
@@ -124,8 +166,7 @@ export class ContentRepo {
     const dd = t.bundles.deep_dive;
     let minutes: number | null = null;
     if (dd) {
-      const loader = this.packs[locale].bundles[dd.path];
-      const b = loader ? (loader() as TypedBundle) : null;
+      const b = this.read(locale, dd.path);
       minutes = b?.bites[0]?.estimated_minutes ?? b?.estimated_minutes ?? null;
     }
     return {
@@ -140,6 +181,13 @@ export class ContentRepo {
       minutes,
     };
   }
+}
+
+/** Read defensively: a later manifest may add `units: [{ id, name }]` to each subject. */
+function unitNames(subject: Manifest['subjects'][number]): { id: string; name: string }[] {
+  const raw = (subject as { units?: unknown }).units;
+  if (!Array.isArray(raw)) return [];
+  return raw.filter((u): u is { id: string; name: string } => typeof u === 'object' && u !== null && typeof (u as { id?: unknown }).id === 'string' && typeof (u as { name?: unknown }).name === 'string');
 }
 
 function depthMap(t: TopicEntry): Record<string, number> {

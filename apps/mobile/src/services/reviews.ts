@@ -162,9 +162,12 @@ export class Reviews {
     return this.scheduler.preview(row, this.app.now());
   }
 
-  /** Rates a card: the new schedule and `review_rated` are written together. */
-  async rate(row: SrsCardRow, rating: ReviewRating, confidence: Confidence | null, msToAnswer: number): Promise<SrsCardRow> {
-    const now = this.app.now();
+  /**
+   * Rates a card: the new schedule and `review_rated` are written together. `at` is when the
+   * student rated it (MEM-03 holds the last rating for Undo and commits it later).
+   */
+  async rate(row: SrsCardRow, rating: ReviewRating, confidence: Confidence | null, msToAnswer: number, at?: number): Promise<SrsCardRow> {
+    const now = at ?? this.app.now();
     const res = this.scheduler.schedule(row, rating, now);
     const today = this.today();
     const next: SrsCardRow = { ...res.card, introduced_on: row.introduced_on ?? (row.state === 0 ? today : null) };

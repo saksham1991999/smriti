@@ -1,4 +1,4 @@
-import { Button, Card, IconButton, Illustration, Sheet, StatTile, Text, useTheme } from '@smriti/ui-native';
+import { Button, Card, Dialog, IconButton, Illustration, Sheet, StatTile, Text, useTheme } from '@smriti/ui-native';
 import { useQuery } from '@tanstack/react-query';
 import { router, useLocalSearchParams, type Href } from 'expo-router';
 import { useEffect, useMemo, useState } from 'react';
@@ -26,6 +26,7 @@ export default function LabDetail() {
   const lab = LABS.find((l) => l.id === id);
   const cache = useMemo(() => simCache(app), [app]);
   const [info, setInfo] = useState(false);
+  const [dataAsk, setDataAsk] = useState(false);
   const [downloading, setDownloading] = useState(false);
   const [cachedTick, setCachedTick] = useState(0);
   const progress = useQuery({ queryKey: ['smriti', 'lab-progress', id], queryFn: () => labProgress(app, id ?? '') });
@@ -48,8 +49,15 @@ export default function LabDetail() {
   }
 
   const runnable = cached || (online && cache.configured());
-  const start = () =>
+  const play = () =>
     runnable ? router.push({ pathname: '/lab/[id]/play', params: { id: lab.id } }) : router.push({ pathname: '/lab/[id]/play', params: { id: lab.id, fallback: online ? 'unsupported' : 'offline' } });
+  // On mobile data, a lab bigger than `lab.confirm_download_mb` asks first (LAB-03 data_confirm).
+  const confirmMb = app.flags.get('lab.confirm_download_mb');
+  const start = () => {
+    const big = (lab.sizeBytes ?? 0) > confirmMb * 1024 * 1024;
+    if (runnable && !cached && big && app.deps.connection?.isCellular()) setDataAsk(true);
+    else play();
+  };
   const download = async () => {
     if (!app.isPro()) {
       router.push({ pathname: '/paywall', params: { from: 'offline_download' } });
@@ -70,7 +78,7 @@ export default function LabDetail() {
       testID="LAB-03"
       footer={
         <View style={styles.gap}>
-          <Button label={runnable ? t('memory_labs:LAB-03.start') : t('memory_labs:LAB-05.see')} icon="Play" fullWidth onPress={start} testID="lab-start" />
+          <Button label={runnable ? t('memory_labs:LAB-03.start') : t('memory_labs:LAB-03.see_explainer')} icon={runnable ? 'Play' : 'BookOpen'} fullWidth onPress={start} testID="lab-start" />
           {!little && !cached && cache.configured() && app.deps.simFiles ? (
             <Button variant="secondary" icon="DownloadSimple" label={t('memory_labs:LAB-03.download')} fullWidth loading={downloading} disabled={!online} onPress={() => void download()} testID="lab-download" />
           ) : null}
@@ -115,7 +123,7 @@ export default function LabDetail() {
       ) : null}
       {!runnable ? (
         <Text variant="caption" tone="muted" testID="lab-needs-net">
-          {online ? t('memory_labs:LAB-05.reason_failed') : `${t('memory_labs:LAB-05.reason_offline')} · ${t('memory_labs:LAB-05.download_later')}`}
+          {online ? t('memory_labs:LAB-05.reason_failed') : t('memory_labs:LAB-03.needs_net', { s: size })}
         </Text>
       ) : null}
       {lab.attribution ? (
@@ -124,6 +132,20 @@ export default function LabDetail() {
         </Text>
       ) : null}
       <BuddyLine text={t('memory_labs:LAB-04.pet_first')} />
+      <Dialog
+        open={dataAsk}
+        onOpenChange={(o) => (o ? undefined : setDataAsk(false))}
+        title={t('memory_labs:LAB-03.data_confirm', { s: size })}
+        confirm={{
+          label: t('memory_labs:LAB-03.data_yes'),
+          onPress: () => {
+            setDataAsk(false);
+            play();
+          },
+        }}
+        cancel={{ label: t('memory_labs:LAB-03.data_no'), onPress: () => setDataAsk(false) }}
+        testID="lab-data-confirm"
+      />
       <Sheet open={info} onOpenChange={setInfo} title={t('memory_labs:LAB-18.title')} height="40" testID="LAB-18">
         <View style={styles.gap}>
           <InfoRow label={t('memory_labs:LAB-18.made_by')} value={lab.attribution ?? app.appName()} />

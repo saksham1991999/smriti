@@ -1,4 +1,4 @@
-import type { TypedBundle } from '@smriti/content-schema';
+import type { TypedBundle } from '@smriti/content-schema/runtime';
 import { LessonSession, lessonConfig, nextBite, planLesson, uuidv7, type EventEnvelope, type LessonConfig, type LessonPlan, type LessonSummary } from '@smriti/lesson-core';
 
 import type { LessonEnd, SmritiApp } from './app';

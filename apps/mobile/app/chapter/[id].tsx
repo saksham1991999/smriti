@@ -1,4 +1,4 @@
-import { Button, Card, Icon, IconButton, Illustration, PressableScale, ProgressBar, Sheet, Text, useTheme } from '@smriti/ui-native';
+import { Button, Card, Chip, Icon, IconButton, Illustration, PressableScale, ProgressBar, Sheet, Text, Toast, useTheme } from '@smriti/ui-native';
 import type { IconName } from '@smriti/tokens/ui';
 import { router, useFocusEffect, useLocalSearchParams, type Href } from 'expo-router';
 import { useCallback, useEffect, useMemo, useState } from 'react';
@@ -6,9 +6,11 @@ import { StyleSheet, View } from 'react-native';
 
 import type { TopicView } from '../../src/content/repo';
 import { bundledIllustrations } from '../../src/seed/illustrations';
+import { defaultChapterChoice, resetChapter } from '../../src/services/checks';
 import { useApp, useT, useUiState } from '../../src/services/context';
 import { chapterProgress, dueByTopic } from '../../src/services/learn';
 import { loadTopicStates, type TopicState } from '../../src/services/progress';
+import { ChapterTestSheet, DownloadSheet, ResetSheet, TopicActionsSheet } from '../../src/ui/ChapterSheets';
 import { BuddyLine } from '../../src/ui/Onboarding';
 import { Screen } from '../../src/ui/Screen';
 
@@ -17,15 +19,17 @@ const SECONDS_PER_CARD = 12;
 
 /**
  * LRN-02, a chapter as a path of topics: header with progress, the tools row (Practise, Chapter
- * test), the topic rail with the Next row expanded, review rows after learned topics that have
- * cards due today (A14), the chapter test row at the end, and the pinned Continue / Start /
- * Practise action. All from the device.
+ * test, Download), the topic rail with the Next row expanded, review rows after learned topics
+ * that have cards due today (A14), the chapter test row at the end, and the pinned Continue /
+ * Start / Practise action. Long-press a topic for Quick revision, Download and Mark as learned
+ * (a one-topic Test out). The overflow downloads, resets progress or reports a problem.
  */
 export default function Chapter() {
   const app = useApp();
   const t = useT();
   const theme = useTheme();
   const locale = useUiState((s) => s.locale);
+  const online = useUiState(() => app.deps.network.isOnline());
   const { id } = useLocalSearchParams<{ id: string }>();
   const exam = app.examProfileId();
   const subject = app.deps.content.subjects(locale, exam).find((s) => s.chapters.some((c) => c.id === id));
@@ -34,12 +38,15 @@ export default function Chapter() {
   const [due, setDue] = useState<Map<string, number>>(new Map());
   const [testSheet, setTestSheet] = useState(false);
   const [menu, setMenu] = useState(false);
-  useFocusEffect(
-    useCallback(() => {
-      void loadTopicStates(app).then(setStates);
-      void dueByTopic(app).then(setDue);
-    }, [app]),
-  );
+  const [downloadSheet, setDownloadSheet] = useState(false);
+  const [resetAsk, setResetAsk] = useState(false);
+  const [actionsFor, setActionsFor] = useState<TopicView | null>(null);
+  const [toast, setToast] = useState<string | null>(null);
+  const reload = useCallback(() => {
+    void loadTopicStates(app).then(setStates);
+    void dueByTopic(app).then(setDue);
+  }, [app]);
+  useFocusEffect(reload);
   useEffect(() => {
     if (chapter) app.track('chapter_viewed', {});
   }, [app, chapter]);
@@ -61,10 +68,23 @@ export default function Chapter() {
     router.push({ pathname: '/lesson/[topicId]', params: { topicId: tp.id, mode: learned && tp.hasQuickRevision ? 'quick_revision' : 'deep_dive' } });
   };
   const practise = () => router.push({ pathname: '/drill', params: { chapter: chapter.id, source: 'chapter' } });
+  const learnedCount = chapter.topics.filter((tp) => states.get(tp.id)?.status === 'learned').length;
+  const defaultChoice = defaultChapterChoice(learnedCount, chapter.topics.length);
+  const openTest = () => {
+    app.track('chapter_test_opened', { default_choice: defaultChoice });
+    setTestSheet(true);
+  };
+  // Offline downloads are Pro (LRN-15); free students see the paywall's offline reason instead.
+  const openDownload = () => {
+    setMenu(false);
+    setActionsFor(null);
+    if (!app.isPro()) router.push({ pathname: '/paywall', params: { from: 'offline_download' } });
+    else setDownloadSheet(true);
+  };
   const allLearned = progress.status === 'learned';
   const next = progress.next;
   const cta = allLearned ? (
-    <Button label={t('learn:LRN-02.cta_all_learned')} icon="Barbell" fullWidth onPress={() => setTestSheet(true)} testID="chapter-cta" />
+    <Button label={t('learn:LRN-02.cta_all_learned')} icon="Target" fullWidth onPress={openTest} testID="chapter-cta" />
   ) : next ? (
     <Button
       label={progress.nextInProgress ? t('learn:LRN-02.cta_continue', { topic_title: next.name }) : t('learn:LRN-02.cta_start', { topic_title: next.name })}
@@ -109,16 +129,9 @@ export default function Chapter() {
       </Card>
 
       <View style={styles.tools}>
-        <Tool icon="Barbell" label={t('learn:LRN-02.tools.2')} onPress={practise} testID="chapter-tool-practise" />
-        <Tool
-          icon="Exam"
-          label={t('learn:LRN-02.tools.3')}
-          onPress={() => {
-            app.track('chapter_test_opened', { default_choice: 'practise' });
-            setTestSheet(true);
-          }}
-          testID="chapter-tool-test"
-        />
+        <Tool icon="Target" label={t('learn:LRN-02.tools.2')} onPress={practise} testID="chapter-tool-practise" />
+        <Tool icon="Exam" label={t('learn:LRN-02.tools.3')} onPress={openTest} testID="chapter-tool-test" />
+        <Tool icon="DownloadSimple" label={t('learn:LRN-02.tools.5')} onPress={openDownload} testID="chapter-tool-download" />
       </View>
 
       <View>
@@ -129,34 +142,50 @@ export default function Chapter() {
         {chapter.topics.map((tp, i) => {
           const st = states.get(tp.id);
           const learned = st?.status === 'learned';
+          const checked = learned && (st?.learnedVia === 'test_out' || st?.learnedVia === 'placement');
           const isNext = next?.id === tp.id;
           const dueN = learned ? (due.get(tp.id) ?? 0) : 0;
+          const local = app.deps.content.available(locale, tp.id, learned && tp.hasQuickRevision ? 'quick_revision' : 'deep_dive', exam);
           const icon: IconName = learned ? 'CheckCircle' : st?.status === 'in_progress' ? 'Play' : isNext ? 'Play' : 'Circle';
           const stateWord = learned ? app.tPending('learn:WEB-01.learned') : '';
           return (
             <View key={tp.id}>
               <View style={styles.railRow}>
-                <View style={[styles.node, { backgroundColor: learned ? theme.colors.successTint : theme.colors.surface, borderColor: isNext ? theme.colors.primary : theme.colors.line }]}>
-                  <Icon name={icon} size={20} color={learned ? 'successText' : isNext ? 'primary' : 'inkMuted'} weight={learned ? 'fill' : 'bold'} />
-                </View>
-                <Card
-                  style={[styles.grow, isNext ? styles.nextCard : null]}
-                  onPress={() => open(tp)}
-                  accessibilityLabel={`${i + 1} / ${chapter.topics.length}: ${tp.name}${stateWord ? `, ${stateWord}` : ''}`}
-                  testID={`topic-${tp.id}`}
+                <View
+                  style={[
+                    styles.node,
+                    {
+                      backgroundColor: learned && !checked ? theme.colors.successTint : theme.colors.surface,
+                      borderColor: checked ? theme.colors.success : isNext ? theme.colors.primary : theme.colors.line,
+                    },
+                  ]}
                 >
-                  <View style={styles.topicBody}>
-                    <Text variant="label" numberOfLines={3}>
-                      {tp.name}
-                    </Text>
-                    {tp.minutes ? (
-                      <Text variant="caption" tone="muted" numeric>
-                        {t('learn:LRN-02.row_meta.1', { minutes: Math.max(1, Math.round(tp.minutes)) })}
+                  <Icon name={icon} size={20} color={learned ? 'successText' : isNext ? 'primary' : 'inkMuted'} weight={learned && !checked ? 'fill' : 'bold'} />
+                </View>
+                <PressableScale
+                  onPress={() => open(tp)}
+                  onLongPress={() => setActionsFor(tp)}
+                  accessibilityRole="button"
+                  accessibilityLabel={`${i + 1} / ${chapter.topics.length}: ${tp.name}${stateWord ? `, ${stateWord}` : ''}`}
+                  accessibilityHint={t('learn:LRN-02.long_press_actions')}
+                  testID={`topic-${tp.id}`}
+                  style={styles.grow}
+                >
+                  <Card style={isNext ? styles.nextCard : undefined}>
+                    <View style={styles.topicBody}>
+                      <Text variant="label" numberOfLines={3}>
+                        {tp.name}
                       </Text>
-                    ) : null}
-                    {isNext ? <Button size="sm" variant="secondary" label={t('learn:LRN-02.next_row_button')} onPress={() => open(tp)} testID="chapter-next-start" /> : null}
-                  </View>
-                </Card>
+                      {tp.minutes ? (
+                        <Text variant="caption" tone="muted" numeric>
+                          {t('learn:LRN-02.row_meta.1', { minutes: Math.max(1, Math.round(tp.minutes)) })}
+                        </Text>
+                      ) : null}
+                      {!online && !local ? <Chip icon="WifiSlash" tone="sunken" label={t('learn:LRN-15.offline')} testID={`topic-offline-${tp.id}`} /> : null}
+                      {isNext ? <Button size="sm" variant="secondary" label={t('learn:LRN-02.next_row_button')} onPress={() => open(tp)} testID="chapter-next-start" /> : null}
+                    </View>
+                  </Card>
+                </PressableScale>
               </View>
               {dueN > 0 ? (
                 <View style={styles.railRow}>
@@ -187,7 +216,7 @@ export default function Chapter() {
           <View style={[styles.node, { backgroundColor: theme.colors.surface, borderColor: theme.colors.line }]}>
             <Icon name="Exam" size={20} color="ink" />
           </View>
-          <Card style={styles.grow} onPress={() => setTestSheet(true)} accessibilityLabel={t('learn:LRN-02.test_row.1')} testID="chapter-test-row">
+          <Card style={styles.grow} onPress={openTest} accessibilityLabel={t('learn:LRN-02.test_row.1')} testID="chapter-test-row">
             <View style={styles.topicBody}>
               <Text variant="label">{t('learn:LRN-02.test_row.1')}</Text>
               <Text variant="caption" tone="muted">
@@ -200,54 +229,60 @@ export default function Chapter() {
 
       {allLearned ? <BuddyLine text={t('learn:LRN-02.chapter_learned_pet_line')} /> : null}
 
-      <Sheet open={testSheet} onOpenChange={setTestSheet} title={t('learn:LRN-06.title')} height="60" testID="LRN-06">
+      <ChapterTestSheet open={testSheet} onOpenChange={setTestSheet} chapter={chapter} defaultChoice={defaultChoice} />
+      <DownloadSheet open={downloadSheet} onOpenChange={setDownloadSheet} chapter={chapter} subject={subject} onToast={setToast} />
+      <ResetSheet
+        open={resetAsk}
+        onOpenChange={setResetAsk}
+        chapter={chapter}
+        onReset={() => {
+          setResetAsk(false);
+          void resetChapter(app, chapter).then(() => {
+            reload();
+            setToast(t('learn:LRN-02.reset_toast'));
+          });
+        }}
+      />
+      <TopicActionsSheet
+        topic={actionsFor}
+        learned={actionsFor ? states.get(actionsFor.id)?.status === 'learned' : false}
+        onOpenChange={(o) => (o ? undefined : setActionsFor(null))}
+        onQuickRevision={(tp) => {
+          setActionsFor(null);
+          router.push({ pathname: '/lesson/[topicId]', params: { topicId: tp.id, mode: 'quick_revision' } });
+        }}
+        onDownload={openDownload}
+        onMarkLearned={(tp) => {
+          setActionsFor(null);
+          router.push({ pathname: '/check/[chapterId]', params: { chapterId: chapter.id, topic: tp.id } });
+        }}
+      />
+      <Sheet open={menu} onOpenChange={setMenu} title={t('ui:common.moreOptions')} height="40" testID="chapter-overflow">
         <View style={styles.gap}>
-          <Card>
-            <View style={styles.gap}>
-              <Text variant="heading">{t('learn:LRN-06.practise')}</Text>
-              <Text variant="caption" tone="muted">
-                {t('learn:LRN-06.practise_meta')}
-              </Text>
-              <Text variant="body">{t('learn:LRN-06.practise_line')}</Text>
-              <Button
-                label={t('learn:LRN-06.buttons.2')}
-                onPress={() => {
-                  setTestSheet(false);
-                  practise();
-                }}
-                testID="chapter-test-practise"
-              />
-            </View>
-          </Card>
-          <Card>
-            <View style={styles.gap}>
-              <Text variant="heading">{t('learn:LRN-06.mock')}</Text>
-              <Text variant="body">{t('learn:LRN-06.mock_line')}</Text>
-              <Button
-                variant="secondary"
-                label={t('learn:LRN-06.buttons.3')}
-                onPress={() => {
-                  setTestSheet(false);
-                  router.push('/mocks' as Href);
-                }}
-                testID="chapter-test-mock"
-              />
-            </View>
-          </Card>
+          <Button variant="ghost" icon="DownloadSimple" label={t('learn:LRN-02.overflow.1')} onPress={openDownload} testID="chapter-download" />
+          <Button
+            variant="ghost"
+            icon="ArrowCounterClockwise"
+            label={t('learn:LRN-02.overflow.2')}
+            onPress={() => {
+              setMenu(false);
+              setResetAsk(true);
+            }}
+            testID="chapter-reset"
+          />
+          <Button
+            variant="ghost"
+            icon="Flag"
+            label={t('learn:LRN-02.overflow.3')}
+            onPress={() => {
+              setMenu(false);
+              router.push({ pathname: '/report-content', params: { kind: 'chapter', ref: chapter.id } });
+            }}
+            testID="chapter-report"
+          />
         </View>
       </Sheet>
-      <Sheet open={menu} onOpenChange={setMenu} title={t('ui:common.moreOptions')} height="40">
-        <Button
-          variant="ghost"
-          icon="Flag"
-          label={t('learn:LRN-02.overflow.3')}
-          onPress={() => {
-            setMenu(false);
-            router.push({ pathname: '/report-content', params: { kind: 'chapter', ref: chapter.id } });
-          }}
-          testID="chapter-report"
-        />
-      </Sheet>
+      <Toast open={toast !== null} message={toast ?? ''} onDismiss={() => setToast(null)} testID="chapter-toast" />
     </Screen>
   );
 }

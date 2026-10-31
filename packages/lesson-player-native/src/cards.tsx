@@ -2,7 +2,7 @@
  * One renderer per card type (content-format §7). Renderers read the card and send the student's
  * actions up; lesson-core decides what they mean.
  */
-import type { BundleCard } from "@smriti/content-schema";
+import type { BundleCard } from "@smriti/content-schema/runtime";
 import type { MessageKey } from "@smriti/i18n";
 import { checkInteractive, checkSimTask, type LessonAction, type WidgetResponse, type WidgetResult } from "@smriti/lesson-core";
 import { Banner, Button, Card, Chip, FormulaBox, OptionCard, Text } from "@smriti/ui-native";

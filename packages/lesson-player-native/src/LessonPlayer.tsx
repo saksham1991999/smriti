@@ -5,7 +5,7 @@
  * `onEvent` as a sync envelope, in order, for the host to put in the outbox. Props and names follow
  * @smriti/lesson-player-web so both apps wire it the same way.
  */
-import type { TypedBundle } from "@smriti/content-schema";
+import type { TypedBundle } from "@smriti/content-schema/runtime";
 import type { MessageKey } from "@smriti/i18n";
 import {
   currentCard,

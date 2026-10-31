@@ -269,6 +269,31 @@ export interface SwitchContract extends BaseProps {
   disabled?: boolean;
 }
 
+/**
+ * A labelled text field (notes, report details, search): label above, field on `surfaceSunken`,
+ * radius 16 (DESIGN.md §4), 48 px minimum. An error shows a Warning icon with its text, never
+ * colour alone. The character counter appears when 20% or less of `maxLength` is left.
+ */
+export interface TextFieldContract extends BaseProps {
+  /** Visible label above the field, and its accessible name. */
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  placeholder?: string;
+  /** A helper line under the field. Hidden while `error` is set. */
+  hint?: string;
+  /** An error message under the field. */
+  error?: string;
+  maxLength?: number;
+  /** Several lines of text; the field grows from `lines` rows (default 3). */
+  multiline?: boolean;
+  lines?: number;
+  disabled?: boolean;
+  keyboard?: "default" | "email" | "numeric";
+  /** Called when the keyboard's return key is pressed (single-line fields). */
+  onSubmit?: () => void;
+}
+
 // ---------- Containers ----------
 
 export type SheetHeight = "40" | "60" | "full";

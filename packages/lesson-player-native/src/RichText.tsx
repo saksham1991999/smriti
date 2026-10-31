@@ -2,7 +2,7 @@
  * Text with maths. Bundles carry MathJax SVG for every `$...$` and `$$...$$` segment under
  * `bundle.math` (content-publish renders it at build time), so the device never typesets.
  */
-import { splitMath, type TypedBundle } from "@smriti/content-schema";
+import { splitMath, type TypedBundle } from "@smriti/content-schema/runtime";
 import { Text, useTheme } from "@smriti/ui-native";
 import type { TextVariant, TextTone } from "@smriti/tokens/ui";
 import { Fragment } from "react";

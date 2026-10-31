@@ -1,4 +1,4 @@
-import type { TypedBundle } from '@smriti/content-schema';
+import type { TypedBundle } from '@smriti/content-schema/runtime';
 import { PlayerProvider } from '@smriti/lesson-player-native';
 import { useMemo, type ReactNode } from 'react';
 

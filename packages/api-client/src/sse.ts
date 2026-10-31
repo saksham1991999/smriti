@@ -84,11 +84,30 @@ export async function* readSse(response: Response, signal?: AbortSignal): AsyncG
   while (queue.length) yield queue.shift() as SseEvent;
 }
 
+/**
+ * A helpline the server sends with a crisis `safety` event (AI-08). It comes from owner config
+ * (`safety.helplines`), never from app code; `name` and `number` are always present.
+ */
+export interface TutorHelpline {
+  name: string;
+  number: string;
+  [field: string]: string;
+}
+
 /** One tutor stream event (AI-02), typed. Unknown events are skipped. */
 export type TutorStreamEvent =
   | { type: "delta"; text: string }
   | { type: "replace"; text: string }
-  | { type: "safety"; kind: string }
+  | {
+      type: "safety";
+      /** crisis, refusal, redirect, pii_removed, ... */
+      kind: string;
+      /** Only on `crisis`: the helplines to show, in the learner's language. */
+      helplines: TutorHelpline[];
+      /** Back-to-study chips on a refusal. */
+      chips: string[];
+      category?: string;
+    }
   | { type: "citations"; items: unknown[] }
   | { type: "chips"; items: unknown[] }
   | { type: "quota"; quota: Schemas["QuotaOut"] }
@@ -111,8 +130,24 @@ export function toTutorEvent(e: SseEvent): TutorStreamEvent | null {
     case "delta":
     case "replace":
       return { type: e.event, text: str("text") };
-    case "safety":
-      return { type: "safety", kind: str("kind") };
+    case "safety": {
+      const helplines = list("helplines").filter(
+        (h): h is TutorHelpline =>
+          typeof h === "object" &&
+          h !== null &&
+          typeof (h as Record<string, unknown>).name === "string" &&
+          typeof (h as Record<string, unknown>).number === "string",
+      );
+      const chips = list("chips").filter((c): c is string => typeof c === "string");
+      const category = str("category");
+      return {
+        type: "safety",
+        kind: str("kind"),
+        helplines,
+        chips,
+        ...(category ? { category } : {}),
+      };
+    }
     case "citations":
     case "chips":
       return { type: e.event, items: list("items") };
@@ -144,6 +179,29 @@ interface StreamResult {
   response: Response;
 }
 
+/** Per-call options for the tutor streams. */
+export interface TutorCallOptions {
+  signal?: AbortSignal;
+  /**
+   * A fetch for this call only, such as `expo/fetch`, whose response body streams on React
+   * Native. The client's own middleware (auth, device headers) still runs.
+   */
+  fetch?: (input: Request) => Promise<Response>;
+}
+
+/** Older callers pass a bare AbortSignal. */
+function callOptions(options?: AbortSignal | TutorCallOptions): TutorCallOptions {
+  if (!options) return {};
+  if (typeof (options as AbortSignal).aborted === "boolean" && !("fetch" in options)) {
+    return { signal: options as AbortSignal };
+  }
+  return options as TutorCallOptions;
+}
+
+function requestInit(o: TutorCallOptions) {
+  return { ...(o.signal ? { signal: o.signal } : {}), ...(o.fetch ? { fetch: o.fetch } : {}) };
+}
+
 /** Turns a pending `parseAs: "stream"` call into typed tutor events (throws ApiError on 4xx/5xx). */
 export async function* tutorEvents(
   pending: Promise<StreamResult>,
@@ -167,26 +225,32 @@ export function streamTutorMessage(
   api: ApiClient,
   sessionId: string,
   body: Schemas["MessageIn"],
-  signal?: AbortSignal,
+  options?: AbortSignal | TutorCallOptions,
 ) {
+  const o = callOptions(options);
   return tutorEvents(
     api.POST("/v1/tutor/sessions/{session_id}/messages", {
       params: { path: { session_id: sessionId } },
       body,
       parseAs: "stream",
-      ...(signal ? { signal } : {}),
+      ...requestInit(o),
     }),
     api,
-    signal,
+    o.signal,
   );
 }
 
 /** `POST /v1/tutor/ask/card` ("Ask about this card") as a stream of events. */
-export function streamTutorAskCard(api: ApiClient, body: Schemas["AskCard"], signal?: AbortSignal) {
+export function streamTutorAskCard(
+  api: ApiClient,
+  body: Schemas["AskCard"],
+  options?: AbortSignal | TutorCallOptions,
+) {
+  const o = callOptions(options);
   return tutorEvents(
-    api.POST("/v1/tutor/ask/card", { body, parseAs: "stream", ...(signal ? { signal } : {}) }),
+    api.POST("/v1/tutor/ask/card", { body, parseAs: "stream", ...requestInit(o) }),
     api,
-    signal,
+    o.signal,
   );
 }
 
@@ -194,11 +258,12 @@ export function streamTutorAskCard(api: ApiClient, body: Schemas["AskCard"], sig
 export function streamTutorAskQuestion(
   api: ApiClient,
   body: Schemas["AskQuestion"],
-  signal?: AbortSignal,
+  options?: AbortSignal | TutorCallOptions,
 ) {
+  const o = callOptions(options);
   return tutorEvents(
-    api.POST("/v1/tutor/ask/question", { body, parseAs: "stream", ...(signal ? { signal } : {}) }),
+    api.POST("/v1/tutor/ask/question", { body, parseAs: "stream", ...requestInit(o) }),
     api,
-    signal,
+    o.signal,
   );
 }

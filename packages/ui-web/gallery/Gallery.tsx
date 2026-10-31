@@ -56,6 +56,7 @@ import {
   StreakPill,
   SubjectTile,
   Switch,
+  TextField,
   TabBar,
   Text,
   ThemeScope,
@@ -125,8 +126,12 @@ function FormDemo({ c }: { c: GalleryCopy }) {
   const [year, setYear] = useState<string | null>(null);
   const [month, setMonth] = useState<string | null>("2");
   const [sound, setSound] = useState(true);
+  const [note, setNote] = useState("");
+  const [email, setEmail] = useState("name@");
   return (
     <Stack>
+      <TextField label={c.noteLabel} value={note} onChange={setNote} placeholder={c.notePlaceholder} hint={c.noteHint} multiline maxLength={200} />
+      <TextField label={c.emailLabel} value={email} onChange={setEmail} keyboard="email" error={c.emailError} />
       <div className="grid grid-cols-2 gap-3">
         <Picker label={c.monthLabel} value={month} onChange={setMonth} options={c.months.map((m, i) => ({ value: String(i + 1), label: m }))} />
         <Picker label={c.yearLabel} value={year} onChange={setYear} options={["2010", "2011", "2012", "2013"].map((y) => ({ value: y, label: y }))} />
@@ -380,7 +385,7 @@ const sections: { id: string; title: string; render: Render }[] = [
           ))}
         </div>
         <Row>
-          {(["Plant", "Snowflake", "Lightbulb", "Exam", "Flask", "LockSimple", "CloudCheck", "Timer"] as const).map((n) => (
+          {(["Plant", "Snowflake", "Lightbulb", "Exam", "Flask", "LockSimple", "CloudCheck", "Timer", "ArrowsOut", "ArrowsIn", "ThumbsUp", "ThumbsDown", "Camera", "ShareNetwork", "NotePencil"] as const).map((n) => (
             <Icon key={n} name={n} weight={n === "Plant" ? "fill" : "bold"} color={n === "Plant" ? "streak" : "ink"} label={n} />
           ))}
         </Row>

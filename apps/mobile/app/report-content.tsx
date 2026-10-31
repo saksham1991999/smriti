@@ -1,12 +1,11 @@
 import type { Schemas } from '@smriti/api-client';
-import { Banner, Button, ChoiceChips, Text } from '@smriti/ui-native';
+import { Banner, Button, ChoiceChips, Text, TextField } from '@smriti/ui-native';
 import { router, useLocalSearchParams, type Href } from 'expo-router';
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { useApp, useT } from '../src/services/context';
 import { reportContent } from '../src/services/drill';
-import { NoteField } from '../src/ui/NoteField';
 import { BuddyLine } from '../src/ui/Onboarding';
 import { BackHeader, Screen } from '../src/ui/Screen';
 
@@ -69,7 +68,7 @@ export default function ReportContent() {
             onChange={(v) => setReason((v[0] as Reason | undefined) ?? null)}
             testID="report-reason"
           />
-          <NoteField label={t('me_money:SET-24.note')} value={note} onChangeText={setNote} maxLength={NOTE_MAX} testID="report-note" />
+          <TextField label={t('me_money:SET-24.note')} value={note} onChange={setNote} maxLength={NOTE_MAX} multiline lines={4} testID="report-note" />
           <Text variant="caption" tone="muted">
             {t('me_money:SET-24.caption')}
           </Text>

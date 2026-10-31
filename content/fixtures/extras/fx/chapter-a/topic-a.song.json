@@ -1,0 +1,92 @@
+{
+  "schema": "song@1",
+  "fixture": true,
+  "status": "review",
+  "sources": [
+    {
+      "kind": "other",
+      "ref": "Fixture source (test data, not a real reference)",
+      "url": null
+    }
+  ],
+  "authored_by": "fixture",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "id": "sg.fx.topic-a",
+  "scope": "topic",
+  "topic": "fx.chapter-a.topic-a",
+  "title": {
+    "en": "Fixture title song",
+    "hi": "फ़िक्स्चर शीर्षक song"
+  },
+  "concepts": ["fx.chapter-a.topic-a.sub-1.concept-1", "fx.chapter-a.topic-a.sub-1.concept-2"],
+  "style": "rhyme",
+  "minutes": 1,
+  "cover": "img.chapter-a.fx-hook",
+  "actions": [
+    {
+      "id": "clap",
+      "cue": {
+        "en": "Fixture action cue",
+        "hi": "फ़िक्स्चर क्रिया"
+      },
+      "icon": "HandsClapping"
+    }
+  ],
+  "versions": [
+    {
+      "locale": "en",
+      "audio": "audio.chapter-a.fx-song-en",
+      "lines": [
+        {
+          "text": "Fixture lyric line 1",
+          "start_ms": 0,
+          "end_ms": 1800
+        },
+        {
+          "text": "Fixture lyric line 2",
+          "start_ms": 2000,
+          "end_ms": 3800,
+          "action": "clap"
+        },
+        {
+          "text": "Fixture lyric line 3",
+          "start_ms": 4000,
+          "end_ms": 5800
+        },
+        {
+          "text": "Fixture lyric line 4",
+          "start_ms": 6000,
+          "end_ms": 7800
+        }
+      ]
+    },
+    {
+      "locale": "hi",
+      "audio": "audio.chapter-a.fx-song-hi",
+      "lines": [
+        {
+          "text": "फ़िक्स्चर गीत पंक्ति 1",
+          "start_ms": 0,
+          "end_ms": 1800
+        },
+        {
+          "text": "फ़िक्स्चर गीत पंक्ति 2",
+          "start_ms": 2000,
+          "end_ms": 3800,
+          "action": "clap"
+        },
+        {
+          "text": "फ़िक्स्चर गीत पंक्ति 3",
+          "start_ms": 4000,
+          "end_ms": 5800
+        },
+        {
+          "text": "फ़िक्स्चर गीत पंक्ति 4",
+          "start_ms": 6000,
+          "end_ms": 7800
+        }
+      ]
+    }
+  ]
+}

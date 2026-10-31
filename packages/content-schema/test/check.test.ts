@@ -268,6 +268,59 @@ describe("content check fails on a broken copy", () => {
     expect(codes(root)).toContain("media_sha_mismatch");
   });
 
+  it("a song without a version, transcript or forward timings, and play rounds that name unknown ids", () => {
+    const root = copy();
+    edit(root, "extras/fx/chapter-a/topic-a.song.json", (d) => {
+      d.versions = d.versions.filter((v: { locale: string }) => v.locale === "en");
+      d.versions[0].lines[2].start_ms = 100;
+      d.versions[0].lines[3].action = "jump";
+      delete d.versions[0].lines[0].end_ms;
+    });
+    edit(root, "media/requests/fx/chapter-a.json", (d) => {
+      const r = d.requests.find((x: { id: string }) => x.id === "audio.chapter-a.fx-song-en");
+      delete r.transcript;
+      r.kind = "audio_tts";
+    });
+    edit(root, "extras/fx/chapter-a/topic-a.play.json", (d) => {
+      d.feedback.try_again.en = "Wrong! Try harder";
+      d.rounds[0].answer = ["tile-9"];
+      d.rounds[2].items[0].bucket = "bucket-z";
+      d.rounds[3].targets[1].accepts = "tile-1";
+    });
+    const c = codes(root);
+    for (const code of ["missing_locale", "song_timing", "song_action_unknown", "song_transcript_missing", "song_audio_kind", "little_negative_word", "play_ref", "duplicate_id"]) {
+      expect(c).toContain(code);
+    }
+  });
+
+  it("little learner coverage: a story, song or lesson teaches and a play activity practises", () => {
+    const root = copy();
+    edit(root, "exams/fx-exam.json", (d) => {
+      d.profiles[0].audience = "little_learner";
+    });
+    const { report } = checkRoot(root, repoRoot);
+    const concepts = report.coverage[0]!.subjects[0]!.chapters[0]!.concepts;
+    const a = concepts.find((x) => x.id === "fx.chapter-a.topic-a.sub-1.concept-1")!;
+    expect(a).toMatchObject({ covered: true, met: ["teaching_card", "play_activity"], missing: [] });
+    const b = concepts.find((x) => x.id === "fx.chapter-a.topic-b.sub-1.concept-1")!;
+    expect(b.missing).toEqual(["play_activity"]);
+    expect(b.met).not.toContain("revision_card");
+    // Songs count as memory hooks in every locale they are sung in.
+    edit(root, "mnemonics/fx/chapter-a.json", (d) => {
+      d.items = [];
+    });
+    edit(root, "extras/fx/chapter-a/topic-a.song.json", (d) => {
+      d.concepts.push("fx.chapter-a.topic-b.sub-1.concept-1");
+    });
+    edit(root, "exams/fx-exam.json", (d) => {
+      delete d.profiles[0].audience;
+    });
+    const after = checkRoot(root, repoRoot).report.coverage[0]!.subjects[0]!.chapters[0]!.concepts;
+    const byId = (id: string) => after.find((x) => x.id === id)!;
+    expect(byId("fx.chapter-a.topic-b.sub-1.concept-1").met).toContain("memory_hook");
+    expect(byId("fx.chapter-a.topic-c.sub-1.concept-1").missing).toContain("memory_hook");
+  });
+
   it("the CLI exits non-zero on a broken copy", async () => {
     const root = copy();
     edit(root, "graph/fx/subject.json", (d) => {

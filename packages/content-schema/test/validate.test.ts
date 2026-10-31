@@ -35,6 +35,8 @@ describe("good samples", () => {
     "media/requests/fx/chapter-a.json",
     "extras/fx/chapter-a/topic-a.cheat-sheet.json",
     "extras/fx/chapter-a/storybook.json",
+    "extras/fx/chapter-a/topic-a.song.json",
+    "extras/fx/chapter-a/topic-a.play.json",
     "extras/fx/chapter-a/topic-c.roleplay.json",
     "extras/fx/chapter-a/mind-map.json",
     "coverage/syllabus/fx-exam-2027.json",

@@ -70,10 +70,7 @@
         }
       }
     },
-    "topics": {
-      "type": "object",
-      "additionalProperties": { "$ref": "#/$defs/TopicEntry" }
-    },
+    "topics": { "type": "object", "additionalProperties": { "$ref": "#/$defs/TopicEntry" } },
     "blueprints": {
       "type": "array",
       "items": {
@@ -91,9 +88,7 @@
       "type": "object",
       "additionalProperties": false,
       "required": ["deep_dive_chapters"],
-      "properties": {
-        "deep_dive_chapters": { "type": "array", "items": { "type": "string" } }
-      }
+      "properties": { "deep_dive_chapters": { "type": "array", "items": { "type": "string" } } }
     }
   },
   "$defs": {
@@ -114,6 +109,11 @@
           "type": "object",
           "propertyNames": { "$ref": "bundle.schema.json#/$defs/BundleMode" },
           "additionalProperties": { "$ref": "#/$defs/BundleEntry" }
+        },
+        "activities": {
+          "description": "Little learner path nodes for this topic, in path order (story, song, play; then by id). Each opens from the topic's story, song or play bundle.",
+          "type": "array",
+          "items": { "$ref": "#/$defs/ActivityEntry" }
         }
       }
     },
@@ -151,6 +151,22 @@
             }
           }
         }
+      }
+    },
+    "ActivityEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "title", "minutes", "cover", "concepts"],
+      "properties": {
+        "id": { "type": "string" },
+        "kind": { "type": "string", "enum": ["story", "song", "play"] },
+        "title": { "type": "string" },
+        "minutes": { "type": ["number", "null"] },
+        "cover": {
+          "description": "Image request id for the path node thumbnail, or null.",
+          "type": ["string", "null"]
+        },
+        "concepts": { "type": "array", "items": { "type": "string" } }
       }
     }
   }

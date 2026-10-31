@@ -71,6 +71,8 @@ export const DOC_SCHEMAS = {
   "cheat_sheet@1": "extras.schema.json",
   "revision_sheet@1": "extras.schema.json",
   "storybook@1": "extras.schema.json",
+  "song@1": "extras.schema.json",
+  "play@1": "extras.schema.json",
   "experiment@1": "extras.schema.json",
   "roleplay@1": "extras.schema.json",
   "mind_map_template@1": "extras.schema.json",

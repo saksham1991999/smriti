@@ -246,6 +246,8 @@ function classify(set: ContentSet, loaded: Loaded<Record<string, unknown>>, find
     case "cheat_sheet@1":
     case "revision_sheet@1":
     case "storybook@1":
+    case "song@1":
+    case "play@1":
     case "experiment@1":
     case "roleplay@1":
     case "mind_map_template@1":

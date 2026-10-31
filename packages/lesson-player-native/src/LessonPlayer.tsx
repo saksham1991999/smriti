@@ -8,15 +8,20 @@
 import type { TypedBundle } from "@smriti/content-schema/runtime";
 import type { MessageKey } from "@smriti/i18n";
 import {
+  autoNarrate,
+  cardNarration,
   currentCard,
   isReadOnly,
   LessonSession,
+  petReaction,
   playerRules,
+  readyMediaUrl,
   shownAnswer,
   shownOptionIds,
   workedSolution,
   type Answer,
   type AnyQuestion,
+  type AudioPort,
   type Confidence,
   type EventEnvelope,
   type LessonAction,
@@ -32,10 +37,12 @@ import {
   ConfidenceRow,
   Icon,
   IconButton,
+  PetLine,
   RatingButtons,
   SegmentedProgress,
   Text,
   useTheme,
+  useUI,
 } from "@smriti/ui-native";
 import type { Confidence as UiConfidence, IconName } from "@smriti/tokens/ui";
 import { useEffect, useRef, useState, type ReactNode } from "react";
@@ -44,6 +51,7 @@ import { ScrollView, StyleSheet, View, type ImageSourcePropType } from "react-na
 import { CardView, type SimCardData, type SimHostApi } from "./cards";
 import { PlayerProvider, sharedKey, usePlayer as usePlayerT, type PlayerContextValue, type Translate } from "./context";
 import { canSubmit, initialDraft, QuestionView } from "./questions";
+import { useNarration } from "./narration";
 import { RichText } from "./RichText";
 
 export interface PlayerHaptics {
@@ -81,6 +89,19 @@ export interface LessonPlayerProps {
   /** Lets the host dispatch actions (exit after LES-05) and read state. */
   sessionRef?: { current: LessonSession | null };
   testID?: string;
+  /** The pet who says the feedback lines (LES-02); without one there is no pet line. */
+  pet?: { species: "cat" | "dog"; name: string };
+  /**
+   * Plays card narration. Without one (or without ready audio) [Listen] is hidden and the lesson
+   * works the same, silently.
+   */
+  audio?: AudioPort;
+  /** Bundle-relative audio url to a playable source (seed pack, download or CDN); default: as is. */
+  resolveAudio?: (url: string) => string | undefined;
+  /** The app's sound setting: when muted, narration never starts by itself and stops if playing. */
+  muted?: boolean;
+  /** Each time narration starts, for `narration_played` (`auto`: it started by itself). */
+  onNarrationPlayed?: (p: { cardId: string | null; auto: boolean }) => void;
 }
 
 const fromUi = (c: UiConfidence | null): Confidence | null => (c === "half" ? "fifty_fifty" : c);
@@ -124,6 +145,18 @@ export function LessonPlayer(props: LessonPlayerProps) {
   const readOnly = isReadOnly(state);
   const rules = playerRules(plan.mode);
   const gentle = rules.tone === "gentle";
+  const { reducedMotion } = useUI();
+  const pet = props.pet;
+  const narrationCard = viewCard ?? card;
+  const narrationUrl = readyMediaUrl(bundle.media, cardNarration(narrationCard));
+  const narration = useNarration({
+    audio: props.audio,
+    src: narrationUrl ? ((props.resolveAudio ? props.resolveAudio(narrationUrl) : narrationUrl) ?? null) : null,
+    cardKey: `${state.viewIndex}`,
+    auto: autoNarrate(rules, { muted: props.muted ?? false, readOnly }),
+    muted: props.muted ?? false,
+    onPlayed: (auto) => props.onNarrationPlayed?.({ cardId: narrationCard?.cardId ?? null, auto }),
+  });
 
   const act = (a: LessonAction) => {
     const before = session.state;
@@ -196,9 +229,17 @@ export function LessonPlayer(props: LessonPlayerProps) {
               <View style={styles.stack}>
                 <View style={styles.kindRow}>
                   <Icon name={KIND_ICON[kind] ?? "BookBookmark"} size={16} color="subjectText" />
-                  <Text variant="label" tone="subject" subject={props.subject}>
+                  <Text variant="label" tone="subject" subject={props.subject} style={styles.grow}>
                     {t(sharedKey(`kind_${kind === "cheat_sheet_ref" ? "cheat_sheet" : kind}`))}
                   </Text>
+                  {narration.toggle ? (
+                    <IconButton
+                      icon={narration.status === "playing" ? "PauseCircle" : "SpeakerHigh"}
+                      label={narration.status === "playing" ? t("learn:LES-01.listen_pause") : t("learn:LES-01.listen")}
+                      onPress={narration.toggle}
+                      testID="lesson-listen"
+                    />
+                  ) : null}
                 </View>
                 {shownCard.question ? (
                   <QuestionView
@@ -241,6 +282,7 @@ export function LessonPlayer(props: LessonPlayerProps) {
                   {rules.xpChip && xpGain > 0 ? <Chip label={t("learn:LES-02.xp", { xp: xpGain })} tone="success" /> : null}
                 </View>
                 {state.comboNow ? <Text variant="label" tone="streak">{t("learn:LES-02.combo", { n: config.comboStreakLen })}</Text> : null}
+                {pet ? <PetLine pet={{ species: pet.species, mood: "excited" }} petName={pet.name} text={correctLine(t, state.index)} testID="pet-line" /> : null}
               </View>
             </Card>
           ) : null}
@@ -266,8 +308,11 @@ export function LessonPlayer(props: LessonPlayerProps) {
                 {state.hint && state.hint.source !== "generic" ? (
                   <RichText text={state.hint.text} />
                 ) : (
-                  <Text>{t("learn:LES-02.wrong_pet_line")}</Text>
+                  <Text>{t("learn:LES-02.generic_hint", { concept_name: conceptName(bundle, state.hint?.conceptId ?? null) })}</Text>
                 )}
+                {pet ? (
+                  <PetLine pet={{ species: pet.species, mood: gentle ? petReaction("wrong", reducedMotion).mood : "thinking" }} petName={pet.name} text={t("learn:LES-02.wrong_pet_line")} testID="pet-line" />
+                ) : null}
               </View>
             </Card>
           ) : null}
@@ -280,6 +325,9 @@ export function LessonPlayer(props: LessonPlayerProps) {
                   <Text variant="heading">{t("learn:LES-02.little_learner_shown_answer")}</Text>
                 </View>
                 {solution?.feynman ? <RichText text={solution.feynman} /> : null}
+                {pet ? (
+                  <PetLine pet={{ species: pet.species, mood: petReaction("shown", reducedMotion).mood }} petName={pet.name} text={t("learn:LRN-18.little_learner_show_me")} testID="pet-line" />
+                ) : null}
               </View>
             </Card>
           ) : null}
@@ -308,6 +356,16 @@ export function LessonPlayer(props: LessonPlayerProps) {
       </View>
     </PlayerProvider>
   );
+}
+
+/** LES-02's rotating correct-answer pet lines, as on the web player. */
+function correctLine(t: Translate, index: number): string {
+  const lines = [t("learn:LES-02.correct_pet_lines_rotate.1"), t("learn:LES-02.correct_pet_lines_rotate.2"), t("learn:LES-02.correct_pet_lines_rotate.3")];
+  return lines[index % 3] ?? "";
+}
+
+function conceptName(bundle: TypedBundle, id: string | null): string {
+  return bundle.concepts.find((c) => c.id === id)?.name ?? bundle.topic.name;
 }
 
 function Footer({

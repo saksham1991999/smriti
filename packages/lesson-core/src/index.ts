@@ -37,6 +37,8 @@ export {
 export type { Bite, CheckQuestion, LessonPlan, LessonPlanOptions, Missed, PlanCard, PlayerMode } from "./plan.js";
 export { playerRules } from "./rules.js";
 export type { PlayerRules } from "./rules.js";
+export { autoNarrate, cardNarration, PET_REACTION_MS, petReaction, readyMediaUrl } from "./narration.js";
+export type { PetReaction, PetReactionEvent } from "./narration.js";
 export {
   activityIds,
   initialPlay,

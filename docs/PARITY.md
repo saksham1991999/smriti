@@ -36,8 +36,8 @@ Last updated 31 Oct 2026. The mobile columns come from the mobile build branch (
 | Test out and its result | LES-12, LES-13 | Built | Built | Not built | Mobile runs lesson-core's check plan (one try, no hints), marks passed topics learned with `learned_via: test_out`, never marks a topic failed, and offers "Undo this". All checkable questions are used while `learn.test_out_questions_per_topic` is unset. |
 | Lesson player (Deep Dive) | LES-01 to LES-08 | Built | Built | Built | Mobile includes the not-found state (LES-11). |
 | Lesson end | LES-09 | Built | Built | Built | |
-| Little learner lesson | LES-01, LES-02 (little learner) | Partial | Partial | Partial | The lesson players render lesson-core's `little` mode: gentle hint, the guided finish (the shown answer is tapped, so every question ends on a win), no XP chip, counter or confidence row. Not yet in an app screen (behind `feature.little_learner`). The native player has no pet line yet. |
-| Story, song and play activities | LRN-11, LRN-17, LRN-18 | Partial | Partial | Partial | Players are in `lesson-player-web` and `lesson-player-native`; not yet in an app screen. |
+| Little learner lesson | LES-01, LES-02 (little learner) | Partial | Partial | Partial | The lesson players render lesson-core's `little` mode: gentle hint, the guided finish (the shown answer is tapped, so every question ends on a win), no XP chip, counter or confidence row, the LES-02 pet lines, and card narration that auto-plays (never when muted) through the host's audio port. Not yet in an app screen (behind `feature.little_learner`); hosts do not pass an audio port or mute setting yet. |
+| Story, song and play activities | LRN-11, LRN-17, LRN-18 | Partial | Partial | Partial | Players are in `lesson-player-web` and `lesson-player-native`, with the story pet reacting at page turns; not yet in an app screen. |
 
 ## Memory and Labs
 

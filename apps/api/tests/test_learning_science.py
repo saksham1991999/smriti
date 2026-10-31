@@ -288,3 +288,53 @@ async def test_calibration_from_real_answers(
     assert levels["fifty"]["accuracy"] is None
     assert r["overconfident"] == 0.25 and r["underconfident"] == 0.5
     assert r["by_subject"][0]["subject_id"] == "fx"
+
+
+async def test_calibration_counts_a_mock_answer_once(
+    client: httpx.AsyncClient, services: AppServices, content: str
+) -> None:
+    # A submitted mock's answers live in mock_answers and, since sync v1.3, are mirrored into
+    # question_attempts with context 'mock'. Calibration counts each once.
+    s = await signed_in(client)
+    now = datetime.now(UTC)
+    attempt_id = uuid.uuid4()
+    qids = ["q.fx.chapter-a.topic-a.0001", "q.fx.chapter-a.topic-a.0002"]
+    async with services.db.admin_tx() as session:
+        await session.execute(
+            text(
+                "insert into learn.mock_attempts (id, user_id, blueprint_id, language, status,"
+                " started_at, submitted_at, server_deadline_at) values"
+                " (:id, :u, :b, 'en', 'submitted', :at, :at, :at)"
+            ),
+            {"id": attempt_id, "u": s.user_id, "b": uuid.uuid4(), "at": now},
+        )
+        for i, q in enumerate(qids):
+            await session.execute(
+                text(
+                    "insert into learn.mock_answers (attempt_id, question_id, section_code,"
+                    " palette_status, answer, confidence, is_correct, client_updated_at) values"
+                    " (:a, :q, 'S1', 'answered', '{}', 'sure', :ok, :at)"
+                ),
+                {"a": attempt_id, "q": q, "ok": i == 0, "at": now},
+            )
+            await session.execute(
+                text(
+                    "insert into learn.question_attempts (id, user_id, question_id, context,"
+                    " session_id, answer, is_correct, time_ms, confidence, answered_at) values"
+                    " (:id, :u, :q, 'mock', :a, '{}', :ok, 20000, 'sure', :at)"
+                ),
+                {
+                    "id": uuid.uuid4(),
+                    "u": s.user_id,
+                    "q": q,
+                    "a": attempt_id,
+                    "ok": i == 0,
+                    "at": now,
+                },
+            )
+    async with flags(services, {"analytics.min_tagged_answers": 1}):
+        r = (await client.get("/v1/insights/calibration", headers=s.headers)).json()
+    assert r["tagged"] == 2
+    levels = {lv["confidence"]: lv for lv in r["levels"]}
+    assert (levels["sure"]["answers"], levels["sure"]["correct"]) == (2, 1)
+    assert r["overconfident"] == 0.5
